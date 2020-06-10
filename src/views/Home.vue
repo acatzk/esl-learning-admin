@@ -4,22 +4,23 @@
             
            <nav-bar /> <!--** NAVIGATION BAR COMPONENT **-->
 
-            <div class="page-wrap">
+            <page-wrap>
                 
                 <side-bar />  <!--** SIDE NAVIGATION BAR COMPONENT **-->
 
                 <main-content>
 
                    <router-view></router-view> <!-- ** DYNAMIC CONTENT ** -->
-                   
+
                 </main-content> <!--** MAIN CONTENT COMPONENT **-->
 
                 <aside-bar /> <!--** ASIDE  BAR COMPONENT **-->
 
                 <foot-bar /> <!--** FOOTER BAR COMPONENT **-->
                 
-            </div>
-      </div>
+            </page-wrap>
+
+      </div>  <!--** PAGE WRAP COMPONENT **-->
         
   </div>
 </template>
@@ -31,6 +32,7 @@ export default {
 
   components: {
     NavBar: () => import('@/components/NavBar'),
+    PageWrap: () => import('@/components/PageWrap'),
     SideBar: () => import('@/components/SideBar'),
     MainContent: () => import('@/components/MainContent'),
     AsideBar: () => import('@/components/AsideBar'),
