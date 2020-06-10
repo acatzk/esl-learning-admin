@@ -98,13 +98,13 @@
 
             <div class="app-sidebar colored">
                 <div class="sidebar-header">
-                    <a class="header-brand" href="index.html">
+                    <router-link to="/admin/dashboard" class="header-brand">
                         <div class="logo-img">
                             <span class="header-brand-img" style="font-size: 15px;">VS
                               <b style="color: red; margin-left: 2px; font-weight: bolder;">.</b></span>
                         </div>
                         <span class="text">Vic Solution</span>
-                    </a>
+                    </router-link>
                     <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
                     <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
                 </div>
