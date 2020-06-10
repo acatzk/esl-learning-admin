@@ -2,7 +2,7 @@
   <div class="home">
     <div class="wrapper">
             
-           <nav-ba /> <!--** NAVIGATION BAR COMPONENT **-->
+           <nav-bar /> <!--** NAVIGATION BAR COMPONENT **-->
 
             <div class="page-wrap">
                 <div class="app-sidebar colored">
