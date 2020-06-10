@@ -162,9 +162,9 @@
 
             <main-content>
                 <div class="container-fluid">
-
+                  <vue-page-transition name="fade-in-right" class="content">
                     <router-view></router-view>
-
+                  </vue-page-transition>
                 </div>
             </main-content>
 
