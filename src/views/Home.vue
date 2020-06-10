@@ -31,12 +31,12 @@ export default {
   name: "Home",
 
   components: {
-    NavBar: () => import('@/components/NavBar'),
-    PageWrap: () => import('@/components/PageWrap'),
-    SideBar: () => import('@/components/SideBar'),
-    MainContent: () => import('@/components/MainContent'),
-    AsideBar: () => import('@/components/AsideBar'),
-    FootBar: () => import('@/components/FootBar')
+    NavBar: () => import('@/components/layouts/NavBar'),
+    PageWrap: () => import('@/components/layouts/PageWrap'),
+    SideBar: () => import('@/components/layouts/SideBar'),
+    MainContent: () => import('@/components/layouts/MainContent'),
+    AsideBar: () => import('@/components/layouts/AsideBar'),
+    FootBar: () => import('@/components/layouts/FootBar')
   }
 };
 </script>
