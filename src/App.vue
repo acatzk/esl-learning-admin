@@ -100,9 +100,10 @@
                 <div class="sidebar-header">
                     <a class="header-brand" href="index.html">
                         <div class="logo-img">
-                            <img src="@/assets/src/img/brand-white.svg" class="header-brand-img" alt="lavalite"> 
+                            <span class="header-brand-img" style="font-size: 15px;">VS
+                              <b style="color: red; margin-left: 2px; font-weight: bolder;">.</b></span>
                         </div>
-                        <span class="text">ThemeKit</span>
+                        <span class="text">Vic Solution</span>
                     </a>
                     <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
                     <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
@@ -117,6 +118,15 @@
                             >
                                 <router-link to="/admin/dashboard">
                                   <i class="ik box ik-box"></i><span>Dashboard</span>
+                                </router-link>
+                            </div>
+
+                            <div 
+                              :class="$route.path === '/admin/inbox' ? 'nav-item active' : 'nav-item'"
+                            >
+                                <router-link to="/admin/inbox">
+                                  <span class="badge badge-primary">6</span>
+                                  <i class="ik ik-mail dropdown-icon"></i> Inbox
                                 </router-link>
                             </div>
                             <div 
@@ -148,9 +158,7 @@
                                   <i class="ik settings ik-settings"></i><span>Settings</span>
                                 </router-link>
                             </div>
-                             <div 
-                                :class="$route.path === '/admin/settings' ? 'nav-item active' : 'nav-item'"
-                              >
+                             <div class="nav-item">
                                 <a href="#">
                                   <i class="ik ik-power dropdown-icon"></i><span>Logout</span>
                                 </a>
@@ -171,7 +179,7 @@
                   </vue-page-transition>
 
                 </div>
-                
+
             </main-content>
 
             <aside class="right-sidebar">
