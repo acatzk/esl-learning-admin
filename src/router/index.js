@@ -12,7 +12,14 @@ const routes = [
   {
     path: "/admin",
     name: "Home",
-    component: () => import('@/views/Home')
+    component: () => import('@/views/Home'),
+    children: [
+      {
+        path: 'dashboard',
+        name: 'dashboard',
+        component: () => import('@/components/pages/Dashboard')
+      }
+    ]
   }
 ];
 
