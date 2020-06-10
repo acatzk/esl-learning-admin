@@ -669,7 +669,7 @@ export default {
   components: {
     NavBar: () => import('@/components/NavBar'),
     SideBar: () => import('@/components/SideBar'),
-    AsideBar: () => import('@/componentsAsideBar'),
+    AsideBar: () => import('@/components/AsideBar'),
     FootBar: () => import('@/components/FootBar')
   }
 };
