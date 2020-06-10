@@ -1,1 +1,0 @@
-# vic-solution-admin
