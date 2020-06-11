@@ -18,6 +18,11 @@ const routes = [
         path: 'dashboard',
         name: 'dashboard',
         component: () => import('@/views/Dashboard')
+      },
+      {
+        path: 'profile',
+        name: 'profile',
+        component: () => import('@/views/Profile')
       }
     ]
   }
