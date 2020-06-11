@@ -166,7 +166,7 @@
 
                   <vue-page-transition name="fade-in-right" class="content">
                     
-                    <router-view></router-view>
+                    <home></home>
 
                   </vue-page-transition>
 
@@ -323,6 +323,7 @@ export default {
   name: 'App',
 
   components: {
+    Home: () => import('@/views/Home'),
     MainContent: () => import('@/components/layouts/MainContent'),
     FootBar: () => import('@/components/layouts/FootBar'),
     Login: () => import('@/views/Login')
