@@ -3,8 +3,9 @@
         <page-header 
             title="Profile"
             description="Administrator Profile Information"
-            icon="ik user ik-user"
+            pageIcon="ik user ik-user"
             currentRouteName="Profile"
+            titleIcon="ik user ik-user bg-blue"
         />
         <div class="row">
             <div class="col-lg-4 col-md-5">

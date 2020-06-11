@@ -3,7 +3,7 @@
         <div class="row align-items-end">
             <div class="col-lg-8">
                 <div class="page-header-title">
-                    <i class="ik ik-file-text bg-blue"></i>
+                    <i :class="titleIcon"></i>
                     <div class="d-inline">
                         <h5>{{ title }}</h5>
                         <span>{{ description }}</span>
@@ -19,7 +19,7 @@
                             </router-link>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <i :class="icon"></i><span> {{ currentRouteName }}</span>
+                            <i :class="pageIcon"></i><span> {{ currentRouteName }}</span>
                         </li>
                     </ol>
                 </nav>
@@ -34,7 +34,11 @@ export default {
     name: 'PageHeader',
 
     props: {
-        icon: {
+        titleIcon: {
+            type: String,
+            default: 'ik ik-file-text bg-blue'
+        },
+        pageIcon: {
             type: String,
             required: true
         },
