@@ -117,7 +117,7 @@
                               :class="$route.path === '/admin/inbox' ? 'nav-item active' : 'nav-item'"
                             >
                                 <router-link to="/admin/inbox">
-                                  <span class="badge badge-primary">6</span>
+                                  <span class="badge badge-danger">6</span>
                                   <i class="ik ik-mail dropdown-icon"></i> Inbox
                                 </router-link>
                             </div>
