@@ -1,11 +1,7 @@
 <template>
   <div id="app">
 
-    <login 
-      v-if="$route.path === '/login'"
-    />
-
-    <div class="wrapper" v-else>
+    <div class="wrapper">
         <header class="header-top" header-theme="light">
             <div class="container-fluid">
                 <div class="d-flex justify-content-between">
@@ -173,7 +169,7 @@
 
                   <vue-page-transition name="fade-in-right" class="content">
                     
-                    <home></home>
+                    <router-view></router-view>
 
                   </vue-page-transition>
 
@@ -330,10 +326,8 @@ export default {
   name: 'App',
 
   components: {
-    Home: () => import('@/views/Home'),
     MainContent: () => import('@/components/layouts/MainContent'),
-    FootBar: () => import('@/components/layouts/FootBar'),
-    Login: () => import('@/views/Login')
+    FootBar: () => import('@/components/layouts/FootBar')
   }
 }
 </script>
