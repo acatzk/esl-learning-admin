@@ -150,6 +150,13 @@
                                   <i class="ik settings ik-settings"></i><span>Settings</span>
                                 </router-link>
                             </div>
+                            <div 
+                                :class="$route.path === '/admin/profile' ? 'nav-item active' : 'nav-item'"
+                              >
+                                <router-link to="/admin/profile">
+                                  <i class="ik user ik-user"></i><span> Profile</span>
+                                </router-link>
+                            </div>
                              <div class="nav-item">
                                 <a href="#">
                                   <i class="ik ik-power dropdown-icon"></i><span>Logout</span>
