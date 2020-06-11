@@ -1,7 +1,9 @@
 <template>
   <div id="app">
 
-    <div class="wrapper">
+    <router-view v-if="$route.path === '/login'"></router-view>
+
+    <div v-else class="wrapper">
         <header class="header-top" header-theme="light">
             <div class="container-fluid">
                 <div class="d-flex justify-content-between">
