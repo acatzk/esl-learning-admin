@@ -15,6 +15,7 @@
                             <img src="https://avatars0.githubusercontent.com/u/38458781?s=460&u=d2e21173ef861da3d8ca3a292398cbc0c6f7c000&v=4" class="rounded-circle" width="150" />
                             <h4 class="card-title mt-10">Joshua galit</h4>
                             <p class="card-subtitle">Administrator</p>
+                            <router-link class="btn btn-light" to="/admin/settings">Edit Profile</router-link>
                         </div>
                     </div>
                     <hr class="mb-0"> 
