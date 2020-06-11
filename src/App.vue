@@ -66,7 +66,7 @@
                         </button>
                         <div class="dropdown">
                             <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <img class="avatar" src="@/assets/img/user.jpg" alt="">
+                              <img class="avatar" src="/assets/img/user.jpg" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                                 <router-link to="/admin/profile" class="dropdown-item">
@@ -247,7 +247,7 @@
                                 <div class="message media reply">
                                     <figure class="user--online">
                                         <a href="#">
-                                            <img src="img/users/3.jpg" class="rounded-circle" alt="">
+                                            <img src="/assets/img/users/3.jpg" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -257,7 +257,7 @@
                                 <div class="message media">
                                     <figure class="user--online">
                                         <a href="#">
-                                            <img src="img/users/1.jpg" class="rounded-circle" alt="">
+                                            <img src="/assets/img/users/1.jpg" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -267,7 +267,7 @@
                                 <div class="message media reply">
                                     <figure class="user--offline">
                                         <a href="#">
-                                            <img src="img/users/5.jpg" class="rounded-circle" alt="">
+                                            <img src="/assets/img/users/5.jpg" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -278,7 +278,7 @@
                                 <div class="message media">
                                     <figure class="user--online">
                                         <a href="#">
-                                            <img src="img/users/1.jpg" class="rounded-circle" alt="">
+                                            <img src="/assets/img/users/1.jpg" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -288,7 +288,7 @@
                                 <div class="message media reply">
                                     <figure class="user--busy">
                                         <a href="#">
-                                            <img src="img/users/5.jpg" class="rounded-circle" alt="">
+                                            <img src="/assets/img/users/5.jpg" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -298,7 +298,7 @@
                                 <div class="message media">
                                     <figure class="user--online">
                                         <a href="#">
-                                            <img src="img/users/1.jpg" class="rounded-circle" alt="">
+                                            <img src="/assets/img/users/1.jpg" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
