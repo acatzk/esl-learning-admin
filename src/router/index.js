@@ -6,6 +6,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: '*',
+    name: '404',
+    component: () => import('@/components/pages/404')
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/views/Login')
