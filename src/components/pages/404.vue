@@ -40,13 +40,13 @@
   font-size: 146px;
   font-weight: 700;
   margin: 0px;
-  color: #fff;
+  color: rgb(14, 14, 14);
 }
 .notfound .notfound-404 h1>span {
   display: inline-block;
   width: 120px;
   height: 120px;
-  background-image: url('../assets/404/img/emoji.png') !important;
+  background-image: url('../../assets/imgs/emoji.png') !important;
   background-size: cover;
   -webkit-transform: scale(1.4);
       -ms-transform: scale(1.4);
@@ -59,11 +59,11 @@
   font-weight: 700;
   margin: 0;
   text-transform: uppercase;
-  color: #fff;
+  color: rgb(14, 14, 14);
 }
 .notfound p {
   font-family: 'Montserrat', sans-serif;
-  color: #c7c7c7;
+  color: rgb(14, 14, 14);
   font-weight: 300;
 }
 .notfound .link-custom {
@@ -72,7 +72,7 @@
   padding: 12px 30px;
   font-weight: 700;
   background-color: #f99827;
-  color: #fff;
+  color: white;
   border-radius: 40px;
   text-decoration: none;
   -webkit-transition: 0.2s all;
