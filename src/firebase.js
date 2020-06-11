@@ -1,3 +1,6 @@
+import firebase from "firebase";
+import 'firebase/storage'
+
 const firebaseConfig = {
     apiKey: "AIzaSyAE00QgUrP0dR0v2nlvlzxuQgkZL3_j-XM",
     authDomain: "vic-solution-admin.firebaseapp.com",
