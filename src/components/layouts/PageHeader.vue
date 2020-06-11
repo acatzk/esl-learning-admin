@@ -5,8 +5,8 @@
                 <div class="page-header-title">
                     <i class="ik ik-file-text bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Profile</h5>
-                        <span>Administrator Profile Information</span>
+                        <h5>{{ title }}</h5>
+                        <span>{{ description }}</span>
                     </div>
                 </div>
             </div>
@@ -39,6 +39,14 @@ export default {
             required: true
         },
         currentRouteName: {
+            type: String,
+            required: true
+        },
+        title: {
+            type: String,
+            required: true
+        },
+        description: {
             type: String,
             required: true
         }
