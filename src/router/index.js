@@ -25,6 +25,11 @@ const routes = [
         component: () => import('@/views/Inbox')
       },
       {
+        path: 'lessons',
+        name: 'lessons',
+        component: () => import('@/views/Lessons')
+      },
+      {
         path: 'profile',
         name: 'profile',
         component: () => import('@/views/Profile')
