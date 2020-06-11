@@ -11,11 +11,6 @@ const routes = [
     component: () => import('@/components/pages/404')
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/Login')
-  },
-  {
     path: "/admin",
     name: "admin",
     component: () => import('@/views/Home'),
@@ -42,6 +37,11 @@ const routes = [
         component: () => import('@/views/Profile')
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/Login')
   }
 ];
 
