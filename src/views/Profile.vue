@@ -132,7 +132,7 @@ export default {
   name: 'Profile',
 
   components: {
-      PageHeader: () => import('@/components/layouts/PageHeader')
+      PageHeader: () => import('@/components/pages/PageHeader')
   }
 }
 </script>

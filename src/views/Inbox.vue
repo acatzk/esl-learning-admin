@@ -145,7 +145,7 @@ export default {
     name: 'Inbox',
 
     components: {
-        PageHeader: () => import('@/components/layouts/PageHeader')
+        PageHeader: () => import('@/components/pages/PageHeader')
     }
 }
 </script>
