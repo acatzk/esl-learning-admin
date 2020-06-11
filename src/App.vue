@@ -69,10 +69,10 @@
                               <img class="avatar" src="@/assets/img/user.jpg" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                                <router-link to="/profile" class="dropdown-item">
+                                <router-link to="/admin/profile" class="dropdown-item">
                                     <i class="ik ik-user dropdown-icon"></i> Profile
                                 </router-link>
-                                <router-link to="/settings" class="dropdown-item">
+                                <router-link to="/admin/settings" class="dropdown-item">
                                     <i class="ik ik-settings dropdown-icon"></i> Settings
                                 </router-link>
                                 <a class="dropdown-item" href="#">
