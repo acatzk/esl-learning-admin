@@ -23,20 +23,10 @@
                                 <input type="password" class="form-control" placeholder="Password" />
                                 <i class="ik ik-lock"></i>
                             </div>
-                            <div class="row">
-                                <div class="col text-left">
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1">
-                                        <span class="custom-control-label">&nbsp;Remember Me</span>
-                                    </label>
-                                </div>
-                                <div class="col text-right">
-                                    <router-link to="/forgot">Forgot Password ?</router-link>
-                                </div>
+                            <div class="text-right">
+                                <button class="btn btn-theme w-100">Sign In</button>
                             </div>
-                            <div class="sign-btn text-center">
-                                <button class="btn btn-theme">Sign In</button>
-                            </div>
+                            
                         </form>
                     </div>
                 </div>
