@@ -1,6 +1,8 @@
 <template>
     <div class="profile">
         <page-header 
+            title="Profile"
+            description="Administrator Profile Information"
             icon="ik user ik-user"
             currentRouteName="Profile"
         />
