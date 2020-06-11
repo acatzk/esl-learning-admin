@@ -40,7 +40,7 @@
                                     </a>
                                     <a href="#" class="media">
                                         <span class="d-flex">
-                                            <img src="@/assets/img/users/1.jpg" class="rounded-circle" alt="">
+                                            <img src="/assets/img/users/1.jpg" class="rounded-circle" alt="">
                                         </span>
                                         <span class="media-body">
                                             <span class="heading-font-family media-heading">Steve Smith</span> 
