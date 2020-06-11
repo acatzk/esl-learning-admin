@@ -11,8 +11,8 @@ const routes = [
   },
   {
     path: "/admin",
-    name: "Dashboard",
-    component: () => import('@/views/Dashboard'),
+    name: "admin",
+    component: () => import('@/views/Home'),
     children: [
       {
         path: 'dashboard',
