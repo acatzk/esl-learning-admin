@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <router-view v-if="$route.path === '/login'"></router-view>
+    <router-view v-if="$route.path !== '/'"></router-view>
 
     <div v-else class="wrapper">
         <header class="header-top" header-theme="light">
