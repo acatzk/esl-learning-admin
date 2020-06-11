@@ -5,11 +5,11 @@ import { fb } from '@/firebase.js'
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '*',
-    name: '404',
-    component: () => import('@/components/pages/404')
-  },
+  // {
+  //   path: '*',
+  //   name: '404',
+  //   component: () => import('@/components/pages/404')
+  // },
   {
     path: "/admin",
     name: "admin",

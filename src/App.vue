@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <router-view v-if="$route.path !== '/'"></router-view>
+    <login v-if="$route.path !== '/'"/>
 
     <div v-else class="wrapper">
         <header class="header-top" header-theme="light">
@@ -329,6 +329,7 @@ export default {
 
   components: {
     MainContent: () => import('@/components/layouts/MainContent'),
+    Login: () => import('@/views/Login'),
     FootBar: () => import('@/components/layouts/FootBar')
   }
 }
