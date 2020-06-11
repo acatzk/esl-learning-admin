@@ -139,7 +139,7 @@
                                 :class="$route.path === '/admin/students' ? 'nav-item active' : 'nav-item'"
                               >
                                 <router-link to="/admin/students">
-                                  <i class="ik user ik-user"></i><span>Students</span>
+                                  <i class="ik user-check ik-user-check"></i><span>Students</span>
                                 </router-link>
                             </div>
                             <div class="nav-lavel">Account Settings</div>
