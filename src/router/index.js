@@ -20,6 +20,11 @@ const routes = [
         component: () => import('@/views/Dashboard')
       },
       {
+        path: 'inbox',
+        name: 'inbox',
+        component: () => import('@/views/Inbox')
+      },
+      {
         path: 'profile',
         name: 'profile',
         component: () => import('@/views/Profile')
