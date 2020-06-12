@@ -10,11 +10,11 @@
 
         <dashboard-page 
           v-if="$route.path === '/'"
-        />
+        /> <!-- ** DASHBOARD PAGE COMPONENT ** -->
 
         <router-view 
           v-else
-        ></router-view>
+        ></router-view> <!-- ** DYNAMIC CONTENT ROUTE ** -->
 
       </v-container>
 
