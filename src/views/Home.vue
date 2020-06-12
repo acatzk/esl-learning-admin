@@ -18,9 +18,9 @@
 
       </v-container>
 
-    </v-content>
+      <foot-bar /> <!-- ** FOOTER BAR COMPONENT ** -->
 
-    <foot-bar /> <!-- ** FOOTER BAR COMPONENT ** -->
+    </v-content>
 
   </div>
 
