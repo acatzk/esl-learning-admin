@@ -4,7 +4,7 @@
             <v-col cols="12" sm="6" md="4" lg="4">
                 <v-card 
                     outlined
-                    height="74vh"
+                    height="80vh"
                 >
                     <v-avatar>
                         <img
@@ -37,7 +37,7 @@
             <v-col cols="12" sm="6" md="8" lg="8">
                 <v-card 
                     outlined
-                    height="74vh"
+                    height="80vh"
                 >
 
                     <v-list-item-avatar
