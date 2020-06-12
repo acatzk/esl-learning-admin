@@ -10,7 +10,7 @@
             <v-app-bar-nav-icon @click="drawer = !drawer" class="mr-2">
             </v-app-bar-nav-icon>
             
-            <router-link to="/">
+            <router-link to="/" style="text-decoration: none; color: #eee;">
                 <span class="hidden-md-and-up mr-3">
                     <v-icon>security</v-icon>
                 </span>
@@ -45,7 +45,7 @@
                         </v-list-item-avatar>
 
                         <v-list-item-content>
-                        <router-link to="/">
+                        <router-link to="/" style="text-decoration: none;">
                             <span class="title" style="color: grey;">
                                 <v-icon>security</v-icon>
                                 Vic<span class="font-weight-light"> Admin</span>
@@ -111,8 +111,4 @@ export default {
   /* box-shadow: none !important; */
 }
 
-.router-link-exact-active {
-    color: white; 
-    text-decoration: none;
-}
 </style>
