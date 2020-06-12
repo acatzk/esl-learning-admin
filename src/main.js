@@ -6,6 +6,9 @@ import vuetify from "./plugins/vuetify";
 
 Vue.config.productionTip = false;
 
+/**  VUETIFY ICONS **/
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+
 new Vue({
   router,
   store,
