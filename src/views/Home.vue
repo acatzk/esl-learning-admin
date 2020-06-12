@@ -4,6 +4,10 @@
     
     <nav-bar /> <!-- ** NAVIGATION BAR COMPONENT ** -->
 
+
+
+    <foot-bar /> <!-- ** FOOTER BAR COMPONENT ** -->
+
   </div>
 
 </template>
@@ -16,7 +20,9 @@ export default {
 
   components: {
 
-    NavBar: () => import('@/components/layouts/NavBar')
+    NavBar: () => import('@/components/layouts/NavBar'),
+
+    FootBar: () => import('@/components/layouts/FootBar')
 
   }
 
