@@ -12,4 +12,7 @@ body, html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#nprogress .bar {
+  background: rgb(198, 186, 255) !important;
+}
 </style>
