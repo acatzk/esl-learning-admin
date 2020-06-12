@@ -6,7 +6,10 @@
 
     <v-content>
 
-      <v-container fluid>
+      <v-container 
+        fluid
+        class="home-style"
+      >
 
         <dashboard-page 
           v-if="$route.path === '/'"
@@ -45,3 +48,10 @@ export default {
 };
 
 </script>
+
+
+<style scoped>
+.home-style {
+  background-color: #f5f5f5;
+}
+</style>
