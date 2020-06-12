@@ -10,14 +10,17 @@
         fluid
         class="home-style"
       >
+        <vue-page-transition name="fade-in-right" class="content">
 
-        <dashboard-page 
-          v-if="$route.path === '/'"
-        /> <!-- ** DASHBOARD PAGE COMPONENT ** -->
+          <dashboard-page 
+            v-if="$route.path === '/'"
+          /> <!-- ** DASHBOARD PAGE COMPONENT ** -->
 
-        <router-view 
-          v-else
-        ></router-view> <!-- ** DYNAMIC CONTENT ROUTE ** -->
+          <router-view 
+            v-else
+          ></router-view> <!-- ** DYNAMIC CONTENT ROUTE ** -->
+
+        </vue-page-transition>
 
       </v-container>
 
