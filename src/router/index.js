@@ -7,7 +7,7 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import('@/views/Home.vue'),
+    component: () => import('@/views/Home'),
     meta: { requiresAuth: true },
     children: [
       {
@@ -20,7 +20,7 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("@/views/Login.vue")
+    component: () => import("@/views/Login")
   }
 ];
 
