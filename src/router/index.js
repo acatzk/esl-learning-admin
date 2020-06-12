@@ -9,6 +9,13 @@ const routes = [
     name: "home",
     component: () => import('@/views/Home.vue'),
     meta: { requiresAuth: true },
+    children: [
+      {
+        path: 'profile',
+        name: 'profile',
+        component: () => import('@/views/Profile')
+      }
+    ]
   },
   {
     path: "/login",
