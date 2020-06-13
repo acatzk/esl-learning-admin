@@ -71,6 +71,30 @@ export default {
           }
         }
       `,
+      subscribeToMore: {
+        document: gql`
+          subscription InboxesSubscription {
+            inboxes(order_by: {created_at: desc}) {
+              id
+              name
+              email
+              status
+              contact
+              created_at
+              message
+            }
+          }
+        `,
+        updateQuery(previousResult, { subscriptionData }) {
+          if (previousResult) {
+            return {
+              inboxes: [
+                ...subscriptionData.data.inboxes
+              ]
+            }
+          }
+        }
+      },
       result ({ data }) {
         this.inboxes = data.inboxes
       }
