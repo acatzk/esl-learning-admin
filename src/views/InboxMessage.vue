@@ -45,9 +45,9 @@
             </div>
             <h4 style="position: relative; top: 5px; right: 10px;">Inbox message</h4>
         </div>
-        <v-card outlined class="mx-auto" height="74vh">
+        <v-card outlined class="mx-auto">
             <v-row class="pa-5">
-                <v-col cols="4" style="line-height: 40px;">
+                <v-col cols="12" sm="4" lg="4" style="line-height: 40px;">
                     <div class="d-flex justify-center">
                         <v-avatar color="indigo">
                             <v-icon dark>mdi-account-circle</v-icon>
@@ -67,7 +67,7 @@
                         </div>
                    </div>
                 </v-col>
-                <v-col cols="8">
+                <v-col cols="12" sm="8" lg="8">
                     <div class="d-flex justify-space-between">
                         <div class="caption">
                             Joshua Galit
