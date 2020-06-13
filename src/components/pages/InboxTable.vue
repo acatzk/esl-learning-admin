@@ -7,7 +7,7 @@
         @click:row="gotoMessage"
     >
         <template #item.created_at="{ item }">
-            {{ item.created_at.split('T')[0] }}
+            {{ format_date(item.created_at.split('T')[0]) }}
         </template>
         <template #item.contact="{ item }">
             <td @click.stop class="non-clickable">
@@ -63,6 +63,9 @@
 </template>
 
 <script>
+
+import moment from 'moment'
+
 export default {
     name: 'InboxTable',
 
@@ -91,6 +94,9 @@ export default {
         },
         gotoMessage(item) {
             this.$router.push(`/inbox/${item.id}`)
+        },
+        format_date(value) {
+            return moment(String(value)).format('MM/DD/YYYY')
         }
     }
 }
