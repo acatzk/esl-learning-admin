@@ -17,7 +17,7 @@
             </v-text-field>
         </div>
       </v-card>
-      <v-card class="mx-auto pa-3" outlined>
+      <v-card class="mx-auto pa-3" outlined style="height: 72vh;">
           <inbox-table 
             :items="inboxs"
             :headers="headers"
