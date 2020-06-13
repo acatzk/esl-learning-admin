@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import VuePageTransition from 'vue-page-transition'
+import apolloProvider from './apollo'
 
 Vue.config.productionTip = false;
 
@@ -17,5 +18,6 @@ new Vue({
   router,
   store,
   vuetify,
+  apolloProvider,
   render: h => h(App)
 }).$mount("#app");
