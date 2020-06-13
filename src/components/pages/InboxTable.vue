@@ -4,6 +4,7 @@
         :headers="headers"
         :search="search"
         show-expand
+        @click:row="gotoMessage"
     >
         <template #item.created_at="{ item }">
             {{ item.created_at.split('T')[0] }}
@@ -80,7 +81,15 @@ export default {
         },
         markAsReadMessage(item) {
             alert(item.message)
+        },
+        gotoMessage(item) {
+            this.$router.push(`/inbox/${item.id}`)
         }
     }
 }
 </script>
+
+
+<style lang="scss" scoped>
+
+</style>
