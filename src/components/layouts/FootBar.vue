@@ -5,6 +5,7 @@
     <v-card
       class="flex"
       flat
+      style="background: transparent;"
     >
       <v-card-text class="py-1 text-center">
         <v-btn
