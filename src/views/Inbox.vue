@@ -95,8 +95,8 @@ export default {
         { text: 'Name',  value: 'name' },
         { text: 'Email', value: 'email' },
         { text: 'Date', value: 'created_at' },
-        { text: 'Messages', value: 'message' },
-        { text: 'Status', value: 'status' }
+        { text: 'Messages', value: 'message', sortable: false },
+        { text: 'Status', value: 'status', sortable: false }
       ]
     }
   }
