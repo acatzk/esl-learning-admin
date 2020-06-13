@@ -9,15 +9,22 @@
         <template #item.created_at="{ item }">
             {{ item.created_at.split('T')[0] }}
         </template>
+        <template #item.contact="{ item }">
+            <td @click.stop>
+                {{ item.contact }}
+            </td>
+        </template>
         <template #item.status="{ item }">
-        <v-chip
-            :color="item.status === 'Unread' ? 'red' : 'success'"
-            text-color="white"
-            small
-        >
-            <v-icon left>mail_outline</v-icon>
-            {{ item.status }}
-        </v-chip>
+            <td @click.stop>
+                <v-chip
+                    :color="item.status === 'Unread' ? 'red' : 'success'"
+                    text-color="white"
+                    small
+                >
+                    <v-icon left>mail_outline</v-icon>
+                    {{ item.status }}
+                </v-chip>
+            </td>
         </template>
         <template #expanded-item="{ headers, item }">
             <td :colspan="headers.length">
