@@ -19,6 +19,11 @@ const routes = [
         path: 'inbox',
         name: 'inbox',
         component: () => import('@/views/Inbox')
+      },
+      {
+        path: 'inbox/:id',
+        name: 'inbox-message',
+        component: () => import('@/views/InboxMessage')
       }
     ]
   },
