@@ -11,6 +11,7 @@
         <v-chip
             :color="item.status === 'Unread' ? 'red' : 'success'"
             text-color="white"
+            small
         >
             <v-icon left>mail_outline</v-icon>
             {{ item.status }}
