@@ -131,6 +131,26 @@ export default {
                     }
                 }
             `,
+            subscribeToMore: {
+                document: gql`
+                    subscription InboxCountSubscription {
+                        inboxCount: inboxes_aggregate {
+                            aggregate {
+                                count
+                            }
+                        }
+                    }
+                `,
+                updateQuery(previousResult, { subscriptionData }) {
+                    if (previousResult) {
+                        return {
+                            inboxes_aggregate: [
+                                ...subscriptionData.data.inboxes_aggregate
+                            ]
+                        }
+                    }
+                }
+            },
             result ({ data }) {
                 this.inboxCounter = data.inboxCount
             }
