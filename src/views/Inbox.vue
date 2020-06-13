@@ -1,129 +1,104 @@
 <template>
-  <v-card outlined>
-    <v-card-title class="d-flex justify-center">
-        <v-icon>markunread</v-icon>
-        <h4 class="font-weight-medium ml-1">
-            Inbox
-        </h4>
-    </v-card-title>
-    <v-card-title>
-      <v-text-field
-        v-model="search"
-        append-icon="search"
-        label="Search"
-        single-line
-        hide-details
-      ></v-text-field>
-    </v-card-title>
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      :search="search"
-    ></v-data-table>
-  </v-card>
+  <div class="inbox">
+    <v-container>
+        <v-card class="mx-auto pa-3" outlined>
+            <v-card-title class="d-flex justify-center">
+                <h4>
+                    <v-icon>markunread</v-icon> Inbox 
+                </h4>
+            </v-card-title>
+            <v-text-field 
+                append-icon="search" 
+                outlined
+                dense
+                color="deep-purple darken-1"
+                v-model="search"
+              >
+            </v-text-field>
+            <inbox-table 
+              :items="inboxs"
+              :headers="headers"
+              :search="search"
+            />
+        </v-card>
+    </v-container>
+  </div>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        search: '',
-        headers: [
-          {
-            text: 'Dessert (100g serving)',
-            align: 'start',
-            filterable: false,
-            value: 'name',
-          },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' },
-        ],
-        desserts: [
-          {
-            name: 'Frozen Yogurt',
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-            iron: '1%',
-          },
-          {
-            name: 'Ice cream sandwich',
-            calories: 237,
-            fat: 9.0,
-            carbs: 37,
-            protein: 4.3,
-            iron: '1%',
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-            fat: 16.0,
-            carbs: 23,
-            protein: 6.0,
-            iron: '7%',
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-            fat: 3.7,
-            carbs: 67,
-            protein: 4.3,
-            iron: '8%',
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-            fat: 16.0,
-            carbs: 49,
-            protein: 3.9,
-            iron: '16%',
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-            iron: '0%',
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: '2%',
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-            iron: '45%',
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-            fat: 25.0,
-            carbs: 51,
-            protein: 4.9,
-            iron: '22%',
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-            fat: 26.0,
-            carbs: 65,
-            protein: 7,
-            iron: '6%',
-          },
-        ],
-      }
-    },
+export default {
+  name: 'Inbox',
+
+  components: {
+    InboxTable: () => import('@/components/pages/InboxTable')
+  },
+
+  data: () => ({
+     inboxs: [
+       {
+         name: 'Joshua Galit',
+         email: 'joshuaimalay@gmail.com',
+         created_at: '2020-01-01T10:10:10',
+         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         status: 'Unread'
+       },
+       {
+         name: 'Jerwin Gilo',
+         email: 'jerwingilo@gmail.com',
+         created_at: '2020-03-01T10:10:10',
+         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         status: 'Read'
+
+       },
+       {
+         name: 'Jerome Villaruel',
+         email: 'jerome@gmail.com',
+         created_at: '2020-07-01T10:10:10',
+         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         status: 'Unread'
+       },
+       {
+         name: 'Jayson Mendez',
+         email: 'jayson@gmail.com',
+         created_at: '2020-09-01T10:10:10',
+         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         status: 'Unread'
+       },
+       {
+         name: 'Joseph Beronio',
+         email: 'joseph@gmail.com',
+         created_at: '2020-08-01T10:10:10',
+         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         status: 'Read'
+       },
+       {
+         name: 'Gilchrist Calunia',
+         email: 'gilchrist@gmail.com',
+         created_at: '2020-05-03T10:10:10',
+         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         status: 'Unread'
+       },
+       {
+         name: 'James Harden',
+         email: 'jamesharden@gmail.com',
+         created_at: '2020-08-02T10:10:10',
+         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         status: 'Unread'
+       }
+     ],
+     search: ''
+  }),
+
+  computed: {
+    headers() {
+      return [
+        { text: 'Name',  value: 'name' },
+        { text: 'Email', value: 'email' },
+        { text: 'Date', value: 'created_at' },
+        { text: 'Messages', value: 'message' },
+        { text: 'Status', value: 'status' }
+      ]
+    }
   }
+}
 </script>
