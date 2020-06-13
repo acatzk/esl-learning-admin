@@ -2,21 +2,14 @@
     <div class="inbox-message">
         <div class="d-flex justify-space-between">
             <div class="mb-1">
-                <v-tooltip top>
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn 
-                            to="/inbox" 
-                            icon 
-                            class="mr-2"
-                            v-bind="attrs"
-                            v-on="on"
-                        >
-                            <v-icon>chevron_left</v-icon>
-                        </v-btn>
-                    </template>
-                    <span>Back to Inbox</span>
-                </v-tooltip>
-                <v-tooltip top>
+                <v-btn 
+                    to="/inbox" 
+                    icon 
+                    class="mr-2"
+                >
+                    <v-icon>chevron_left</v-icon>
+                </v-btn>
+                <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn 
                             icon 
@@ -29,7 +22,7 @@
                     </template>
                     <span>Mark as Read</span>
                 </v-tooltip>
-                <v-tooltip top>
+                <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn 
                             icon
