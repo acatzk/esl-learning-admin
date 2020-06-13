@@ -20,6 +20,7 @@
                     :color="item.status === 'Unread' ? 'red' : 'success'"
                     text-color="white"
                     small
+                    label
                 >
                     <v-icon left>mail_outline</v-icon>
                     {{ item.status }}
