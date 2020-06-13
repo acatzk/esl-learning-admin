@@ -40,6 +40,7 @@ export default {
          email: 'joshuaimalay@gmail.com',
          created_at: '2020-01-01T10:10:10',
          message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         contact: '09123123123',
          status: 'Unread'
        },
        {
@@ -47,6 +48,7 @@ export default {
          email: 'jerwingilo@gmail.com',
          created_at: '2020-03-01T10:10:10',
          message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         contact: '09123123123',
          status: 'Read'
 
        },
@@ -55,6 +57,7 @@ export default {
          email: 'jerome@gmail.com',
          created_at: '2020-07-01T10:10:10',
          message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         contact: '09123123123',
          status: 'Unread'
        },
        {
@@ -62,6 +65,7 @@ export default {
          email: 'jayson@gmail.com',
          created_at: '2020-09-01T10:10:10',
          message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         contact: '09123123123',
          status: 'Unread'
        },
        {
@@ -69,6 +73,7 @@ export default {
          email: 'joseph@gmail.com',
          created_at: '2020-08-01T10:10:10',
          message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         contact: '09123123123',
          status: 'Read'
        },
        {
@@ -76,6 +81,7 @@ export default {
          email: 'gilchrist@gmail.com',
          created_at: '2020-05-03T10:10:10',
          message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         contact: '09123123123',
          status: 'Unread'
        },
        {
@@ -83,6 +89,7 @@ export default {
          email: 'jamesharden@gmail.com',
          created_at: '2020-08-02T10:10:10',
          message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
+         contact: '09123123123',
          status: 'Unread'
        }
      ],
@@ -95,7 +102,7 @@ export default {
         { text: 'Name',  value: 'name' },
         { text: 'Email', value: 'email' },
         { text: 'Date', value: 'created_at' },
-        { text: 'Messages', value: 'message', sortable: false },
+        { text: 'Contact', value: 'contact', sortable: false },
         { text: 'Status', value: 'status', sortable: false }
       ]
     }
