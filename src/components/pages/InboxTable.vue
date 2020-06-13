@@ -10,12 +10,12 @@
             {{ item.created_at.split('T')[0] }}
         </template>
         <template #item.contact="{ item }">
-            <td @click.stop>
+            <td @click.stop class="non-clickable">
                 {{ item.contact }}
             </td>
         </template>
         <template #item.status="{ item }">
-            <td @click.stop>
+            <td @click.stop class="non-clickable">
                 <v-chip
                     :color="item.status === 'Unread' ? 'red' : 'success'"
                     text-color="white"
@@ -100,5 +100,8 @@ export default {
 <style lang="scss" scoped>
 ::v-deep tbody tr {
     cursor: pointer;
+}
+::v-deep tbody tr td.non-clickable{
+    cursor: auto;
 }
 </style>
