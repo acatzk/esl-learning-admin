@@ -19,7 +19,7 @@ const httpLink = new HttpLink({
 });
 
 const wsLink = new WebSocketLink({
-  uri: "wss://graphql-data.herokuapp.com/v1/graphql",
+  uri: "https://vic-solution-inc.herokuapp.com/v1/graphql",
   options: {
     timeout: 60000,
     reconnect: true,
@@ -27,7 +27,7 @@ const wsLink = new WebSocketLink({
     connectionParams() {
       return {
         headers: {
-          'x-hasura-admin-secret': 'ilusmdm'
+          'x-hasura-admin-secret': 'vic-solution-inc'
         }
       }
     }
