@@ -17,7 +17,7 @@
         <template #item.status="{ item }">
             <td @click.stop class="non-clickable">
                 <v-chip
-                    :color="item.status === 'Unread' ? 'red' : 'success'"
+                    :color="item.status === 'unread' ? 'red' : 'success'"
                     text-color="white"
                     small
                     label
