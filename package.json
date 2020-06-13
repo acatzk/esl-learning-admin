@@ -19,6 +19,7 @@
     "graphql-tag": "^2.10.3",
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.26.0",
+    "subscriptions-transport-ws": "^0.9.16",
     "vue": "^2.6.11",
     "vue-apollo": "^3.0.3",
     "vue-page-transition": "^0.2.2",
