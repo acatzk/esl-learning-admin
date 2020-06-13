@@ -64,7 +64,17 @@
                         <v-list-item-action v-if="item.heading">
                             {{ item.heading }}
                         </v-list-item-action>
-                        <v-list-item-action>
+                        <v-list-item-action v-if="item.text === 'Inbox'">
+                            <v-badge
+                                bordered
+                                color="error"
+                                overlap
+                                content="2"
+                            >
+                                <v-icon>markunread</v-icon>
+                            </v-badge>
+                        </v-list-item-action>
+                        <v-list-item-action v-if="item.text !== 'Inbox'">
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-item-action>
                         <v-list-item-content>
