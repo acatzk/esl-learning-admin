@@ -19,7 +19,7 @@ const httpLink = new HttpLink({
 });
 
 const wsLink = new WebSocketLink({
-  uri: "https://vic-solution-inc.herokuapp.com/v1/graphql",
+  uri: "wss://vic-solution-inc.herokuapp.com/v1/graphql",
   options: {
     timeout: 60000,
     reconnect: true,
