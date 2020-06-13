@@ -91,5 +91,7 @@ export default {
 
 
 <style lang="scss" scoped>
-
+::v-deep tbody tr {
+    cursor: pointer;
+}
 </style>
