@@ -36,6 +36,7 @@ export default {
   data: () => ({
      inboxs: [
        {
+         id: '1',
          name: 'Joshua Galit',
          email: 'joshuaimalay@gmail.com',
          created_at: '2020-01-01T10:10:10',
@@ -44,6 +45,7 @@ export default {
          status: 'Unread'
        },
        {
+         id: '2',
          name: 'Jerwin Gilo',
          email: 'jerwingilo@gmail.com',
          created_at: '2020-03-01T10:10:10',
@@ -53,6 +55,7 @@ export default {
 
        },
        {
+         id: '3',
          name: 'Jerome Villaruel',
          email: 'jerome@gmail.com',
          created_at: '2020-07-01T10:10:10',
@@ -61,6 +64,7 @@ export default {
          status: 'Unread'
        },
        {
+         id: '4',
          name: 'Jayson Mendez',
          email: 'jayson@gmail.com',
          created_at: '2020-09-01T10:10:10',
@@ -69,6 +73,7 @@ export default {
          status: 'Unread'
        },
        {
+         id: '5',
          name: 'Joseph Beronio',
          email: 'joseph@gmail.com',
          created_at: '2020-08-01T10:10:10',
@@ -77,6 +82,7 @@ export default {
          status: 'Read'
        },
        {
+         id: '6',
          name: 'Gilchrist Calunia',
          email: 'gilchrist@gmail.com',
          created_at: '2020-05-03T10:10:10',
@@ -85,6 +91,7 @@ export default {
          status: 'Unread'
        },
        {
+         id: '7',
          name: 'James Harden',
          email: 'jamesharden@gmail.com',
          created_at: '2020-08-02T10:10:10',
