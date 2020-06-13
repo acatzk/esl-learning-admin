@@ -19,7 +19,7 @@
       </v-card>
       <v-card class="mx-auto pa-3" outlined style="height: 72vh;">
           <inbox-table 
-            :items="inboxs"
+            :items="inboxes"
             :headers="headers"
             :search="search"
           />
@@ -29,6 +29,9 @@
 </template>
 
 <script>
+
+import gql from 'graphql-tag'
+
 export default {
   name: 'Inbox',
 
@@ -37,72 +40,7 @@ export default {
   },
 
   data: () => ({
-     inboxs: [
-       {
-         id: '1',
-         name: 'Joshua Galit',
-         email: 'joshuaimalay@gmail.com',
-         created_at: '2020-01-01T10:10:10',
-         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
-         contact: '09123123123',
-         status: 'Unread'
-       },
-       {
-         id: '2',
-         name: 'Jerwin Gilo',
-         email: 'jerwingilo@gmail.com',
-         created_at: '2020-03-01T10:10:10',
-         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
-         contact: '09123123123',
-         status: 'Read'
-
-       },
-       {
-         id: '3',
-         name: 'Jerome Villaruel',
-         email: 'jerome@gmail.com',
-         created_at: '2020-07-01T10:10:10',
-         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
-         contact: '09123123123',
-         status: 'Unread'
-       },
-       {
-         id: '4',
-         name: 'Jayson Mendez',
-         email: 'jayson@gmail.com',
-         created_at: '2020-09-01T10:10:10',
-         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
-         contact: '09123123123',
-         status: 'Unread'
-       },
-       {
-         id: '5',
-         name: 'Joseph Beronio',
-         email: 'joseph@gmail.com',
-         created_at: '2020-08-01T10:10:10',
-         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
-         contact: '09123123123',
-         status: 'Read'
-       },
-       {
-         id: '6',
-         name: 'Gilchrist Calunia',
-         email: 'gilchrist@gmail.com',
-         created_at: '2020-05-03T10:10:10',
-         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
-         contact: '09123123123',
-         status: 'Unread'
-       },
-       {
-         id: '7',
-         name: 'James Harden',
-         email: 'jamesharden@gmail.com',
-         created_at: '2020-08-02T10:10:10',
-         message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam exercitationem odio amet ut tempore, incidunt adipisci, veritatis hic voluptatum fugiat repellat minima. Delectus hic commodi iusto. Nihil dolorum mollitia nam.',
-         contact: '09123123123',
-         status: 'Unread'
-       }
-     ],
+     inboxes: [],
      search: ''
   }),
 
@@ -115,6 +53,27 @@ export default {
         { text: 'Contact', value: 'contact', sortable: false },
         { text: 'Status', value: 'status', sortable: false }
       ]
+    }
+  },
+
+  apollo: {
+    inboxes: {
+      query: gql`
+        query InboxesQuery {
+          inboxes(order_by: {created_at: desc}) {
+            id
+            name
+            email
+            status
+            contact
+            created_at
+            message
+          }
+        }
+      `,
+      result ({ data }) {
+        this.inboxes = data.inboxes
+      }
     }
   }
 }
