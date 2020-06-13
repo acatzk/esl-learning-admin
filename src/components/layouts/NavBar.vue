@@ -64,19 +64,22 @@
                         <v-list-item-action v-if="item.heading">
                             {{ item.heading }}
                         </v-list-item-action>
+
                         <v-list-item-action v-if="item.text === 'Inbox'">
                             <v-badge
                                 bordered
                                 color="error"
                                 overlap
-                                content="2"
+                                :content="inboxCounter ? inboxCounter.aggregate.count : 0"
                             >
                                 <v-icon>markunread</v-icon>
                             </v-badge>
                         </v-list-item-action>
+
                         <v-list-item-action v-if="item.text !== 'Inbox'">
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-item-action>
+
                         <v-list-item-content>
                             <v-list-item-title 
                                 class="font-weight-medium"
@@ -93,6 +96,9 @@
 </template>
 
 <script>
+
+import gql from 'graphql-tag'
+
 export default {
     name: 'NavBar',
     data () {
@@ -109,9 +115,28 @@ export default {
                 { icon: 'settings', text: 'Settings', to: '/settings' },
                 { icon: 'perm_contact_calendar', text: 'Profile', to: '/profile' },
                 { icon: 'whatshot', text: 'Logout', to: '/logout' },
-            ]
+            ],
+            inboxCounter: 0
+        }
+    },
+
+    apollo: {
+        inboxCount: {
+            query: gql`
+                query InboxCountQuery {
+                    inboxCount: inboxes_aggregate {
+                        aggregate {
+                            count
+                        }
+                    }
+                }
+            `,
+            result ({ data }) {
+                this.inboxCounter = data.inboxCount
+            }
         }
     }
+
 }
 </script>
 
