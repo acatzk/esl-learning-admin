@@ -23,7 +23,8 @@ const routes = [
       {
         path: 'inbox/:id',
         name: 'inbox-message',
-        component: () => import('@/views/InboxMessage')
+        component: () => import('@/views/InboxMessage'),
+        meta: { transition: 'flip-y' },
       }
     ]
   },
