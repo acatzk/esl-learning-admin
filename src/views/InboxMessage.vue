@@ -76,8 +76,8 @@
                             Date on July 20, 2020 about 19 hours ago
                         </div>
                     </div>
-                    <v-card flat style="overflow-y: scroll; height: 63vh;">
-                        <p class="pt-4 content-style" >
+                    <v-card flat style="overflow-y: scroll; height: 63vh; text-align: justify;">
+                        <p class="pt-4 content-style mr-3" >
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit a ipsam adipisci quis deleniti optio nesciunt officiis laudantium eligendi, assumenda voluptate expedita! Sequi harum molestias mollitia asperiores. Provident eaque enim eveniet velit quos numquam expedita, quis fuga nisi ut? Quia praesentium expedita et minima nihil id voluptatum fugiat eos nisi omnis! Sunt illum sint, eius at accusantium ut magni facilis labore harum fugiat quos quis aperiam eaque doloremque nesciunt itaque distinctio minima perspiciatis non? Consectetur doloremque provident excepturi dicta repudiandae nulla quia assumenda necessitatibus adipisci esse inventore, eius, laboriosam pariatur officiis 
                         </p>
                     </v-card>
