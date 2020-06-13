@@ -1,26 +1,29 @@
 <template>
   <div class="inbox">
     <v-container>
-        <v-card class="mx-auto pa-3" outlined>
-            <v-card-title class="d-flex justify-center">
-                <h4>
-                    <v-icon>markunread</v-icon> Inbox 
-                </h4>
-            </v-card-title>
+      <v-card outlined>
+        <div class="d-flex justify-space-between">
+            <h3 style="position: relative; top: 20px; left: 20px;">
+                <v-icon>markunread</v-icon> Inbox 
+            </h3>
             <v-text-field 
                 append-icon="search" 
                 outlined
                 dense
+                style="max-width: 250px; position: relative; top: 14px; right: 10px;"
                 color="deep-purple darken-1"
                 v-model="search"
               >
             </v-text-field>
-            <inbox-table 
-              :items="inboxs"
-              :headers="headers"
-              :search="search"
-            />
-        </v-card>
+        </div>
+      </v-card>
+      <v-card class="mx-auto pa-3" outlined>
+          <inbox-table 
+            :items="inboxs"
+            :headers="headers"
+            :search="search"
+          />
+      </v-card>
     </v-container>
   </div>
 </template>
