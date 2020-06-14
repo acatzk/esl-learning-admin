@@ -40,19 +40,25 @@
         </div>
         <v-card outlined class="mx-auto">
             <v-row class="pa-5">
-                <v-col cols="12" sm="4" lg="4" style="line-height: 40px;">
+                <v-col 
+                    cols="12" 
+                    sm="4" 
+                    lg="4"
+                    style="line-height: 40px;"
+                    v-for="(inbx, indx) in inboxes" :key="indx"
+                >
                     <div class="d-flex justify-center">
                         <v-avatar color="indigo">
                             <v-icon dark>mdi-account-circle</v-icon>
                         </v-avatar>
                     </div>
                     <div class="d-flex justify-center mt-2">
-                        <h2>Joshua Galit</h2>
+                        <h2>{{ capitalize(inbx.name) }}</h2>
                     </div>
                    <div>
-                        <div><v-icon>email</v-icon>: joshuaimalay@gmail.com</div>
-                        <div><v-icon>phone</v-icon>: 1231231231</div>
-                        <div><v-icon>date_range</v-icon>: July 20, 2020</div>
+                        <div class="text-lowercase"><v-icon>email</v-icon>: {{ inbx.email }}</div>
+                        <div><v-icon>phone</v-icon>: {{ inbx.contact }}</div>
+                        <div><v-icon>date_range</v-icon>: <date-display :created_at="inbx.created_at.split('T')[0]"></date-display></div>
                         <div>
                             <v-btn color="deep-purple darken-4" width="100%" outlined>
                                 <v-icon left>email</v-icon> Mark as Read
@@ -60,18 +66,25 @@
                         </div>
                    </div>
                 </v-col>
-                <v-col cols="12" sm="8" lg="8">
+                <v-col 
+                    cols="12" 
+                    sm="8" 
+                    lg="8"
+                    v-for="(inbox, index) in inboxes" :key="`k-${index}`"
+                >
                     <div class="d-flex justify-space-between">
                         <div class="caption">
-                            Joshua Galit
+                            {{ capitalize(inbox.name) }}
                         </div>
                         <div class="caption">
-                            Date on July 20, 2020 about 19 hours ago
+                            Date on 
+                            <date-display :created_at="inbox.created_at.split('T')[0]"></date-display> 
+                            <timeago :datetime="inbox.created_at" :auto-update="60"></timeago>
                         </div>
                     </div>
                     <v-card flat style="overflow-y: scroll; height: 63vh; text-align: justify;">
                         <p class="pt-4 content-style mr-3" >
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit a ipsam adipisci quis deleniti optio nesciunt officiis laudantium eligendi, assumenda voluptate expedita! Sequi harum molestias mollitia asperiores. Provident eaque enim eveniet velit quos numquam expedita, quis fuga nisi ut? Quia praesentium expedita et minima nihil id voluptatum fugiat eos nisi omnis! Sunt illum sint, eius at accusantium ut magni facilis labore harum fugiat quos quis aperiam eaque doloremque nesciunt itaque distinctio minima perspiciatis non? Consectetur doloremque provident excepturi dicta repudiandae nulla quia assumenda necessitatibus adipisci esse inventore, eius, laboriosam pariatur officiis 
+                            {{ inbox.message }}
                         </p>
                     </v-card>
                 </v-col>
@@ -81,9 +94,51 @@
 </template>
 
 <script>
+
+import gql from 'graphql-tag'
+
 export default {
     name: 'InboxMessage',
 
+    components: {
+        DateDisplay: () => import('@/components/pages/DateDisplay')
+    },
+
+    data () {
+        return {
+            id: this.$route.params.id
+        }
+    },
+
+    methods: {
+        capitalize(s) {
+            if (typeof s !== 'string') return ''
+            return s.charAt(0).toUpperCase() + s.slice(1)
+        }
+    },
+
+    apollo: {
+        inboxes: {
+            query: gql`
+                query InboxesSingleQuery($id: uuid!) {
+                    inboxes(order_by: {created_at: desc}, where: {id: {_eq: $id}}) {
+                        id
+                        name
+                        email
+                        status
+                        contact
+                        created_at
+                        message
+                    }
+                }
+            `,
+            variables() {
+                return {
+                    id: this.id
+                }
+            }
+        }
+    }
 }
 </script>
 
