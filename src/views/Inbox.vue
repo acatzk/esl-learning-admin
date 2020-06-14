@@ -43,6 +43,9 @@
 
 import gql from 'graphql-tag'
 
+// INBOXES QUERY 
+import { INBOX_QUERY } from '@/graphql/queries/inboxes'
+
 export default {
   name: 'Inbox',
 
@@ -69,19 +72,7 @@ export default {
 
   apollo: {
     inboxes: {
-      query: gql`
-        query InboxesQuery {
-          inboxes(order_by: {created_at: desc}) {
-            id
-            name
-            email
-            status
-            contact
-            created_at
-            message
-          }
-        }
-      `,
+      query: INBOX_QUERY,
       subscribeToMore: {
         document: gql`
           subscription InboxesSubscription {
