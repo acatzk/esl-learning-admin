@@ -6,6 +6,7 @@ import vuetify from "./plugins/vuetify";
 import VuePageTransition from 'vue-page-transition'
 import apolloProvider from './apollo'
 import VueSweetalert2 from 'vue-sweetalert2';
+import VueTimeago from 'vue-timeago'
 
 Vue.config.productionTip = false;
 
@@ -19,6 +20,14 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 Vue.use(VuePageTransition)
 /** VUE SWEET ALERT 2 **/
 Vue.use(VueSweetalert2);
+/** VUE-TIMEAGO **/
+Vue.use(VueTimeago, {
+  locale: 'en',
+  locales: {
+    'zh-CN': require('date-fns/locale/zh_cn')
+  }
+})
+
 
 new Vue({
   router,
