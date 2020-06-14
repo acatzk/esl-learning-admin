@@ -1,11 +1,36 @@
 <template>
-    <footer class="footer">
-        <div class="w-100 clearfix text-muted">
-            <span class="text-center text-sm-left d-md-inline-block">Copyright © {{ new Date().getFullYear() }} Vic Solution, Inc. </span>
-            <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">Crafted with <i class="fa fa-heart text-danger"></i> by 
-                <a href="https://github.com/acatzk" target="_blank" class="text-dark">acatzk</a> &
-                <a href="https://github.com/veoscript" target="_blank" class="text-dark">veoscript</a>
-            </span>
-        </div>
-    </footer>
+  <v-footer
+    padless
+  >
+    <v-card
+      class="flex"
+      flat
+      style="background: transparent;"
+    >
+      <v-card-text class="py-1 text-center">
+        <v-btn
+          v-for="icon in icons"
+          :key="icon"
+          class="mx-4"
+          dark
+          icon
+        >
+          <v-icon size="24px" color="grey">{{ icon }}</v-icon>
+        </v-btn>
+      </v-card-text>
+    </v-card>
+  </v-footer>
 </template>
+
+<script>
+  export default {
+    data: () => ({
+      icons: [
+        'mdi-facebook',
+        'mdi-twitter',
+        'mdi-linkedin',
+        'mdi-instagram',
+      ],
+    }),
+  }
+</script>

@@ -1,4 +1,4 @@
-# Vic Solution, Inc Administrator
+# vic-solution-admin
 
 ## Project setup
 ```
