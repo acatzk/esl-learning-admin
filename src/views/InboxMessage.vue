@@ -117,10 +117,13 @@
 <script>
 
 import Swal from 'sweetalert2'
-import gql from 'graphql-tag'
 
 // GRAPHQL MUTATIONS
 import { INBOX_DELETE_MUTATION, INBOX_UPDATE_MUTATION } from '@/graphql/mutations/inboxes'
+// INBOXES QUERY 
+import { INBOX_QUERY } from '@/graphql/queries/inboxes'
+// INBOXES SUBSCRIPTION
+import { INBOXES_SUBSCRIPTION } from '@/graphql/subscriptions/inboxes'
 
 export default {
     name: 'InboxMessage',
@@ -208,38 +211,14 @@ export default {
 
     apollo: {
         inboxes: {
-            query: gql`
-                query InboxesSingleQuery($id: uuid!) {
-                    inboxes(order_by: {created_at: desc}, where: {id: {_eq: $id}}) {
-                        id
-                        name
-                        email
-                        status
-                        contact
-                        created_at
-                        message
-                    }
-                }
-            `,
+            query: INBOX_QUERY,
             variables() {
                 return {
                     id: this.id
                 }
             },
             subscribeToMore: {
-                document: gql`
-                    subscription InboxesSingleSubscription($id: uuid!) {
-                        inboxes(order_by: {created_at: desc}, where: {id: {_eq: $id}}) {
-                            id
-                            name
-                            email
-                            status
-                            contact
-                            created_at
-                            message
-                        }
-                    }
-                `,
+                document: INBOXES_SUBSCRIPTION,
                 updateQuery(previousResult, { subscriptionData }) {
                     if (previousResult) {
                         return {
