@@ -41,7 +41,7 @@
         <v-skeleton-loader
             type="table-thead, table-tbody"
             class="mx-auto"
-            v-if="!$apollo.loading"
+            v-if="$apollo.loading"
         ></v-skeleton-loader> 
         <v-card 
             v-else
