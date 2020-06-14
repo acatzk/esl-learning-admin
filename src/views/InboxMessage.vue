@@ -121,9 +121,9 @@ import Swal from 'sweetalert2'
 // GRAPHQL MUTATIONS
 import { INBOX_DELETE_MUTATION, INBOX_UPDATE_MUTATION } from '@/graphql/mutations/inboxes'
 // INBOXES QUERY 
-import { INBOX_QUERY } from '@/graphql/queries/inboxes'
+import { INBOX_SINGLE_QUERY } from '@/graphql/queries/inboxes'
 // INBOXES SUBSCRIPTION
-import { INBOXES_SUBSCRIPTION } from '@/graphql/subscriptions/inboxes'
+import { INBOX_SINGLE_SUBSCRIPTION } from '@/graphql/subscriptions/inboxes'
 
 export default {
     name: 'InboxMessage',
@@ -211,14 +211,14 @@ export default {
 
     apollo: {
         inboxes: {
-            query: INBOX_QUERY,
+            query: INBOX_SINGLE_QUERY,
             variables() {
                 return {
                     id: this.id
                 }
             },
             subscribeToMore: {
-                document: INBOXES_SUBSCRIPTION,
+                document: INBOX_SINGLE_SUBSCRIPTION,
                 updateQuery(previousResult, { subscriptionData }) {
                     if (previousResult) {
                         return {
