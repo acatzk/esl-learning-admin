@@ -109,8 +109,41 @@ export default {
 
     methods: {
         removedMessage(item) {
-            if(confirm('Are you sure you want to delete?')) {
-                alert(item.name)
+            if(confirm('Are you sure you want to delete message?')) {
+                this.$apollo
+                    .mutate({
+                        mutation: gql`
+                            mutation InboxDeleteMutation($id: uuid!) {
+                                delete_inboxes(where: {id: {_eq: $id}}) {
+                                    affected_rows
+                                    returning {
+                                        id
+                                    }
+                                }
+                            }
+                        `,
+                        variables: {
+                            id: item.id
+                        }
+                    })
+                    .then(() => {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            onOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Successfully Deleted.'
+                        })
+                    })
             } 
         },
         markAsReadMessage(item) {
