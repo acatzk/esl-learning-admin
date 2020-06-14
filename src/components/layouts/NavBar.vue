@@ -70,10 +70,12 @@
                                 bordered
                                 color="error"
                                 overlap
-                                :content="inboxCounter ? inboxCounter.count : 0"
+                                :content="inboxCounter ? inboxCounter.aggregate.count : ''"
+                                v-show="inboxCounter !== 0"
                             >
                                 <v-icon>markunread</v-icon>
                             </v-badge>
+                            <v-icon v-show="inboxCounter === 0">markunread</v-icon>
                         </v-list-item-action>
 
                         <v-list-item-action v-if="item.text !== 'Inbox'">
@@ -121,18 +123,20 @@ export default {
     },
 
     apollo: {
-        inboxCount: {
-            query: gql`
-                query InboxCountQuery {
-                    inboxCount: inboxes_aggregate(where: {status: {_eq: "unread"}}) {
-                        aggregate {
-                            count
+        $subscribe: {
+            inboxCount: {
+                query: gql`
+                    subscription InboxCountQuery {
+                        inboxCount: inboxes_aggregate(where: {status: {_eq: "unread"}}) {
+                            aggregate {
+                                count
+                            }
                         }
                     }
+                `,
+                result ({ data }) {
+                    this.inboxCounter = data.inboxCount
                 }
-            `,
-            result ({ data }) {
-                this.inboxCounter = data.inboxCount.aggregate
             }
         }
     }
