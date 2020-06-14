@@ -70,12 +70,12 @@
                                 bordered
                                 color="error"
                                 overlap
-                                :content="inboxCounter ? inboxCounter.aggregate.count : ''"
-                                v-show="inboxCounter !== 0"
+                                :content="inboxCounter ? inboxCounter.aggregate.count : 0"
+                                v-if="inboxCounter.aggregate.count !== 0"
                             >
                                 <v-icon>markunread</v-icon>
                             </v-badge>
-                            <v-icon v-show="inboxCounter === 0">markunread</v-icon>
+                            <v-icon v-else>markunread</v-icon>
                         </v-list-item-action>
 
                         <v-list-item-action v-if="item.text !== 'Inbox'">
