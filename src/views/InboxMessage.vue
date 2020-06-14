@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <v-card v-show="!$apollo.loading" flat style="overflow-y: scroll; height: 63vh; text-align: justify;">
-                        <p class="pt-4 content-style mr-3" >
+                        <p class="pt-4 content-style mr-3" style="line-height: 30px;">
                             {{ inbox.message }}
                         </p>
                     </v-card>
