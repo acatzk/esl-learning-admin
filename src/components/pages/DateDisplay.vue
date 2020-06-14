@@ -1,6 +1,6 @@
 <template>
     <span>
-        {{ filteredDate(created_at) }}
+        {{ format_date(created_at) }}
     </span>
 </template>
 
@@ -13,9 +13,9 @@ export default {
 
     props: ['created_at'],
 
-    computed: {
-        filteredDate(value) {
-            return moment(String(value)).format('MM/DD/YYYY hh:mm')
+    methods: {
+        format_date(value) {
+            return moment(String(value)).format('MM/DD/YYYY')
         }
     }
 }
