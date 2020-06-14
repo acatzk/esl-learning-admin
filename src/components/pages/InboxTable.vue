@@ -8,7 +8,9 @@
     >
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
-            {{ item.created_at.split('T')[0] }}
+            <date-display
+                :created_at="item.created_at.split('T')[0]"
+             />
         </template>
         <!-- END FORMAT DATE -->
 
@@ -78,6 +80,10 @@
 
 export default {
     name: 'InboxTable',
+
+    components: {
+        DateDisplay: () => import('./DateDisplay')
+    },
 
     props: {
         items: {
