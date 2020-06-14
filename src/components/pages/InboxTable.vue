@@ -8,7 +8,7 @@
     >
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
-            {{ format_date(item.created_at.split('T')[0]) }}
+            {{ item.created_at.split('T')[0] }}
         </template>
         <!-- END FORMAT DATE -->
 
@@ -76,8 +76,6 @@
 
 <script>
 
-import moment from 'moment'
-
 export default {
     name: 'InboxTable',
 
@@ -106,10 +104,8 @@ export default {
         },
         gotoMessage(item) {
             this.$router.push(`/inbox/${item.id}`)
-        },
-        format_date(value) {
-            return moment(String(value)).format('MM/DD/YYYY')
         }
+        
     }
 }
 </script>
