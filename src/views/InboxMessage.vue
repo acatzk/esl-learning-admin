@@ -31,6 +31,7 @@
                             class="mr-2"
                             v-bind="attrs"
                             v-on="on"
+                            @click="removedMessage(id)"
                         >
                             <v-icon>delete</v-icon>
                         </v-btn>
@@ -177,7 +178,47 @@ export default {
                     this.$router.push('/inbox')
                 })
                 .catch(error => console.error(error))
-        }
+        },
+        removedMessage(id) {
+            if(confirm('Are you sure you want to delete message?')) {
+                this.$apollo
+                    .mutate({
+                        mutation: gql`
+                            mutation InboxDeleteMutation($id: uuid!) {
+                                delete_inboxes(where: {id: {_eq: $id}}) {
+                                    affected_rows
+                                    returning {
+                                        id
+                                    }
+                                }
+                            }
+                        `,
+                        variables: {
+                            id: id
+                        }
+                    })
+                    .then(() => {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            onOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Successfully Deleted.'
+                        })
+                        this.$router.push('/inbox')
+                    })
+                    .catch(error => console.error(error))
+            } 
+        },
     },
 
     apollo: {
