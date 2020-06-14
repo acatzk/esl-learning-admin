@@ -13,3 +13,17 @@ export const INBOX_QUERY = gql`
         }
     }
 `
+
+export const INBOX_SINGLE_QUERY = gql`
+    query InboxesSingleQuery($id: uuid!) {
+        inboxes(order_by: {created_at: desc}, where: {id: {_eq: $id}}) {
+            id
+            name
+            email
+            status
+            contact
+            created_at
+            message
+        }
+    }
+`
