@@ -79,6 +79,8 @@
 
 <script>
 
+import gql from 'graphql-tag'
+
 export default {
     name: 'InboxTable',
 
@@ -111,7 +113,27 @@ export default {
             } 
         },
         markAsReadMessage(item) {
-            alert(item.message)
+            this.markLoading = true
+            this.$apollo
+                .mutate({
+                    mutation: gql`
+                        mutation InboxUpdateMutation($id: uuid!) {
+                            update_inboxes(where: {id: {_eq: $id}}, _set: {status: "read"}) {
+                                affected_rows
+                                returning {
+                                    id
+                                }
+                            }
+                        }
+                    `,
+                    variables: {
+                       id: item.id
+                    }
+                })
+                .then(() => {
+                    this.markLoading = false
+                })
+                .catch(error => console.error(error))
         },
         gotoMessage(item) {
             this.$router.push(`/inbox/${item.id}`)
