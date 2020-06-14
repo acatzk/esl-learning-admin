@@ -25,6 +25,11 @@ const routes = [
         name: 'inbox-message',
         component: () => import('@/views/InboxMessage'),
         meta: { transition: 'fade-in-up' }
+      },
+      {
+        path: 'teachers',
+        name: 'teachers',
+        component: () => import('@/views/Teachers')
       }
     ]
   },
