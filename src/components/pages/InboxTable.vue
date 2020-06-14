@@ -66,6 +66,7 @@
                         color="success"
                         outlined
                         @click="markAsReadMessage(item)"
+                        :loading="markLoading"
                     >
                         <v-icon left>mail_outline</v-icon> Mark as Read
                     </v-btn>
@@ -80,6 +81,10 @@
 
 export default {
     name: 'InboxTable',
+
+    data: () => ({
+        markLoading: false
+    }),
 
     components: {
         DateDisplay: () => import('./DateDisplay')
