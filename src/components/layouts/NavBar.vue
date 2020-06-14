@@ -65,6 +65,7 @@
                             {{ item.heading }}
                         </v-list-item-action>
 
+                        <!-- ** INBOX ICON WITH BADGES NUMBER OF UNREAD MESSAGE ** -->
                         <v-list-item-action v-if="item.text === 'Inbox'">
                             <v-badge
                                 bordered
@@ -77,6 +78,7 @@
                             </v-badge>
                             <v-icon v-else>markunread</v-icon>
                         </v-list-item-action>
+                        <!-- END INBOX ICON WITH BADGES NUMBER OF UNREAD MESSAGE -->
 
                         <v-list-item-action v-if="item.text !== 'Inbox'">
                             <v-icon>{{ item.icon }}</v-icon>
