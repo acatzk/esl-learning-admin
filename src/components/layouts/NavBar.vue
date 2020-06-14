@@ -70,7 +70,7 @@
                                 bordered
                                 color="error"
                                 overlap
-                                :content="inboxCounter ? inboxCounter.aggregate.count : 0"
+                                :content="inboxCounter ? inboxCounter.count : 0"
                             >
                                 <v-icon>markunread</v-icon>
                             </v-badge>
@@ -124,35 +124,15 @@ export default {
         inboxCount: {
             query: gql`
                 query InboxCountQuery {
-                    inboxCount: inboxes_aggregate {
+                    inboxCount: inboxes_aggregate(where: {status: {_eq: "unread"}}) {
                         aggregate {
                             count
                         }
                     }
                 }
             `,
-            subscribeToMore: {
-                document: gql`
-                    subscription InboxCountSubscription {
-                        inboxCount: inboxes_aggregate {
-                            aggregate {
-                                count
-                            }
-                        }
-                    }
-                `,
-                updateQuery(previousResult, { subscriptionData }) {
-                    if (previousResult) {
-                        return {
-                            inboxes_aggregate: [
-                                ...subscriptionData.data.inboxes_aggregate
-                            ]
-                        }
-                    }
-                }
-            },
             result ({ data }) {
-                this.inboxCounter = data.inboxCount
+                this.inboxCounter = data.inboxCount.aggregate
             }
         }
     }
