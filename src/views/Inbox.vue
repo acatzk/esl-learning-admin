@@ -20,7 +20,6 @@
       <v-card 
         class="mx-auto pa-3" 
         outlined 
-        style="height: 72vh;"
       >
           <v-skeleton-loader
             type="table-tbody"
