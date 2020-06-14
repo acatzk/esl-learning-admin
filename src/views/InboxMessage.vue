@@ -38,7 +38,13 @@
             </div>
             <h4 style="position: relative; top: 5px; right: 10px;">Inbox message</h4>
         </div>
+        <v-skeleton-loader
+            type="table-thead, table-tbody"
+            class="mx-auto"
+            v-if="!$apollo.loading"
+        ></v-skeleton-loader> 
         <v-card 
+            v-else
             outlined 
             class="mx-auto"
         >
