@@ -16,6 +16,8 @@
                             class="mr-2"
                             v-bind="attrs"
                             v-on="on"
+                            :loading="emailLoading"
+                            @click="markAsReadMessage(id)"
                         >
                             <v-icon>email</v-icon>
                         </v-btn>
@@ -44,6 +46,7 @@
             v-if="$apollo.loading"
         ></v-skeleton-loader> 
         <v-card 
+            style="height: 72vh;"
             v-else
             outlined 
             class="mx-auto"
@@ -70,7 +73,13 @@
                                 <div><v-icon>phone</v-icon>: {{ inbx.contact }}</div>
                                 <div><v-icon>date_range</v-icon>: <date-display :created_at="inbx.created_at.split('T')[0]"></date-display></div>
                                 <div>
-                                    <v-btn color="deep-purple darken-4" width="100%" outlined>
+                                    <v-btn 
+                                        :loading="emailLoading" 
+                                        color="deep-purple darken-4" 
+                                        width="100%" 
+                                        outlined 
+                                        @click="markAsReadMessage(id)"
+                                    >
                                         <v-icon left>email</v-icon> Mark as Read
                                     </v-btn>
                                 </div>
@@ -107,6 +116,7 @@
 <script>
 
 import gql from 'graphql-tag'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'InboxMessage',
@@ -117,7 +127,8 @@ export default {
 
     data () {
         return {
-            id: this.$route.params.id
+            id: this.$route.params.id,
+            emailLoading: false
         }
     },
 
@@ -125,6 +136,47 @@ export default {
         capitalize(s) {
             if (typeof s !== 'string') return ''
             return s.charAt(0).toUpperCase() + s.slice(1)
+        },
+
+        markAsReadMessage(id) {
+            this.emailLoading = true
+            this.$apollo
+                .mutate({
+                    mutation: gql`
+                        mutation InboxUpdateMutation($id: uuid!) {
+                            update_inboxes(where: {id: {_eq: $id}}, _set: {status: "read"}) {
+                                affected_rows
+                                returning {
+                                    id
+                                }
+                            }
+                        }
+                    `,
+                    variables: {
+                       id: id
+                    }
+                })
+                .then(() => {
+                    this.emailLoading = false
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Marked as Read'
+                    })
+                    this.$router.push('/inbox')
+                })
+                .catch(error => console.error(error))
         }
     },
 
