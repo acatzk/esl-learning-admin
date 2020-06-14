@@ -38,7 +38,10 @@
             </div>
             <h4 style="position: relative; top: 5px; right: 10px;">Inbox message</h4>
         </div>
-        <v-card outlined class="mx-auto">
+        <v-card 
+            outlined 
+            class="mx-auto"
+        >
             <v-row class="pa-5">
                 <v-col 
                     cols="12" 
@@ -47,24 +50,31 @@
                     style="line-height: 40px;"
                     v-for="(inbx, indx) in inboxes" :key="indx"
                 >
-                    <div class="d-flex justify-center">
-                        <v-avatar color="indigo">
-                            <v-icon dark>mdi-account-circle</v-icon>
-                        </v-avatar>
-                    </div>
-                    <div class="d-flex justify-center mt-2">
-                        <h2>{{ capitalize(inbx.name) }}</h2>
-                    </div>
-                   <div>
-                        <div class="text-lowercase"><v-icon>email</v-icon>: {{ inbx.email }}</div>
-                        <div><v-icon>phone</v-icon>: {{ inbx.contact }}</div>
-                        <div><v-icon>date_range</v-icon>: <date-display :created_at="inbx.created_at.split('T')[0]"></date-display></div>
+                    <v-skeleton-loader
+                        type="card"
+                        class="mx-auto"
+                        v-if="$apollo.loading"
+                    ></v-skeleton-loader> 
+                    <div v-else>
+                        <div class="d-flex justify-center">
+                                <v-avatar color="indigo">
+                                    <v-icon dark>mdi-account-circle</v-icon>
+                                </v-avatar>
+                            </div>
+                            <div class="d-flex justify-center mt-2">
+                                <h2>{{ capitalize(inbx.name) }}</h2>
+                            </div>
                         <div>
-                            <v-btn color="deep-purple darken-4" width="100%" outlined>
-                                <v-icon left>email</v-icon> Mark as Read
-                            </v-btn>
+                                <div class="text-lowercase"><v-icon>email</v-icon>: {{ inbx.email }}</div>
+                                <div><v-icon>phone</v-icon>: {{ inbx.contact }}</div>
+                                <div><v-icon>date_range</v-icon>: <date-display :created_at="inbx.created_at.split('T')[0]"></date-display></div>
+                                <div>
+                                    <v-btn color="deep-purple darken-4" width="100%" outlined>
+                                        <v-icon left>email</v-icon> Mark as Read
+                                    </v-btn>
+                                </div>
                         </div>
-                   </div>
+                    </div>
                 </v-col>
                 <v-col 
                     cols="12" 
@@ -72,7 +82,13 @@
                     lg="8"
                     v-for="(inbox, index) in inboxes" :key="`k-${index}`"
                 >
-                    <div class="d-flex justify-space-between">
+                    <v-skeleton-loader
+                        type="paragraph, paragraph, paragraph, paragraph, list-item, list-item, list-item"
+                        class="mx-auto"
+                        tile
+                        v-if="$apollo.loading"
+                    ></v-skeleton-loader> 
+                    <div v-else class="d-flex justify-space-between">
                         <div class="caption">
                             {{ capitalize(inbox.name) }}
                         </div>
@@ -82,7 +98,7 @@
                             <timeago :datetime="inbox.created_at" :auto-update="60"></timeago>
                         </div>
                     </div>
-                    <v-card flat style="overflow-y: scroll; height: 63vh; text-align: justify;">
+                    <v-card v-show="!$apollo.loading" flat style="overflow-y: scroll; height: 63vh; text-align: justify;">
                         <p class="pt-4 content-style mr-3" >
                             {{ inbox.message }}
                         </p>
