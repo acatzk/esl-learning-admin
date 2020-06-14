@@ -47,7 +47,6 @@
             v-if="$apollo.loading"
         ></v-skeleton-loader> 
         <v-card 
-            style="height: 72vh;"
             v-else
             outlined 
             class="mx-auto"
