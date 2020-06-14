@@ -41,8 +41,6 @@
 
 <script>
 
-import gql from 'graphql-tag'
-
 // INBOXES QUERY 
 import { INBOX_QUERY } from '@/graphql/queries/inboxes'
 // INBOXES SUBSCRIPTION
