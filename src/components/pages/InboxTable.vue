@@ -6,14 +6,21 @@
         show-expand
         @click:row="gotoMessage"
     >
+        <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
             {{ format_date(item.created_at.split('T')[0]) }}
         </template>
+        <!-- END FORMAT DATE -->
+
+        <!-- DISPLAY ITEM CONTACT OF NON CLICKABLE -->
         <template #item.contact="{ item }">
             <td @click.stop class="non-clickable">
                 {{ item.contact }}
             </td>
         </template>
+        <!-- END DISPLAY ITEM CONTACT OF NON CLICKABLE -->
+
+        <!-- STATUS OF UNREAD MESSAGES -->
         <template #item.status="{ item }">
             <td @click.stop class="non-clickable">
                 <v-chip
@@ -27,6 +34,9 @@
                 </v-chip>
             </td>
         </template>
+        <!-- END STATUS OF UNREAD MESSAGES -->
+
+        <!-- ** EXPANDED MESSAGE AND ACTION BUTTONS ** -->
         <template #expanded-item="{ headers, item }">
             <td :colspan="headers.length">
                 <v-row>
@@ -60,6 +70,7 @@
                 </v-row>
             </td>
         </template>
+        <!-- ** END EXPANDED MESSAGE AND ACTION BUTTONS ** -->
     </v-data-table>
 </template>
 
