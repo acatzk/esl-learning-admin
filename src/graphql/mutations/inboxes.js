@@ -10,3 +10,14 @@ export const INBOX_DELETE_MUTATION = gql`
         }
     }
 `
+
+export const INBOX_UPDATE_MUTATION = gql`
+    mutation InboxUpdateMutation($id: uuid!) {
+        update_inboxes(where: {id: {_eq: $id}}, _set: {status: "read"}) {
+            affected_rows
+            returning {
+                id
+            }
+        }
+    }
+`
