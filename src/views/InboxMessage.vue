@@ -50,12 +50,7 @@
                     style="line-height: 40px;"
                     v-for="(inbx, indx) in inboxes" :key="indx"
                 >
-                    <v-skeleton-loader
-                        type="card"
-                        class="mx-auto"
-                        v-if="$apollo.loading"
-                    ></v-skeleton-loader> 
-                    <div v-else>
+                    <div>
                         <div class="d-flex justify-center">
                                 <v-avatar color="indigo">
                                     <v-icon dark>mdi-account-circle</v-icon>
@@ -82,13 +77,7 @@
                     lg="8"
                     v-for="(inbox, index) in inboxes" :key="`k-${index}`"
                 >
-                    <v-skeleton-loader
-                        type="paragraph, paragraph, paragraph, paragraph, list-item, list-item, list-item"
-                        class="mx-auto"
-                        tile
-                        v-if="$apollo.loading"
-                    ></v-skeleton-loader> 
-                    <div v-else class="d-flex justify-space-between">
+                    <div class="d-flex justify-space-between">
                         <div class="caption">
                             {{ capitalize(inbox.name) }}
                         </div>
@@ -152,7 +141,36 @@ export default {
                 return {
                     id: this.id
                 }
-            }
+            },
+            subscribeToMore: {
+                document: gql`
+                    subscription InboxesSingleSubscription($id: uuid!) {
+                        inboxes(order_by: {created_at: desc}, where: {id: {_eq: $id}}) {
+                            id
+                            name
+                            email
+                            status
+                            contact
+                            created_at
+                            message
+                        }
+                    }
+                `,
+                updateQuery(previousResult, { subscriptionData }) {
+                    if (previousResult) {
+                        return {
+                            inboxes: [
+                                ...subscriptionData.data.inboxes
+                            ]
+                        }
+                    }
+                },
+                variables() {
+                    return {
+                        id: this.id
+                    }
+                }
+            },
         }
     }
 }
