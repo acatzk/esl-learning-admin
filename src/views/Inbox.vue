@@ -45,6 +45,8 @@ import gql from 'graphql-tag'
 
 // INBOXES QUERY 
 import { INBOX_QUERY } from '@/graphql/queries/inboxes'
+// INBOXES SUBSCRIPTION
+import { INBOXES_SUBSCRIPTION } from '@/graphql/subscriptions/inboxes'
 
 export default {
   name: 'Inbox',
@@ -74,19 +76,7 @@ export default {
     inboxes: {
       query: INBOX_QUERY,
       subscribeToMore: {
-        document: gql`
-          subscription InboxesSubscription {
-            inboxes(order_by: {created_at: desc}) {
-              id
-              name
-              email
-              status
-              contact
-              created_at
-              message
-            }
-          }
-        `,
+        document: INBOXES_SUBSCRIPTION,
         updateQuery(previousResult, { subscriptionData }) {
           if (previousResult) {
             return {
