@@ -80,6 +80,7 @@
 <script>
 
 import gql from 'graphql-tag'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'InboxTable',
@@ -132,6 +133,22 @@ export default {
                 })
                 .then(() => {
                     this.markLoading = false
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Marked as Read'
+                    })
                 })
                 .catch(error => console.error(error))
         },
