@@ -79,8 +79,10 @@
 
 <script>
 
-import gql from 'graphql-tag'
 import Swal from 'sweetalert2'
+
+// GRAPHQL MUTATIONS
+import { INBOX_DELETE_MUTATION, INBOX_UPDATE_MUTATION } from '@/graphql/mutations/inboxes'
 
 export default {
     name: 'InboxTable',
@@ -112,16 +114,7 @@ export default {
             if(confirm('Are you sure you want to delete message?')) {
                 this.$apollo
                     .mutate({
-                        mutation: gql`
-                            mutation InboxDeleteMutation($id: uuid!) {
-                                delete_inboxes(where: {id: {_eq: $id}}) {
-                                    affected_rows
-                                    returning {
-                                        id
-                                    }
-                                }
-                            }
-                        `,
+                        mutation: INBOX_DELETE_MUTATION,
                         variables: {
                             id: item.id
                         }
@@ -150,16 +143,7 @@ export default {
             this.markLoading = true
             this.$apollo
                 .mutate({
-                    mutation: gql`
-                        mutation InboxUpdateMutation($id: uuid!) {
-                            update_inboxes(where: {id: {_eq: $id}}, _set: {status: "read"}) {
-                                affected_rows
-                                returning {
-                                    id
-                                }
-                            }
-                        }
-                    `,
+                    mutation: INBOX_UPDATE_MUTATION,
                     variables: {
                        id: item.id
                     }
