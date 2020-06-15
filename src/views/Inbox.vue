@@ -17,7 +17,7 @@
       </div>
     </v-card>
     <v-card 
-      class="mx-auto pa-3" 
+      class="mx-auto" 
       flat 
     >
         <v-skeleton-loader
