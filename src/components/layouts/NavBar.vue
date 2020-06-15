@@ -22,6 +22,7 @@
             <v-text-field
                 solo-inverted
                 flat
+                rounded
                 hide-details
                 label="Search"
                 prepend-inner-icon="search"
