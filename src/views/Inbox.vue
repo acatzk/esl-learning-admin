@@ -6,7 +6,7 @@
         </h3>
     </header>
     <v-card 
-      class="mx-auto mt-1" 
+      class="mx-auto" 
       flat 
     >
           <v-text-field
