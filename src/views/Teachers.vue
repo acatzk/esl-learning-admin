@@ -11,11 +11,15 @@
 
         <v-card flat>
             <v-text-field
-                class="pa-3"
-                placeholder="Search"
+                label="Search"
+                v-model="search"
+                filled
+                class="mx-3"
                 append-icon="search"
-                v-model="search">
-            </v-text-field>
+                dense
+                rounded
+                style="position: relative; top: 10px; border-radius: 50px;"
+            ></v-text-field>
             <teachers-table 
                 :items="teachers"
                 :headers="headers"
