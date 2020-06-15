@@ -5,9 +5,9 @@
         :search="search"
     >
         <template #item.firstname="{ item }">
-            <v-avatar color="indigo" style="margin: 5px;">
+            <v-avatar color="indigo" class="mr-2 ma-1">
                 <img
-                    src="https://cdn.vuetifyjs.com/images/john.jpg"
+                    src="https://avatars0.githubusercontent.com/u/38458781?s=460&u=d2e21173ef861da3d8ca3a292398cbc0c6f7c000&v=4"
                     alt="John"
                 />
             </v-avatar>
