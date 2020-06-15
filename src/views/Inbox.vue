@@ -1,25 +1,24 @@
 <template>
   <div class="inbox">
-    <v-card flat style="border-bottom: 1px solid #eee;">
-      <div class="d-flex justify-space-between">
-          <h3 style="position: relative; top: 20px; left: 20px;">
-              <v-icon>markunread</v-icon> Inbox 
-          </h3>
-          <v-text-field 
-              append-icon="search" 
-              filled
-              dense
-              style="max-width: 250px; position: relative; top: 14px; right: 10px;"
-              color="deep-purple darken-1"
-              v-model="search"
-            >
-          </v-text-field>
-      </div>
-    </v-card>
+    <header>
+        <h3 class="d-inline-block">
+            <v-icon>markunread</v-icon> Inbox
+        </h3>
+    </header>
     <v-card 
-      class="mx-auto" 
+      class="mx-auto mt-1" 
       flat 
     >
+          <v-text-field
+            label="Search"
+            v-model="search"
+            filled
+            class="mx-3"
+            append-icon="search"
+            dense
+            rounded
+            style="position: relative; top: 10px; border-radius: 50px;"
+          ></v-text-field>
         <v-skeleton-loader
           type="table-tbody"
           class="mx-auto"
@@ -89,3 +88,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+header {
+      background: white;
+      padding: 20px;
+      border-bottom: 2px solid #eee;
+  }
+</style>
