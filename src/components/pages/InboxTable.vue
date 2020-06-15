@@ -31,7 +31,8 @@
                     small
                     label
                 >
-                    <v-icon left>mail_outline</v-icon>
+                    <v-icon left v-show="item.status === 'unread'" style="font-size: 15px;">email</v-icon>
+                    <v-icon left v-show="item.status === 'read'" style="font-size: 15px;">drafts</v-icon>
                     {{ item.status }}
                 </v-chip>
             </td>
