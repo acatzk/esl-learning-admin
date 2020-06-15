@@ -9,14 +9,13 @@
             </v-btn>
         </header>
 
-       <v-text-field
-            solo
-            flat
-            append-icon="search"
-            v-model="search">
-        </v-text-field>
-
-        <v-card flat class="pa-3">
+        <v-card flat>
+            <v-text-field
+                class="pa-3"
+                placeholder="Search"
+                append-icon="search"
+                v-model="search">
+            </v-text-field>
             <teachers-table 
                 :items="teachers"
                 :headers="headers"
@@ -37,6 +36,7 @@ export default {
         return {
             teachers: [
                 {
+                "id": "1",
                 "firstname": "Brigitte",
                 "lastname": "Bardont",
                 "email": "bb@example.com",
@@ -46,6 +46,7 @@ export default {
                 "is_active": true
                 },
                 {
+                "id": "2",
                 "firstname": "Gerald",
                 "lastname": "Kleberth",
                 "email": "gege208@example.com",
@@ -55,6 +56,7 @@ export default {
                 "is_active": false
                 },
                 {
+                "id": "3",
                 "firstname": "Amandine",
                 "lastname": "Delalune",
                 "email": "amandine@example.com",
@@ -64,6 +66,7 @@ export default {
                 "is_active": true
                 },
                 {
+                "id": "4",
                 "firstname": "Joséphine",
                 "lastname": "Dupont",
                 "email": "jdupont@example.com",
@@ -73,6 +76,7 @@ export default {
                 "is_active": true
                 },
                 {
+                "id": "5",
                 "firstname": "Mounir",
                 "lastname": "Al estel",
                 "email": "mounir@example.com",
@@ -82,6 +86,7 @@ export default {
                 "is_active": true
                 },
                 {
+                "id": "6",
                 "firstname": "Hans",
                 "lastname": "Kleber",
                 "email": "hans23@example.com",
@@ -91,6 +96,7 @@ export default {
                 "is_active": true
                 },
                 {
+                "id": "7",
                 "firstname": "Robert",
                 "lastname": "Duvak",
                 "email": "rober.ducak@example.com",
@@ -100,6 +106,7 @@ export default {
                 "is_active": true
                 },
                 {
+                "id": "8",
                 "firstname": "Isabelle",
                 "lastname": "Champion",
                 "email": "isa.beast@example.com",
@@ -109,6 +116,7 @@ export default {
                 "is_active": false
                 },
                 {
+                "id": "9",
                 "firstname": "Alberto",
                 "lastname": "Tulador",
                 "email": "alberto@example.com",
