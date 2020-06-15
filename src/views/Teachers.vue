@@ -137,8 +137,7 @@ export default {
     computed: {
         headers() {
             return [
-                { text: 'Firstname',  value: 'firstname' },
-                { text: 'Lastname', value: 'lastname' },
+                { text: 'Identity', value: 'firstname' },
                 { text: 'Email', value: 'email' },
                 { text: 'Contact', value: 'phone', sortable: false },
                 { text: 'Gender', value: 'gender', sortable: false },
