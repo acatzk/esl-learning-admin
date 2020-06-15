@@ -4,6 +4,15 @@
         :headers="headers"
         :search="search"
     >
+        <template #item.firstname="{ item }">
+            <v-avatar color="indigo" style="margin: 5px;">
+                <img
+                    src="https://cdn.vuetifyjs.com/images/john.jpg"
+                    alt="John"
+                />
+            </v-avatar>
+            <span>{{`${item.firstname} ${item.lastname}`}}</span>
+        </template>
         <template #item.is_active="{ item }">
             <v-chip label :color="item.is_active ? 'success white--text' : 'error white--text'" small>
                 <v-icon left v-show="item.is_active" style="font-size: 15px;">hourglass_full</v-icon> 
