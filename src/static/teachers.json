@@ -7,7 +7,6 @@
       "phone": "0143520987",
       "birth_date": "1991-08-06",
       "gender": "female",
-      "revenue": 15054.08,
       "is_active": true
     },
     {
@@ -18,7 +17,6 @@
       "phone": "0109875432",
       "birth_date": "2001-01-03",
       "gender": "male",
-      "revenue": 302.98,
       "is_active": false
     },
     {
@@ -29,7 +27,6 @@
       "phone": "0198653698",
       "birth_date": "1980-12-04",
       "gender": "female",
-      "revenue": 1418.0,
       "is_active": true
     },
     {
@@ -40,7 +37,6 @@
       "phone": "0190809879",
       "birth_date": "1956-10-10",
       "gender": "female",
-      "revenue": 21418.36,
       "is_active": true
     },
     {
@@ -51,7 +47,6 @@
       "phone": "0876543765",
       "birth_date": "1996-05-04",
       "gender": "male",
-      "revenue": 16202.95,
       "is_active": true
     },
     {
@@ -62,7 +57,6 @@
       "phone": "0685939474",
       "birth_date": "1998-02-11",
       "gender": "male",
-      "revenue": 9865.42,
       "is_active": true
     },
     {
@@ -73,7 +67,6 @@
       "phone": "0765354369",
       "birth_date": "1995-06-03",
       "gender": "male",
-      "revenue": 18790.84,
       "is_active": true
     },
     {
@@ -84,7 +77,6 @@
       "phone": "04989403428",
       "birth_date": "2002-02-03",
       "gender": "female",
-      "revenue": 417.93,
       "is_active": false
     },
     {
@@ -95,7 +87,6 @@
       "phone": "0134979438",
       "birth_date": "1993-11-10",
       "gender": "male",
-      "revenue": 10849.02,
       "is_active": false
     }
   ]
