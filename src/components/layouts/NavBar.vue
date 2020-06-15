@@ -31,6 +31,10 @@
             ></v-text-field>
 
             <v-spacer></v-spacer>
+
+            <v-btn icon>
+                <v-icon>expand_more</v-icon>
+            </v-btn>
         </v-app-bar>
 
         <v-navigation-drawer
