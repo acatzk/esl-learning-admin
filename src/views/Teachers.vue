@@ -143,6 +143,7 @@ export default {
                 { text: 'Contact', value: 'phone', sortable: false },
                 { text: 'Gender', value: 'gender', sortable: false },
                 { text: 'Status', value: 'is_active', sortable: false },
+                { text: 'Options', value: 'id', sortable: false },
             ]
         }
     },
