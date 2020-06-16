@@ -15,11 +15,20 @@
             <span>{{`${item.firstname} ${item.lastname}`}}</span>
         </template>
 
+        <!-- ** GENDER ** -->
+        <template #item.gender="{ item }">
+            <v-btn text small :color="item.gender === 'female' ? 'primary white--text' : 'pink white--text'" >
+                <v-icon left v-show="item.gender === 'female'"> mdi-gender-female</v-icon> 
+                <v-icon left v-show="item.gender === 'male'"> mdi-gender-male</v-icon> 
+                {{ item.gender === 'male' ? 'Male' : 'Female' }}
+            </v-btn>
+        </template>
+
         <!-- ** ACTIVE AND INACTIVE ** -->
         <template #item.is_active="{ item }">
             <v-btn text small :color="item.is_active ? 'success white--text' : 'error white--text'" >
-                <v-icon left v-show="item.is_active" style="font-size: 15px;">hourglass_full</v-icon> 
-                <v-icon left v-show="!item.is_active" style="font-size: 15px;">hourglass_empty</v-icon> 
+                <v-icon left v-show="item.is_active" >hourglass_full</v-icon> 
+                <v-icon left v-show="!item.is_active">hourglass_empty</v-icon> 
                 {{ item.is_active ? 'Active' : 'Inactive' }}
             </v-btn>
         </template>
@@ -62,5 +71,8 @@ export default {
 <style scoped>
 .v-btn {
     text-transform: capitalize;
+}
+.v-icon {
+    font-size: 15px;
 }
 </style>
