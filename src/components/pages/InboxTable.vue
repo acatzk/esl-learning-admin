@@ -8,6 +8,7 @@
     >
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
+            <v-icon>mdi-calendar</v-icon>
             <date-display
                 :created_at="item.created_at.split('T')[0]"
              />
@@ -185,5 +186,8 @@ export default {
 }
 ::v-deep tbody tr td.non-clickable{
     cursor: auto;
+}
+.v-icon {
+    font-size: 16px;
 }
 </style>
