@@ -15,11 +15,19 @@
             <span>{{`${item.firstname} ${item.lastname}`}}</span>
         </template>
 
+        <!-- ** CONTACT ** -->
+        <template #item.phone="{ item }">
+            <span>
+                <v-icon>mdi-phone</v-icon>
+                {{ item.phone }}
+            </span>
+        </template>
+
         <!-- ** GENDER ** -->
         <template #item.gender="{ item }">
             <v-btn text small :color="item.gender === 'female' ? 'primary white--text' : 'pink white--text'" >
-                <v-icon left v-show="item.gender === 'female'"> mdi-gender-female</v-icon> 
-                <v-icon left v-show="item.gender === 'male'"> mdi-gender-male</v-icon> 
+                <v-icon left v-show="item.gender === 'female'">mdi-gender-female</v-icon> 
+                <v-icon left v-show="item.gender === 'male'">mdi-gender-male</v-icon> 
                 {{ item.gender === 'male' ? 'Male' : 'Female' }}
             </v-btn>
         </template>
