@@ -6,6 +6,12 @@
         show-expand
         @click:row="gotoMessage"
     >
+        <!-- DISPLAY NAME -->
+        <template #item.name="{ item }">
+            <v-icon>mdi-account-box</v-icon>
+            {{ item.name }}
+        </template>
+
         <!-- DISPLAY EMAIL -->
         <template #item.email="{ item }">
             <v-icon>mdi-email</v-icon>
