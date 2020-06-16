@@ -14,11 +14,11 @@
             <span>{{`${item.firstname} ${item.lastname}`}}</span>
         </template>
         <template #item.is_active="{ item }">
-            <v-chip label :color="item.is_active ? 'success white--text' : 'error white--text'" small>
+            <v-btn text small :color="item.is_active ? 'success white--text' : 'error white--text'" >
                 <v-icon left v-show="item.is_active" style="font-size: 15px;">hourglass_full</v-icon> 
                 <v-icon left v-show="!item.is_active" style="font-size: 15px;">hourglass_empty</v-icon> 
                 {{ item.is_active ? 'Active' : 'Inactive' }}
-            </v-chip>
+            </v-btn>
         </template>
         <template #item.id="{ item }">  
             <teachers-action-button 
@@ -53,3 +53,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.v-btn {
+    text-transform: capitalize;
+}
+</style>
