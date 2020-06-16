@@ -18,6 +18,7 @@
         <!-- DISPLAY ITEM CONTACT OF NON CLICKABLE -->
         <template #item.contact="{ item }">
             <td @click.stop class="non-clickable">
+                <v-icon>mdi-phone</v-icon>
                 {{ item.contact }}
             </td>
         </template>
