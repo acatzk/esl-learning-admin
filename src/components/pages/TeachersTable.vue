@@ -15,6 +15,14 @@
             <span>{{`${item.firstname} ${item.lastname}`}}</span>
         </template>
 
+        <!-- ** EMAIL ** -->
+        <template #item.email="{ item }">
+            <span>
+                <v-icon>mdi-email</v-icon>
+                {{ item.email }}
+            </span>
+        </template>
+
         <!-- ** CONTACT ** -->
         <template #item.phone="{ item }">
             <span>
