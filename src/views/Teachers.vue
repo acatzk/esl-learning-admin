@@ -4,9 +4,13 @@
             <h3 class="d-inline-block">
                 <v-icon>supervisor_account</v-icon> Teachers list
             </h3>
-            <v-btn small depressed color="primary">
+            <v-btn small depressed color="primary" @click.stop="dialog = true">
                <v-icon left>mdi-account-plus</v-icon> Add
             </v-btn>
+
+            <teacher-add-dialog 
+                :visible="dialog" @close="dialog = false"
+            />
         </header>
 
         <v-card flat>
@@ -130,7 +134,8 @@ export default {
                 "is_active": false
                 }
             ],
-            search: '' 
+            search: '',
+            dialog: false
         }
     },
 
@@ -148,11 +153,11 @@ export default {
     },
 
     components: {
-        TeachersTable: () => import('@/components/pages/TeachersTable')
+        TeachersTable: () => import('@/components/pages/TeachersTable'),
+        TeacherAddDialog: () => import('@/components/pages/TeacherAddDialog')
     },  
 
     methods: {
-       
     }
 }
 </script>
