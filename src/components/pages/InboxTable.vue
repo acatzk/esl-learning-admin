@@ -6,6 +6,12 @@
         show-expand
         @click:row="gotoMessage"
     >
+        <!-- DISPLAY EMAIL -->
+        <template #item.email="{ item }">
+            <v-icon>mdi-email</v-icon>
+            {{ item.email }}
+        </template>
+
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
             <v-icon>mdi-calendar</v-icon>
