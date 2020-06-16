@@ -5,7 +5,7 @@
                 <v-icon>supervisor_account</v-icon> Teachers list
             </h3>
             <v-btn small depressed color="primary">
-               <v-icon left>create_new_folder</v-icon> Add
+               <v-icon left>mdi-plus</v-icon> Add
             </v-btn>
         </header>
 
