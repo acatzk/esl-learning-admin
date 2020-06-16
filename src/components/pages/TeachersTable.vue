@@ -4,6 +4,7 @@
         :headers="headers"
         :search="search"
     >
+        <!-- ** TEACHER AVATAR  ** -->
         <template #item.firstname="{ item }">
             <v-avatar color="indigo" class="mr-2 ma-1">
                 <img
@@ -13,6 +14,8 @@
             </v-avatar>
             <span>{{`${item.firstname} ${item.lastname}`}}</span>
         </template>
+
+        <!-- ** ACTIVE AND INACTIVE ** -->
         <template #item.is_active="{ item }">
             <v-btn text small :color="item.is_active ? 'success white--text' : 'error white--text'" >
                 <v-icon left v-show="item.is_active" style="font-size: 15px;">hourglass_full</v-icon> 
@@ -20,6 +23,8 @@
                 {{ item.is_active ? 'Active' : 'Inactive' }}
             </v-btn>
         </template>
+
+        <!-- ** ACTION BUTTONS ** -->
         <template #item.id="{ item }">  
             <teachers-action-button 
                 :item="item"
