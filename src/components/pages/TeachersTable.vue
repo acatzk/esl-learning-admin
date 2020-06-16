@@ -89,6 +89,6 @@ export default {
     text-transform: capitalize;
 }
 .v-icon {
-    font-size: 15px;
+    font-size: 16px;
 }
 </style>
