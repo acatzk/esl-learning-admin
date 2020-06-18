@@ -36,15 +36,19 @@
           
           <v-container style="height: 100vh;">
             <v-row>
-              <v-col cols=4>
-                <v-list-item class="pa-3">
-                 <v-list-item-avatar>
-                    <img src="https://randomuser.me/api/portraits/men/81.jpg">
-                  </v-list-item-avatar>
-                </v-list-item>
+              <v-col cols=12 lg="4" md="4" sm="12">
+                  <add-avatar 
+                    ref="basic"
+                  />
+                  <add-avatar-editor 
+                    ref="editor"
+                    @select-file="onSelectFile($event, this.eventFile)"
+                  />
               </v-col>
-              <v-col cols="8">
+              <v-col cols="12" lg="8" md="8" sm="12">
+                <v-card style="height: 70vh;">
 
+                </v-card>
               </v-col>
             </v-row>
           </v-container>
@@ -59,6 +63,11 @@ export default {
 
     props: ['visible'],
 
+    components: {
+      AddAvatar: () => import('./AddAvatar'),
+      AddAvatarEditor: () => import('./AddAvatarEditor')
+    },
+
     computed: {
       show: {
         get () {
@@ -70,6 +79,12 @@ export default {
            }
         }
       }
+    },
+
+    methods: {
+        saveClickedFromEditor (img) {
+            this.$refs.imageFromEditor.src = img.toDataURL();
+        }
     }
 }
 </script>
