@@ -34,7 +34,7 @@
             </v-toolbar-items>
           </v-toolbar>
           
-          <v-container style="height: 100vh;">
+          <v-container fluid style="height: 100vh; background: #F6F7FB;">
             <v-row>
               <v-col cols=12 lg="4" md="4" sm="12">
                 <v-card class="text-center pa-3">
