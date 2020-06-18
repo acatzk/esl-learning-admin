@@ -67,7 +67,7 @@ export default {
             default: () => [0, 0, 0, 0.5]
         },
         scale: {
-            type: Number,
+            type: Number | String,
             default: 1
         },
         rotation: {
