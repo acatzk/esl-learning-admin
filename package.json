@@ -24,7 +24,6 @@
     "subscriptions-transport-ws": "^0.9.16",
     "vue": "^2.6.11",
     "vue-apollo": "^3.0.3",
-    "vue-avatar-cropper": "^1.0.6",
     "vue-page-transition": "^0.2.2",
     "vue-router": "^3.2.0",
     "vue-sweetalert2": "^3.0.5",
