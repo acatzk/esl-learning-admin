@@ -11,7 +11,7 @@
       ref="vueavatar"
       @vue-avatar-editor:image-ready="onImageReady"
       @select-file="onSelectFile($event)"
-      >
+    >
     </vue-avatar>
     <br>
     <label v-if="hasScale">
@@ -38,7 +38,9 @@
       />
     </label>
     <br>
-    <button @click="finished">{{ finishText }}</button>
+    <v-btn @click="finished" color="primary">
+        {{ finishText }}
+    </v-btn>
   </div>
 </template>
 
