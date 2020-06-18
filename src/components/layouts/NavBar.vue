@@ -75,9 +75,9 @@
                             <v-badge
                                 bordered
                                 color="error"
-                                overlap
-                                :content="inboxCounter ? inboxCounter.aggregate.count : 0"
-                                v-if="inboxCounter.aggregate.count !== 0"
+                                overlap 
+                                :content="inboxes_aggregate ? inboxes_aggregate.aggregate.count : 0"
+                                v-if="inboxes_aggregate ? inboxes_aggregate.aggregate.count !== 0 : 0"
                             >
                                 <v-icon>markunread</v-icon>
                             </v-badge>
@@ -130,21 +130,16 @@ export default {
     },
 
     apollo: {
-        $subscribe: {
-            inboxCount: {
-                query: gql`
-                    subscription InboxCountQuery {
-                        inboxCount: inboxes_aggregate(where: {status: {_eq: "unread"}}) {
-                            aggregate {
-                                count
-                            }
+        inboxes_aggregate: {
+            query: gql`
+                query InboxCountQuery {
+                    inboxes_aggregate(where: {status: {_eq: "unread"}}) {
+                        aggregate {
+                            count
                         }
                     }
-                `,
-                result ({ data }) {
-                    this.inboxCounter = data.inboxCount
                 }
-            }
+            `
         }
     }
 
