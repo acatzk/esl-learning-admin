@@ -37,10 +37,14 @@
           <v-container style="height: 100vh;">
             <v-row>
               <v-col cols=12 lg="4" md="4" sm="12">
-                  <add-avatar-editor 
-                    ref="editor"
-                    @select-file="onSelectFile($event, this.eventFile)"
-                  />
+                <v-card class="text-center pa-3">
+
+                    <add-avatar-editor 
+                      ref="editor"
+                      @select-file="onSelectFile($event, this.eventFile)"
+                    />
+
+                </v-card>
               </v-col>
               <v-col cols="12" lg="8" md="8" sm="12">
                 <v-card style="height: 70vh;">
