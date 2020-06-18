@@ -4,7 +4,7 @@
     
     <nav-bar /> <!-- ** NAVIGATION BAR COMPONENT ** -->
 
-    <v-content>
+    <v-main>
 
       <v-container 
         fluid
@@ -26,7 +26,7 @@
 
       <foot-bar /> <!-- ** FOOTER BAR COMPONENT ** -->
 
-    </v-content>
+    </v-main>
 
   </div>
 
