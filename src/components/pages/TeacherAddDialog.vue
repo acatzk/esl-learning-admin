@@ -37,9 +37,6 @@
           <v-container style="height: 100vh;">
             <v-row>
               <v-col cols=12 lg="4" md="4" sm="12">
-                  <add-avatar 
-                    ref="basic"
-                  />
                   <add-avatar-editor 
                     ref="editor"
                     @select-file="onSelectFile($event, this.eventFile)"
@@ -64,7 +61,6 @@ export default {
     props: ['visible'],
 
     components: {
-      AddAvatar: () => import('./AddAvatar'),
       AddAvatarEditor: () => import('./AddAvatarEditor')
     },
 
