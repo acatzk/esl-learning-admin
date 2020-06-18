@@ -37,7 +37,7 @@
           <v-container fluid style="height: 100vh; background: #F6F7FB;">
             <v-row>
               <v-col cols=12 lg="4" md="4" sm="12">
-                <v-card class="text-center pa-3">
+                <v-card class="text-center pa-3" outlined>
 
                     <add-avatar-editor 
                       ref="editor"
@@ -47,7 +47,7 @@
                 </v-card>
               </v-col>
               <v-col cols="12" lg="8" md="8" sm="12">
-                <v-card style="height: 70vh;">
+                <v-card style="height: 70vh;" outlined>
 
                 </v-card>
               </v-col>
