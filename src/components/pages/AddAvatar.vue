@@ -71,7 +71,7 @@ export default {
             default: 1
         },
         rotation: {
-            type: Number,
+            type: Number | String,
             default: 0
         }
     },
