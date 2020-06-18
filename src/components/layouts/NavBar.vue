@@ -112,7 +112,7 @@ export default {
     name: 'NavBar',
     data () {
         return {
-            drawer: null,
+            drawer: true,
             sidebarItems: [
                 { heading: 'Management' },
                 { icon: 'dashboard', text: 'Dashboard', to: '/' },
