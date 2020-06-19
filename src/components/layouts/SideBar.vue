@@ -41,9 +41,9 @@
                             :content="inboxCounter ? inboxCounter.aggregate.count : 0"
                             v-if="inboxCounter ? inboxCounter.aggregate.count !== 0 : 0"
                         >
-                            <v-icon>markunread</v-icon>
+                            <v-icon>mdi-email-outline</v-icon>
                         </v-badge>
-                        <v-icon v-else>markunread</v-icon>
+                        <v-icon v-else>mdi-email-outline</v-icon>
                     </v-list-item-action>
                     <!-- END INBOX ICON WITH BADGES NUMBER OF UNREAD MESSAGE -->
 
@@ -93,7 +93,7 @@ export default {
             sidebarItems: [
                 { heading: 'Management' },
                 { icon: 'mdi-hexagon-outline', text: 'Dashboard', to: '/' },
-                { icon: 'mdi-inbox', text: 'Inbox', to: '/inbox' },
+                { icon: 'mdi-email-outline', text: 'Inbox', to: '/inbox' },
                 { icon: 'library_books', text: 'Lessons', to: '/lessons' },
                 { icon: 'supervisor_account', text: 'Teachers', to: '/teachers' },
                 { icon: 'face', text: 'Students', to: '/students' },
