@@ -92,8 +92,8 @@ export default {
         return {
             sidebarItems: [
                 { heading: 'Management' },
-                { icon: 'dashboard', text: 'Dashboard', to: '/' },
-                { icon: 'markunread', text: 'Inbox', to: '/inbox' },
+                { icon: 'mdi-hexagon-outline', text: 'Dashboard', to: '/' },
+                { icon: 'mdi-inbox', text: 'Inbox', to: '/inbox' },
                 { icon: 'library_books', text: 'Lessons', to: '/lessons' },
                 { icon: 'supervisor_account', text: 'Teachers', to: '/teachers' },
                 { icon: 'face', text: 'Students', to: '/students' },
