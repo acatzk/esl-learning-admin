@@ -49,6 +49,82 @@
               <v-col cols="12" lg="8" md="8" sm="12">
                 <v-card style="height: 70vh;" outlined>
 
+                  <v-form>
+                    <v-row class="ma-3">
+                      <v-col cols="12" sm="6">
+                        <v-text-field
+                          prepend-inner-icon="mdi-account-circle"
+                          outlined
+                          placeholder="Firstname"
+                        >
+                        </v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6">
+                        <v-text-field
+                          prepend-inner-icon="mdi-account-circle"
+                          outlined
+                          placeholder="Lastname"
+                        >
+                        </v-text-field>
+                      </v-col>
+                      <v-col cols="12" sm="6">
+                        <v-text-field
+                          prepend-inner-icon="mdi-email"
+                          outlined
+                          placeholder="Email"
+                          autocomplete="off"
+                        >
+                        </v-text-field>
+                        </v-col>
+                        <v-col cols="12" sm="6">
+                          <v-text-field
+                            prepend-inner-icon="mdi-phone"
+                            outlined
+                            placeholder="Contact"
+                            autocomplete="off"
+                          >
+                          </v-text-field>
+                        </v-col>
+                        <v-col class="d-flex" cols="12" sm="6">
+                          <v-select
+                            :items="genderList"
+                            label="Gender"
+                            outlined
+                            prepend-inner-icon="mdi-gender-male-female"
+                          ></v-select>
+                        </v-col>
+                        <v-col cols="12" sm="6">
+                          <v-menu
+                            ref="menu"
+                            v-model="menu"
+                            :close-on-content-click="false"
+                            transition="scale-transition"
+                            offset-y
+                            min-width="290px"
+                          >
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-text-field
+                                v-model="date"
+                                label="Birthday date"
+                                prepend-inner-icon="event"
+                                readonly
+                                v-bind="attrs"
+                                v-on="on"
+                                outlined
+                              ></v-text-field>
+                            </template>
+                            <v-date-picker
+                              ref="picker"
+                              v-model="date"
+                              :max="new Date().toISOString().substr(0, 10)"
+                              min="1950-01-01"
+                              @change="save"
+                            ></v-date-picker>
+                          </v-menu>
+                        </v-col>
+                    </v-row>
+                  </v-form>
+
                 </v-card>
               </v-col>
             </v-row>
@@ -63,6 +139,17 @@ export default {
     name: 'TeacherAddDialog',
 
     props: ['visible'],
+
+    data: () => ({
+      date: null,
+      menu: false,
+      genderList: ['Male', 'Female']
+    }),
+    watch: {
+      menu (val) {
+        val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
+      },
+    },
 
     components: {
       AddAvatarEditor: () => import('./AddAvatarEditor')
@@ -84,7 +171,10 @@ export default {
     methods: {
         saveClickedFromEditor (img) {
             this.$refs.imageFromEditor.src = img.toDataURL();
-        }
+        },
+        save (date) {
+          this.$refs.menu.save(date)
+        },
     }
 }
 </script>
