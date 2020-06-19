@@ -94,7 +94,7 @@ export default {
                 { heading: 'Management' },
                 { icon: 'mdi-hexagon-outline', text: 'Dashboard', to: '/' },
                 { icon: 'mdi-email-outline', text: 'Inbox', to: '/inbox' },
-                { icon: 'library_books', text: 'Lessons', to: '/lessons' },
+                { icon: 'mdi-folder-multiple-outline', text: 'Lessons', to: '/lessons' },
                 { icon: 'supervisor_account', text: 'Teachers', to: '/teachers' },
                 { icon: 'face', text: 'Students', to: '/students' },
                 { heading: 'Account Setting' },
