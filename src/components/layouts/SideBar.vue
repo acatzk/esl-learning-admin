@@ -98,7 +98,7 @@ export default {
                 { icon: 'mdi-account-multiple-outline', text: 'Teachers', to: '/teachers' },
                 { icon: 'mdi-account-box-outline', text: 'Students', to: '/students' },
                 { heading: 'Account Setting' },
-                { icon: 'settings', text: 'Settings', to: '/settings' },
+                { icon: 'mdi-shield-outline', text: 'Settings', to: '/settings' },
                 { icon: 'perm_contact_calendar', text: 'Profile', to: '/profile' },
                 { icon: 'whatshot', text: 'Logout', to: '/logout' },
             ],
