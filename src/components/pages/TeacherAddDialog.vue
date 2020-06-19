@@ -47,7 +47,7 @@
                 </v-card>
               </v-col>
               <v-col cols="12" lg="8" md="8" sm="12">
-                <v-card style="height: 70vh;" outlined>
+                <v-card outlined>
 
                   <v-form>
                     <v-row class="ma-3">
