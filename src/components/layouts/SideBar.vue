@@ -100,7 +100,7 @@ export default {
                 { heading: 'Account Setting' },
                 { icon: 'mdi-shield-outline', text: 'Settings', to: '/settings' },
                 { icon: 'mdi-account-outline', text: 'Profile', to: '/profile' },
-                { icon: 'whatshot', text: 'Logout', to: '/logout' },
+                { icon: 'mdi-logout', text: 'Logout', to: '/logout' },
             ],
             inboxCounter: 0
         }
