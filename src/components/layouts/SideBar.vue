@@ -99,7 +99,7 @@ export default {
                 { icon: 'mdi-account-box-outline', text: 'Students', to: '/students' },
                 { heading: 'Account Setting' },
                 { icon: 'mdi-shield-outline', text: 'Settings', to: '/settings' },
-                { icon: 'perm_contact_calendar', text: 'Profile', to: '/profile' },
+                { icon: 'mdi-account-outline', text: 'Profile', to: '/profile' },
                 { icon: 'whatshot', text: 'Logout', to: '/logout' },
             ],
             inboxCounter: 0
