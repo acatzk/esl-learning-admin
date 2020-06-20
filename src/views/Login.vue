@@ -43,6 +43,7 @@
                     label="Email"
                     prepend-icon="mdi-email-outline"
                     type="email"
+                    :rules="[rules.required]"
                     v-model="email"
                   ></v-text-field>
 
@@ -53,6 +54,7 @@
                     :type="show ? 'text' : 'password'"
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     @click:append="show = !show"
+                    :rules="[rules.required]"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -84,7 +86,10 @@
         source: 'https://victorsolutions.netlify.app/',
         email: '',
         password: '', 
-        show: false
+        show: false,
+        rules: {
+          required: value => !!value || ' required.'
+        }
       }
     }
   }
