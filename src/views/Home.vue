@@ -13,11 +13,13 @@
         <vue-page-transition name="fade-in-right" class="content">
 
           <dashboard-page 
+            class="elevation-5"
             v-if="$route.path === '/'"
           /> <!-- ** DASHBOARD PAGE COMPONENT ** -->
 
           <router-view 
             v-else
+            class="elevation-5"
           ></router-view> <!-- ** DYNAMIC CONTENT ROUTE ** -->
 
         </vue-page-transition>
