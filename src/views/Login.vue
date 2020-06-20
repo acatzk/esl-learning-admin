@@ -65,6 +65,7 @@
                   color="deep-purple darken-4 white--text" 
                   depressed
                   text
+                  :loading="loading"
                 >
                 <v-icon left>mdi-security</v-icon> Login
                 </v-btn>
@@ -87,6 +88,7 @@
         email: '',
         password: '', 
         show: false,
+        loading: false,
         required(propertyType) { 
             return v => v && v.length > 0 || `${propertyType} is required.`
         },
