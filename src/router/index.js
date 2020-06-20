@@ -8,29 +8,29 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import('@/views/Home'),
+    component: () => import('@/views/admin/Home'),
     meta: { requiresAuth: true },
     children: [
       {
         path: 'profile',
         name: 'profile',
-        component: () => import('@/views/Profile')
+        component: () => import('@/views/admin/Profile')
       },
       {
         path: 'inbox',
         name: 'inbox',
-        component: () => import('@/views/Inbox')
+        component: () => import('@/views/admin/Inbox')
       },
       {
         path: 'inbox/:id',
         name: 'inbox-message',
-        component: () => import('@/views/InboxMessage'),
+        component: () => import('@/views/admin/InboxMessage'),
         meta: { transition: 'fade-in-up' }
       },
       {
         path: 'teachers',
         name: 'teachers',
-        component: () => import('@/views/Teachers')
+        component: () => import('@/views/admin/Teachers')
       }
     ]
   },
