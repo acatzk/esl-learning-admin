@@ -51,6 +51,7 @@
                     type="email"
                     :rules="[required('Email'), emailRules('Email')]"
                     v-model="email"
+                    autocomplete="off"
                   ></v-text-field>
 
                   <v-text-field
@@ -61,6 +62,7 @@
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     @click:append="show = !show"
                     :rules="[required('Password')]"
+                    autocomplete="off"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
