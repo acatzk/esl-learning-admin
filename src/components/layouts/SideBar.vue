@@ -28,6 +28,7 @@
                     :to="item.to"  
                     color="deep-purple darken-2"
                 >
+                    <!-- ** SIDEBAR HEADING ** -->
                     <v-list-item-action v-if="item.heading">
                         {{ item.heading }}
                     </v-list-item-action>
@@ -47,17 +48,30 @@
                     </v-list-item-action>
                     <!-- END INBOX ICON WITH BADGES NUMBER OF UNREAD MESSAGE -->
 
+                    <!-- DYNAMIC ICON EXCEPT INBOX ICON -->
                     <v-list-item-action v-if="item.text !== 'Inbox'">
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-action>
-
+                    
                     <v-list-item-content>
                         <v-list-item-title 
                             class="font-weight-medium"
+                            v-if="item.text !== 'Logout'"
                         >
                             {{ item.text }}
                         </v-list-item-title>
+
+                        <v-list-item-title 
+                            class="font-weight-medium"
+                            @click="adminLogout"
+                            v-if="item.text === 'Logout'"
+                        >
+                            Logout
+                        </v-list-item-title>
                     </v-list-item-content>
+
+
+
                 </v-list-item>
                 <v-divider :key="`i-${i}`" class="mx-2"></v-divider>
             </template>
@@ -69,6 +83,8 @@
 <script>
 
 import gql from 'graphql-tag'
+
+import { fb } from '@/firebase'
 
 export default {
     name: 'SideBar',
@@ -100,9 +116,20 @@ export default {
                 { heading: 'Account Setting' },
                 { icon: 'mdi-shield-outline', text: 'Settings', to: '/settings' },
                 { icon: 'mdi-account-outline', text: 'Profile', to: '/profile' },
-                { icon: 'mdi-logout', text: 'Logout', to: '/logout' },
+                { icon: 'mdi-logout', text: 'Logout' },
             ],
             inboxCounter: 0
+        }
+    },
+
+    methods: {
+        adminLogout () {
+            fb.auth()
+              .signOut()
+              .then(() => {
+                    location.reload()
+                })
+              .catch(error => console.log(error))
         }
     },
 
