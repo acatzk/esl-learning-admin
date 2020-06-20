@@ -43,7 +43,7 @@
                     label="Email"
                     prepend-icon="mdi-email-outline"
                     type="email"
-                    :rules="[required('Email')]"
+                    :rules="[required('Email'), emailRules('Email')]"
                     v-model="email"
                   ></v-text-field>
 
@@ -89,6 +89,9 @@
         show: false,
         required(propertyType) { 
             return v => v && v.length > 0 || `${propertyType} is required.`
+        },
+        emailRules(propertyType) {
+            return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
         }
       }
     }
