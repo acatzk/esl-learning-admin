@@ -28,7 +28,7 @@
 
       <foot-bar /> <!-- ** FOOTER BAR COMPONENT ** -->
 
-    </main-bar>
+    </main-bar> <!-- ** MAIN BAR COMPONENT ** -->
 
   </div>
 
