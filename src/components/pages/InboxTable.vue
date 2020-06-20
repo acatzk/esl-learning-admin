@@ -185,7 +185,7 @@ export default {
                 .catch(error => console.error(error))
         },
         gotoMessage(item) {
-            this.$router.push(`/inbox/${item.id}`)
+            this.$router.push(`/admin/inbox/${item.id}`)
         }
         
     }
