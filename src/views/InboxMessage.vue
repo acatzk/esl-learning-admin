@@ -1,7 +1,7 @@
 <template>
     <div class="inbox-message">
         <div class="d-flex justify-space-between">
-            <div class="mb-1">
+            <div class="ma-2">
                 <v-btn 
                     to="/inbox" 
                     icon 
@@ -39,7 +39,7 @@
                     <span>Delete Message</span>
                 </v-tooltip>
             </div>
-            <h4 style="position: relative; top: 5px; right: 10px;">Inbox message</h4>
+            <h4 style="position: relative; top: 15px; right: 10px;">Inbox message</h4>
         </div>
         <v-skeleton-loader
             type="table-thead, table-tbody"
