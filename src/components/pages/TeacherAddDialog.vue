@@ -55,7 +55,7 @@
                         <v-text-field
                           prepend-inner-icon="mdi-account-circle"
                           outlined
-                          placeholder="Firstname"
+                          label="Firstname"
                         >
                         </v-text-field>
                       </v-col>
@@ -63,7 +63,7 @@
                         <v-text-field
                           prepend-inner-icon="mdi-account-circle"
                           outlined
-                          placeholder="Lastname"
+                          label="Lastname"
                         >
                         </v-text-field>
                       </v-col>
@@ -71,7 +71,7 @@
                         <v-text-field
                           prepend-inner-icon="mdi-email"
                           outlined
-                          placeholder="Email"
+                          label="Email"
                           autocomplete="off"
                         >
                         </v-text-field>
@@ -80,7 +80,7 @@
                           <v-text-field
                             prepend-inner-icon="mdi-phone"
                             outlined
-                            placeholder="Contact"
+                            label="Contact"
                             autocomplete="off"
                           >
                           </v-text-field>
