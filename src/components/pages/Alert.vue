@@ -32,3 +32,11 @@ export default {
     }   
 }
 </script>
+
+<style scoped>
+
+.v-alert {
+    border-radius: 0;
+}
+
+</style>
