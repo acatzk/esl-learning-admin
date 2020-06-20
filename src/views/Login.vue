@@ -43,7 +43,7 @@
                     label="Email"
                     prepend-icon="mdi-email-outline"
                     type="email"
-                    :rules="[rules.required]"
+                    :rules="[required('Email')]"
                     v-model="email"
                   ></v-text-field>
 
@@ -54,7 +54,7 @@
                     :type="show ? 'text' : 'password'"
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     @click:append="show = !show"
-                    :rules="[rules.required]"
+                    :rules="[required('Password')]"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -87,8 +87,8 @@
         email: '',
         password: '', 
         show: false,
-        rules: {
-          required: value => !!value || ' required.'
+        required(propertyType) { 
+            return v => v && v.length > 0 || `${propertyType} is required.`
         }
       }
     }
