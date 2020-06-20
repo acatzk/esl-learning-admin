@@ -42,13 +42,15 @@
                   <v-text-field
                     label="Email"
                     prepend-icon="mdi-email-outline"
-                    type="text"
+                    type="email"
+                    v-model="email"
                   ></v-text-field>
 
                   <v-text-field
                     label="Password"
                     prepend-icon="mdi-lock-outline"
                     type="password"
+                    v-model="password"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -77,7 +79,9 @@
 
     data () {
       return {
-        source: 'https://victorsolutions.netlify.app/'
+        source: 'https://victorsolutions.netlify.app/',
+        email: '',
+        password: ''
       }
     }
   }
