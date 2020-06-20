@@ -3,6 +3,7 @@
       :type="type"
       :border="border"
       :color="color"
+      :text="textStyle"
     >
       {{ text }}
     </v-alert>
@@ -28,6 +29,10 @@ export default {
         text: {
             type: String,
             required: true
+        },
+        textStyle: {
+            type: Boolean,
+            default: false
         }
     }   
 }
