@@ -6,6 +6,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: '*',
+    name: 'not-found',
+    component: () => import('@/components/404')
+  },
+  {
     path: '/',
     name: 'welcome',
     component: () => import('@/views/Welcome')
