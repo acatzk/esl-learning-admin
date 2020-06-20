@@ -3,7 +3,7 @@
         <div class="d-flex justify-space-between">
             <div class="ma-2">
                 <v-btn 
-                    to="/inbox" 
+                    to="/admin/inbox" 
                     icon 
                     class="mr-2"
                 >
@@ -172,7 +172,7 @@ export default {
                         icon: 'success',
                         title: 'Marked as Read'
                     })
-                    this.$router.push('/inbox')
+                    this.$router.push('/admin/inbox')
                 })
                 .catch(error => console.error(error))
         },
@@ -202,7 +202,7 @@ export default {
                             icon: 'success',
                             title: 'Successfully Deleted.'
                         })
-                        this.$router.push('/inbox')
+                        this.$router.push('/admin/inbox')
                     })
                     .catch(error => console.error(error))
             } 
