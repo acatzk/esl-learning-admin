@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import { fb } from '@/firebase'
 
 Vue.use(VueRouter);
 
@@ -44,6 +45,20 @@ const router = new VueRouter({
   routes,
   mode: 'history'
 });
+
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  const currentUser = fb.auth().currentUser
+
+  if (requiresAuth && !currentUser) {
+    next('/login')
+  } else if (!requiresAuth && currentUser) {
+    next('/')
+  } else {
+    next()
+  }
+})
 
 router.beforeResolve((to, from, next) => {
   // If this isn't an initial page load.
