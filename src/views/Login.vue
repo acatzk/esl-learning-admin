@@ -49,8 +49,10 @@
                   <v-text-field
                     label="Password"
                     prepend-icon="mdi-lock-outline"
-                    type="password"
                     v-model="password"
+                    :type="show ? 'text' : 'password'"
+                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                    @click:append="show = !show"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
@@ -81,7 +83,8 @@
       return {
         source: 'https://victorsolutions.netlify.app/',
         email: '',
-        password: ''
+        password: '', 
+        show: false
       }
     }
   }
