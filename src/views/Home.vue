@@ -4,7 +4,7 @@
     
     <nav-bar /> <!-- ** NAVIGATION BAR COMPONENT ** -->
 
-    <v-main>
+    <main-bar>
 
       <v-container 
         fluid
@@ -28,7 +28,7 @@
 
       <foot-bar /> <!-- ** FOOTER BAR COMPONENT ** -->
 
-    </v-main>
+    </main-bar>
 
   </div>
 
@@ -43,6 +43,8 @@ export default {
   components: {
 
     NavBar: () => import('@/components/layouts/NavBar'),
+
+    MainBar: () => import('@/components/layouts/MainBar'),
 
     DashboardPage: () => import('@/components/pages/DashboardPage'),
 
