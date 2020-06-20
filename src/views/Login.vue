@@ -44,7 +44,7 @@
                 </v-tooltip>
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                <v-form @submit.prevent="loginAdminstrator">
                   <v-text-field
                     label="Email"
                     prepend-icon="mdi-email-outline"
@@ -73,6 +73,7 @@
                   color="deep-purple darken-4 white--text" 
                   depressed
                   text
+                  @click="loginAdminstrator"
                   :loading="loading"
                 >
                 <v-icon left>mdi-security</v-icon> Login
@@ -107,6 +108,12 @@
         emailRules(propertyType) {
             return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
         }
+      }
+    },
+
+    methods: {
+      loginAdminstrator () {
+        
       }
     }
   }
