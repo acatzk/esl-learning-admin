@@ -78,6 +78,7 @@
                                         color="deep-purple darken-4" 
                                         width="100%" 
                                         outlined 
+                                        text
                                         @click="markAsReadMessage(id)"
                                     >
                                         <v-icon left>email</v-icon> Mark as Read
