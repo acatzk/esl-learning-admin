@@ -6,11 +6,16 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/admin",
     name: "home",
     component: () => import('@/views/admin/Home'),
     meta: { requiresAuth: true },
     children: [
+      {
+        path: 'dashboard',
+        name: 'dashboard',
+        component: () => import('@/components/pages/DashboardPage')
+      },
       {
         path: 'profile',
         name: 'profile',
@@ -54,7 +59,7 @@ router.beforeEach((to, from, next) => {
   if (requiresAuth && !currentUser) {
     next('/login')
   } else if (!requiresAuth && currentUser) {
-    next('/')
+    next('/admin/dashboard')
   } else {
     next()
   }
