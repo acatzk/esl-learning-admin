@@ -4,6 +4,7 @@
     <alert 
       v-show="error"
       :text="capitalize(error.split('/')[1])"
+      :textStyle="true"
     />
 
     <v-main>
