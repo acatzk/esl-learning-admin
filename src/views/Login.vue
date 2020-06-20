@@ -1,5 +1,11 @@
 <template>
   <v-app id="inspire">
+
+    <alert 
+      v-show="false"
+      text="Invalid Credentials."
+    />
+
     <v-main>
       <v-container
         class="fill-height"
@@ -81,6 +87,10 @@
 <script>
   export default {
     name: 'Login',
+
+    components: {
+      Alert: () => import('@/components/pages/Alert')
+    },
 
     data () {
       return {
