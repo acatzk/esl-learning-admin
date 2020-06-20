@@ -108,14 +108,14 @@ export default {
         return {
             sidebarItems: [
                 { heading: 'Management' },
-                { icon: 'mdi-hexagon-outline', text: 'Dashboard', to: '/' },
-                { icon: 'mdi-email-outline', text: 'Inbox', to: '/inbox' },
-                { icon: 'mdi-folder-multiple-outline', text: 'Lessons', to: '/lessons' },
-                { icon: 'mdi-account-multiple-outline', text: 'Teachers', to: '/teachers' },
-                { icon: 'mdi-account-box-outline', text: 'Students', to: '/students' },
+                { icon: 'mdi-hexagon-outline', text: 'Dashboard', to: '/admin/dashboard' },
+                { icon: 'mdi-email-outline', text: 'Inbox', to: '/admin/inbox' },
+                { icon: 'mdi-folder-multiple-outline', text: 'Lessons', to: '/admin/lessons' },
+                { icon: 'mdi-account-multiple-outline', text: 'Teachers', to: '/admin/teachers' },
+                { icon: 'mdi-account-box-outline', text: 'Students', to: '/admin/students' },
                 { heading: 'Account Setting' },
-                { icon: 'mdi-shield-outline', text: 'Settings', to: '/settings' },
-                { icon: 'mdi-account-outline', text: 'Profile', to: '/profile' },
+                { icon: 'mdi-shield-outline', text: 'Settings', to: '/admin/settings' },
+                { icon: 'mdi-account-outline', text: 'Profile', to: '/admin/profile' },
                 { icon: 'mdi-logout', text: 'Logout' },
             ],
             inboxCounter: 0
