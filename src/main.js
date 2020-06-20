@@ -7,6 +7,7 @@ import VuePageTransition from 'vue-page-transition'
 import apolloProvider from './apollo'
 import VueSweetalert2 from 'vue-sweetalert2';
 import VueTimeago from 'vue-timeago'
+import { fb } from '@/firebase'
 
 Vue.config.productionTip = false;
 
@@ -28,11 +29,17 @@ Vue.use(VueTimeago, {
   }
 })
 
+let app = ''
 
-new Vue({
-  router,
-  store,
-  vuetify,
-  apolloProvider,
-  render: h => h(App)
-}).$mount("#app");
+
+fb.auth().onAuthStateChanged(() => {
+  if (!app) {
+    new Vue({
+      router,
+      store,
+      vuetify,
+      apolloProvider,
+      render: h => h(App)
+    }).$mount("#app");
+  }
+})
