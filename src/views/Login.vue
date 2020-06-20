@@ -130,7 +130,7 @@ export default {
         .signInWithEmailAndPassword(email, password)
         .then(() => {
           this.loading = false
-          this.$router.push('/')
+          this.$router.push('/admin/dashboard')
         })
         .catch(error => this.errorProvider(error))
     },
