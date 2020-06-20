@@ -2,8 +2,8 @@
   <v-app id="inspire">
 
     <alert 
-      v-show="false"
-      text="Invalid Credentials."
+      v-show="error"
+      :text="capitalize(error.split('/')[1])"
     />
 
     <v-main>
@@ -44,7 +44,8 @@
                 </v-tooltip>
               </v-toolbar>
               <v-card-text>
-                <v-form @submit.prevent="loginAdminstrator">
+
+                <v-form>
                   <v-text-field
                     label="Email"
                     prepend-icon="mdi-email-outline"
@@ -52,6 +53,7 @@
                     :rules="[required('Email'), emailRules('Email')]"
                     v-model="email"
                     autocomplete="off"
+                    @keyup.enter="loginAdminstrator"
                   ></v-text-field>
 
                   <v-text-field
@@ -63,8 +65,10 @@
                     @click:append="show = !show"
                     :rules="[required('Password')]"
                     autocomplete="off"
+                    @keyup.enter="loginAdminstrator"
                   ></v-text-field>
                 </v-form>
+
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
@@ -88,35 +92,68 @@
 </template>
 
 <script>
-  export default {
-    name: 'Login',
 
-    components: {
-      Alert: () => import('@/components/pages/Alert')
+import { fb } from '@/firebase'
+
+export default {
+  name: 'Login',
+
+  components: {
+    Alert: () => import('@/components/pages/Alert')
+  },
+
+  data () {
+    return {
+      source: 'https://victorsolutions.netlify.app/',
+      email: '',
+      password: '', 
+      show: false,
+      loading: false,
+      required(propertyType) { 
+          return v => v && v.length > 0 || `${propertyType} is required.`
+      },
+      emailRules(propertyType) {
+          return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
+      },
+      error: ''
+    }
+  },
+
+  methods: {
+    loginAdminstrator () {
+      this.loading = true
+
+      const { email, password } = this.$data
+
+      fb.auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          this.loading = false
+          this.$router.push('/')
+        })
+        .catch(error => this.errorProvider(error))
     },
 
-    data () {
-      return {
-        source: 'https://victorsolutions.netlify.app/',
-        email: '',
-        password: '', 
-        show: false,
-        loading: false,
-        required(propertyType) { 
-            return v => v && v.length > 0 || `${propertyType} is required.`
-        },
-        emailRules(propertyType) {
-            return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
-        }
+    errorProvider(error) {
+      this.loading = false
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      if (errorCode) {
+          return this.error = errorCode
+      } else if (errorMessage) {
+          return this.error = errorMessage
+      } else {
+          return this.error = error
       }
     },
 
-    methods: {
-      loginAdminstrator () {
-        
-      }
+    capitalize(s) {
+        if (typeof s !== 'string') return ''
+        return s.charAt(0).toUpperCase() + s.slice(1)
     }
   }
+
+}
 </script>
 
 
