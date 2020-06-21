@@ -28,6 +28,7 @@
                 dark
                 text
                 large
+                @click="saveTeacherInfo"
               >
                <v-icon left>mdi-account-plus</v-icon> Save
               </v-btn>
@@ -187,6 +188,9 @@ export default {
         save (date) {
           this.$refs.menu.save(date)
         },
+        saveTeacherInfo () {
+          
+        }
     }
 }
 </script>
