@@ -52,6 +52,11 @@
 export default {
     name: 'TeachersActionButton',
 
-    props: ['item']
+    props: {
+        item: {
+            type: String,
+            required: true
+        }
+    }
 }
 </script>
