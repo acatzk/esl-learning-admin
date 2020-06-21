@@ -14,6 +14,8 @@
         </header>
 
         <v-card flat>
+
+            <!-- ** SEARCH TEXT FIELD ** -->
             <v-text-field
                 label="Search"
                 v-model="search"
@@ -25,6 +27,7 @@
                 style="position: relative; top: 10px; border-radius: 50px;"
             ></v-text-field>
 
+            <!-- ** SKELETON LOADING FOR DATA ** -->
             <v-skeleton-loader
                 type="table-tbody"
                 class="mx-auto"
@@ -32,6 +35,7 @@
                 v-if="$apollo.loading"
             ></v-skeleton-loader> 
 
+            <!-- ** TEACHERS VUETIFY TABLE ** -->
             <teachers-table 
                 v-else
                 :items="teachers"
