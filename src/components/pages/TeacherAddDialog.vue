@@ -28,6 +28,7 @@
                 dark
                 text
                 large
+                :loading="loading"
                 @click="saveTeacherInfo"
               >
                <v-icon left>mdi-account-plus</v-icon> Save
@@ -51,7 +52,7 @@
                   <div class="text-muted text-center mt-3 font-weight-medium">
                     Teachers Information
                   </div>
-                  <v-form>
+                  <v-form :disabled="loading">
                     <v-row class="ma-3">
                       <v-col cols="12" sm="6">
                         <v-text-field
@@ -162,6 +163,7 @@ export default {
       date: null,
       menu: false,
       genderList: ['Male', 'Female'],
+      loading: false,
       required(propertyType) { 
           return v => v && v.length > 0 || `${propertyType} is required.`
       },
@@ -207,6 +209,7 @@ export default {
           this.$refs.menu.save(date)
         },
         saveTeacherInfo () {
+          this.loading = true
         }
     }
 }
