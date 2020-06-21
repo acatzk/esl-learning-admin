@@ -55,6 +55,7 @@
                           prepend-inner-icon="mdi-account-circle"
                           outlined
                           label="Firstname"
+                          v-model="firstname"
                         >
                         </v-text-field>
                       </v-col>
@@ -63,6 +64,7 @@
                           prepend-inner-icon="mdi-account-circle"
                           outlined
                           label="Lastname"
+                          v-model="lastname"
                         >
                         </v-text-field>
                       </v-col>
@@ -72,6 +74,7 @@
                           outlined
                           label="Email"
                           autocomplete="off"
+                          v-model="email"
                         >
                         </v-text-field>
                         </v-col>
@@ -81,6 +84,7 @@
                             outlined
                             label="Contact"
                             autocomplete="off"
+                            v-model="contact"
                           >
                           </v-text-field>
                         </v-col>
@@ -89,6 +93,7 @@
                             :items="genderList"
                             label="Gender"
                             outlined
+                            v-model="gender"
                             prepend-inner-icon="mdi-gender-male-female"
                           ></v-select>
                         </v-col>
@@ -140,6 +145,11 @@ export default {
     props: ['visible'],
 
     data: () => ({
+      firstname: '',
+      lastname: '',
+      email: '',
+      contact: '',
+      gender: '',
       date: null,
       menu: false,
       genderList: ['Male', 'Female']
