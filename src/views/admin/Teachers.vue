@@ -2,7 +2,7 @@
     <div class="teachers">
         <header class="d-flex justify-space-between">
             <v-toolbar-title>
-                <v-icon right>supervisor_account</v-icon> Teachers list
+                <v-icon right>supervisor_account</v-icon> Teachers List
             </v-toolbar-title>
             <v-btn small depressed color="primary" @click.stop="dialog = true">
                <v-icon left>mdi-account-plus</v-icon> Add
@@ -165,12 +165,8 @@ export default {
 <style scoped lang="scss">
 .teachers {
     header {
-        background: white;
-        padding: 20px;
-        border-bottom: 2px solid #eee;
-        h3 {
-            color: rgb(54, 54, 54);
-        }
+        padding: 15px;
+        border-bottom: 1px solid #eee;
     }
     .v-btn-toggle {
         .v-btn {
