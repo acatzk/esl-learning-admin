@@ -52,7 +52,12 @@
                   <div class="text-muted text-center mt-3 font-weight-medium">
                     Teachers Information
                   </div>
-                  <v-form :disabled="loading">
+                  <v-form 
+                    :disabled="loading" 
+                    ref="form"
+                    v-model="valid"
+                    lazy-validation
+                  >
                     <v-row class="ma-3">
                       <v-col cols="12" sm="6">
                         <v-text-field
@@ -164,6 +169,7 @@ export default {
       menu: false,
       genderList: ['Male', 'Female'],
       loading: false,
+      valid: true,
       required(propertyType) { 
           return v => v && v.length > 0 || `${propertyType} is required.`
       },
@@ -201,15 +207,21 @@ export default {
     },
 
     methods: {
+
         saveClickedFromEditor (img) {
             this.$refs.imageFromEditor.src = img.toDataURL();
             console.log(img)
         },
+
         save (date) {
           this.$refs.menu.save(date)
         },
+
         saveTeacherInfo () {
-          this.loading = true
+          if (this.$refs.form.validate()) {
+            alert('Good')
+            this.$refs.form.reset()
+          }
         }
     }
 }
