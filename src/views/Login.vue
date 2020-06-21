@@ -46,7 +46,12 @@
               </v-toolbar>
               <v-card-text>
 
-                <v-form>
+                <v-form
+                  :disabled="loading" 
+                  ref="form"
+                  v-model="valid"
+                  lazy-validation
+                >
                   <v-text-field
                     label="Email"
                     prepend-icon="mdi-email-outline"
@@ -110,6 +115,7 @@ export default {
       password: '', 
       show: false,
       loading: false,
+      valid: true,
       required(propertyType) { 
           return v => v && v.length > 0 || `${propertyType} is required.`
       },
@@ -122,17 +128,20 @@ export default {
 
   methods: {
     loginAdminstrator () {
-      this.loading = true
+      if (this.$refs.form.validate()) {
+        this.loading = true
 
-      const { email, password } = this.$data
+        const { email, password } = this.$data
 
-      fb.auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(() => {
-          this.loading = false
-          this.$router.push('/admin/dashboard')
-        })
-        .catch(error => this.errorProvider(error))
+        fb.auth()
+          .signInWithEmailAndPassword(email, password)
+          .then(() => {
+            this.loading = false
+            this.$refs.form.reset()
+            this.$router.push('/admin/dashboard')
+          })
+          .catch(error => this.errorProvider(error))
+      }
     },
 
     errorProvider(error) {
