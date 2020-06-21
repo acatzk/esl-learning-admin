@@ -47,7 +47,9 @@
               </v-col>
               <v-col cols="12" lg="8" md="8" sm="12">
                 <v-card outlined>
-
+                  <div class="text-muted text-center mt-3 font-weight-medium">
+                    Teachers Information
+                  </div>
                   <v-form>
                     <v-row class="ma-3">
                       <v-col cols="12" sm="6">
