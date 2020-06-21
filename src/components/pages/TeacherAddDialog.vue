@@ -97,7 +97,7 @@
                             label="Contact"
                             autocomplete="off"
                             v-model="contact"
-                            :rules="[required('Contact'), minLength('Contact number', 12), maxLength('Contact number', 12)]"
+                            :rules="[required('Contact'), minLength('Contact number', 11), maxLength('Contact number', 11)]"
                           >
                           </v-text-field>
                         </v-col>
