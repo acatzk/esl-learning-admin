@@ -1,6 +1,6 @@
 <template>
     <v-btn-toggle>
-        <v-tooltip top color="primary">
+        <!-- <v-tooltip top color="primary">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn 
                     text
@@ -15,7 +15,7 @@
             </v-btn>
             </template>
             <span>View</span>
-        </v-tooltip>
+        </v-tooltip> -->
         <v-tooltip top color="warning">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn 
