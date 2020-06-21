@@ -68,7 +68,14 @@ export default {
         TeacherAddDialog: () => import('@/components/pages/TeacherAddDialog')
     },  
 
-    
+    apollo: {
+        teachers: {
+            query: TEACHERS_QUERY,
+            result ({ data }) {
+                this.teachers = data.teachers
+            }
+        }
+    }
 }
 </script>
 
