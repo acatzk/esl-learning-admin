@@ -68,8 +68,7 @@ export default {
         TeacherAddDialog: () => import('@/components/pages/TeacherAddDialog')
     },  
 
-    methods: {
-    }
+    
 }
 </script>
 
