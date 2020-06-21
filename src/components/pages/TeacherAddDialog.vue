@@ -59,6 +59,7 @@
                           outlined
                           label="Firstname"
                           v-model="firstname"
+                          :rules="[required('Firstname'), minLength('Firstname', 3), maxLength('Firstname', 20)]"
                         >
                         </v-text-field>
                       </v-col>
@@ -68,6 +69,7 @@
                           outlined
                           label="Lastname"
                           v-model="lastname"
+                          :rules="[required('Lastname'), minLength('Lastname', 3), maxLength('Lastname', 20)]"
                         >
                         </v-text-field>
                       </v-col>
@@ -78,6 +80,7 @@
                           label="Email"
                           autocomplete="off"
                           v-model="email"
+                          :rules="[required('Email'), emailRules('Email')]"
                         >
                         </v-text-field>
                         </v-col>
@@ -88,6 +91,7 @@
                             label="Contact"
                             autocomplete="off"
                             v-model="contact"
+                            :rules="[required('Contact'), minLength('Contact number', 12), maxLength('Contact number', 12)]"
                           >
                           </v-text-field>
                         </v-col>
@@ -98,6 +102,7 @@
                             outlined
                             v-model="gender"
                             prepend-inner-icon="mdi-gender-male-female"
+                            :rules="[required('Gender')]"
                           ></v-select>
                         </v-col>
                         <v-col cols="12" sm="6">
@@ -118,6 +123,7 @@
                                 v-bind="attrs"
                                 v-on="on"
                                 outlined
+                                :rules="[required('Birthday date')]"
                               ></v-text-field>
                             </template>
                             <v-date-picker
@@ -201,7 +207,6 @@ export default {
           this.$refs.menu.save(date)
         },
         saveTeacherInfo () {
-
         }
     }
 }
