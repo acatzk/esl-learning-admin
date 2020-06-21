@@ -36,6 +36,8 @@
 
 <script>
 
+import { TEACHERS_QUERY } from '@/graphql/queries/teachers'
+import { TEACHERS_SUBSCRIPTION } from '@/graphql/subscriptions/teachers'
 
 export default {
     name: 'App',
