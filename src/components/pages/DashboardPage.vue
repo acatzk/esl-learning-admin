@@ -29,6 +29,21 @@
             <small>Total number of lessons</small>
          </v-container>
       </v-card>
+
+
+       <v-card
+        class="elevation-8 ml-2 mb-2 card-teachers"
+        width="250"
+      >
+         <v-container class="pa-20">
+            <div class="d-flex justify-space-between align-items-center">
+              <p class="font-weight-normal inbox">Teachers</p>
+              <v-icon size="50">mdi-account-multiple-outline</v-icon>
+            </div>
+            <h2 class="font-weight-medium number text-center">225</h2> 
+            <small>Total number of teachers</small>
+         </v-container>
+      </v-card>
       
 
     </v-row>
@@ -63,6 +78,10 @@
 
 .card-lessons {
   border-bottom: 6px solid #2dce89;
+}
+
+.card-teachers {
+  border-bottom: 6px solid #fd7e14
 }
 
 </style>
