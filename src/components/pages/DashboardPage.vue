@@ -66,6 +66,12 @@
       
 
     </v-row>
+
+    <v-card 
+      class="mx-auto visitor elevation-3" 
+      style="height: 45vh;">
+
+    </v-card>
   </div>
 </template>
 
@@ -105,5 +111,9 @@
 
 .card-students {
   border-bottom: 6px solid #007bff
+}
+
+.visitor {
+  background: white;
 }
 </style>
