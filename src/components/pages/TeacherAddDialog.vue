@@ -27,8 +27,9 @@
               <v-btn
                 dark
                 text
+                large
               >
-                Save
+               <v-icon left>mdi-account-plus</v-icon> Save
               </v-btn>
             </v-toolbar-items>
           </v-toolbar>
@@ -177,3 +178,10 @@ export default {
     }
 }
 </script>
+
+
+<style scoped>
+.v-btn {
+  text-transform: capitalize;
+}
+</style>
