@@ -1,8 +1,9 @@
 <template>
   <div class="elevation-0">
     <v-row class="mx-3 d-flex justify-space-around">
+
       <v-card
-        class="elevation-8 ml-2 mb-2"
+        class="elevation-8 ml-2 mb-2 card-inbox"
         width="250"
       >
          <v-container class="pa-20">
@@ -10,11 +11,26 @@
               <p class="font-weight-normal inbox">Inbox</p>
               <v-icon size="50">mdi-email-outline</v-icon>
             </div>
-            <h2 class="font-weight-medium number text-center">35</h2> 
+            <h2 class="font-weight-medium number text-center">291</h2> 
             <small>Total number of inbox</small>
          </v-container>
       </v-card>
       
+      <v-card
+        class="elevation-8 ml-2 mb-2 card-lessons"
+        width="250"
+      >
+         <v-container class="pa-20">
+            <div class="d-flex justify-space-between align-items-center">
+              <p class="font-weight-normal inbox">Lessons</p>
+              <v-icon size="50">mdi-folder-multiple-outline</v-icon>
+            </div>
+            <h2 class="font-weight-medium number text-center">35</h2> 
+            <small>Total number of lessons</small>
+         </v-container>
+      </v-card>
+      
+
     </v-row>
   </div>
 </template>
@@ -41,7 +57,12 @@
   font-size: 12px;
 }
 
-.v-card {
+.card-inbox {
   border-bottom: 6px solid #f5365c;
 }
+
+.card-lessons {
+  border-bottom: 6px solid #2dce89;
+}
+
 </style>
