@@ -12,13 +12,19 @@
             dark
             color="indigo lighten-1"
           >
-            <v-btn
-              icon
-              dark
-              @click="show = !show"
-            >
-              <v-icon>mdi-chevron-left</v-icon>
-            </v-btn>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <v-btn
+                  icon
+                  v-on="on"
+                  dark
+                  @click="show = !show"
+                >
+                  <v-icon>mdi-chevron-left</v-icon>
+                </v-btn>
+              </template>
+              <span>Back</span>
+            </v-tooltip>
             <v-toolbar-title>
               Add New Teacher <v-icon>mdi-account-circle</v-icon>
             </v-toolbar-title>
