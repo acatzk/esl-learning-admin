@@ -91,8 +91,7 @@ export default {
 
 <style scoped>
 header {
-      background: white;
-      padding: 20px;
-      border-bottom: 2px solid #eee;
-  }
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
 </style>
