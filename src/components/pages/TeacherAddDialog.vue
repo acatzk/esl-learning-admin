@@ -27,7 +27,6 @@
               <v-btn
                 dark
                 text
-                @click="show = !show"
               >
                 Save
               </v-btn>
