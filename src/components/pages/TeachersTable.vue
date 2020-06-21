@@ -33,10 +33,10 @@
 
         <!-- ** GENDER ** -->
         <template #item.gender="{ item }">
-            <v-btn text small :color="item.gender === 'male' ? 'primary white--text' : 'pink white--text'" >
-                <v-icon left v-show="item.gender === 'female'">mdi-gender-female</v-icon> 
-                <v-icon left v-show="item.gender === 'male'">mdi-gender-male</v-icon> 
-                {{ item.gender === 'male' ? 'Male' : 'Female' }}
+            <v-btn text small :color="item.gender === 'Male' ? 'primary white--text' : 'pink white--text'" >
+                <v-icon left v-show="item.gender === 'Female'">mdi-gender-female</v-icon> 
+                <v-icon left v-show="item.gender === 'Male'">mdi-gender-male</v-icon> 
+                {{ item.gender === 'Male' ? 'Male' : 'Female' }}
             </v-btn>
         </template>
 
