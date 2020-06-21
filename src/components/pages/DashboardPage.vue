@@ -21,7 +21,7 @@
         <v-card
           class="elevation-8 card-lessons"
         >
-          <v-container class="pa-20">
+          <v-container>
               <div class="d-flex justify-space-between align-items-center">
                 <p class="font-weight-normal inbox">Lessons</p>
                 <v-icon size="50">mdi-folder-multiple-outline</v-icon>
@@ -37,7 +37,7 @@
          <v-card
           class="elevation-8 card-teachers"
         >
-          <v-container class="pa-20">
+          <v-container>
               <div class="d-flex justify-space-between align-items-center">
                 <p class="font-weight-normal inbox">Teachers</p>
                 <v-icon size="50">mdi-account-multiple-outline</v-icon>
@@ -53,7 +53,7 @@
         <v-card
           class="elevation-8 card-students"
         >
-          <v-container class="pa-20">
+          <v-container>
               <div class="d-flex justify-space-between align-items-center">
                 <p class="font-weight-normal inbox">Students</p>
                 <v-icon size="50">mdi-account-box-outline</v-icon>
