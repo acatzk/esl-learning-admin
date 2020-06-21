@@ -155,7 +155,19 @@ export default {
       gender: '',
       date: null,
       menu: false,
-      genderList: ['Male', 'Female']
+      genderList: ['Male', 'Female'],
+      required(propertyType) { 
+          return v => v && v.length > 0 || `${propertyType} is required.`
+      },
+      minLength(propertyType, minLength) {
+          return v => v && v.length >= minLength || `${propertyType} must be at least ${minLength} characters.`
+      },
+      maxLength(propertyType, maxLength) {
+          return v => v && v.length <= maxLength || `${propertyType} must be less than ${maxLength} characters.`
+      },
+      emailRules(propertyType) {
+          return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
+      },
     }),
     watch: {
       menu (val) {
@@ -189,7 +201,7 @@ export default {
           this.$refs.menu.save(date)
         },
         saveTeacherInfo () {
-          
+
         }
     }
 }
