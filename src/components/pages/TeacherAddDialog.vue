@@ -17,7 +17,7 @@
               dark
               @click="show = !show"
             >
-              <v-icon>mdi-close</v-icon>
+              <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
             <v-toolbar-title>
               Add New Teacher <v-icon>mdi-account-circle</v-icon>
