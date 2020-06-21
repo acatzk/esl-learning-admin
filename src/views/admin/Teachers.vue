@@ -71,6 +71,18 @@ export default {
     apollo: {
         teachers: {
             query: TEACHERS_QUERY,
+            subscribeToMore: {
+                document: TEACHERS_SUBSCRIPTION,
+                updateQuery (previousResult, { subscriptionData }) {
+                    if (previousResult) {
+                        return {
+                            teachers: [
+                                ...subscriptionData.data.teachers
+                            ]
+                        }
+                    }
+                }
+            },
             result ({ data }) {
                 this.teachers = data.teachers
             }
