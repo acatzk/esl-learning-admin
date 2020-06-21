@@ -41,7 +41,6 @@
 
                     <add-avatar-editor 
                       ref="editor"
-                      @select-file="onSelectFile($event, this.eventFile)"
                     />
 
                 </v-card>
@@ -171,6 +170,7 @@ export default {
     methods: {
         saveClickedFromEditor (img) {
             this.$refs.imageFromEditor.src = img.toDataURL();
+            console.log(img)
         },
         save (date) {
           this.$refs.menu.save(date)
