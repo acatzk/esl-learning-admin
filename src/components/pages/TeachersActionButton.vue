@@ -9,6 +9,7 @@
                     small 
                     :class="item.id" 
                     color="primary"
+                    @click="viewTeacher"
                 >
                 <v-icon>remove_red_eye</v-icon>
             </v-btn>
@@ -54,8 +55,14 @@ export default {
 
     props: {
         item: {
-            type: String,
+            type: Object,
             required: true
+        }
+    },
+
+    methods: {
+        viewTeacher () {
+            alert(this.item.id)
         }
     }
 }
