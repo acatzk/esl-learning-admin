@@ -156,6 +156,7 @@
 <script>
 
 import { ADD_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'TeacherAddDialog',
@@ -222,8 +223,53 @@ export default {
 
         saveTeacherInfo () {
           if (this.$refs.form.validate()) {
-            alert('Good')
-            this.$refs.form.reset()
+            this.loading = true
+
+            const { 
+              firstname, 
+              lastname, 
+              email, 
+              contact, 
+              gender, 
+              date 
+            } = this.$data
+
+            this.$apollo
+                .mutate({
+                  mutation: ADD_TEACHER_MUTATION,
+                  variables: {
+                    firstname: firstname,
+                    lastname: lastname,
+                    email: email,
+                    phone: contact,
+                    gender: gender,
+                    birth_date: date
+                  }
+                })
+                .then(() => {
+                   this.loading = false
+                   this.show = !this.show
+                   const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Successfully Added.'
+                    })
+
+                    this.$refs.form.reset()
+
+                })
+                .catch(error => console.log(error))
           }
         }
     }
