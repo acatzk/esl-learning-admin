@@ -1,9 +1,9 @@
 <template>
     <div class="teachers">
         <header class="d-flex justify-space-between">
-            <h3 class="d-inline-block">
-                <v-icon>supervisor_account</v-icon> Teachers list
-            </h3>
+            <v-toolbar-title>
+                <v-icon right>supervisor_account</v-icon> Teachers list
+            </v-toolbar-title>
             <v-btn small depressed color="primary" @click.stop="dialog = true">
                <v-icon left>mdi-account-plus</v-icon> Add
             </v-btn>
