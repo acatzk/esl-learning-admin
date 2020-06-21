@@ -12,7 +12,7 @@
                     alt="profile-url"
                 />
             </v-avatar>
-            <span>{{`${item.firstname} ${item.lastname}`}}</span>
+            <span>{{ capitalize(item.firstname) + " " + capitalize(item.lastname) }}</span>
         </template>
 
         <!-- ** EMAIL ** -->
@@ -79,6 +79,13 @@ export default {
         search: {
             type: String,
             required: true
+        }
+    },
+
+    methods: {
+        capitalize(s) {
+            if (typeof s !== 'string') return ''
+            return s.charAt(0).toUpperCase() + s.slice(1)
         }
     }
 }
