@@ -1,9 +1,9 @@
 <template>
   <div class="inbox">
     <header>
-        <h3 class="d-inline-block">
-            <v-icon>markunread</v-icon> Inbox
-        </h3>
+      <v-toolbar-title>
+        <v-icon right>markunread</v-icon> Inbox
+      </v-toolbar-title>
     </header>
     <v-card 
       class="mx-auto" 
