@@ -98,4 +98,7 @@ export default {
 .v-icon {
     font-size: 16px;
 }
+::v-deep .v-data-table-header{
+  text-transform: uppercase;
+}
 </style>
