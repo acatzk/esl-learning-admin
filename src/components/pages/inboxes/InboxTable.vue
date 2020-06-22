@@ -107,7 +107,7 @@ export default {
     }),
 
     components: {
-        DateDisplay: () => import('./DateDisplay')
+        DateDisplay: () => import('../DateDisplay')
     },
 
     props: {

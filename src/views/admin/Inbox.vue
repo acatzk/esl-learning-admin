@@ -53,7 +53,7 @@ export default {
   name: 'Inbox',
 
   components: {
-    InboxTable: () => import('@/components/pages/InboxTable')
+    InboxTable: () => import('@/components/pages/inboxes/InboxTable')
   },
 
   data: () => ({
