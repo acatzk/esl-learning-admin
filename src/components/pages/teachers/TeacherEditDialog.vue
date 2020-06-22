@@ -178,7 +178,27 @@ export default {
                         title: 'Successfully Updated.'
                     })
                 })
-                .catch(error => console.log(error))
+                .catch(error => {
+                    this.loading = false
+                    this.show = !this.show
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: error
+                    })
+                })
         }
     }
 
