@@ -32,6 +32,7 @@
                     small
                     text
                     color="error"
+                    @click="inactiveTeacherStatus"
                 >
                     <v-icon>delete_outline</v-icon>
                 </v-btn>
@@ -57,6 +58,12 @@ export default {
     components: {
         TeacherEditDialog: () => import('./TeacherEditDialog')
     },
+
+    methods: {
+        inactiveTeacherStatus () {
+            
+        }
+    }
 
 }
 </script>
