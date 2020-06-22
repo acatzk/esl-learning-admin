@@ -44,6 +44,7 @@
         <v-skeleton-loader
             type="table-thead, table-tbody"
             class="mx-auto"
+            tile
             v-if="$apollo.loading"
         ></v-skeleton-loader> 
         <v-card 
