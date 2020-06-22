@@ -1,21 +1,5 @@
 <template>
     <v-btn-toggle>
-        <!-- <v-tooltip top color="primary">
-            <template v-slot:activator="{ on, attrs }">
-                <v-btn 
-                    text
-                    v-bind="attrs"
-                    v-on="on"
-                    small 
-                    :class="item.id" 
-                    color="primary"
-                    @click="viewTeacher"
-                >
-                <v-icon>remove_red_eye</v-icon>
-            </v-btn>
-            </template>
-            <span>View</span>
-        </v-tooltip> -->
         <v-tooltip top color="warning">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn 
