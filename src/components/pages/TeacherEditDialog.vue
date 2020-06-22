@@ -26,11 +26,11 @@
                                 >
                                 </v-text-field>
                             </v-col>
-                            <v-col cols="12" sm="12">
+                            <v-col cols="12" sm="6">
                                 <v-text-field 
                                     label="Email" 
                                     v-model="item.email"
-                                    prepend-inner-icon="mdi-email"
+                                    prepend-inner-icon="mdi-email-outline"
                                 >
                                 </v-text-field>
                             </v-col>
