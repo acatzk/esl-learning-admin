@@ -77,8 +77,8 @@ export default {
     },
 
     components: {
-        TeachersTable: () => import('@/components/pages/TeachersTable'),
-        TeacherAddDialog: () => import('@/components/pages/TeacherAddDialog')
+        TeachersTable: () => import('@/components/pages/teachers/TeachersTable'),
+        TeacherAddDialog: () => import('@/components/pages/teachers/TeacherAddDialog')
     },  
 
     apollo: {
