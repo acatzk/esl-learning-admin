@@ -84,7 +84,13 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="indigo darken-1" text  @click="show = !show">Close</v-btn>
-                    <v-btn color="indigo darken-1 white--text" depressed>Save</v-btn>
+                    <v-btn 
+                        color="indigo darken-1 white--text" 
+                        depressed
+                        @click="saveUpdateInfo"
+                    >
+                    Save
+                    </v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog> 
@@ -119,6 +125,9 @@ export default {
     methods: {
         save (date) {
           this.$refs.menu.save(date)
+        },
+        saveUpdateInfo () {
+            
         }
     }
 
