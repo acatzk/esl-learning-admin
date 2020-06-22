@@ -9,76 +9,83 @@
                 </v-card-title>
                 <v-card-text>
                     <v-container>
-                        <v-row>
-                            <v-col cols="12" sm="6" md="6">
-                                <v-text-field 
-                                    label="Firstname"
-                                    v-model="item.firstname"
-                                    prepend-inner-icon="mdi-account-circle"
-                                >
-                                </v-text-field>
-                            </v-col>
-                            <v-col cols="12" sm="6" md="6">
-                                <v-text-field 
-                                    label="Lastname" 
-                                    v-model="item.lastname"
-                                    prepend-inner-icon="mdi-account-circle"
-                                >
-                                </v-text-field>
-                            </v-col>
-                            <v-col cols="12" sm="6">
-                                <v-text-field 
-                                    label="Email" 
-                                    v-model="item.email"
-                                    prepend-inner-icon="mdi-email-outline"
-                                >
-                                </v-text-field>
-                            </v-col>
-                            <v-col cols="12" sm="6">
-                                <v-text-field 
-                                    label="Contact" 
-                                    v-model="item.phone"
-                                    prepend-inner-icon="mdi-phone"
-                                >
-                                </v-text-field>
-                            </v-col>
-                            <v-col cols="12" sm="6">
-                                <v-select
-                                    :items="genderList"
-                                    label="Gender"
-                                    v-model="item.gender"
-                                    prepend-inner-icon="mdi-gender-male-female"
-                                ></v-select>
-                            </v-col>
-                            <v-col cols="12" sm="6">
-                                <v-menu
-                                    ref="menu"
-                                    v-model="menu"
-                                    :close-on-content-click="false"
-                                    transition="scale-transition"
-                                    offset-y
-                                    min-width="290px"
-                                >
-                                <template v-slot:activator="{ on, attrs }">
-                                    <v-text-field
-                                        v-model="item.birth_date"
-                                        label="Birthday date"
-                                        prepend-inner-icon="event"
-                                        readonly
-                                        v-bind="attrs"
-                                        v-on="on"
-                                    ></v-text-field>
-                                    </template>
-                                    <v-date-picker
-                                        ref="picker"
-                                        v-model="item.birth_date"
-                                        :max="new Date().toISOString().substr(0, 10)"
-                                        min="1950-01-01"
-                                        @change="save"
-                                    ></v-date-picker>
-                                </v-menu>
-                            </v-col>
-                        </v-row>
+                         <v-form 
+                            :disabled="loading" 
+                            ref="form"
+                            v-model="valid"
+                            lazy-validation
+                        >
+                            <v-row>
+                                <v-col cols="12" sm="6" md="6">
+                                    <v-text-field 
+                                        label="Firstname"
+                                        v-model="item.firstname"
+                                        prepend-inner-icon="mdi-account-circle"
+                                    >
+                                    </v-text-field>
+                                </v-col>
+                                <v-col cols="12" sm="6" md="6">
+                                    <v-text-field 
+                                        label="Lastname" 
+                                        v-model="item.lastname"
+                                        prepend-inner-icon="mdi-account-circle"
+                                    >
+                                    </v-text-field>
+                                </v-col>
+                                <v-col cols="12" sm="6">
+                                    <v-text-field 
+                                        label="Email" 
+                                        v-model="item.email"
+                                        prepend-inner-icon="mdi-email-outline"
+                                    >
+                                    </v-text-field>
+                                </v-col>
+                                <v-col cols="12" sm="6">
+                                    <v-text-field 
+                                        label="Contact" 
+                                        v-model="item.phone"
+                                        prepend-inner-icon="mdi-phone"
+                                    >
+                                    </v-text-field>
+                                </v-col>
+                                <v-col cols="12" sm="6">
+                                    <v-select
+                                        :items="genderList"
+                                        label="Gender"
+                                        v-model="item.gender"
+                                        prepend-inner-icon="mdi-gender-male-female"
+                                    ></v-select>
+                                </v-col>
+                                <v-col cols="12" sm="6">
+                                    <v-menu
+                                        ref="menu"
+                                        v-model="menu"
+                                        :close-on-content-click="false"
+                                        transition="scale-transition"
+                                        offset-y
+                                        min-width="290px"
+                                    >
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-text-field
+                                            v-model="item.birth_date"
+                                            label="Birthday date"
+                                            prepend-inner-icon="event"
+                                            readonly
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        ></v-text-field>
+                                        </template>
+                                        <v-date-picker
+                                            ref="picker"
+                                            v-model="item.birth_date"
+                                            :max="new Date().toISOString().substr(0, 10)"
+                                            min="1950-01-01"
+                                            @change="save"
+                                        ></v-date-picker>
+                                    </v-menu>
+                                </v-col>
+                            </v-row>
+                        </v-form>
                     </v-container>
                 </v-card-text>
                 <v-card-actions>
@@ -89,7 +96,7 @@
                         depressed
                         @click="saveUpdateInfo"
                     >
-                    Save
+                        Save
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -105,7 +112,9 @@ export default {
     data () {
         return {
             genderList: ['Male', 'Female'],
-            menu: false
+            menu: false,
+            loading: false,
+            valid: true,
         }
     },
 
