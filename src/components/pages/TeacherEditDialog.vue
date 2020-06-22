@@ -83,8 +83,8 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text  @click="show = !show">Close</v-btn>
-                    <v-btn color="blue darken-1 white--text" depressed>Save</v-btn>
+                    <v-btn color="indigo darken-1" text  @click="show = !show">Close</v-btn>
+                    <v-btn color="indigo darken-1 white--text" depressed>Save</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog> 
@@ -124,9 +124,3 @@ export default {
 
 }
 </script>
-
-<style scoped>
-.v-btn {
-    text-transform: capitalize;
-}
-</style>
