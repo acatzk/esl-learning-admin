@@ -21,3 +21,14 @@ export const UPDATE_TEACHER_MUTATION = gql`
         }
     }
 `
+
+export const UPDATE_DEACTIVE_TEACHER_MUTATION = gql`
+    mutation UpdateDeactiveUpdateTeacherMutation($id: uuid!) {
+        update_teachers(where: {id: {_eq: $id}}, _set: {is_active: false}) {
+            affected_rows
+            returning {
+                id
+            }
+        }
+    }  
+`
