@@ -200,6 +200,9 @@ export default {
 ::v-deep tbody tr td.non-clickable{
     cursor: auto;
 }
+::v-deep .v-data-table-header{
+  text-transform: uppercase;
+}
 .v-icon {
     font-size: 16px;
 }
