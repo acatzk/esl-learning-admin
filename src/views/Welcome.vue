@@ -5,7 +5,6 @@
                 absolute
                 color="indigo white--text"
                 elevate-on-scroll
-                scroll-target="#scrolling-techniques-7"
             >
                 <v-toolbar-title>
                     <v-icon left class="white--text">mdi-security</v-icon> Vic Solution Administrator
