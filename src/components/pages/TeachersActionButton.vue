@@ -23,14 +23,23 @@
                     v-on="on"
                     small 
                     text
-                    :class="item.id"
                     color="warning"
+                    @click="dialog = !dialog"
                 >
                     <v-icon>colorize</v-icon>
                 </v-btn>
+
+                <!-- Edit Dialog -->
+                <teacher-edit-dialog 
+                    :visible="dialog" 
+                    @close="dialog=false"
+                    :item="item"
+                />
+
             </template>
             <span>Edit</span>
         </v-tooltip>
+
         <v-tooltip top color="error">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn 
@@ -53,17 +62,17 @@
 export default {
     name: 'TeachersActionButton',
 
-    props: {
-        item: {
-            type: Object,
-            required: true
+    data () {
+        return {
+            dialog: false
         }
     },
 
-    methods: {
-        viewTeacher () {
-            alert(this.item.id)
-        }
-    }
+    props: ['item'],
+
+    components: {
+        TeacherEditDialog: () => import('./TeacherEditDialog')
+    },
+
 }
 </script>
