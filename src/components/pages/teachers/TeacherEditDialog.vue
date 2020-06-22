@@ -108,6 +108,10 @@
 </template>
 
 <script>
+
+import { UPDATE_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
+import Swal from 'sweetalert2'
+
 export default {
     
     props: ['visible', 'item'],
@@ -139,7 +143,42 @@ export default {
           this.$refs.menu.save(date)
         },
         saveUpdateInfo () {
-            
+            this.loading = true
+            this.$apollo
+                .mutate({
+                    mutation: UPDATE_TEACHER_MUTATION,
+                    variables: {
+                        id: this.item.id,
+                        firstname: this.item.firstname,
+                        lastname: this.item.lastname,
+                        email: this.item.email,
+                        phone: this.item.phone,
+                        gender: this.item.gender,
+                        birth_date: this.item.birth_date
+                    }
+                })
+                .then(() => {
+                    this.loading = false
+                    this.show = !this.show
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Successfully Updated.'
+                    })
+                })
+                .catch(error => console.log(error))
         }
     }
 
