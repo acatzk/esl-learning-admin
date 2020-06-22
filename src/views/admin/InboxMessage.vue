@@ -175,7 +175,25 @@ export default {
                     })
                     this.$router.push('/admin/inbox')
                 })
-                .catch(error => console.error(error))
+                .catch(error => {
+                    this.emailLoading = false
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        onOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: 'error',
+                        title: error
+                    })
+                })
         },
         removedMessage(id) {
             if(confirm('Are you sure you want to delete message?')) {
@@ -205,7 +223,24 @@ export default {
                         })
                         this.$router.push('/admin/inbox')
                     })
-                    .catch(error => console.error(error))
+                    .catch(error => {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            onOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: error
+                        })
+                    })
             } 
         },
     },
