@@ -95,6 +95,7 @@
                         color="indigo darken-1 white--text" 
                         depressed
                         @click="saveUpdateInfo"
+                        :loading="loading"
                     >
                         Save
                     </v-btn>
