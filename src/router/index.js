@@ -24,7 +24,7 @@ const routes = [
       {
         path: 'dashboard',
         name: 'dashboard',
-        component: () => import('@/components/pages/DashboardPage')
+        component: () => import('@/views/admin/DashboardPage')
       },
       {
         path: 'profile',
