@@ -127,4 +127,8 @@ export default {
 .v-card {
     border-radius: 0;
 }
+
+.v-btn {
+    text-transform: capitalize;
+}
 </style>
