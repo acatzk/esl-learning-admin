@@ -40,10 +40,11 @@
         <template #item.status="{ item }">
             <td @click.stop class="non-clickable">
                 <v-chip
-                    :color="item.status === 'unread' ? 'red' : 'success'"
+                    :color="item.status === 'unread' ? 'red--text' : 'success--text'"
                     text-color="white"
                     small
                     label
+                    style="background: none;"
                 >
                     <v-icon left v-show="item.status === 'unread'" style="font-size: 15px;">email</v-icon>
                     <v-icon left v-show="item.status === 'read'" style="font-size: 15px;">drafts</v-icon>
