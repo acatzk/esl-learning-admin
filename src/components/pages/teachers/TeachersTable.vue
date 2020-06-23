@@ -33,7 +33,8 @@
 
         <!-- ** GENDER ** -->
         <template #item.gender="{ item }">
-            <v-btn text small :color="item.gender === 'Male' ? 'primary white--text' : 'pink white--text'" >
+            <!-- :color="item.gender === 'Male' ? 'primary white--text' : 'pink white--text'"  -->
+            <v-btn text small>
                 <v-icon left v-show="item.gender === 'Female'">mdi-gender-female</v-icon> 
                 <v-icon left v-show="item.gender === 'Male'">mdi-gender-male</v-icon> 
                 {{ item.gender === 'Male' ? 'Male' : 'Female' }}
