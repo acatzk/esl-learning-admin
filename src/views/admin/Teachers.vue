@@ -5,7 +5,7 @@
                 <v-icon right>supervisor_account</v-icon> Teachers List
             </v-toolbar-title>
             <v-btn small depressed color="primary" @click.stop="dialog = true">
-               <v-icon left>mdi-account-plus</v-icon> Add
+               <v-icon left>mdi-plus</v-icon> Add
             </v-btn>
 
             <teacher-add-dialog 
