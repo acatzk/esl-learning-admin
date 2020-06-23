@@ -8,6 +8,21 @@
                <v-icon left>mdi-plus</v-icon> Add
             </v-btn>   
         </header>
+
+        <v-card flat>
+            <!-- ** SEARCH TEXT FIELD ** -->
+            <v-text-field
+                label="Search"
+                filled
+                class="mx-3"
+                append-icon="search"
+                dense
+                rounded
+                style="position: relative; top: 10px; border-radius: 50px;"
+            ></v-text-field>
+
+
+        </v-card>
     </div>
 </template>
 
