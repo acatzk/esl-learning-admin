@@ -43,11 +43,18 @@
 
         <!-- ** ACTIVE AND INACTIVE ** -->
         <template #item.is_active="{ item }">
-            <v-btn text small :color="item.is_active ? 'success white--text' : 'error white--text'" >
-                <v-icon left v-show="item.is_active" >hourglass_full</v-icon> 
-                <v-icon left v-show="!item.is_active">hourglass_empty</v-icon> 
-                {{ item.is_active ? 'Active' : 'Inactive' }}
-            </v-btn>
+            <td @click.stop class="non-clickable">
+                <v-chip
+                    :color="item.is_active ? 'success--text' : 'error--text'" 
+                    small
+                    label
+                    style="background: none;"
+                >
+                    <v-icon left v-show="item.is_active" >hourglass_full</v-icon> 
+                    <v-icon left v-show="!item.is_active">hourglass_empty</v-icon> 
+                    {{ item.is_active ? 'Active' : 'Inactive' }}
+                </v-chip>
+            </td>
         </template>
 
         <!-- ** ACTION BUTTONS ** -->
