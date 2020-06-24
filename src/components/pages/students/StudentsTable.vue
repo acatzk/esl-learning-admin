@@ -17,6 +17,15 @@
             </span>
         </template>
 
+         <!-- ** CONTACT ** -->
+        <template #item.contact="{ item }">
+            <span>
+                <v-icon>mdi-phone</v-icon>
+                {{ item.contact }}
+            </span>
+        </template>
+
+
     </v-data-table>
 </template>
 
