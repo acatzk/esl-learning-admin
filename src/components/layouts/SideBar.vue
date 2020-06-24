@@ -108,7 +108,7 @@ export default {
         return {
             sidebarItems: [
                 { heading: 'Management' },
-                { icon: 'mdi-hexagon-outline', text: 'Dashboard', to: '/admin/dashboard' },
+                { icon: 'mdi-cube-outline', text: 'Dashboard', to: '/admin/dashboard' },
                 { icon: 'mdi-email-outline', text: 'Inbox', to: '/admin/inbox' },
                 { icon: 'mdi-folder-multiple-outline', text: 'Lessons', to: '/admin/lessons' },
                 { icon: 'mdi-account-multiple-outline', text: 'Teachers', to: '/admin/teachers' },
