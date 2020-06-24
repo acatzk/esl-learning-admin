@@ -22,7 +22,9 @@
             ></v-text-field>
 
             <teachers-table 
-                
+                :items="students"
+                :headers="headers"
+                :search="search"
             />
         </v-card>
     </div>
@@ -34,7 +36,29 @@ export default {
 
     components: {
         TeachersTable: () => import('@/components/pages/students/StudentsTable')
-    }
+    },
+
+    data() {
+        return {
+            students: [],
+            search: '',
+            dialog: false
+        }
+    },
+
+    computed: {
+        headers() {
+            return [
+                { text: 'Identity', value: 'firstname' },
+                { text: 'Email', value: 'email' },
+                { text: 'Contact', value: 'phone', sortable: false },
+                { text: 'Gender', value: 'gender', sortable: false },
+                { text: 'Birthdate', value: 'birth_date' },
+                { text: 'Age', value: 'age' },
+                { text: 'Options', value: 'id', sortable: false },
+            ]
+        }
+    },
 }
 </script>
 
