@@ -18,6 +18,7 @@
                 append-icon="search"
                 dense
                 rounded
+                v-model="search"
                 style="position: relative; top: 10px; border-radius: 50px;"
             ></v-text-field>
 
