@@ -34,7 +34,7 @@
             </td>
         </template>
 
-                <!-- ** CONTACT ** -->
+        <!-- ** BIRTH DATE ** -->
         <template #item.birth_date="{ item }">
             <span>
                 <v-icon>mdi-calendar-check</v-icon>
