@@ -21,10 +21,22 @@
                 style="position: relative; top: 10px; border-radius: 50px;"
             ></v-text-field>
 
-
+            <teachers-table 
+                
+            />
         </v-card>
     </div>
 </template>
+
+<script>
+export default {
+    name: 'Students',
+
+    components: {
+        TeachersTable: () => import('@/components/pages/students/StudentsTable')
+    }
+}
+</script>
 
 <style scoped lang="scss">
 .students {
