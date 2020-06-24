@@ -27,7 +27,16 @@
                 style="position: relative; top: 10px; border-radius: 50px;"
             ></v-text-field>
 
+            <!-- ** SKELETON LOADING FOR DATA ** -->
+            <v-skeleton-loader
+                type="table-tbody"
+                class="mx-auto"
+                tile
+                v-if="$apollo.loading"
+            ></v-skeleton-loader> 
+
             <teachers-table 
+                v-else
                 :items="students"
                 :headers="headers"
                 :search="search"
