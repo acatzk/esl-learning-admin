@@ -50,6 +50,12 @@
             </span>
         </template>
     
+        <!-- ** ACTION BUTTONS ** -->
+        <template #item.id="{ item }">  
+            <student-action-button 
+                :item="item"
+            />
+        </template>
 
     </v-data-table>
 </template>
@@ -57,6 +63,10 @@
 <script>
 export default {
     name: 'StudentsTable',
+
+    components: {
+        StudentActionButton: () => import('./StudentActionButton')
+    },
 
     props: {
         items: {
