@@ -18,7 +18,7 @@
         <!-- ** EMAIL ** -->
         <template #item.email="{ item }">
             <span>
-                <v-icon>mdi-email</v-icon>
+                <v-icon left>mdi-email</v-icon>
                 {{ item.email }}
             </span>
         </template>
@@ -26,7 +26,7 @@
         <!-- ** CONTACT ** -->
         <template #item.phone="{ item }">
             <span>
-                <v-icon>mdi-phone</v-icon>
+                <v-icon left>mdi-phone</v-icon>
                 {{ item.phone }}
             </span>
         </template>
