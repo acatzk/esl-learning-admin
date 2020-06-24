@@ -45,7 +45,7 @@
            <!-- ** AGE ** -->
         <template #item.age ="{ item }">
             <span>
-                <v-icon>mdi-timelapse</v-icon>
+                <v-icon>mdi-timer-sand</v-icon>
                 {{ getStudentAge(item.birth_date) }} years old
             </span>
         </template>
