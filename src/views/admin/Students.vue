@@ -7,11 +7,12 @@
             <v-btn small depressed color="primary" @click.stop="dialog = true">
                <v-icon left>mdi-plus</v-icon> Add
             </v-btn>   
-
-            <student-dialog 
-                :visible="dialog" @close="dialog = false"
-            />
         </header>
+
+        <!-- STUDENT-DIALOG ADD AND EDIT -->
+        <student-dialog 
+            :visible="dialog" @close="dialog = false"
+        />
 
         <v-card flat>
             <!-- ** SEARCH TEXT FIELD ** -->
