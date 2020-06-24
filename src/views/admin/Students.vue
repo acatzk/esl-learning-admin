@@ -39,7 +39,7 @@
 <script>
 
 import { STUDENT_QUERY } from '@/graphql/queries/students'
-import { STUDENT_SUBSCRIPTION } from '@/graphqlsubscriptions/students'
+import { STUDENT_SUBSCRIPTION } from '@/graphql/subscriptions/students'
 
 export default {
     name: 'Students',
@@ -62,7 +62,7 @@ export default {
             return [
                 { text: 'Identity', value: 'firstname' },
                 { text: 'Email', value: 'email' },
-                { text: 'Contact', value: 'phone', sortable: false },
+                { text: 'Contact', value: 'contact', sortable: false },
                 { text: 'Gender', value: 'gender', sortable: false },
                 { text: 'Birthdate', value: 'birth_date' },
                 { text: 'Age', value: 'age' },
@@ -70,6 +70,17 @@ export default {
             ]
         }
     },
+
+    apollo: {
+        students: {
+            query: STUDENT_QUERY,
+
+            result ({ data }) {
+                this.students = data.students
+            }
+        }
+    }
+
 }
 </script>
 
