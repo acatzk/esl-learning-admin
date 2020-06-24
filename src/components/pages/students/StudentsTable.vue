@@ -4,6 +4,12 @@
         :headers="headers"
         :search="search"
     >
+        <!-- ** STUDENT IDENTITY  ** -->
+        <template #item.firstname="{ item }">
+            <v-icon left>mdi-account-box</v-icon> {{ capitalize(item.firstname) + " " + capitalize(item.lastname) }}
+        </template>
+
+        
 
     </v-data-table>
 </template>
