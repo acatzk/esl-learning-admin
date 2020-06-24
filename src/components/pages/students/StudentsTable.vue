@@ -41,6 +41,14 @@
                 {{ item.birth_date }}
             </span>
         </template>
+
+           <!-- ** BIRTH DATE ** -->
+        <template #item.age ="{ item }">
+            <span>
+                <v-icon>mdi-timelapse</v-icon>
+                {{ getStudentAge(item.birth_date) }} years old
+            </span>
+        </template>
     
 
     </v-data-table>
@@ -69,6 +77,17 @@ export default {
         capitalize(s) {
             if (typeof s !== 'string') return ''
             return s.charAt(0).toUpperCase() + s.slice(1)
+        },
+        getStudentAge(birth_date) {
+            let today = new Date()
+            let birthDate = new Date(birth_date)
+            var age = today.getFullYear() - birthDate.getFullYear()
+            let m = today.getMonth() - birthDate.getMonth()
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+            {
+                age--;
+            }
+            return age
         }
     }
 
