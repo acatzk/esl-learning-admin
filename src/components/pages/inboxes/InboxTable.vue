@@ -8,19 +8,19 @@
     >
         <!-- DISPLAY NAME -->
         <template #item.name="{ item }">
-            <v-icon>mdi-account-box</v-icon>
+            <v-icon left>mdi-account-box</v-icon>
             {{ item.name }}
         </template>
 
         <!-- DISPLAY EMAIL -->
         <template #item.email="{ item }">
-            <v-icon>mdi-email</v-icon>
+            <v-icon left>mdi-email</v-icon>
             {{ item.email }}
         </template>
 
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
-            <v-icon>mdi-calendar</v-icon>
+            <v-icon left>mdi-calendar</v-icon>
             <date-display
                 :created_at="item.created_at.split('T')[0]"
              />
@@ -30,7 +30,7 @@
         <!-- DISPLAY ITEM CONTACT OF NON CLICKABLE -->
         <template #item.contact="{ item }">
             <td @click.stop class="non-clickable">
-                <v-icon>mdi-phone</v-icon>
+                <v-icon left>mdi-phone</v-icon>
                 {{ item.contact }}
             </td>
         </template>
