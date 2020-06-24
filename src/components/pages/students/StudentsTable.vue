@@ -42,7 +42,7 @@
             </span>
         </template>
 
-           <!-- ** BIRTH DATE ** -->
+           <!-- ** AGE ** -->
         <template #item.age ="{ item }">
             <span>
                 <v-icon>mdi-timelapse</v-icon>
