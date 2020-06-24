@@ -8,8 +8,9 @@
                         v-on="on"
                         small 
                         @click="dialog = !dialog"
+                        icon
                     >
-                        <v-icon>colorize</v-icon>
+                        <v-icon>mdi-pencil-box-outline</v-icon>
                     </v-btn>
                 </template>
                 <span>Edit</span>
@@ -21,7 +22,7 @@
                         v-bind="attrs"
                         v-on="on"
                         small
-                        tile
+                        icon
                         @click="inactiveTeacherStatus"
                     >
                         <v-icon>delete_outline</v-icon>
