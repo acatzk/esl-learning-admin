@@ -37,3 +37,10 @@ export default {
     
 }
 </script>
+
+
+<style scoped>
+::v-deep .v-data-table-header{
+  text-transform: uppercase;
+}
+</style>
