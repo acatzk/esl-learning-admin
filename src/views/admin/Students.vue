@@ -74,7 +74,7 @@ export default {
                 { text: 'Contact', value: 'contact', sortable: false },
                 { text: 'Gender', value: 'gender', sortable: false },
                 { text: 'Birthdate', value: 'birth_date' },
-                { text: 'Age', value: 'age' },
+                { text: 'Age', value: 'age', sortable: false },
                 { text: 'Options', value: 'id', sortable: false },
             ]
         }
