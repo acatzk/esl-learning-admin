@@ -25,6 +25,15 @@
             </span>
         </template>
 
+        <!-- ** GENDER ** -->
+        <template #item.gender="{ item }">
+            <td @click.stop class="non-clickable">
+                <v-icon left v-show="item.gender === 'Female'">mdi-gender-female</v-icon> 
+                <v-icon left v-show="item.gender === 'Male'">mdi-gender-male</v-icon> 
+                {{ item.gender === 'Male' ? 'Male' : 'Female' }}
+            </td>
+        </template>
+
 
     </v-data-table>
 </template>
