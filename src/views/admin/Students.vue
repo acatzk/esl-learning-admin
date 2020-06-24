@@ -37,6 +37,10 @@
 </template>
 
 <script>
+
+import { STUDENT_QUERY } from '@/graphql/queries/students'
+import { STUDENT_SUBSCRIPTION } from '@/graphqlsubscriptions/students'
+
 export default {
     name: 'Students',
 
