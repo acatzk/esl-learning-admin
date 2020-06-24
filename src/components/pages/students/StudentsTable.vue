@@ -52,6 +52,12 @@ export default {
 
 
 <style scoped>
+.v-btn {
+    text-transform: capitalize;
+}
+.v-icon {
+    font-size: 16px;
+}
 ::v-deep .v-data-table-header{
   text-transform: uppercase;
 }
