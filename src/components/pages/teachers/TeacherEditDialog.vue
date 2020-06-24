@@ -4,7 +4,7 @@
             <v-card>
                 <v-card-title>
                     <span class="headline">
-                        <v-icon right size="35">mdi-account-box</v-icon> Update Teacher Information
+                        <v-icon left size="35">mdi-account-box</v-icon>Update Teacher
                     </span>
                 </v-card-title>
                 <v-card-text>
