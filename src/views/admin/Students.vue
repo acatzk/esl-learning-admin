@@ -7,6 +7,10 @@
             <v-btn small depressed color="primary" @click.stop="dialog = true">
                <v-icon left>mdi-plus</v-icon> Add
             </v-btn>   
+
+            <student-dialog 
+                :visible="dialog" @close="dialog = false"
+            />
         </header>
 
         <v-card flat>
@@ -36,7 +40,8 @@ export default {
     name: 'Students',
 
     components: {
-        TeachersTable: () => import('@/components/pages/students/StudentsTable')
+        TeachersTable: () => import('@/components/pages/students/StudentsTable'),
+        StudentDialog: () => import('@/components/pages/students/StudentDialog')
     },
 
     data() {
