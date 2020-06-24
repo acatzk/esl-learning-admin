@@ -12,7 +12,7 @@
         <!-- ** EMAIL ** -->
         <template #item.email="{ item }">
             <span>
-                <v-icon>mdi-email</v-icon>
+                <v-icon left>mdi-email</v-icon>
                 {{ item.email }}
             </span>
         </template>
@@ -20,7 +20,7 @@
          <!-- ** CONTACT ** -->
         <template #item.contact="{ item }">
             <span>
-                <v-icon>mdi-phone</v-icon>
+                <v-icon left>mdi-phone</v-icon>
                 {{ item.contact }}
             </span>
         </template>
@@ -37,7 +37,7 @@
         <!-- ** BIRTH DATE ** -->
         <template #item.birth_date="{ item }">
             <span>
-                <v-icon>mdi-calendar-check</v-icon>
+                <v-icon left>mdi-calendar-check</v-icon>
                 {{ item.birth_date }}
             </span>
         </template>
@@ -45,7 +45,7 @@
            <!-- ** AGE ** -->
         <template #item.age ="{ item }">
             <span>
-                <v-icon>mdi-timer-sand</v-icon>
+                <v-icon left>mdi-timer-sand</v-icon>
                 {{ getStudentAge(item.birth_date) }} years old
             </span>
         </template>
