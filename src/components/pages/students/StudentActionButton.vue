@@ -8,6 +8,7 @@
                         v-on="on"
                         small 
                         icon
+                        @click.stop="dialog = true"
                     >
                         <v-icon>mdi-pencil-box-outline</v-icon>
                     </v-btn>
@@ -29,6 +30,12 @@
                 <span>Delete</span>
             </v-tooltip>
         </v-btn-toggle>
+
+
+        <!-- STUDENT-DIALOG ADD AND EDIT -->
+        <student-dialog 
+            :visible="dialog" @close="dialog = false"
+        />
     </div>
 </template>
 
@@ -36,6 +43,10 @@
 <script>
 export default {
     name: 'StudentActionButton',
+
+    components: {
+        StudentDialog: () => import('@/components/pages/students/StudentDialog')
+    },
 
     data () {
         return {
