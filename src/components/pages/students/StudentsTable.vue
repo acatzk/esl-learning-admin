@@ -34,6 +34,14 @@
             </td>
         </template>
 
+                <!-- ** CONTACT ** -->
+        <template #item.birth_date="{ item }">
+            <span>
+                <v-icon>mdi-calendar-check</v-icon>
+                {{ item.birth_date }}
+            </span>
+        </template>
+    
 
     </v-data-table>
 </template>
