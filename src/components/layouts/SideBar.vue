@@ -114,7 +114,7 @@ export default {
                 { icon: 'mdi-account-multiple-outline', text: 'Teachers', to: '/admin/teachers' },
                 { icon: 'mdi-account-box-outline', text: 'Students', to: '/admin/students' },
                 { heading: 'Account Setting' },
-                { icon: 'mdi-shield-outline', text: 'Settings', to: '/admin/settings' },
+                { icon: 'mdi-auto-fix', text: 'Settings', to: '/admin/settings' },
                 { icon: 'mdi-account-outline', text: 'Profile', to: '/admin/profile' },
                 { icon: 'mdi-logout', text: 'Logout' },
             ],
