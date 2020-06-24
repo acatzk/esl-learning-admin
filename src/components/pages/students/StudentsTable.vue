@@ -9,7 +9,13 @@
             <v-icon left>mdi-account-box</v-icon> {{ capitalize(item.firstname) + " " + capitalize(item.lastname) }}
         </template>
 
-        
+        <!-- ** EMAIL ** -->
+        <template #item.email="{ item }">
+            <span>
+                <v-icon>mdi-email</v-icon>
+                {{ item.email }}
+            </span>
+        </template>
 
     </v-data-table>
 </template>
