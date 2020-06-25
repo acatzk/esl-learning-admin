@@ -36,6 +36,7 @@
         <student-dialog 
             :visible="dialog" @close="dialog = false"
             :modalType="`edit`" 
+            :item="item"
         />
 
     </div>
