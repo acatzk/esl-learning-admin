@@ -24,6 +24,7 @@
                                         label="Firstname"
                                         prepend-inner-icon="mdi-account-circle"
                                         v-model="item.firstname"
+                                        :rules="[required('Firstname'), minLength('Firstname', 3), maxLength('Firstname', 20)]"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -32,6 +33,7 @@
                                         label="Lastname" 
                                         prepend-inner-icon="mdi-account-circle"
                                         v-model="item.lastname"
+                                        :rules="[required('Lastname'), minLength('Lastname', 3), maxLength('Lastname', 20)]"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -40,6 +42,7 @@
                                         label="Email" 
                                         prepend-inner-icon="mdi-email-outline"
                                         v-model="item.email"
+                                        :rules="[required('Email'), emailRules('Email')]"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -48,6 +51,7 @@
                                         label="Contact"
                                         prepend-inner-icon="mdi-phone"
                                         v-model="item.contact"
+                                        :rules="[required('Contact'), minLength('Contact number', 11), maxLength('Contact number', 11)]"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -57,6 +61,7 @@
                                         label="Gender"
                                         prepend-inner-icon="mdi-gender-male-female"
                                         v-model="item.gender"
+                                         :rules="[required('Gender')]"
                                     ></v-select>
                                 </v-col>
                                 <v-col cols="12" sm="6">
@@ -76,6 +81,7 @@
                                             readonly
                                             v-bind="attrs"
                                             v-on="on"
+                                            :rules="[required('Birthday date')]"
                                         ></v-text-field>
                                     </template>
                                     <v-date-picker
@@ -175,54 +181,61 @@ export default {
             } = this.item
 
             if (this.modalType === 'add') {
-                
+                if (this.$refs.form.validate()) {
+                    alert('Added')
+                    this.loading = false
+                    this.show = !this.show
+                    this.$refs.form.reset()
+                }
             }
             if (this.modalType === 'edit') {
-                this.loading = true
-                this.$apollo
-                    .mutate({
-                        mutation: UPDATE_STUDENT_MUTATION,
-                        variables: { id, firstname, lastname, email, contact, gender, birth_date }
-                    })
-                    .then(() => {
-                        this.loading = false
-                        this.show = !this.show
+                if (this.$refs.form.validate()) {
+                    this.loading = true
+                    this.$apollo
+                        .mutate({
+                            mutation: UPDATE_STUDENT_MUTATION,
+                            variables: { id, firstname, lastname, email, contact, gender, birth_date }
+                        })
+                        .then(() => {
+                            this.loading = false
+                            this.show = !this.show
 
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            onOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                onOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
 
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Successfully Updated.'
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Successfully Updated.'
+                            })
                         })
-                    })
-                    .catch(error => {
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            onOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
+                        .catch(error => {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                onOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
 
-                        Toast.fire({
-                            icon: 'error',
-                            title: error
+                            Toast.fire({
+                                icon: 'error',
+                                title: error
+                            })
                         })
-                    })
+                }
             }
         }
     }
