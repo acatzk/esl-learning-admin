@@ -23,6 +23,7 @@
                                     <v-text-field 
                                         label="Firstname"
                                         prepend-inner-icon="mdi-account-circle"
+                                        v-model="item.firstname"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -30,6 +31,7 @@
                                     <v-text-field 
                                         label="Lastname" 
                                         prepend-inner-icon="mdi-account-circle"
+                                        v-model="item.lastname"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -37,6 +39,7 @@
                                     <v-text-field 
                                         label="Email" 
                                         prepend-inner-icon="mdi-email-outline"
+                                        v-model="item.email"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -44,6 +47,7 @@
                                     <v-text-field 
                                         label="Contact"
                                         prepend-inner-icon="mdi-phone"
+                                        v-model="item.contact"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -52,6 +56,7 @@
                                         :items="genderList"
                                         label="Gender"
                                         prepend-inner-icon="mdi-gender-male-female"
+                                        v-model="item.gender"
                                     ></v-select>
                                 </v-col>
                                 <v-col cols="12" sm="6">
@@ -65,21 +70,21 @@
                                     >
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-text-field
-                                            v-model="date"
+                                            v-model="item.birth_date"
                                             label="Birthday date"
                                             prepend-inner-icon="event"
                                             readonly
                                             v-bind="attrs"
                                             v-on="on"
                                         ></v-text-field>
-                                        </template>
-                                        <v-date-picker
-                                            ref="picker"
-                                            v-model="date"
-                                            :max="new Date().toISOString().substr(0, 10)"
-                                            min="1950-01-01"
-                                            @change="save"
-                                        ></v-date-picker>
+                                    </template>
+                                    <v-date-picker
+                                        ref="picker"
+                                        v-model="item.birth_date"
+                                        :max="new Date().toISOString().substr(0, 10)"
+                                        min="1950-01-01"
+                                        @change="save"
+                                    ></v-date-picker>
                                     </v-menu>
                                 </v-col>
                             </v-row>
@@ -94,7 +99,8 @@
                     <v-btn 
                         color="indigo darken-1 white--text" 
                         depressed
-                        :loading="loading"
+                        :loading="loading"  
+                        @click="saveStudent"
                     >
                       <v-icon left>mdi-content-save</v-icon>  Save
                     </v-btn>
@@ -111,7 +117,7 @@ import Swal from 'sweetalert2'
 
 export default {
     
-    props: ['visible', 'modalType'],
+    props: ['visible', 'modalType', 'item'],
 
     data () {
         return {
@@ -140,6 +146,9 @@ export default {
         save (date) {
           this.$refs.menu.save(date)
         },
+        saveStudent () {
+            
+        }
     }
 
 }
