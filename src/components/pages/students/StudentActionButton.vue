@@ -47,6 +47,7 @@
 <script>
 
 import { DELETE_STUDENT_MUTATION } from '@/graphql/mutations/students'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'StudentActionButton',
@@ -65,8 +66,52 @@ export default {
 
 
     methods: {
-        deleteStudent() {
-            
+        deleteStudent () {
+            if(confirm('Are you sure you want to delete student?')) {
+                this.$apollo
+                    .mutate({
+                        mutation: DELETE_STUDENT_MUTATION,
+                        variables: {
+                            id: this.item.id
+                        }
+                    })
+                    .then(() => {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            onOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Successfully Deleted.'
+                        })
+                    })
+                    .catch(error => {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            onOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: error
+                        })
+                    })
+            }
         }
     }
 
