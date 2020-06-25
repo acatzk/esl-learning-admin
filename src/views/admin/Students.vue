@@ -13,6 +13,7 @@
         <student-dialog 
             :visible="dialog" @close="dialog = false"
             :modalType="`add`"
+            :item="item"
         />
 
         <v-card flat>
@@ -63,7 +64,15 @@ export default {
         return {
             students: [],
             search: '',
-            dialog: false
+            dialog: false,
+            item: [
+                { firstname: null },
+                { lastname: null },
+                { email: null },
+                { contact: null },
+                { gender: null },
+                { birth_date: null }
+            ]
         }
     },
 
