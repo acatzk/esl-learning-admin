@@ -38,7 +38,7 @@
         <template #item.birth_date="{ item }">
             <span>
                 <v-icon left>mdi-calendar-check</v-icon>
-                {{ item.birth_date }}
+                <date-display :created_at="item.birth_date" />
             </span>
         </template>
 
@@ -65,7 +65,8 @@ export default {
     name: 'StudentsTable',
 
     components: {
-        StudentActionButton: () => import('./StudentActionButton')
+        StudentActionButton: () => import('./StudentActionButton'),
+        DateDisplay: () => import('../DateDisplay')
     },
 
     props: {
