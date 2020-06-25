@@ -118,7 +118,7 @@
 
 <script>
 
-import { UPDATE_STUDENT_MUTATION,  ADD_STUDENT_MUTATION, DELETE_STUDENT_MUTATION } from '@/graphql/mutations/students'
+import { UPDATE_STUDENT_MUTATION,  ADD_STUDENT_MUTATION } from '@/graphql/mutations/students'
 
 import Swal from 'sweetalert2'
 
