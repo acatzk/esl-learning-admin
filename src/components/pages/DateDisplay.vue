@@ -15,7 +15,7 @@ export default {
 
     methods: {
         format_date(value) {
-            return moment(String(value)).format('MM/DD/YYYY')
+            return moment(String(value)).format('M/D/YYYY')
         }
     }
 }
