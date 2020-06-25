@@ -35,7 +35,9 @@
         <!-- STUDENT-DIALOG ADD AND EDIT -->
         <student-dialog 
             :visible="dialog" @close="dialog = false"
+            modalType="edit" 
         />
+
     </div>
 </template>
 
