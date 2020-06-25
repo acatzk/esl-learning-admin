@@ -22,7 +22,7 @@
             <v-text-field
                 solo-inverted
                 flat
-                rounded
+                tile
                 hide-details
                 label="Search"
                 prepend-inner-icon="search"
