@@ -21,3 +21,15 @@ export const ADD_STUDENT_MUTATION = gql`
         }
     }  
 `
+
+
+export const DELETE_STUDENT_MUTATION = gql`
+    mutation DeleteStudentMutation($id: uuid!) {
+        delete_students(where: {id: {_eq: $id}}) {
+            affected_rows
+            returning {
+                id
+            }
+        }
+    }  
+`
