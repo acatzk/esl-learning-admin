@@ -180,14 +180,59 @@ export default {
                 birth_date 
             } = this.item
 
+            // ADD STUDENT DATA
             if (this.modalType === 'add') {
                 if (this.$refs.form.validate()) {
-                    alert('Added')
-                    this.loading = false
-                    this.show = !this.show
-                    this.$refs.form.reset()
+                    this.loading = true
+                    this.$apollo
+                        .mutate({
+                            mutation: ADD_STUDENT_MUTATION,
+                            variables: { firstname, lastname, email, contact, gender, birth_date }
+                        })
+                        .then(() => {
+                            this.loading = false
+                            this.show = !this.show
+
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                onOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Successfully Added.'
+                            })
+                            this.$refs.form.reset()
+                        })
+                        .catch(error => {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                onOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+
+                            Toast.fire({
+                                icon: 'error',
+                                title: error
+                            })
+                        })
                 }
             }
+
+            // EDIT STUDENT DATA
             if (this.modalType === 'edit') {
                 if (this.$refs.form.validate()) {
                     this.loading = true
