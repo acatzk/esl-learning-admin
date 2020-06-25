@@ -44,6 +44,9 @@
 
 
 <script>
+
+import { DELETE_STUDENT_MUTATION } from '@/graphql/mutations/students'
+
 export default {
     name: 'StudentActionButton',
 
