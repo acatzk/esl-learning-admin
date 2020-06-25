@@ -3,8 +3,11 @@
         <v-dialog v-model="show" max-width="600px">
             <v-card>
                 <v-card-title>
-                    <span class="headline">
+                    <span class="headline" v-if="modalType === 'add'">
                         <v-icon left size="35">mdi-plus</v-icon> Add Student
+                    </span>
+                     <span class="headline" v-else>
+                        <v-icon left size="35">mdi-pencil</v-icon> Edit Student
                     </span>
                 </v-card-title>
                 <v-card-text>
@@ -108,7 +111,7 @@ import Swal from 'sweetalert2'
 
 export default {
     
-    props: ['visible'],
+    props: ['visible', 'modalType'],
 
     data () {
         return {
