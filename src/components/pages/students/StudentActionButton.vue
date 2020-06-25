@@ -23,6 +23,7 @@
                         v-on="on"
                         small
                         icon
+                        @click="deleteStudent"
                     >
                         <v-icon>delete_outline</v-icon>
                     </v-btn>
@@ -64,7 +65,9 @@ export default {
 
 
     methods: {
-        
+        deleteStudent() {
+            
+        }
     }
 
 }
