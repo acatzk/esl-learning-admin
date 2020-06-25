@@ -147,7 +147,12 @@ export default {
           this.$refs.menu.save(date)
         },
         saveStudent () {
-            
+            if (this.modalType === 'add') {
+                
+            }
+            if (this.modalType === 'edit') {
+                
+            }
         }
     }
 
