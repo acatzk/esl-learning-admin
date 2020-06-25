@@ -112,7 +112,7 @@
 
 <script>
 
-import { UPDATE_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
+import { UPDATE_STUDENT_MUTATION } from '@/graphql/mutations/students'
 import Swal from 'sweetalert2'
 
 export default {
@@ -147,11 +147,66 @@ export default {
           this.$refs.menu.save(date)
         },
         saveStudent () {
+
+            const { 
+                id, 
+                firstname, 
+                lastname, 
+                email, 
+                contact, 
+                gender, 
+                birth_date 
+            } = this.item
+
             if (this.modalType === 'add') {
                 
             }
             if (this.modalType === 'edit') {
-                
+                this.loading = true
+                this.$apollo
+                    .mutate({
+                        mutation: UPDATE_STUDENT_MUTATION,
+                        variables: { id, firstname, lastname, email, contact, gender, birth_date }
+                    })
+                    .then(() => {
+                        this.loading = false
+                        this.show = !this.show
+
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            onOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Successfully Updated.'
+                        })
+                    })
+                    .catch(error => {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            onOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: error
+                        })
+                    })
             }
         }
     }
