@@ -8,7 +8,38 @@
                     style="height: 80vh; background: white;"
                 >
                     <v-container>
-                       
+                       <header class="indigo lighten-1 elevation-1">
+                           <span class="title">
+                              <v-icon left color="white">mdi-security</v-icon> Edit Admin Profile
+                            </span>&nbsp;<small class="business">Vic Solution, Inc.</small>
+                       </header>
+                        <v-row class="ma-3">
+                            <v-col cols="12" sm="6" md="4">
+                                <v-text-field 
+                                    label="Firstname" 
+                                    autocomplete="off"
+                                    prepend-inner-icon="mdi-account-outline"
+                                ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6" md="4">
+                                <v-text-field 
+                                    label="Middlename" 
+                                    autocomplete="off" 
+                                    hint="Optional"
+                                    prepend-inner-icon="mdi-account-outline"
+                                ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6" md="4">
+                                <v-text-field 
+                                    label="Lastname" 
+                                    autocomplete="off"
+                                    prepend-inner-icon="mdi-account-outline"
+                                ></v-text-field>
+                            </v-col>
+                            <v-btn depressed color="indigo lighten-1 white--text">
+                                <v-icon left>mdi-content-save</v-icon> SAVE
+                            </v-btn>
+                        </v-row>
                     </v-container>
                 </v-card>
             </v-col>
@@ -62,6 +93,22 @@
         bottom: 25px;
     }
 
+}
+header {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+    bottom: 20px;
+    border-radius: 15px;
+
+    .title {
+        color: white;
+    }
+    .business {
+        color: rgb(221, 221, 221);
+        font-style: italic;
+    }
 }
 
 </style>
