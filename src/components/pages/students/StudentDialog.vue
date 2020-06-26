@@ -49,7 +49,7 @@
                                 <v-col cols="12" sm="6">
                                     <v-text-field 
                                         label="Contact"
-                                        prepend-inner-icon="mdi-phone"
+                                        prepend-inner-icon="mdi-cellphone"
                                         v-model="item.contact"
                                         :rules="[required('Contact'), minLength('Contact number', 11), maxLength('Contact number', 11)]"
                                     >
