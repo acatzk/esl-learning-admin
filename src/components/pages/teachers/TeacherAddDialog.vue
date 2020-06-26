@@ -67,7 +67,7 @@
                     <v-row class="ma-3">
                       <v-col cols="12" sm="6">
                         <v-text-field
-                          prepend-inner-icon="mdi-account-circle"
+                          prepend-inner-icon="mdi-account-outline"
                           outlined
                           label="Firstname"
                           v-model="firstname"
@@ -77,7 +77,7 @@
                       </v-col>
                       <v-col cols="12" sm="6">
                         <v-text-field
-                          prepend-inner-icon="mdi-account-circle"
+                          prepend-inner-icon="mdi-account-outline"
                           outlined
                           label="Lastname"
                           v-model="lastname"
