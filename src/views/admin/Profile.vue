@@ -18,7 +18,7 @@
                     class="elevation-6 text-center card-profile"
                 >
                     <v-container>
-                        <v-avatar size="140px" class="elevation-12">
+                        <v-avatar size="140px" class="elevation-12" color="indigo lighten-1">
                             <img
                                 src="https://cdn.vuetifyjs.com/images/john.jpg"
                                 alt="John"
