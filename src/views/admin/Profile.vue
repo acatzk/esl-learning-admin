@@ -5,7 +5,7 @@
             <v-col cols="12" sm="8">
                 <v-card
                     class="elevation-6"
-                    style="height: 80vh; background: white;"
+                    style="background: white;"
                 >
                     <v-container>
                        <header class="indigo lighten-1 elevation-1">
