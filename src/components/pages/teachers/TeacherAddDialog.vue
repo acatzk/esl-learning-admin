@@ -98,7 +98,7 @@
                         </v-col>
                         <v-col cols="12" sm="6">
                           <v-text-field
-                            prepend-inner-icon="mdi-phone"
+                            prepend-inner-icon="mdi-cellphone"
                             outlined
                             label="Contact"
                             autocomplete="off"
