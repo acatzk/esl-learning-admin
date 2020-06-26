@@ -87,7 +87,7 @@
                       </v-col>
                       <v-col cols="12" sm="6">
                         <v-text-field
-                          prepend-inner-icon="mdi-email"
+                          prepend-inner-icon="mdi-email-outline"
                           outlined
                           label="Email"
                           autocomplete="off"
@@ -98,7 +98,7 @@
                         </v-col>
                         <v-col cols="12" sm="6">
                           <v-text-field
-                            prepend-inner-icon="mdi-cellphone"
+                            prepend-inner-icon="mdi-cellphone"  
                             outlined
                             label="Contact"
                             autocomplete="off"
