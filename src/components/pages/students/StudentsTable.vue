@@ -46,7 +46,7 @@
         <template #item.age ="{ item }">
             <span>
                 <v-icon left>mdi-timer-sand</v-icon>
-                {{ getStudentAge(item.birth_date) }} years old
+                {{ getStudentAge(item.birth_date) }} yrs old
             </span>
         </template>
     
