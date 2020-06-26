@@ -22,7 +22,7 @@
                                 <v-col cols="12" sm="6" md="6">
                                     <v-text-field 
                                         label="Firstname"
-                                        prepend-inner-icon="mdi-account-circle"
+                                        prepend-inner-icon="mdi-account-outline"
                                         v-model="item.firstname"
                                         :rules="[required('Firstname'), minLength('Firstname', 3), maxLength('Firstname', 20)]"
                                     >
@@ -31,7 +31,7 @@
                                 <v-col cols="12" sm="6" md="6">
                                     <v-text-field 
                                         label="Lastname" 
-                                        prepend-inner-icon="mdi-account-circle"
+                                        prepend-inner-icon="mdi-account-outline"
                                         v-model="item.lastname"
                                         :rules="[required('Lastname'), minLength('Lastname', 3), maxLength('Lastname', 20)]"
                                     >
