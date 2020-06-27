@@ -2,7 +2,7 @@
     <div class="teachers">
         <header class="d-flex justify-space-between">
             <v-toolbar-title>
-                <v-icon right>supervisor_account</v-icon> Teachers List
+                <v-icon right>supervisor_account</v-icon> Teacher List
             </v-toolbar-title>
             <v-btn small depressed color="primary" @click.stop="dialog = true">
                <v-icon left>mdi-plus</v-icon> Add
