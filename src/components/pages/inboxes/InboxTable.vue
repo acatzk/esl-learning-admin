@@ -5,11 +5,10 @@
         :search="search"
         show-expand
         @click:row="gotoMessage"
-        color="lightblue"
     >   
         <!-- DISPLAY NAME -->
         <template #item.name="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-bold">
+            <span v-if="item.status === 'unread'" class="font-weight-medium">
                 <v-icon left class="icon-unread">mdi-account-box</v-icon>
                 {{ item.name }}
             </span>
@@ -21,7 +20,7 @@
 
         <!-- DISPLAY EMAIL -->
         <template #item.email="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-bold">
+            <span v-if="item.status === 'unread'" class="font-weight-medium">
                 <v-icon left class="icon-unread">mdi-email</v-icon>
                 {{ item.email }}
             </span>
@@ -33,7 +32,7 @@
 
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-bold">
+            <span v-if="item.status === 'unread'" class="font-weight-medium">
                 <v-icon left class="icon-unread">mdi-calendar</v-icon>
                 <date-display
                     :created_at="item.created_at.split('T')[0]"
@@ -52,7 +51,7 @@
         <template #item.contact="{ item }">
             <td 
                 v-if="item.status === 'unread'" 
-                class="font-weight-bold non-clickable"
+                class="font-weight-medium non-clickable"
                 @click.stop
             >
                 <v-icon left class="icon-unread">mdi-phone</v-icon>
@@ -72,7 +71,7 @@
         <template #item.status="{ item }">
             <td @click.stop class="non-clickable">
                 <v-chip
-                    :color="item.status === 'unread' ? 'red--text font-weight-bold' : 'success--text'"
+                    :color="item.status === 'unread' ? 'red--text font-weight-medium' : 'success--text'"
                     text-color="white"
                     small
                     label
@@ -256,7 +255,7 @@ export default {
         },
         gotoMessage(item) {
             this.$router.push(`/admin/inbox/${item.id}`)
-        },
+        }
     }
 }
 </script>
@@ -279,4 +278,5 @@ export default {
 .icon-unread {
     color: rgb(49, 49, 49);
 }
+
 </style>
