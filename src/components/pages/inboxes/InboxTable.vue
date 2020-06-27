@@ -5,31 +5,63 @@
         :search="search"
         show-expand
         @click:row="gotoMessage"
-    >
+        color="lightblue"
+    >   
         <!-- DISPLAY NAME -->
         <template #item.name="{ item }">
-            <v-icon left>mdi-account-box</v-icon>
-            {{ item.name }}
+            <span v-if="item.status === 'unread'" class="font-weight-bold">
+                <v-icon left class="icon-unread">mdi-account-box</v-icon>
+                {{ item.name }}
+            </span>
+            <span v-else >
+                <v-icon left>mdi-account-box</v-icon>
+                {{ item.name }}
+            </span>
         </template>
 
         <!-- DISPLAY EMAIL -->
         <template #item.email="{ item }">
-            <v-icon left>mdi-email</v-icon>
-            {{ item.email }}
+            <span v-if="item.status === 'unread'" class="font-weight-bold">
+                <v-icon left class="icon-unread">mdi-email</v-icon>
+                {{ item.email }}
+            </span>
+            <span v-else>
+                <v-icon left>mdi-email</v-icon>
+                {{ item.email }}
+            </span>
         </template>
 
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
-            <v-icon left>mdi-calendar</v-icon>
-            <date-display
-                :created_at="item.created_at.split('T')[0]"
-             />
+            <span v-if="item.status === 'unread'" class="font-weight-bold">
+                <v-icon left class="icon-unread">mdi-calendar</v-icon>
+                <date-display
+                    :created_at="item.created_at.split('T')[0]"
+                />
+            </span>
+            <span v-else>
+                <v-icon left>mdi-calendar</v-icon>
+                <date-display
+                    :created_at="item.created_at.split('T')[0]"
+                />
+            </span>
         </template>
         <!-- END FORMAT DATE -->
 
         <!-- DISPLAY ITEM CONTACT OF NON CLICKABLE -->
         <template #item.contact="{ item }">
-            <td @click.stop class="non-clickable">
+            <td 
+                v-if="item.status === 'unread'" 
+                class="font-weight-bold non-clickable"
+                @click.stop
+            >
+                <v-icon left class="icon-unread">mdi-phone</v-icon>
+                {{ item.contact }}
+            </td>
+            <td 
+                v-else 
+                class="non-clickable"
+            >
                 <v-icon left>mdi-phone</v-icon>
                 {{ item.contact }}
             </td>
@@ -40,7 +72,7 @@
         <template #item.status="{ item }">
             <td @click.stop class="non-clickable">
                 <v-chip
-                    :color="item.status === 'unread' ? 'red--text' : 'success--text'"
+                    :color="item.status === 'unread' ? 'red--text font-weight-bold' : 'success--text'"
                     text-color="white"
                     small
                     label
@@ -224,8 +256,7 @@ export default {
         },
         gotoMessage(item) {
             this.$router.push(`/admin/inbox/${item.id}`)
-        }
-        
+        },
     }
 }
 </script>
@@ -243,5 +274,9 @@ export default {
 }
 .v-icon {
     font-size: 16px;
+}
+
+.icon-unread {
+    color: rgb(49, 49, 49);
 }
 </style>
