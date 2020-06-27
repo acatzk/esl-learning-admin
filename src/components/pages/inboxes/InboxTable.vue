@@ -128,7 +128,7 @@
 
 <script>
 
-import Swal from 'sweetalert2'
+import { toastAlertStatus } from '@/assets/js/toastAlert'
 
 // GRAPHQL MUTATIONS
 import { INBOX_DELETE_MUTATION, INBOX_UPDATE_MUTATION } from '@/graphql/mutations/inboxes'
@@ -217,33 +217,15 @@ export default {
                 })
                 .then(() => {
                     this.markLoading = false
-                    this.toastAlertStatus('success', 'Marked as Read')
+                    toastAlertStatus('success', 'Marked as Read')
                 })
                 .catch(error => {
                     this.markLoading = false
-                    this.toastAlertStatus('error', error)
+                    toastAlertStatus('error', error)
                 })
         },
         gotoMessage(item) {
             this.$router.push(`/admin/inbox/${item.id}`)
-        },
-        toastAlertStatus(icon, title) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                onOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-
-            Toast.fire({
-                icon: icon,
-                title: title
-            })
         }
     }
 }
