@@ -146,18 +146,16 @@ export default {
         },
         saveUpdateInfo () {
             this.loading = true
+
+            const {
+                id, firstname, lastname, email,
+                phone, gender, birth_date
+             } = this.item
+
             this.$apollo
                 .mutate({
                     mutation: UPDATE_TEACHER_MUTATION,
-                    variables: {
-                        id: this.item.id,
-                        firstname: this.item.firstname,
-                        lastname: this.item.lastname,
-                        email: this.item.email,
-                        phone: this.item.phone,
-                        gender: this.item.gender,
-                        birth_date: this.item.birth_date
-                    }
+                    variables: { id, firstname, lastname, email, phone, gender, birth_date }
                 })
                 .then(() => {
                     this.loading = false
