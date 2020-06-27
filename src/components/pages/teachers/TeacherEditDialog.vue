@@ -163,28 +163,29 @@ export default {
           this.$refs.menu.save(date)
         },
         saveUpdateInfo () {
-            this.loading = true
+            if (this.$refs.form.validate()) {
+                this.loading = true
+                const {
+                    id, firstname, lastname, email,
+                    phone, gender, birth_date
+                } = this.item
 
-            const {
-                id, firstname, lastname, email,
-                phone, gender, birth_date
-             } = this.item
-
-            this.$apollo
-                .mutate({
-                    mutation: UPDATE_TEACHER_MUTATION,
-                    variables: { id, firstname, lastname, email, phone, gender, birth_date }
-                })
-                .then(() => {
-                    this.loading = false
-                    this.show = !this.show
-                    toastAlertStatus('success', 'Successfully Updated')
-                })
-                .catch(error => {
-                    this.loading = false
-                    this.show = !this.show
-                    toastAlertStatus('error', error)
-                })
+                this.$apollo
+                    .mutate({
+                        mutation: UPDATE_TEACHER_MUTATION,
+                        variables: { id, firstname, lastname, email, phone, gender, birth_date }
+                    })
+                    .then(() => {
+                        this.loading = false
+                        this.show = !this.show
+                        toastAlertStatus('success', 'Successfully Updated')
+                    })
+                    .catch(error => {
+                        this.loading = false
+                        this.show = !this.show
+                        toastAlertStatus('error', error)
+                    })
+            }
         }
     }
 
