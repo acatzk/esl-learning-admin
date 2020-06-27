@@ -218,7 +218,7 @@ export default {
 }
 
 .icon-unread {
-    color: rgb(49, 49, 49);
+    color: rgb(71, 71, 71);
 }
 
 </style>
