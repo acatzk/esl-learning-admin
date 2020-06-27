@@ -50,7 +50,6 @@
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
 import { DELETE_STUDENT_MUTATION } from '@/graphql/mutations/students'
-import Swal from 'sweetalert2'
 
 export default {
     name: 'StudentActionButton',
