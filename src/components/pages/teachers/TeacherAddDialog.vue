@@ -165,7 +165,6 @@
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
 import { ADD_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
-import Swal from 'sweetalert2'
 
 export default {
     name: 'TeacherAddDialog',
