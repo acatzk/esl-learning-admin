@@ -98,7 +98,7 @@
                 <v-row class="d-flex justify-center">
                     <v-btn
                         class="ma-2 white--text"
-                        color="error"
+                        color="pink"
                         small
                         text
                         outlined
