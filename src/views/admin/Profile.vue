@@ -4,7 +4,7 @@
             
             <v-col cols="12" sm="8">
                 <v-card
-                    class="elevation-6"
+                    class="elevation-1"
                     style="background: white;"
                 >
                     <v-container>
@@ -46,7 +46,7 @@
 
             <v-col cols="12" sm="4">
                 <v-card
-                    class="elevation-6 text-center card-profile"
+                    class="elevation-1 text-center card-profile"
                 >
                     <v-container>
                         <v-avatar size="140px" class="elevation-12" color="indigo lighten-1">
