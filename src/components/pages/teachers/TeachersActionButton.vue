@@ -44,7 +44,6 @@
 
 <script>
 
-import Swal from 'sweetalert2'
 import { UPDATE_DEACTIVE_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
 
 export default {
