@@ -101,6 +101,7 @@
                         class="ma-2 white--text"
                         color="error"
                         small
+                        text
                         outlined
                         @click="removedMessage(item)"
                     >
@@ -112,6 +113,7 @@
                         class="ma-2"
                         color="success"
                         outlined
+                        text
                         @click="markAsReadMessage(item)"
                         :loading="markLoading"
                     >
