@@ -72,14 +72,13 @@
             <td @click.stop class="non-clickable">
                 <v-chip
                     :color="item.status === 'unread' ? 'pink--text font-weight-bold' : 'success--text'"
-                    text-color="white"
                     small
                     label
                     style="background: none;"
                 >
                     <v-icon left v-show="item.status === 'unread'" style="font-size: 15px;">email</v-icon>
                     <v-icon left v-show="item.status === 'read'" style="font-size: 15px;">drafts</v-icon>
-                    {{ item.status }}
+                    <!-- {{ item.status === 'unread' ? 'unmarked' : 'marked' }} -->
                 </v-chip>
             </td>
         </template>
