@@ -8,7 +8,7 @@
     >   
         <!-- DISPLAY NAME -->
         <template #item.name="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-medium">
+            <span v-if="item.status === 'unread'" class="font-weight-bold">
                 <v-icon left class="icon-unread">mdi-account-box</v-icon>
                 {{ item.name }}
             </span>
@@ -20,7 +20,7 @@
 
         <!-- DISPLAY EMAIL -->
         <template #item.email="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-medium">
+            <span v-if="item.status === 'unread'" class="font-weight-bold">
                 <v-icon left class="icon-unread">mdi-email</v-icon>
                 {{ item.email }}
             </span>
@@ -32,7 +32,7 @@
 
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-medium">
+            <span v-if="item.status === 'unread'" class="font-weight-bold">
                 <v-icon left class="icon-unread">mdi-calendar</v-icon>
                 <date-display
                     :created_at="item.created_at.split('T')[0]"
@@ -51,7 +51,7 @@
         <template #item.contact="{ item }">
             <td 
                 v-if="item.status === 'unread'" 
-                class="font-weight-medium non-clickable"
+                class="font-weight-bold non-clickable"
                 @click.stop
             >
                 <v-icon left class="icon-unread">mdi-phone</v-icon>
@@ -71,7 +71,7 @@
         <template #item.status="{ item }">
             <td @click.stop class="non-clickable">
                 <v-chip
-                    :color="item.status === 'unread' ? 'red--text font-weight-medium' : 'success--text'"
+                    :color="item.status === 'unread' ? 'red--text font-weight-bold' : 'success--text'"
                     text-color="white"
                     small
                     label
