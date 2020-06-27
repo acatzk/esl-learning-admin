@@ -67,12 +67,11 @@ export default {
     methods: {
         inactiveTeacherStatus () {
             if(confirm('Are you sure you want to deactive teacher account?')) {
+                const { id } = this.item
                 this.$apollo
                     .mutate({
                         mutation: UPDATE_DEACTIVE_TEACHER_MUTATION,
-                        variables: {
-                            id: this.item.id
-                        }
+                        variables: { id }
                     })
                     .then(() => {
                         toastAlertStatus('success', 'Successfully Inactive Teacher')
