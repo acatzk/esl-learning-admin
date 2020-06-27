@@ -13,7 +13,7 @@
         <vue-page-transition name="fade-in-right" class="content">
 
           <router-view 
-            class="elevation-5"
+            class="elevation-1"
           ></router-view> <!-- ** DYNAMIC CONTENT ROUTE ** -->
 
         </vue-page-transition>
