@@ -44,6 +44,9 @@
 
 <script>
 
+// Toast Alert Status file
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 import { UPDATE_DEACTIVE_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
 
 export default {
