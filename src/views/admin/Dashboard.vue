@@ -4,7 +4,7 @@
 
       <v-col cols="12" sm="3">
         <v-card
-          class="elevation-8 card-inbox"
+          class="elevation-1 card-inbox"
         >
           <v-container>
               <div class="d-flex justify-space-between align-items-center">
@@ -19,7 +19,7 @@
       
       <v-col cols="12" sm="3">
         <v-card
-          class="elevation-8 card-lessons"
+          class="elevation-1 card-lessons"
         >
           <v-container>
               <div class="d-flex justify-space-between align-items-center">
@@ -32,10 +32,9 @@
         </v-card>
       </v-col>
 
-
        <v-col cols="12" sm="3">
          <v-card
-          class="elevation-8 card-teachers"
+          class="elevation-1 card-teachers"
         >
           <v-container>
               <div class="d-flex justify-space-between align-items-center">
@@ -48,10 +47,9 @@
         </v-card>
        </v-col>
 
-
       <v-col cols="12" sm="3">
         <v-card
-          class="elevation-8 card-students"
+          class="elevation-1 card-students"
         >
           <v-container>
               <div class="d-flex justify-space-between align-items-center">
@@ -64,11 +62,10 @@
         </v-card>
       </v-col>
       
-
     </v-row>
 
     <v-card 
-      class="mx-auto visitor elevation-3" 
+      class="mx-auto visitor elevation-1" 
       style="height: 45vh;">
 
     </v-card>
