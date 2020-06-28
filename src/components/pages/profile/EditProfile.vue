@@ -75,10 +75,12 @@
             </v-col>
             <v-col cols="12">
                 <v-btn  
+                    @click="saveAdminProfile"
                     color="success"
                     class="float-right"
                     depressed
                     v-show="show"
+                    :loading="loading"
                 >
                 <v-icon left>mdi-content-save</v-icon> Save
                 </v-btn>
@@ -97,6 +99,10 @@
 
 <script>
 
+import { fb } from '@/firebase'
+
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 import { ADD_PROFILE_MUTATION } from '@/graphql/mutations/profile'
 
 export default {
@@ -108,6 +114,7 @@ export default {
         return {
             loading: false,
             valid: true,
+            id: fb.auth().currentUser,
             firstname: null,
             middlename: null,
             lastname: null,
@@ -129,6 +136,34 @@ export default {
                     this.$emit('close')
                 }
             }
+        }
+    },
+
+    methods: {
+        saveAdminProfile () {
+            this.loading = true
+
+            const { 
+                firstname, middlename, lastname, website,
+                company, location, twitterUser, bio
+            } = this.$data
+
+            this.$apollo
+                .mutate({
+                    mutation: ADD_PROFILE_MUTATION,
+                    variables: {
+                        id: this.id.uid,
+                        firstname, middlename, lastname,
+                        company, location, twitterUser, 
+                        website, bio
+                    }
+                })
+                .then(() => {
+                    this.loading = true
+                    this.show = !this.show
+                    toastAlertStatus('success', 'Successfully Updated Profile')
+                })
+                .catch(error => toastAlertStatus('error', error))
         }
     }
 }
