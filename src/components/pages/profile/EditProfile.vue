@@ -11,6 +11,7 @@
                     label="Firstname" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-account-outline"
+                    v-model="firstname"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
@@ -18,6 +19,7 @@
                     label="Middlename" 
                     autocomplete="off" 
                     prepend-inner-icon="mdi-account-outline"
+                    v-model="middlename"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
@@ -25,6 +27,7 @@
                     label="Lastname" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-account-outline"
+                    v-model="lastname"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
@@ -32,6 +35,7 @@
                     label="Company" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-hospital-building"
+                    v-model="company"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
@@ -39,6 +43,7 @@
                     label="Location" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-map-marker-circle"
+                    v-model="location"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
@@ -46,6 +51,7 @@
                     label="Website" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-link"
+                    v-model="website"
                 ></v-text-field>
             </v-col>
                 <v-col cols="12" sm="6">
@@ -53,6 +59,7 @@
                     label="Twitter/username" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-twitter"
+                    v-model="twitterUser"
                 ></v-text-field>
             </v-col>
             <v-col cols="12">
@@ -62,6 +69,7 @@
                     label="Bio"
                     autocomplete="off"
                     prepend-inner-icon="mdi-paper-cut-vertical"
+                    v-model="bio"
                     rows="1"
                 ></v-textarea>
             </v-col>
@@ -96,7 +104,15 @@ export default {
     data () {
         return {
             loading: false,
-            valid: true
+            valid: true,
+            firstname: null,
+            middlename: null,
+            lastname: null,
+            company: null,
+            location: null,
+            website: null,
+            twitterUser: null,
+            bio: null
         }
     },
 
