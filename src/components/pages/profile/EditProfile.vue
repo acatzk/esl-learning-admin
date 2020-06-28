@@ -96,6 +96,9 @@
 </template>
 
 <script>
+
+import { ADD_PROFILE_MUTATION } from '@/graphql/mutations/profile'
+
 export default {
     name: 'EditProfile',
 
