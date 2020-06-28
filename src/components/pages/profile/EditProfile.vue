@@ -159,7 +159,7 @@ export default {
                     }
                 })
                 .then(() => {
-                    this.loading = true
+                    this.loading = false
                     this.show = !this.show
                     toastAlertStatus('success', 'Successfully Updated Profile')
                 })
