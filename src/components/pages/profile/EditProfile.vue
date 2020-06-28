@@ -63,13 +63,15 @@
             <v-btn  
                 color="success"
                 class="float-right"
+                depressed
             >
-                Save
+               <v-icon left>mdi-content-save</v-icon> Save
             </v-btn>
             <v-btn  
                 class="float-right mr-2"
+                text
             >
-                Cancel
+               <v-icon left>mdi-close-circle-outline</v-icon> Cancel
             </v-btn>
         </v-col>
     </v-row>
