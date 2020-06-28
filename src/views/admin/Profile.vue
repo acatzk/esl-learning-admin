@@ -25,11 +25,14 @@
                             >
                                <v-icon left v-show="editable === false">mdi-pencil</v-icon> 
                                <v-icon left v-show="editable === true">mdi-close</v-icon> 
-                               {{ editable === false ? 'Edit Profile' : 'Cancel' }}
+                               {{ !editable ? 'Edit Profile' : 'Cancel' }}
                             </v-btn>
                        </header>
                         
-                        <edit-profile :disable="editable = editable" /> <!-- Editable Profile view -->
+                        <edit-profile  
+                            :visible="editable" 
+                            @close="editable=false"
+                        /> <!-- Editable Profile view -->
                         
                     </v-container>
                 </v-card>
