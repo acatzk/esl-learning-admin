@@ -13,7 +13,8 @@
                                 <v-icon left>mdi-security</v-icon>
                                 <span class="title" style="position: relative; top: 4px;">
                                    CEO <span class="font-weight-light hidden-sm-and-down">Profile</span>
-                                </span>
+                                </span>&nbsp;
+                                <small class="business hidden-sm-and-down" style="position: relative; top: 4px;">{{ firebaseAuthData.email }}</small>
                            </div>
                             <v-btn  
                                 small
@@ -74,12 +75,16 @@
 </template>
 
 <script>
+
+import { fb } from '@/firebase'
+
 export default {
     name: 'Profile',
 
     data () {
         return {
-            editable: false
+            editable: false,
+            firebaseAuthData: fb.auth().currentUser
         }
     },
 
