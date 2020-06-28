@@ -19,14 +19,15 @@
                             <v-btn  
                                 small
                                 color="indigo lighten-5"
+                                @click="editable = !editable"
                             >
                                <v-icon left>mdi-pencil</v-icon> Edit Profile
                             </v-btn>
                        </header>
                         
-                        <edit-profile v-show="false"/> <!-- Editable Profile view -->
+                        <edit-profile v-show="editable === true"/> <!-- Editable Profile view -->
 
-                        <show-profile v-show="true" /> <!-- Show Profile  -->
+                        <show-profile v-show="editable === false" /> <!-- Show Profile  -->
                         
                     </v-container>
                 </v-card>
@@ -61,6 +62,12 @@
 <script>
 export default {
     name: 'Profile',
+
+    data () {
+        return {
+            editable: false
+        }
+    },
 
     components: {
         ShowProfile: () => import('@/components/pages/profile/ShowProfile'),
