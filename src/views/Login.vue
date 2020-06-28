@@ -101,6 +101,8 @@
 
 import { fb } from '@/firebase'
 
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 export default {
   name: 'Login',
 
@@ -138,9 +140,13 @@ export default {
           .then(() => {
             this.loading = false
             this.$refs.form.reset()
+            toastAlertStatus('success', 'Access Granted')
             this.$router.push('/admin/dashboard')
           })
-          .catch(error => this.errorProvider(error))
+          .catch(error => { 
+            this.errorProvider(error)
+            toastAlertStatus('error', error)
+          })
       }
     },
 
