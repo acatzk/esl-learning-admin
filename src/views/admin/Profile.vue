@@ -1,7 +1,6 @@
 <template>
     <div class="profile elevation-0">
         <v-row class="d-flex">
-            
             <v-col cols="12" sm="8">
                 <v-card
                     class="elevation-1"
@@ -14,7 +13,7 @@
                                 <span class="title" style="position: relative; top: 4px;">
                                    CEO <span class="font-weight-light hidden-sm-and-down">Profile</span>
                                 </span>&nbsp;
-                                <small class="business hidden-sm-and-down" style="position: relative; top: 4px;">{{ firebaseAuthData.email }}</small>
+                                <small class="business hidden-sm-and-down" style="position: relative; top: 4px;">{{ firebase_admin.email }}</small>
                            </div>
                             <v-btn  
                                 small
@@ -59,11 +58,14 @@
                                 >
                             </v-avatar>
                         </v-badge>
-                        <div class="content-profile mt-2">
-                            <span class="company-name mb-2">CEO / CO-FOUNDER - VIC SOLUTION, INC.</span>
-                            <div class="title mt-3 mb-3">VICTOR MAGTANGOL</div>
-                            <div class="message overflow-y-auto text-justify" style="height: 40vh;">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste cum eligendi exercitationem dolorum nesciunt, ad quo. Perspiciatis, non illum. Explicabo aperiam odio labore
+                        <div 
+                            class="content-profile mt-2"
+                            v-for="(admin, index) in hasura_admin" :key="index"
+                        >
+                            <span class="company-name mb-2 text-uppercase">CEO / CO-FOUNDER - {{ admin.company ? ` ${admin.company} ` : 'Update your company'}}</span>
+                            <div class="title mt-3 mb-3 text-uppercase">{{ admin.firstname ? `${admin.firstname} ${admin.middlename} ${admin.lastname}` : 'Update your fullname'}}</div>
+                            <div class="message overflow-y-auto text-justify text-capitalize" style="height: 40vh;">
+                                {{ admin.bio ? admin.bio : 'update your bio...' }}
                             </div>
                         </div>
                     </v-container>
@@ -78,19 +80,55 @@
 
 import { fb } from '@/firebase'
 
+import { PROFILE_QUERY } from '@/graphql/queries/profile'
+
+import { PROFILE_SUBSCRIPTION } from '@/graphql/subscriptions/profile'
+
 export default {
     name: 'Profile',
 
     data () {
         return {
             editable: false,
-            firebaseAuthData: fb.auth().currentUser
+            firebase_admin: fb.auth().currentUser,
+            hasura_admin: []
         }
     },
 
     components: {
         EditProfile: () => import('@/components/pages/profile/EditProfile')
-    }
+    },
+
+    apollo: {
+        administrators: {
+            query: PROFILE_QUERY,
+            variables () {
+                return {
+                    id: this.firebase_admin ? this.$route.params.id : this.firebase_admin.uid
+                }
+            },
+            subscribeToMore: {
+                document: PROFILE_SUBSCRIPTION,
+                variables () {
+                    return {
+                        id: this.firebase_admin ? this.$route.params.id : this.firebase_admin.uid
+                    }
+                },
+                updateQuery(previousResult, { subscriptionData }) {
+                    if (previousResult) {
+                        return {
+                            administrators: [
+                                ...subscriptionData.data.administrators
+                            ]
+                        }
+                    }
+                }
+            },
+            result ({ data }) {
+                this.hasura_admin = data.administrators
+            }
+        }
+    },
 }
 </script>
 
