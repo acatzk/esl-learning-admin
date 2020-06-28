@@ -51,8 +51,16 @@
                 <v-card
                     class="elevation-1 text-center card-profile"
                 >
-                    <v-container>            
+                    <v-container>
+
+                        <v-skeleton-loader
+                            type="card"
+                            class="mx-auto"
+                            v-if="$apollo.loading"
+                        >
+                        </v-skeleton-loader>            
                         <v-badge
+                            v-else
                             bordered
                             bottom
                             color="success"
@@ -67,7 +75,17 @@
                                 >
                             </v-avatar>
                         </v-badge>
+
+                         <!-- ** SKELETON LOADING FOR DATA ** -->
+                        <v-skeleton-loader
+                            type="list-item, list-item, list-item"
+                            class="mx-auto"
+                            tile
+                            v-if="$apollo.loading"
+                        ></v-skeleton-loader> 
+
                         <div 
+                            v-else
                             class="content-profile mt-2"
                             v-for="(admin, index) in hasura_admin" :key="index"
                         >
