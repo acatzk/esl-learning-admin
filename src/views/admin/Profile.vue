@@ -41,14 +41,23 @@
                 <v-card
                     class="elevation-1 text-center card-profile"
                 >
-                    <v-container>
-                        <v-avatar size="140px" class="elevation-12">
-                            <img
-                                src="https://cdn.vuetifyjs.com/images/john.jpg"
-                                alt="John"
-                            >
-                        </v-avatar>
-                        <div class="content-profile">
+                    <v-container>            
+                        <v-badge
+                            bordered
+                            bottom
+                            color="success"
+                            dot
+                            offset-x="25"
+                            offset-y="25"
+                        >
+                            <v-avatar size="140px" class="elevation-2">
+                                <img
+                                    src="https://cdn.vuetifyjs.com/images/john.jpg"
+                                    alt="John"
+                                >
+                            </v-avatar>
+                        </v-badge>
+                        <div class="content-profile mt-2">
                             <span class="company-name mb-2">CEO / CO-FOUNDER - VIC SOLUTION, INC.</span>
                             <div class="title mt-3 mb-3">VICTOR MAGTANGOL</div>
                             <div class="message overflow-y-auto text-justify" style="height: 40vh;">
@@ -98,9 +107,12 @@ export default {
     }
 
     .v-avatar {
-        position: relative;
-        bottom: 25px;
-        background-color: #f1f8ff;
+        border: 3px solid  transparent;
+        background: #f09433; 
+        background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+        background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+        background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
     }
 
 }
