@@ -10,3 +10,14 @@ export const ADD_PROFILE_MUTATION = gql`
         }
     }  
 `
+
+export const UPDATE_PROFILE_MUTATION = gql`
+    mutation UpdateAdminMutation($id: String!, $firstname: String, $middlename: String, $lastname: String, $company: String, $location: String, $website: String, $twitterUser: String, $bio: String) {
+        update_administrators(where: {id: {_eq: $id}}, _set: {firstname: $firstname, lastname: $lastname, location: $location, middlename: $middlename, twitterUser: $twitterUser, company: $company, bio: $bio, website: $website}) {
+            affected_rows
+            returning {
+                id
+            }
+        }
+    }  
+`
