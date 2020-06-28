@@ -12,16 +12,20 @@
                            <div class="d-inline">
                                 <v-icon left>mdi-security</v-icon>
                                 <span class="title" style="position: relative; top: 4px;">
-                                    Edit <span class="font-weight-light hidden-sm-and-down">Profile</span>
-                                </span>&nbsp;
-                                <small class="business hidden-sm-and-down" style="position: relative; top: 4px;">Vic solution, inc.</small>
+                                   CEO <span class="font-weight-light hidden-sm-and-down">Profile</span>
+                                </span>
                            </div>
                             <v-btn  
                                 small
-                                color="indigo lighten-5"
+                                depressed
+                                outlined
+                                text
+                                :color="editable === false ? 'primary white--text' : ''"
                                 @click="editable = !editable"
                             >
-                               <v-icon left>mdi-pencil</v-icon> Edit Profile
+                               <v-icon left v-show="editable === false">mdi-pencil</v-icon> 
+                               <v-icon left v-show="editable === true">mdi-close</v-icon> 
+                               {{ editable === false ? 'Edit Profile' : 'Cancel' }}
                             </v-btn>
                        </header>
                         
