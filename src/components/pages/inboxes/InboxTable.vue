@@ -8,8 +8,8 @@
     >   
         <!-- DISPLAY NAME -->
         <template #item.name="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-bold">
-                <v-icon left class="icon-unread">mdi-account-box</v-icon>
+            <span v-if="item.status === 'unread'" class="font-weight-bold icon unread">
+                <v-icon left class="unread">mdi-account-box</v-icon>
                 {{ item.name }}
             </span>
             <span v-else >
@@ -21,7 +21,7 @@
         <!-- DISPLAY EMAIL -->
         <template #item.email="{ item }">
             <span v-if="item.status === 'unread'" class="font-weight-bold">
-                <v-icon left class="icon-unread">mdi-email</v-icon>
+                <v-icon left class="unread">mdi-email</v-icon>
                 {{ item.email }}
             </span>
             <span v-else>
@@ -33,7 +33,7 @@
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
             <span v-if="item.status === 'unread'" class="font-weight-bold">
-                <v-icon left class="icon-unread">mdi-calendar</v-icon>
+                <v-icon left class="unread">mdi-calendar</v-icon>
                 <date-display
                     :created_at="item.created_at.split('T')[0]"
                 />
@@ -54,7 +54,7 @@
                 class="font-weight-bold non-clickable"
                 @click.stop
             >
-                <v-icon left class="icon-unread">mdi-phone</v-icon>
+                <v-icon left class="unread">mdi-phone</v-icon>
                 {{ item.contact }}
             </td>
             <td 
@@ -216,7 +216,7 @@ export default {
     font-size: 16px;
 }
 
-.icon-unread {
+.unread {
     color: rgb(71, 71, 71);
 }
 
