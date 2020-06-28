@@ -29,9 +29,7 @@
                             </v-btn>
                        </header>
                         
-                        <edit-profile v-show="editable === true"/> <!-- Editable Profile view -->
-
-                        <show-profile v-show="editable === false" /> <!-- Show Profile  -->
+                        <edit-profile :disable="editable = editable" /> <!-- Editable Profile view -->
                         
                     </v-container>
                 </v-card>
@@ -83,7 +81,6 @@ export default {
     },
 
     components: {
-        ShowProfile: () => import('@/components/pages/profile/ShowProfile'),
         EditProfile: () => import('@/components/pages/profile/EditProfile')
     }
 }
