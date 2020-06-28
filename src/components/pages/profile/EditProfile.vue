@@ -1,5 +1,5 @@
 <template>
-    <div class="edit-profile">
+    <v-row class="ma-3">
         <v-col cols="12" sm="6" md="4">
             <v-text-field 
                 label="Firstname" 
@@ -72,5 +72,5 @@
                 Cancel
             </v-btn>
         </v-col>
-    </div>
+    </v-row>
 </template>
