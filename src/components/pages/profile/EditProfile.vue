@@ -4,14 +4,17 @@
         ref="form"
         v-model="valid"
         lazy-validation
-    >
-        <v-row class="ma-3">
+    >   
+        <v-row 
+            class="ma-3"  
+            v-for="(admin, index) in hasura_admin" :key="index"
+        >
             <v-col cols="12" sm="6" md="4">
-                <v-text-field 
+               <v-text-field 
                     label="Firstname" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-account-outline"
-                    v-model="firstname"
+                    v-model="admin.firstname"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
@@ -19,7 +22,7 @@
                     label="Middlename" 
                     autocomplete="off" 
                     prepend-inner-icon="mdi-account-outline"
-                    v-model="middlename"
+                    v-model="admin.middlename"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
@@ -27,7 +30,7 @@
                     label="Lastname" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-account-outline"
-                    v-model="lastname"
+                    v-model="admin.lastname"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
@@ -35,7 +38,7 @@
                     label="Company" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-hospital-building"
-                    v-model="company"
+                    v-model="admin.company"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
@@ -43,7 +46,7 @@
                     label="Location" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-map-marker-circle"
-                    v-model="location"
+                    v-model="admin.location"
                 ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
@@ -51,7 +54,7 @@
                     label="Website" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-link"
-                    v-model="website"
+                    v-model="admin.website"
                 ></v-text-field>
             </v-col>
                 <v-col cols="12" sm="6">
@@ -59,7 +62,7 @@
                     label="Twitter/username" 
                     autocomplete="off"
                     prepend-inner-icon="mdi-twitter"
-                    v-model="twitterUser"
+                    v-model="admin.twitterUser"
                 ></v-text-field>
             </v-col>
             <v-col cols="12">
@@ -69,13 +72,13 @@
                     label="Bio"
                     autocomplete="off"
                     prepend-inner-icon="mdi-paper-cut-vertical"
-                    v-model="bio"
+                    v-model="admin.bio"
                     rows="1"
                 ></v-textarea>
             </v-col>
             <v-col cols="12">
                 <v-btn  
-                    @click="saveAdminProfile"
+                    @click="saveAdminProfile(admin)"
                     color="success"
                     class="float-right"
                     depressed
@@ -103,7 +106,11 @@ import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
-import { ADD_PROFILE_MUTATION } from '@/graphql/mutations/profile'
+import { UPDATE_PROFILE_MUTATION } from '@/graphql/mutations/profile'
+
+import { PROFILE_QUERY } from '@/graphql/queries/profile'
+
+import { PROFILE_SUBSCRIPTION } from '@/graphql/subscriptions/profile'
 
 export default {
     name: 'EditProfile',
@@ -114,7 +121,7 @@ export default {
         return {
             loading: false,
             valid: true,
-            id: fb.auth().currentUser,
+            firebase_admin: fb.auth().currentUser,
             firstname: null,
             middlename: null,
             lastname: null,
@@ -122,7 +129,8 @@ export default {
             location: null,
             website: null,
             twitterUser: null,
-            bio: null
+            bio: null,
+            hasura_admin: null
         }
     },
 
@@ -140,22 +148,22 @@ export default {
     },
 
     methods: {
-        saveAdminProfile () {
+        saveAdminProfile(admin) {
             this.loading = true
-
-            const { 
-                firstname, middlename, lastname, website,
-                company, location, twitterUser, bio
-            } = this.$data
 
             this.$apollo
                 .mutate({
-                    mutation: ADD_PROFILE_MUTATION,
+                    mutation: UPDATE_PROFILE_MUTATION,
                     variables: {
-                        id: this.id.uid,
-                        firstname, middlename, lastname,
-                        company, location, twitterUser, 
-                        website, bio
+                        id: this.$route.params.id,
+                        firstname: admin.firstname, 
+                        middlename: admin.middlename, 
+                        lastname: admin.lastname,
+                        company: admin.company, 
+                        location: admin.location, 
+                        twitterUser: admin.twitterUser, 
+                        website: admin.website, 
+                        bio: admin.bio
                     }
                 })
                 .then(() => {
@@ -164,7 +172,47 @@ export default {
                     toastAlertStatus('success', 'Successfully Updated Profile')
                 })
                 .catch(error => toastAlertStatus('error', error))
+
         }
-    }
+    },
+
+    apollo: {
+        administrators: {
+            query: PROFILE_QUERY,
+            variables () {
+                return {
+                    id: this.firebase_admin ? this.$route.params.id : this.firebase_admin.uid
+                }
+            },
+            subscribeToMore: {
+                document: PROFILE_SUBSCRIPTION,
+                variables () {
+                    return {
+                        id: this.firebase_admin ? this.$route.params.id : this.firebase_admin.uid
+                    }
+                },
+                updateQuery(previousResult, { subscriptionData }) {
+                    if (previousResult) {
+                        return {
+                            administrators: [
+                                ...subscriptionData.data.administrators
+                            ]
+                        }
+                    }
+                }
+            },
+            result ({ data }) {
+                this.hasura_admin = data.administrators
+            }
+        }
+    },
+
 }
 </script>
+
+
+<style scoped>
+.v-btn {
+    text-transform: capitalize;
+}
+</style>
