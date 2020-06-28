@@ -20,7 +20,7 @@
 
         <!-- DISPLAY EMAIL -->
         <template #item.email="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-bold">
+            <span v-if="item.status === 'unread'" class="font-weight-bold unread">
                 <v-icon left class="unread">mdi-email</v-icon>
                 {{ item.email }}
             </span>
@@ -32,7 +32,7 @@
 
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-bold">
+            <span v-if="item.status === 'unread'" class="font-weight-bold unread">
                 <v-icon left class="unread">mdi-calendar</v-icon>
                 <date-display
                     :created_at="item.created_at.split('T')[0]"
@@ -51,7 +51,7 @@
         <template #item.contact="{ item }">
             <td 
                 v-if="item.status === 'unread'" 
-                class="font-weight-bold non-clickable"
+                class="font-weight-bold non-clickable unread"
                 @click.stop
             >
                 <v-icon left class="unread">mdi-phone</v-icon>
@@ -69,7 +69,7 @@
 
         <!-- STATUS OF UNREAD MESSAGES -->
         <template #item.status="{ item }">
-            <td @click.stop class="non-clickable">
+            <td @click.stop class="non-clickable unread">
                 <v-chip
                     :color="item.status === 'unread' ? 'pink--text font-weight-bold' : 'success--text'"
                     small
