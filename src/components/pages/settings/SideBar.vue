@@ -35,7 +35,7 @@
                         >
                             {{ capitalize(`${admin.firstname}`) + " " + capitalize(`${admin.middlename}`) + " " + capitalize(`${admin.lastname}`) }}
                         </v-list-item-title>
-                        <small class="small">Personal settings</small>
+                        <small class="small">General settings</small>
                     </v-list-item-content>
                 </v-list-item>
             </template>
