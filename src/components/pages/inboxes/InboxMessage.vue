@@ -71,9 +71,9 @@
                                 <h2>{{ capitalize(inbx.name) }}</h2>
                             </div>
                         <div>
-                                <div class="text-lowercase"><v-icon>email</v-icon>: {{ inbx.email }}</div>
-                                <div><v-icon>phone</v-icon>: {{ inbx.contact }}</div>
-                                <div><v-icon>date_range</v-icon>: <date-display :created_at="inbx.created_at.split('T')[0]"></date-display></div>
+                                <div class="text-lowercase"><v-icon>mdi-email-outline</v-icon>: {{ inbx.email }}</div>
+                                <div><v-icon>mdi-cellphone</v-icon>: {{ inbx.contact }}</div>
+                                <div><v-icon>mdi-calendar-blank</v-icon>: <date-display :created_at="inbx.created_at.split('T')[0]"></date-display></div>
                                 <div>
                                     <v-btn 
                                         :loading="emailLoading" 
