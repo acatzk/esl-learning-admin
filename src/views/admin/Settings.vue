@@ -32,7 +32,7 @@
                         <v-list-item
                             v-for="item in items"
                             :key="item.title"
-                            :to="item.title"
+                            :to="item.to"
                         >
                             <v-list-item-icon>
                                 <v-icon>{{ item.icon }}</v-icon>
@@ -54,15 +54,15 @@
     data () {
       return {
         items: [
-          { title: 'Profile', icon: 'mdi-tag-faces', to: '/settings/profile' },
-          { title: 'Account', icon: 'mdi-account-circle', to: '/settings/account' },
-          { title: 'Teachers', icon: 'mdi-folder-account', to: '/settings/teachers' },
-          { title: 'Security', icon: 'mdi-security-network', to: '/settings/security' },
-          { title: 'Security log', icon: 'mdi-key-variant', to: '/settings/security-log' },
-          { title: 'Emails', icon: 'mdi-email-open', to: '/settings/emails' },
-          { title: 'Notifications', icon: 'mdi-bell-ring', to: '/settings/notications' },
-          { title: 'Billings', icon: 'mdi-deskphone', to: '/settings/billings' },
-          { title: 'Developers Info', icon: 'mdi-code-tags', to: '/settings/developers-info' },
+          { title: 'Profile', icon: 'mdi-tag-faces', to: '/admin/settings' },
+          { title: 'Account', icon: 'mdi-account-circle', to: '/admin/settings/account' },
+          { title: 'Teachers', icon: 'mdi-folder-account', to: '/admin/settings/teachers' },
+          { title: 'Security', icon: 'mdi-security-network', to: '/admin/settings/security' },
+          { title: 'Security log', icon: 'mdi-key-variant', to: '/admin/settings/security-log' },
+          { title: 'Emails', icon: 'mdi-email-open', to: '/admin/settings/emails' },
+          { title: 'Notifications', icon: 'mdi-bell-ring', to: '/admin/settings/notications' },
+          { title: 'Billings', icon: 'mdi-deskphone', to: '/admin/settings/billings' },
+          { title: 'Developers Info', icon: 'mdi-code-tags', to: '/admin/settings/developers-info' },
         ],
       }
     },
