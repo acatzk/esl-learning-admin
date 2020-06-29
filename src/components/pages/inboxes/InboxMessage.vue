@@ -19,7 +19,7 @@
                             :loading="emailLoading"
                             @click="markAsReadMessage(id)"
                         >
-                            <v-icon>email</v-icon>
+                            <v-icon>mdi-email-outline</v-icon>
                         </v-btn>
                     </template>
                     <span>Mark as Read</span>
@@ -33,7 +33,7 @@
                             v-on="on"
                             @click="removedMessage(id)"
                         >
-                            <v-icon>delete</v-icon>
+                            <v-icon>mdi-delete-variant</v-icon>
                         </v-btn>
                     </template>
                     <span>Delete Message</span>
