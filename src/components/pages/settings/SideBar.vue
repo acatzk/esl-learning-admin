@@ -1,9 +1,6 @@
 <template>
     <div class="sidebar-setting">
-        <v-card
-            style="height: 80vh;"
-            class="elevation-1"
-        >
+        <v-card class="elevation-0">
             <template>
                 <v-list-item two-line>
                     <v-list-item-avatar>
@@ -18,7 +15,7 @@
             </template>
 
             <v-divider></v-divider>
-            <v-list dense>
+            <v-list dense rounded>
                 <v-list-item
                     v-for="item in items"
                     :key="item.title"
@@ -57,3 +54,13 @@
     },
   }
 </script>
+
+<style scoped>
+.v-card {
+    height: 80vh; 
+    background: transparent;
+}
+.v-list {
+    background: transparent;
+}
+</style>
