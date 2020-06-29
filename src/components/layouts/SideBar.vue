@@ -114,7 +114,7 @@ export default {
                 { icon: 'mdi-account-multiple-outline', text: 'Teachers', to: '/admin/teachers' },
                 { icon: 'mdi-account-box-outline', text: 'Students', to: '/admin/students' },
                 { heading: 'Account Setting' },
-                { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings' },
+                { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings/profile' },
                 { icon: 'mdi-account-outline', text: 'Profile', to: `/admin/profile/${fb.auth().currentUser.uid}` },
                 { icon: 'mdi-logout', text: 'Logout' },
             ],
