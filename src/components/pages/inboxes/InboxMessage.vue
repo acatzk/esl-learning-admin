@@ -39,7 +39,7 @@
                     <span>Delete Message</span>
                 </v-tooltip>
             </div>
-            <h4 style="position: relative; top: 15px; right: 10px;">Inbox message</h4>
+            <h4 style="position: relative; top: 15px; right: 10px;" class="font-weight-medium">Inbox message</h4>
         </div>
         <v-divider></v-divider>
         <v-skeleton-loader
