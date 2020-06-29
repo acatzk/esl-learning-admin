@@ -76,7 +76,7 @@ export default {
         return {
             items: [
                 { title: 'Account', icon: 'mdi-account-circle', to: '/admin/settings/account' },
-                { title: 'Administrators', icon: 'mdi-security', to: '/admin/settings/profile' },
+                { title: 'Administrators', icon: 'mdi-security', to: '/admin/settings/admins' },
                 { title: 'Teachers', icon: 'mdi-folder-account', to: '/admin/settings/teachers' },
                 { title: 'Security', icon: 'mdi-security-network', to: '/admin/settings/security' },
                 { title: 'Security log', icon: 'mdi-key-variant', to: '/admin/settings/security-log' },

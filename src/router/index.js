@@ -66,7 +66,7 @@ const routes = [
         meta: { transition: 'fade-in-up' },
         children: [
           {
-            path: 'profile',
+            path: 'admins',
             name: 'profile-setting',
             component: () => import('@/components/pages/settings/admin-profiles/Admin')
           },
