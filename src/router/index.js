@@ -55,7 +55,15 @@ const routes = [
       {
         path: 'settings',
         name: 'settings',
-        component: () => import('@/views/admin/Settings')
+        component: () => import('@/views/admin/Settings'),
+        meta: { transition: 'fade-in-up' },
+        children: [
+          {
+            path: 'profile',
+            name: 'profile-setting',
+            component: () => import('@/components/pages/settings/Profile')
+          }
+        ]
       }
     ]
   },
