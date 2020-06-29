@@ -104,6 +104,8 @@ import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
+import { required, emailRules } from '@/assets/js/validationRules'
+
 export default {
   name: 'Login',
 
