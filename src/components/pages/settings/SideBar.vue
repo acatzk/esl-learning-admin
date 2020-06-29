@@ -7,8 +7,10 @@
                         <img src="https://avatars0.githubusercontent.com/u/38458781?s=400&u=d2e21173ef861da3d8ca3a292398cbc0c6f7c000&v=4">
                     </v-list-item-avatar>
 
-                    <v-list-item-content>
-                        <v-list-item-title class="font-weight-medium">Joshua Galit</v-list-item-title>
+                    <v-list-item-content v-for="(admin, index) in administraotors" :key="index">
+                        <v-list-item-title class="font-weight-medium">
+                            {{ capitalize(`${admin.firstname}`) + " " + capitalize(`${admin.middlename}`) + " " + capitalize(`${admin.lastname}`) }}
+                        </v-list-item-title>
                         <small class="small">Personal settings</small>
                     </v-list-item-content>
                 </v-list-item>
@@ -36,23 +38,73 @@
 </template>
 
 <script>
-  export default {
+
+import { fb } from '@/firebase'
+
+import { PROFILE_QUERY } from '@/graphql/queries/profile'
+
+import { PROFILE_SUBSCRIPTION } from '@/graphql/subscriptions/profile'
+
+export default {
+    name: 'SideBar',
+
     data () {
-      return {
-        items: [
-          { title: 'Admin Profiles', icon: 'mdi-tag-faces', to: '/admin/settings/profile' },
-          { title: 'Account', icon: 'mdi-account-circle', to: '/admin/settings/account' },
-          { title: 'Teachers', icon: 'mdi-folder-account', to: '/admin/settings/teachers' },
-          { title: 'Security', icon: 'mdi-security-network', to: '/admin/settings/security' },
-          { title: 'Security log', icon: 'mdi-key-variant', to: '/admin/settings/security-log' },
-          { title: 'Emails', icon: 'mdi-email-open', to: '/admin/settings/emails' },
-          { title: 'Notifications', icon: 'mdi-bell-ring', to: '/admin/settings/notications' },
-          { title: 'Billings', icon: 'mdi-deskphone', to: '/admin/settings/billings' },
-          { title: 'Developers Info', icon: 'mdi-code-tags', to: '/admin/settings/developers-info' },
-        ],
-      }
+        return {
+            items: [
+                { title: 'Admin Profiles', icon: 'mdi-tag-faces', to: '/admin/settings/profile' },
+                { title: 'Account', icon: 'mdi-account-circle', to: '/admin/settings/account' },
+                { title: 'Teachers', icon: 'mdi-folder-account', to: '/admin/settings/teachers' },
+                { title: 'Security', icon: 'mdi-security-network', to: '/admin/settings/security' },
+                { title: 'Security log', icon: 'mdi-key-variant', to: '/admin/settings/security-log' },
+                { title: 'Emails', icon: 'mdi-email-open', to: '/admin/settings/emails' },
+                { title: 'Notifications', icon: 'mdi-bell-ring', to: '/admin/settings/notications' },
+                { title: 'Billings', icon: 'mdi-deskphone', to: '/admin/settings/billings' },
+                { title: 'Developers Info', icon: 'mdi-code-tags', to: '/admin/settings/developers-info' },
+            ],
+            firebase_admin: fb.auth().currentUser,
+            administraotors: []
+        }
     },
-  }
+
+    methods: {
+        capitalize(s) {
+            if (typeof s !== 'string') return ''
+            return s.charAt(0).toUpperCase() + s.slice(1)
+        }  
+    },
+
+    apollo: {
+        administrators: {
+            query: PROFILE_QUERY,
+            variables () {
+                return {
+                    id: this.firebase_admin.uid
+                }
+            },
+            subscribeToMore: {
+                document: PROFILE_SUBSCRIPTION,
+                variables () {
+                    return {
+                        id: this.firebase_admin.uid
+                    }
+                },
+                updateQuery(previousResult, { subscriptionData }) {
+                    if (previousResult) {
+                        return {
+                            administrators: [
+                                ...subscriptionData.data.administrators
+                            ]
+                        }
+                    }
+                }
+            },
+            result ({ data }) {
+                this.administraotors = data.administrators
+            }
+        }
+    }
+
+}
 </script>
 
 <style scoped>
