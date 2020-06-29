@@ -68,7 +68,7 @@ const routes = [
           {
             path: 'profile',
             name: 'profile-setting',
-            component: () => import('@/components/pages/settings/Profile')
+            component: () => import('@/components/pages/settings/admin-profiles/Profile')
           },
           {
             path: 'account',
