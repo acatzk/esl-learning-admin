@@ -71,21 +71,21 @@
                                 <h2>{{ capitalize(inbx.name) }}</h2>
                             </div>
                         <div>
-                                <div class="text-lowercase"><v-icon>mdi-email-outline</v-icon>: {{ inbx.email }}</div>
-                                <div><v-icon>mdi-cellphone</v-icon>: {{ inbx.contact }}</div>
-                                <div><v-icon>mdi-calendar-blank</v-icon>: <date-display :created_at="inbx.created_at.split('T')[0]"></date-display></div>
-                                <div>
-                                    <v-btn 
-                                        :loading="emailLoading" 
-                                        color="deep-purple darken-4" 
-                                        width="100%" 
-                                        outlined 
-                                        text
-                                        @click="markAsReadMessage(id)"
-                                    >
-                                        <v-icon left>email</v-icon> Mark as Read
-                                    </v-btn>
-                                </div>
+                            <div class="text-lowercase"><v-icon>mdi-email-outline</v-icon>: {{ inbx.email }}</div>
+                            <div><v-icon>mdi-cellphone</v-icon>: {{ inbx.contact }}</div>
+                            <div><v-icon>mdi-calendar-blank</v-icon>: <date-display :created_at="inbx.created_at.split('T')[0]"></date-display></div>
+                            <div>
+                                <v-btn 
+                                    :loading="emailLoading" 
+                                    color="deep-purple darken-4" 
+                                    width="100%" 
+                                    outlined 
+                                    text
+                                    @click="markAsReadMessage(id)"
+                                >
+                                    <v-icon left>email</v-icon> Mark as Read
+                                </v-btn>
+                            </div>
                         </div>
                     </div>
                 </v-col>
@@ -102,7 +102,7 @@
                         <div class="caption mb-2">
                             Date on 
                             <date-display :created_at="inbox.created_at.split('T')[0]"></date-display> 
-                            <timeago :datetime="inbox.created_at" :auto-update="60"></timeago>
+                            <timeago :datetime="inbox.created_at" :auto-update="60" class="font-weight-medium" style="color: indigo;"></timeago>
                         </div>
                     </div>
                     <v-card v-show="!$apollo.loading" flat style="overflow-y: scroll; height: 53vh; text-align: justify;">
