@@ -23,6 +23,7 @@
                     v-for="item in items"
                     :key="item.title"
                     :to="item.to"
+                    color="orange darken-4"
                 >
                     <v-list-item-icon>
                         <v-icon>{{ item.icon }}</v-icon>
