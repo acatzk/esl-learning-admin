@@ -60,6 +60,7 @@
                     v-model="email"
                     autocomplete="off"
                     @keyup.enter="loginAdminstrator"
+                    autofocus="autofocus"
                   ></v-text-field>
 
                   <v-text-field
