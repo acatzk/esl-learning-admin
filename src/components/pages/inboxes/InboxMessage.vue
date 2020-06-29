@@ -41,6 +41,7 @@
             </div>
             <h4 style="position: relative; top: 15px; right: 10px;">Inbox message</h4>
         </div>
+        <v-divider></v-divider>
         <v-skeleton-loader
             type="table-thead, table-tbody"
             class="mx-auto"
@@ -98,13 +99,13 @@
                         <div class="caption">
                             {{ capitalize(inbox.name) }}
                         </div>
-                        <div class="caption">
+                        <div class="caption mb-2">
                             Date on 
                             <date-display :created_at="inbox.created_at.split('T')[0]"></date-display> 
                             <timeago :datetime="inbox.created_at" :auto-update="60"></timeago>
                         </div>
                     </div>
-                    <v-card v-show="!$apollo.loading" flat style="overflow-y: scroll; height: 63vh; text-align: justify;">
+                    <v-card v-show="!$apollo.loading" flat style="overflow-y: scroll; height: 53vh; text-align: justify;">
                         <p class="pt-4 content-style mr-3" style="line-height: 30px;">
                             {{ inbox.message }}
                         </p>
@@ -280,5 +281,8 @@ export default {
     white-space: pre-wrap; 
     word-wrap: break-word;
     font-family: inherit;
+}
+.v-card {
+    border: none;
 }
 </style>
