@@ -56,11 +56,18 @@
 </script>
 
 <style scoped>
+
+.sidebar-setting {
+    position: fixed;
+}
+
 .v-card {
     height: 80vh; 
     background: transparent;
 }
+
 .v-list {
     background: transparent;
 }
+
 </style>
