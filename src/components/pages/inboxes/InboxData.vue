@@ -42,7 +42,7 @@ export default {
     name: 'InboxData',
 
     components: {
-        InboxTable: () => import('@/components/pages/inboxes/InboxTable')
+        InboxTable: () => import('./InboxTable')
     },
 
     data: () => ({
