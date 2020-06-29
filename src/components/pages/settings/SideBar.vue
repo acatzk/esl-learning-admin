@@ -42,7 +42,7 @@
     data () {
       return {
         items: [
-          { title: 'Profile', icon: 'mdi-tag-faces', to: '/admin/settings/profile' },
+          { title: 'Admin Profiles', icon: 'mdi-tag-faces', to: '/admin/settings/profile' },
           { title: 'Account', icon: 'mdi-account-circle', to: '/admin/settings/account' },
           { title: 'Teachers', icon: 'mdi-folder-account', to: '/admin/settings/teachers' },
           { title: 'Security', icon: 'mdi-security-network', to: '/admin/settings/security' },
