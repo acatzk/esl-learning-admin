@@ -60,7 +60,6 @@
                     v-model="email"
                     autocomplete="off"
                     @keyup.enter="loginAdminstrator"
-                    autofocus="autofocus"
                   ></v-text-field>
 
                   <v-text-field
@@ -103,8 +102,6 @@
 import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
-
-import { required, emailRules } from '@/assets/js/validationRules'
 
 export default {
   name: 'Login',
