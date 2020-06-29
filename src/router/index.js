@@ -51,6 +51,11 @@ const routes = [
         path: 'students',
         name: 'students',
         component: () => import('@/views/admin/Students')
+      },
+      {
+        path: 'settings',
+        name: 'settings',
+        component: () => import('@/views/admin/Settings')
       }
     ]
   },
