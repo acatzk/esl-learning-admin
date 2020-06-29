@@ -34,13 +34,20 @@ const routes = [
       {
         path: 'inbox',
         name: 'inbox',
-        component: () => import('@/views/admin/Inbox')
-      },
-      {
-        path: 'inbox/:id',
-        name: 'inbox-message',
-        component: () => import('@/views/admin/InboxMessage'),
-        meta: { transition: 'fade-in-up' }
+        component: () => import('@/views/admin/Inbox'),
+        children: [
+          {
+            path: 'messages',
+            name: 'inbox-messages',
+            component: () => import('@/components/pages/inboxes/InboxData')
+          },
+          {
+            path: ':id',
+            name: 'inbox-message',
+            component: () => import('@/views/admin/InboxMessage'),
+            meta: { transition: 'fade-in-up' }
+          }
+        ]
       },
       {
         path: 'teachers',
