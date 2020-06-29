@@ -10,3 +10,6 @@ export const minLength = (propertyType, minLength) => {
     return v => v && v.length >= minLength || `${propertyType} must be at least ${minLength} characters.`
 }
 
+export const maxLength = (propertyType, maxLength) => {
+    return v => v && v.length <= maxLength || `${propertyType} must be less than ${maxLength} characters.`
+}
