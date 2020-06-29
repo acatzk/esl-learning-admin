@@ -109,7 +109,7 @@ export default {
             sidebarItems: [
                 { heading: 'Management' },
                 { icon: 'mdi-cube-outline', text: 'Dashboard', to: '/admin/dashboard' },
-                { icon: 'mdi-email-outline', text: 'Inbox', to: '/admin/inbox' },
+                { icon: 'mdi-email-outline', text: 'Inbox', to: '/admin/inbox/messages' },
                 { icon: 'mdi-folder-multiple-outline', text: 'Lessons', to: '/admin/lessons' },
                 { icon: 'mdi-account-multiple-outline', text: 'Teachers', to: '/admin/teachers' },
                 { icon: 'mdi-account-box-outline', text: 'Students', to: '/admin/students' },
