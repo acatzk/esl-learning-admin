@@ -3,12 +3,36 @@
         <v-card class="elevation-0">
             <template>
                 <v-list-item two-line>
+
                     <v-list-item-avatar>
-                        <img src="https://avatars0.githubusercontent.com/u/38458781?s=400&u=d2e21173ef861da3d8ca3a292398cbc0c6f7c000&v=4">
+                        <v-skeleton-loader
+                            type="avatar"
+                            v-if="$apollo.loading"
+                        ></v-skeleton-loader> 
+                        <img 
+                            v-else
+                            src="https://avatars0.githubusercontent.com/u/38458781?s=400&u=d2e21173ef861da3d8ca3a292398cbc0c6f7c000&v=4"
+                        >
                     </v-list-item-avatar>
 
-                    <v-list-item-content v-for="(admin, index) in administraotors" :key="index">
-                        <v-list-item-title class="font-weight-medium">
+                    <v-list-item-content
+                        v-if="$apollo.loading"
+                    >
+                        <v-list-item-title>
+                            <v-skeleton-loader
+                                type="sentences"
+                                style="background: transparent;"
+                            ></v-skeleton-loader> 
+                        </v-list-item-title>
+                    </v-list-item-content>
+
+                    <v-list-item-content 
+                        v-else
+                        v-for="(admin, index) in administraotors" :key="index"
+                    >
+                        <v-list-item-title 
+                            class="font-weight-medium"
+                        >
                             {{ capitalize(`${admin.firstname}`) + " " + capitalize(`${admin.middlename}`) + " " + capitalize(`${admin.lastname}`) }}
                         </v-list-item-title>
                         <small class="small">Personal settings</small>
