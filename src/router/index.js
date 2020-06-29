@@ -44,7 +44,7 @@ const routes = [
           {
             path: ':id',
             name: 'inbox-message',
-            component: () => import('@/views/admin/InboxMessage'),
+            component: () => import('@/components/pages/inboxes/InboxMessage'),
             meta: { transition: 'fade-in-up' }
           }
         ]
