@@ -120,6 +120,8 @@
 
 import Swal from 'sweetalert2'
 
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 // GRAPHQL MUTATIONS
 import { INBOX_DELETE_MUTATION, INBOX_UPDATE_MUTATION } from '@/graphql/mutations/inboxes'
 // INBOXES QUERY 
@@ -158,42 +160,12 @@ export default {
                 })
                 .then(() => {
                     this.emailLoading = false
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        onOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'success',
-                        title: 'Marked as Read'
-                    })
+                    toastAlertStatus('success', 'Marked as Read')
                     this.$router.push('/admin/inbox/messages')
                 })
                 .catch(error => {
                     this.emailLoading = false
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        onOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: 'error',
-                        title: error
-                    })
+                    toastAlertStatus('error', error)
                 })
         },
         removedMessage(id) {
@@ -206,41 +178,11 @@ export default {
                         }
                     })
                     .then(() => {
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            onOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
-
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Successfully Deleted.'
-                        })
+                        toastAlertStatus('success', 'Successfully Deleted')
                         this.$router.push('/admin/inbox/messages')
                     })
                     .catch(error => {
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            onOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
-
-                        Toast.fire({
-                            icon: 'error',
-                            title: error
-                        })
+                        toastAlertStatus('error', error)
                     })
             } 
         },
