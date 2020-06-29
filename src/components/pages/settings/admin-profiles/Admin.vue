@@ -4,8 +4,8 @@
             <v-toolbar-title>
                 <v-icon right>mdi-account-box</v-icon> Administrator Settings
             </v-toolbar-title>
-            <v-btn small depressed color="primary" @click.stop="dialog = true">
-               <v-icon left>mdi-plus</v-icon> Add
+            <v-btn small depressed @click.stop="dialog = true">
+               <v-icon center>mdi-plus</v-icon>
             </v-btn>   
         </header>
 
