@@ -62,6 +62,11 @@ const routes = [
             path: 'profile',
             name: 'profile-setting',
             component: () => import('@/components/pages/settings/Profile')
+          },
+          {
+            path: 'account',
+            name: 'account-setting',
+            component: () => import('@/components/pages/settings/Account')
           }
         ]
       }
