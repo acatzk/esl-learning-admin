@@ -3,7 +3,7 @@
         <div class="d-flex justify-space-between">
             <div class="ma-2">
                 <v-btn 
-                    to="/admin/inbox" 
+                    to="/admin/inbox/messages" 
                     icon 
                     class="mr-2"
                 >
