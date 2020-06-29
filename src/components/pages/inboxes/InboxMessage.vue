@@ -174,7 +174,7 @@ export default {
                         icon: 'success',
                         title: 'Marked as Read'
                     })
-                    this.$router.push('/admin/inbox')
+                    this.$router.push('/admin/inbox/messages')
                 })
                 .catch(error => {
                     this.emailLoading = false
@@ -222,7 +222,7 @@ export default {
                             icon: 'success',
                             title: 'Successfully Deleted.'
                         })
-                        this.$router.push('/admin/inbox')
+                        this.$router.push('/admin/inbox/messages')
                     })
                     .catch(error => {
                         const Toast = Swal.mixin({
