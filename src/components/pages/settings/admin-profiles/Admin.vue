@@ -18,11 +18,59 @@
                 append-icon="search"
                 dense
                 rounded
+                v-model="search"
                 style="position: relative; top: 12px; border-radius: 50px;"
             ></v-text-field>
+
+             <!-- ** TEACHERS VUETIFY TABLE ** -->
+            <admins-table 
+                :items="admins"
+                :headers="headers"
+                :search="search"
+            />
+
         </v-card>
     </div>
 </template>
+
+
+<script>
+export default {
+    name: 'Admin',
+
+    data () {
+        return {
+            search: '',
+            admins: [
+                {
+                    'id': '123455678',
+                    'email': 'joshuaimalay@gmail.com',
+                    'password': 'ilusmdm123'
+                },
+                {
+                    'id':'754321',
+                    'email': 'jeromevillaruel@gmail.com',
+                    'password': 'veoscriptofficial'
+                }
+            ]
+        }
+    },
+
+    components: {
+        AdminsTable: () => import('./AdminsTable')
+    },
+
+    computed: {
+        headers() {
+            return [
+                { text: 'Email', value: 'email' },
+                { text: 'Password', value: 'password' },
+                { text: 'Options', value: 'id' }
+            ]
+        }
+    }
+}
+</script>
 
 <style scoped lang="scss">
 .profile-setting {
