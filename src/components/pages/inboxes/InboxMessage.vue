@@ -225,6 +225,8 @@ export default {
     font-family: inherit;
 }
 .v-card {
-    border: none;
+    border: none !important;
+    -webkit-border: none;
+    -moz-border: none;
 }
 </style>
