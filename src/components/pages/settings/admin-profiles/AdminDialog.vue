@@ -103,16 +103,19 @@ export default {
 
     methods: {
         saveAdmin () {
+
+            const { email, password } = this.item
+
             if (this.modalType === 'add') {
                 if (this.$refs.form.validate()) {
-                    alert('Added Admin')
+                    toastAlertStatus('success', `Added ${email}`)
                 } 
             } 
 
             // EDIT STUDENT DATA
             if (this.modalType === 'edit') {
                 if (this.$refs.form.validate()) {
-                    alert('Edit Admin')
+                    toastAlertStatus('success', `Edited ${email}`)
                 }
             }
         }
