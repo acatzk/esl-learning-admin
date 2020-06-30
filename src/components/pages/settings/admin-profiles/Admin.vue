@@ -9,6 +9,13 @@
             </v-btn>   
         </header>
 
+        <!-- ADMIN-DIALOG ADD AND EDIT -->
+        <admin-dialog 
+            :visible="dialog" @close="dialog = false"
+            :modalType="`add`"
+            :item="item"
+        />
+
         <v-card flat>
             <!-- ** SEARCH TEXT FIELD ** -->
             <v-text-field
@@ -41,7 +48,7 @@ export default {
     data () {
         return {
             search: '',
-            admins: [
+            admins: [ 
                 {
                     'id': '123455678',
                     'email': 'joshuaimalay@gmail.com',
@@ -52,12 +59,18 @@ export default {
                     'email': 'jeromevillaruel@gmail.com',
                     'password': 'veoscriptofficial'
                 }
+            ],
+            dialog: false,
+            item: [
+                { email: null },
+                { password: null }
             ]
         }
     },
 
     components: {
-        AdminsTable: () => import('./AdminsTable')
+        AdminsTable: () => import('./AdminsTable'),
+        AdminDialog: () => import('./AdminDialog')
     },
 
     computed: {
