@@ -16,7 +16,7 @@
         >
           <v-container>
               <div class="d-flex justify-space-between align-items-center">
-                <p class="font-weight-normal inbox">Lessons</p>
+                <p class="font-weight-normal" style="font-size: 20px;">Lessons</p>
                 <v-icon size="50">mdi-folder-multiple-outline</v-icon>
               </div>
               <h2 class="font-weight-medium text-center" style="font-size: 50px;">35</h2> 
@@ -31,7 +31,7 @@
         >
           <v-container>
               <div class="d-flex justify-space-between align-items-center">
-                <p class="font-weight-normal inbox">Teachers</p>
+                <p class="font-weight-normal" style="font-size: 20px;">Teachers</p>
                 <v-icon size="50">mdi-account-multiple-outline</v-icon>
               </div>
               <h2 class="font-weight-medium text-center" style="font-size: 50px;">225</h2> 
@@ -46,7 +46,7 @@
         >
           <v-container>
               <div class="d-flex justify-space-between align-items-center">
-                <p class="font-weight-normal inbox">Students</p>
+                <p class="font-weight-normal" style="font-size: 20px;">Students</p>
                 <v-icon size="50">mdi-account-box-outline</v-icon>
               </div>
               <h2 class="font-weight-medium text-center" style="font-size: 50px;">155</h2> 
@@ -128,10 +128,6 @@ export default {
 
 
 <style scoped>
-
-.inbox {
-  font-size: 20px;
-}
 
 .total {
   font-size: 12px;
