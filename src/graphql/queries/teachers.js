@@ -16,3 +16,13 @@ export const TEACHERS_QUERY = gql`
         }
     }  
 `
+
+export const TOTAL_TEACHERS_COUNT_QUERY = gql`
+    query TeacherCountQuery {
+        teacherCount: teachers_aggregate {
+            aggregate {
+                count
+            }
+        }
+    }  
+`
