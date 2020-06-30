@@ -1,5 +1,13 @@
 <template>
-    <div class="profile-setting">
-        <h1>Account Settings</h1>
+    <div class="account-setting">
+        <v-card style="height: 70vh;" class="elevation-0">
+
+        </v-card>
     </div>
 </template>
+
+<style scoped>
+.account-setting {
+    background: white;
+}
+</style>
