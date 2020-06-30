@@ -28,3 +28,14 @@ export const INBOX_SINGLE_SUBSCRIPTION = gql`
         }
     }
 `
+
+
+export const TOTAL_INBOXES_COUNT_SUBSCRIPTION = gql`
+    subscription InboxCountSubscription {
+        inboxCount: inboxes_aggregate {
+            aggregate {
+                count
+            }
+        }
+    }
+`
