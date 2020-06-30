@@ -6,18 +6,7 @@
         <v-card
           class="elevation-1 card-inbox"
         >
-          <v-container>
-              <div class="d-flex justify-space-between align-items-center">
-                <p class="font-weight-normal inbox">Inbox</p>
-                <v-icon size="50">mdi-email-outline</v-icon>
-              </div>
-              <h2 
-                class="font-weight-medium number text-center"
-              >
-                {{  inboxCount ? inboxCount.aggregate.count : 0 }}
-              </h2> 
-              <small>Total number of inbox</small>
-          </v-container>
+           <inbox-count /> <!-- INBOX COUNT QUERY AND SUBSCRIPTION -->
         </v-card>
       </v-col>
       
@@ -103,70 +92,38 @@
 
 <script>
 
-  import gql from 'graphql-tag'
+export default {
+  name: 'Dashboad',
 
-  export default {
-    data: () => ({
-      labels: [
-        '12am',
-        '3am',
-        '6am',
-        '9am',
-        '12pm',
-        '3pm',
-        '6pm',
-        '9pm',
-      ],
-      value: [
-        200,
-        675,
-        410,
-        390,
-        310,
-        460,
-        250,
-        240,
-      ],
-      inboxCount: 0
-    }),
+  components: {
+    InboxCount: () => import('@/components/pages/dashboard/InboxCount')
+  },
 
-    apollo: {
-      inboxCount: {
-        query: gql`
-          query InboxCountQuery {
-            inboxCount: inboxes_aggregate {
-              aggregate {
-                count
-              }
-            }
-          }
-        `,
-        subscribeToMore: {
-          document: gql`
-            subscription InboxCountSubscription {
-              inboxCount: inboxes_aggregate {
-                aggregate {
-                  count
-                }
-              }
-            }
-          `,
-          updateQuery(previousResult, { subscriptionData }) {
-            if (previousResult) {
-              return {
-                inboxCount: {
-                  ...subscriptionData.data.inboxCount
-                }
-              }
-            }
-          }
-        },
-        result ({ data }) {
-          this.inboxCount = data.inboxCount
-        }
-      }
-    }
-  }
+  data: () => ({
+    labels: [
+      '12am',
+      '3am',
+      '6am',
+      '9am',
+      '12pm',
+      '3pm',
+      '6pm',
+      '9pm',
+    ],
+    value: [
+      200,
+      675,
+      410,
+      390,
+      310,
+      460,
+      250,
+      240,
+    ],
+    inboxCount: 0
+  })
+
+}
 </script>
 
 
