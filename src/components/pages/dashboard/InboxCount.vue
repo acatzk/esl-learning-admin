@@ -8,7 +8,14 @@
             class="font-weight-medium text-center"
             style="font-size: 50px;"
         >
-        {{  inboxCount ? inboxCount.aggregate.count : 0 }}
+        <v-btn
+          :loading="true"
+          text
+          color="error"
+          v-if="$apollo.loading"
+        >
+        </v-btn>
+         <span v-else>{{  inboxCount ? inboxCount.aggregate.count : 0 }}</span>
         </h2> 
         <small>Total number of inbox</small>
     </v-container>
