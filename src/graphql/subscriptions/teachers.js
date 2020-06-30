@@ -16,3 +16,13 @@ export const TEACHERS_SUBSCRIPTION = gql`
         }
     }  
 `
+
+export const TOTAL_TEACHERS_COUNT_SUBSCRIPTION = gql`
+    subscription TeacherCountSubscription {
+        teacherCount: teachers_aggregate {
+            aggregate {
+                count
+            }
+        }
+    }  
+`
