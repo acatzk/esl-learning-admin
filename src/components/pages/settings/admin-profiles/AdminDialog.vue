@@ -50,6 +50,7 @@
                         color="indigo darken-1 white--text" 
                         depressed
                         :loading="loading"  
+                        @click="saveAdmin"
                     >
                       <v-icon left>mdi-content-save</v-icon>  Save
                     </v-btn>
@@ -101,6 +102,20 @@ export default {
     },
 
     methods: {
+        saveAdmin () {
+            if (this.modalType === 'add') {
+                if (this.$refs.form.validate()) {
+                    alert('Added Admin')
+                } 
+            } 
+
+            // EDIT STUDENT DATA
+            if (this.modalType === 'edit') {
+                if (this.$refs.form.validate()) {
+                    alert('Edit Admin')
+                }
+            }
+        }
     }
 
 }
