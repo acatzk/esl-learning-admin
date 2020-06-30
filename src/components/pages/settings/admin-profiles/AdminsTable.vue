@@ -7,7 +7,7 @@
         <!-- ** EMAIL ** -->
         <template #item.email="{ item }">
             <span>
-                <v-icon left>mdi-email</v-icon>
+                <v-icon left>mdi-email-outline</v-icon>
                 {{ item.email }}
             </span>
         </template>
@@ -15,7 +15,7 @@
           <!-- ** CONTACT ** -->
         <template #item.password="{ item }">
             <span>
-                <v-icon left>mdi-lock-open</v-icon>
+                <v-icon left>mdi-lock-outline</v-icon>
                 {{ item.password }}
             </span>
         </template>
