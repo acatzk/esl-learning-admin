@@ -17,7 +17,7 @@
 
 import { TOTAL_INBOXES_COUNT_QUERY } from '@/graphql/queries/inboxes'
 
-import { TOTAL_INBOXES_COUNT_SUBSCRIPTION } from '@/graphql/subscription/inboxes'
+import { TOTAL_INBOXES_COUNT_SUBSCRIPTION } from '@/graphql/subscriptions/inboxes'
 
 export default {
     name: 'InboxCount',
