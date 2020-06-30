@@ -19,7 +19,7 @@
                 <p class="font-weight-normal inbox">Lessons</p>
                 <v-icon size="50">mdi-folder-multiple-outline</v-icon>
               </div>
-              <h2 class="font-weight-medium number text-center">35</h2> 
+              <h2 class="font-weight-medium text-center" style="font-size: 50px;">35</h2> 
               <small>Total number of lessons</small>
           </v-container>
         </v-card>
@@ -34,7 +34,7 @@
                 <p class="font-weight-normal inbox">Teachers</p>
                 <v-icon size="50">mdi-account-multiple-outline</v-icon>
               </div>
-              <h2 class="font-weight-medium number text-center">225</h2> 
+              <h2 class="font-weight-medium text-center" style="font-size: 50px;">225</h2> 
               <small>Total number of teachers</small>
           </v-container>
         </v-card>
@@ -49,7 +49,7 @@
                 <p class="font-weight-normal inbox">Students</p>
                 <v-icon size="50">mdi-account-box-outline</v-icon>
               </div>
-              <h2 class="font-weight-medium number text-center">155</h2> 
+              <h2 class="font-weight-medium text-center" style="font-size: 50px;">155</h2> 
               <small>Total number of teachers</small>
           </v-container>
         </v-card>
@@ -131,10 +131,6 @@ export default {
 
 .inbox {
   font-size: 20px;
-}
-
-.number {
-  font-size: 50px;
 }
 
 .total {

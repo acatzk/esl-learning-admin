@@ -5,7 +5,8 @@
         <v-icon size="50">mdi-email-outline</v-icon>
         </div>
         <h2 
-        class="font-weight-medium number text-center"
+            class="font-weight-medium text-center"
+            style="font-size: 50px;"
         >
         {{  inboxCount ? inboxCount.aggregate.count : 0 }}
         </h2> 
