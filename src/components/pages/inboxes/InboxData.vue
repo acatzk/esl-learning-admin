@@ -1,5 +1,6 @@
 <template>
     <div class="inbox-data">
+        
         <!-- ** SEARCH TEXT FIELD ** -->
         <v-text-field
             label="Search"
@@ -33,6 +34,8 @@
 
 <script>
 
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 // INBOXES QUERY 
 import { INBOX_QUERY } from '@/graphql/queries/inboxes'
 // INBOXES SUBSCRIPTION
@@ -42,37 +45,42 @@ export default {
     name: 'InboxData',
 
     components: {
-        InboxTable: () => import('./InboxTable')
+        InboxTable: () => import('./InboxTable'),
+        Alert: () => import('@/components/pages/Alert')
     },
 
     data: () => ({
         inboxes: [],
-        search: ''
+        search: '',
+        error: null
     }),
 
     computed: {
         headers() {
-        return [
-            { text: 'Name',  value: 'name' },
-            { text: 'Email', value: 'email' },
-            { text: 'Date', value: 'created_at' },
-            { text: 'Contact', value: 'contact', sortable: false },
-            { text: 'Status', value: 'status', sortable: false }
-        ]
+            return [
+                { text: 'Name',  value: 'name' },
+                { text: 'Email', value: 'email' },
+                { text: 'Date', value: 'created_at' },
+                { text: 'Contact', value: 'contact', sortable: false },
+                { text: 'Status', value: 'status', sortable: false }
+            ]
         }
     },
 
     apollo: {
         inboxes: {
             query: INBOX_QUERY,
+            error (error) {
+                this.error = toastAlertStatus('error', error)
+            },
             subscribeToMore: {
                 document: INBOXES_SUBSCRIPTION,
                 updateQuery(previousResult, { subscriptionData }) {
                 if (previousResult) {
                     return {
-                    inboxes: [
-                        ...subscriptionData.data.inboxes
-                    ]
+                        inboxes: [
+                            ...subscriptionData.data.inboxes
+                        ]
                     }
                 }
                 }
