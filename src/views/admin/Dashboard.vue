@@ -14,7 +14,7 @@
         <v-card
           class="elevation-1 card-lessons"
         >
-          <lessons-count /> <!-- LESSNS COUNT QUERY AND SUBSCRIPTION -->
+          <lessons-count /> <!-- LESSONS COUNT QUERY AND SUBSCRIPTION -->
         </v-card>
       </v-col>
 
@@ -22,14 +22,7 @@
          <v-card
           class="elevation-1 card-teachers"
         >
-          <v-container>
-              <div class="d-flex justify-space-between align-items-center">
-                <p class="font-weight-normal" style="font-size: 20px;">Teachers</p>
-                <v-icon size="50">mdi-account-multiple-outline</v-icon>
-              </div>
-              <h2 class="font-weight-medium text-center" style="font-size: 50px;">225</h2> 
-              <small>Total number of teachers</small>
-          </v-container>
+          <teachers-count /> <!-- TEACHERS COUNT QUERY AND SUBSCRIPTION -->
         </v-card>
        </v-col>
 
@@ -90,7 +83,8 @@ export default {
 
   components: {
     InboxCount: () => import('@/components/pages/dashboard/InboxCount'),
-    LessonsCount: () => import('@/components/pages/dashboard/LessonsCount')
+    LessonsCount: () => import('@/components/pages/dashboard/LessonsCount'),
+    TeachersCount: () => import('@/components/pages/dashboard/TeachersCount')
   },
 
   data: () => ({
