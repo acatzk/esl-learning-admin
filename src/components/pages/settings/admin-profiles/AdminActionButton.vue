@@ -8,6 +8,7 @@
                         v-on="on"
                         small 
                         icon
+                        @click.stop="dialog = true"
                     >
                         <v-icon>mdi-pencil-box-outline</v-icon>
                     </v-btn>
@@ -30,6 +31,14 @@
             </v-tooltip>
         </v-btn-toggle>
 
+         <!-- ADMIN-DIALOG ADD AND EDIT -->
+        <admin-dialog 
+            :visible="dialog" @close="dialog = false"
+            :modalType="`edit`" 
+            :item="item"
+        />
+
+
     </div>
 </template>
 
@@ -43,6 +52,10 @@ export default {
         return {
             dialog: false
         }
+    },
+
+    components: {
+        AdminDialog: () => import('./AdminDialog')
     },
 
     props: ['item'],
