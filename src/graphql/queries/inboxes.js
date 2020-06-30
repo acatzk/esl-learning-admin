@@ -27,3 +27,13 @@ export const INBOX_SINGLE_QUERY = gql`
         }
     }
 `
+
+export const TOTAL_INBOXES_COUNT_QUERY = gql`
+    query InboxCountQuery {
+        inboxCount: inboxes_aggregate {
+            aggregate {
+                count
+            }
+        }
+    }
+`
