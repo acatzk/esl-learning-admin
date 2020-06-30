@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <div class="d-flex justify-space-between align-items-center">
-        <p class="font-weight-normal inbox">Inbox</p>
+        <p class="font-weight-normal inbox" style="font-size: 20px;">Inbox</p>
         <v-icon size="50">mdi-email-outline</v-icon>
         </div>
         <h2 
