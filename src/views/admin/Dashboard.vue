@@ -14,14 +14,7 @@
         <v-card
           class="elevation-1 card-lessons"
         >
-          <v-container>
-              <div class="d-flex justify-space-between align-items-center">
-                <p class="font-weight-normal" style="font-size: 20px;">Lessons</p>
-                <v-icon size="50">mdi-folder-multiple-outline</v-icon>
-              </div>
-              <h2 class="font-weight-medium text-center" style="font-size: 50px;">35</h2> 
-              <small>Total number of lessons</small>
-          </v-container>
+          <lessons-count /> <!-- LESSNS COUNT QUERY AND SUBSCRIPTION -->
         </v-card>
       </v-col>
 
@@ -96,7 +89,8 @@ export default {
   name: 'Dashboad',
 
   components: {
-    InboxCount: () => import('@/components/pages/dashboard/InboxCount')
+    InboxCount: () => import('@/components/pages/dashboard/InboxCount'),
+    LessonsCount: () => import('@/components/pages/dashboard/LessonsCount')
   },
 
   data: () => ({
