@@ -88,7 +88,6 @@ export default {
 <style scoped lang="scss">
 .profile-setting {
     background: white;
-    border: 1px solid #eee;
 }
 .profile-setting {
     header {
