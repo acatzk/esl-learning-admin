@@ -11,7 +11,11 @@
                 <p class="font-weight-normal inbox">Inbox</p>
                 <v-icon size="50">mdi-email-outline</v-icon>
               </div>
-              <h2 class="font-weight-medium number text-center">291</h2> 
+              <h2 
+                class="font-weight-medium number text-center"
+              >
+                {{  inboxCount ? inboxCount.aggregate.count : 0 }}
+              </h2> 
               <small>Total number of inbox</small>
           </v-container>
         </v-card>
@@ -98,6 +102,9 @@
 </template>
 
 <script>
+
+  import gql from 'graphql-tag'
+
   export default {
     data: () => ({
       labels: [
@@ -120,7 +127,45 @@
         250,
         240,
       ],
+      inboxCount: 0
     }),
+
+    apollo: {
+      inboxCount: {
+        query: gql`
+          query InboxCountQuery {
+            inboxCount: inboxes_aggregate {
+              aggregate {
+                count
+              }
+            }
+          }
+        `,
+        subscribeToMore: {
+          document: gql`
+            subscription InboxCountSubscription {
+              inboxCount: inboxes_aggregate {
+                aggregate {
+                  count
+                }
+              }
+            }
+          `,
+          updateQuery(previousResult, { subscriptionData }) {
+            if (previousResult) {
+              return {
+                inboxCount: {
+                  ...subscriptionData.data.inboxCount
+                }
+              }
+            }
+          }
+        },
+        result ({ data }) {
+          this.inboxCount = data.inboxCount
+        }
+      }
+    }
   }
 </script>
 
