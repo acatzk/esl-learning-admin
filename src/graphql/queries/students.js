@@ -14,3 +14,13 @@ export const STUDENT_QUERY = gql`
         }
     }  
 `
+
+export const TOTAL_STUDENTS_COUNT_QUERY = gql`
+    query StudentCountQuery {
+        StudentCount: students_aggregate {
+            aggregate {
+                count
+            }
+        }
+    }
+`

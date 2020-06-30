@@ -14,3 +14,13 @@ export const STUDENT_SUBSCRIPTION = gql`
         }
     }  
 `
+
+export const TOTAL_STUDENTS_COUNT_SUBSCRIPTION = gql`
+    subscription StudentCountSubscription {
+        StudentCount: students_aggregate {
+            aggregate {
+                count
+            }
+        }
+    }
+`
