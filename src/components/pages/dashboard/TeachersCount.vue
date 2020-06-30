@@ -8,7 +8,14 @@
             class="font-weight-medium text-center" 
             style="font-size: 50px;"
         >
-            {{ teacherCount ? teacherCount.aggregate.count : 0 }}
+            <v-btn
+              :loading="true"
+              text
+              color="warning"
+              v-if="$apollo.loading"
+            >
+            </v-btn>
+            <span v-else>{{ teacherCount ? teacherCount.aggregate.count : 0 }}</span>
         </h2> 
         <small>Total number of teachers</small>
     </v-container>
