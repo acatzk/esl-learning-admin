@@ -76,13 +76,13 @@ export default {
             subscribeToMore: {
                 document: INBOXES_SUBSCRIPTION,
                 updateQuery(previousResult, { subscriptionData }) {
-                if (previousResult) {
-                    return {
-                        inboxes: [
-                            ...subscriptionData.data.inboxes
-                        ]
+                    if (previousResult) {
+                        return {
+                            inboxes: [
+                                ...subscriptionData.data.inboxes
+                            ]
+                        }
                     }
-                }
                 }
             },
             result ({ data }) {
