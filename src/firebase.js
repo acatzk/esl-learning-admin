@@ -1,6 +1,6 @@
-
 import firebase from "firebase";
 import 'firebase/storage'
+import 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyAE00QgUrP0dR0v2nlvlzxuQgkZL3_j-XM",
@@ -13,5 +13,22 @@ const firebaseConfig = {
     measurementId: "G-JVH39C0YPM"
   };
 
-  
-export const fb = firebase.initializeApp(firebaseConfig);
+// firebase utils
+const fb = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore()
+const auth = firebase.auth()
+const currentUser = auth.currentUser
+
+// date issue fix according to firebase
+// const settings = {
+//     timestampsInSnapshots: true
+// }
+// db.settings(settings)
+
+
+export {
+  fb,
+  db,
+  auth,
+  currentUser
+}
