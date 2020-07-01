@@ -2,9 +2,9 @@
     <div class="profile-setting">
         <header class="d-flex justify-space-between">
             <v-toolbar-title>
-                <v-icon right>mdi-account-box</v-icon> Administrator Settings
+               <span class="font-weight-medium">Admin Authentication</span>
             </v-toolbar-title>
-            <v-btn small depressed @click.stop="dialog = true">
+            <v-btn color="primary" small depressed @click.stop="dialog = true">
                <v-icon center>mdi-plus</v-icon>
             </v-btn>   
         </header>
@@ -16,15 +16,12 @@
             :item="item"
         />
 
-        <v-card flat>
+        <v-card>
             <!-- ** SEARCH TEXT FIELD ** -->
             <v-text-field
                 label="Search"
-                filled
-                class="mx-3"
-                append-icon="search"
-                dense
-                rounded
+                class="pa-5"
+                prepend-icon="search"
                 v-model="search"
                 style="position: relative; top: 12px; border-radius: 50px;"
             ></v-text-field>
@@ -50,20 +47,24 @@ export default {
             search: '',
             admins: [ 
                 {
-                    'id': '123455678',
+                    'id': '1pLFxjNITScCFXRF9j3s7llf92j2',
                     'email': 'joshuaimalay@gmail.com',
-                    'password': 'ilusmdm123'
+                    'provider': true,
+                    'created_at': 'Jun 30, 2020',
+                    'uid': '1pLFxjNITScCFXRF9j3s7llf92j2'
                 },
                 {
-                    'id':'754321',
+                    'id':'RwuqsMGuHUTMlYBv0eHyx7mZ2h32',
                     'email': 'jeromevillaruel@gmail.com',
-                    'password': 'veoscriptofficial'
+                    'provider': true,
+                    'created_at': 'Jun 28, 2020',
+                    'uid': '1pLFxjNITScCFXRF9j3s7llf92j2'
                 }
             ],
             dialog: false,
             item: [
                 { email: null },
-                { password: null }
+                { created_at: null }
             ]
         }
     },
@@ -77,7 +78,9 @@ export default {
         headers() {
             return [
                 { text: 'Email', value: 'email' },
-                { text: 'Password', value: 'password' },
+                { text: 'Provider', value: 'provider' },
+                { text: 'Created', value: 'created_at' },
+                { text: 'User UID', value: 'uid' },
                 { text: 'Options', value: 'id' }
             ]
         }
@@ -87,12 +90,11 @@ export default {
 
 <style scoped lang="scss">
 .profile-setting {
-    background: white;
-}
-.profile-setting {
     header {
         padding: 15px;
-        border-bottom: 1px solid #eee;
+    }
+    .v-card {
+        border-radius: 20px;
     }
     .v-btn-toggle {
         .v-btn {
