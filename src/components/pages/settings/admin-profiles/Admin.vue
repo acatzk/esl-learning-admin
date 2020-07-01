@@ -78,10 +78,10 @@ export default {
         headers() {
             return [
                 { text: 'Email', value: 'email' },
-                { text: 'Provider', value: 'provider' },
+                { text: 'Provider', value: 'provider', sortable: false },
                 { text: 'Created', value: 'created_at' },
                 { text: 'User UID', value: 'uid' },
-                { text: 'Options', value: 'id' }
+                { text: 'Options', value: 'id', sortable: false }
             ]
         }
     }
