@@ -7,18 +7,17 @@
         <!-- ** EMAIL ** -->
         <template #item.email="{ item }">
             <span>
-                <v-icon left>mdi-email-outline</v-icon>
                 {{ item.email }}
             </span>
         </template>
 
-          <!-- ** CONTACT ** -->
-        <template #item.password="{ item }">
-            <span>
-                <v-icon left>mdi-lock-outline</v-icon>
-                {{ item.password }}
+         <!-- ** PROVIDER ** -->
+        <template #item.provider="{ item }" class="text-center">
+            <span v-if="item.provider">
+                <v-icon>mdi-email</v-icon>
             </span>
         </template>
+
     
         <!-- ** ACTION BUTTONS ** -->
         <template #item.id="{ item }">  
@@ -81,10 +80,14 @@ export default {
 .v-btn {
     text-transform: capitalize;
 }
-.v-icon {
-    font-size: 16px;
-}
+
 ::v-deep .v-data-table-header{
-  text-transform: uppercase;
+  text-transform: lowecase;
 }
+
+::v-deep tbody tr td {
+    font-size: 13px;
+    color: rgb(90, 90, 90);
+}
+
 </style>
