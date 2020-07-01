@@ -28,17 +28,8 @@
                                {{ !editable ? 'Edit Profile' : 'Cancel' }}
                             </v-btn>
                        </header>
-                        
-                         <!-- ** SKELETON LOADING FOR DATA ** -->
-                        <v-skeleton-loader
-                            type="list-item, list-item, list-item, list-item, list-item, list-item, list-item, list-item"
-                            class="mx-auto"
-                            tile
-                            v-if="$apollo.loading"
-                        ></v-skeleton-loader> 
 
                         <edit-profile  
-                            v-else
                             :visible="editable" 
                             @close="editable=false"
                         /> <!-- Editable Profile view -->
