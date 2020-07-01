@@ -49,6 +49,8 @@
 
 <script>
 
+// Toast Alert Status
+import { toastAlertStatus } from '@/assets/js/toastAlert'
 import { TEACHERS_QUERY } from '@/graphql/queries/teachers'
 import { TEACHERS_SUBSCRIPTION } from '@/graphql/subscriptions/teachers'
 
@@ -84,6 +86,9 @@ export default {
     apollo: {
         teachers: {
             query: TEACHERS_QUERY,
+            error (error) {
+                this.error = toastAlertStatus('error', error)
+            },
             subscribeToMore: {
                 document: TEACHERS_SUBSCRIPTION,
                 updateQuery (previousResult, { subscriptionData }) {
