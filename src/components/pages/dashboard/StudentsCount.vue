@@ -23,6 +23,9 @@
 
 <script>
 
+// Toast Alert Status
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 import { TOTAL_STUDENTS_COUNT_QUERY } from '@/graphql/queries/students'
 
 import { TOTAL_STUDENTS_COUNT_SUBSCRIPTION } from '@/graphql/subscriptions/students'
@@ -39,6 +42,9 @@ export default {
     apollo: {
       studentCount: {
         query: TOTAL_STUDENTS_COUNT_QUERY,
+        error (error) {
+            this.error = toastAlertStatus('error', error)
+        },
         subscribeToMore: {
           document: TOTAL_STUDENTS_COUNT_SUBSCRIPTION,
           updateQuery(previousResult, { subscriptionData }) {

@@ -23,6 +23,9 @@
 
 <script>
 
+// Toast Alert Status
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 import { TOTAL_INBOXES_COUNT_QUERY } from '@/graphql/queries/inboxes'
 
 import { TOTAL_INBOXES_COUNT_SUBSCRIPTION } from '@/graphql/subscriptions/inboxes'
@@ -39,6 +42,9 @@ export default {
     apollo: {
       inboxCount: {
         query: TOTAL_INBOXES_COUNT_QUERY,
+        error (error) {
+            this.error = toastAlertStatus('error', error)
+        },
         subscribeToMore: {
           document: TOTAL_INBOXES_COUNT_SUBSCRIPTION,
           updateQuery(previousResult, { subscriptionData }) {
