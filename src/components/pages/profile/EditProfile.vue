@@ -5,7 +5,15 @@
         v-model="valid"
         lazy-validation
     >   
+        <!-- ** SKELETON LOADING FOR DATA ** -->
+        <v-skeleton-loader
+            type="table"
+            class="mx-auto"
+            tile
+            v-if="$apollo.loading"
+        ></v-skeleton-loader> 
         <v-row 
+            v-else
             class="ma-3"  
             v-for="(admin, index) in hasura_admin" :key="index"
         >
