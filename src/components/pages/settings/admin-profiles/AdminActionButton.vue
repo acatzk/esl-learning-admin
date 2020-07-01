@@ -1,6 +1,21 @@
 <template>
     <div class="action-button">
         <v-btn-toggle>
+
+            <v-tooltip top color="primary">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn 
+                        v-bind="attrs"
+                        v-on="on"
+                        small
+                        icon
+                    >
+                        <v-icon>mdi-content-copy</v-icon>
+                    </v-btn>
+                </template>
+                <span>Copy UID</span>
+            </v-tooltip>
+
             <v-tooltip top color="warning">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn 
@@ -29,6 +44,7 @@
                 </template>
                 <span>Delete</span>
             </v-tooltip>
+
         </v-btn-toggle>
 
          <!-- ADMIN-DIALOG ADD AND EDIT -->
