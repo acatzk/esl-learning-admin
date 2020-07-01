@@ -77,7 +77,7 @@ export default {
     computed: {
         headers() {
             return [
-                { text: 'Email', value: 'email' },
+                { text: 'Identifier', value: 'email' },
                 { text: 'Provider', value: 'provider', sortable: false },
                 { text: 'Created', value: 'created_at' },
                 { text: 'User UID', value: 'uid' },
