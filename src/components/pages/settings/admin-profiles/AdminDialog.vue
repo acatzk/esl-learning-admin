@@ -50,7 +50,7 @@
                         color="indigo darken-1 white--text" 
                         depressed
                         :loading="loading"  
-                        @click="saveAdmin"
+                        @click="saveAdmin(item)"
                     >
                       <v-icon left>mdi-content-save</v-icon>  Save
                     </v-btn>
@@ -64,6 +64,8 @@
 
 // Toast Alert Status file
 import { toastAlertStatus } from '@/assets/js/toastAlert'
+
+import { fb } from '@/firebase'
 
 export default {
     
@@ -102,20 +104,30 @@ export default {
     },
 
     methods: {
-        saveAdmin () {
-
+        saveAdmin (item) {
             const { email, password } = this.item
-
             if (this.modalType === 'add') {
                 if (this.$refs.form.validate()) {
-                    toastAlertStatus('success', `Added ${email}`)
+                    this.loading = true
+                    fb.auth()
+                      .createUserWithEmailAndPassword(email, password)
+                      .then(() => {
+                        this.loading = false
+                        this.show = !this.show
+                        this.$refs.form.reset()
+                        toastAlertStatus('success', `Added ${email}`)
+                      })
+                      .catch(error => {
+                          this.loading = false
+                          toastAlertStatus('error', error)
+                      })
                 } 
             } 
 
             // EDIT STUDENT DATA
             if (this.modalType === 'edit') {
                 if (this.$refs.form.validate()) {
-                    toastAlertStatus('success', `Edited ${email}`)
+                    toastAlertStatus('success', `Edited ${item.email}`)
                 }
             }
         }
