@@ -94,7 +94,7 @@ export default {
         padding: 15px;
     }
     .v-card {
-        border-radius: 20px;
+        border-radius: 10px;
     }
     .v-btn-toggle {
         .v-btn {
