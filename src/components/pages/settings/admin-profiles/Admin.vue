@@ -8,7 +8,7 @@
         />
 
         <v-card>
-            <div class="d-flex justify-content-center align-items-center mx-5">
+            <div class="d-flex justify-content-center align-items-center mx-5 mt-5">
                 <!-- ** SEARCH TEXT FIELD ** -->
                 <v-text-field
                     placeholder="Search"
@@ -22,7 +22,7 @@
 
                 <v-btn class="mt-4" color="primary" medium depressed @click.stop="dialog = true">
                     <v-icon center>mdi-plus</v-icon>
-                </v-btn>   
+                </v-btn> 
             </div>
 
              <!-- ** TEACHERS VUETIFY TABLE ** -->
@@ -92,6 +92,7 @@ export default {
 
 <style scoped lang="scss">
 .profile-setting {
+    border-top: 1px solid #eee;
     .v-card {
         box-shadow: none !important;
         -moz-box-shadow: none;
