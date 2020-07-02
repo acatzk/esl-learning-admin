@@ -116,19 +116,27 @@ export default {
 }
 
 .card-inbox {
-  border-bottom: 6px solid #f5365c;
+  border-bottom: 6px solid #f5365c !important;
+  -moz-border-bottom: 6px solid #f5365c;
+  -webkit-border-bottom: 6px solid #f5365c;
 }
 
 .card-lessons {
-  border-bottom: 6px solid #2dce89;
+  border-bottom: 6px solid #2dce89 !important;;
+  -moz-border-bottom: 6px solid #2dce89;
+  -webkit-border-bottom: 6px solid #2dce89;
 }
 
 .card-teachers {
-  border-bottom: 6px solid #fd7e14
+  border-bottom: 6px solid #fd7e14 !important;
+  -moz-border-bottom: 6px solid #fd7e14;
+  -webkit-border-bottom: 6px solid #fd7e14;
 }
 
 .card-students {
-  border-bottom: 6px solid #007bff
+  border-bottom: 6px solid #007bff !important;
+  -moz-border-bottom: 6px solid #007bff;
+  -webkit-border-bottom: 6px solid #007bff;
 }
 
 .visitor {
