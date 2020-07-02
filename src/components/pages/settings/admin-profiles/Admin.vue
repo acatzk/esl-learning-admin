@@ -93,7 +93,9 @@ export default {
 <style scoped lang="scss">
 .profile-setting {
     .v-card {
-        box-shadow: none;
+        box-shadow: none !important;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
     }
     .v-btn-toggle {
         .v-btn {
