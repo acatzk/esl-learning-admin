@@ -62,20 +62,7 @@ const routes = [
       {
         path: 'settings',
         name: 'settings',
-        component: () => import('@/views/admin/Settings'),
-        meta: { transition: 'fade-in-up' },
-        children: [
-          {
-            path: 'admins',
-            name: 'profile-setting',
-            component: () => import('@/components/pages/settings/admin-profiles/Admin')
-          },
-          {
-            path: 'account',
-            name: 'account-setting',
-            component: () => import('@/components/pages/settings/Account')
-          }
-        ]
+        component: () => import('@/views/admin/Settings')
       }
     ]
   },
