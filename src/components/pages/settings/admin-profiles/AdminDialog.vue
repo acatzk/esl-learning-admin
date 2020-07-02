@@ -25,6 +25,7 @@
                                         prepend-inner-icon="mdi-email-outline"
                                         v-model="item.email"
                                         :rules="[required('Email'), emailRules('Email')]"
+                                        @keyup.enter="saveAdmin(item)"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -33,6 +34,7 @@
                                         label="Password" 
                                         prepend-inner-icon="mdi-lock-outline"
                                         v-model="item.password"
+                                        @keyup.enter="saveAdmin(item)"
                                         :rules="[required('Password'), minLength('Password', 5), maxLength('Password', 20)]"
                                     >
                                     </v-text-field>
