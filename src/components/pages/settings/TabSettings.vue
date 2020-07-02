@@ -19,11 +19,7 @@
             </v-tab>
 
             <v-tab-item>
-                <v-card flat>
-                    <v-card-text>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis sed, temporibus reiciendis dolorum voluptatibus cum vero sunt assumenda quaerat tempore velit alias quos rem, vitae perspiciatis, facilis aliquam. Excepturi laboriosam dolorum sapiente rerum est voluptates consectetur impedit porro corporis! A, reprehenderit dolorum nihil ratione autem officia hic ex suscipit sint ea earum consectetur, eaque minima at delectus dolores. Officiis pariatur sunt possimus natus dolorum. Perferendis distinctio maiores dignissimos velit laudantium obcaecati ex optio possimus similique est voluptates consectetur facere corrupti earum laboriosam harum, cupiditate temporibus debitis in eum modi officiis eius! Minima magnam cupiditate fugiat reiciendis quaerat at repellat tenetur nostrum voluptas voluptatibus consectetur asperiores sed consequuntur mollitia culpa, sit accusantium impedit fuga ab recusandae debitis sequi exercitationem? Cum deleniti magni, id asperiores quae perspiciatis sunt laboriosam reprehenderit porro qui provident, beatae quaerat repudiandae deserunt et in nostrum amet optio fugit aperiam. In laborum earum incidunt neque, vero dolores eos optio quia ex consequatur laboriosam tenetur ratione blanditiis iure quae corrupti eius consectetur nemo aut quam. Voluptatibus dolore aspernatur accusamus dolorum quisquam eaque ratione a temporibus deleniti sint, asperiores reprehenderit soluta velit sequi vitae quas delectus labore aliquam eveniet maxime veniam reiciendis enim, repellat quidem! Dolore ipsum alias libero officia reiciendis tempora ipsa, earum error esse pariatur exercitationem quos ex maiores qui numquam? Repellat aperiam quaerat consequatur architecto. Ex quam harum commodi mollitia esse possimus suscipit, nam nesciunt? Sit, itaque at laborum, libero maxime reiciendis accusantium repellendus sapiente debitis dignissimos exercitationem nulla consequuntur praesentium! Repellendus, tempore impedit. Rem ut doloremque hic harum natus quae quas, illo molestias temporibus ratione autem magni quasi exercitationem at quibusdam blanditiis id nobis. Porro aut illo itaque delectus eos quaerat atque, modi, deleniti ipsum, inventore similique necessitatibus dolor alias id officiis nobis est reiciendis esse corporis saepe quae minima quod suscipit. Voluptatibus ea odio molestiae.
-                    </v-card-text>
-                </v-card>
+                <account /> <!-- ACCOUNT SETTINGS -->
             </v-tab-item>
             <v-tab-item>
                 <Administrator /> <!-- ADMINISTRATOR SETTINGS -->
@@ -57,6 +53,7 @@ export default {
     },
 
     components: {
+        Account: () => import('./Account'),
         Administrator: () => import('./admin-profiles/Admin')
     }
 }
