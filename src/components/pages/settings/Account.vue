@@ -17,7 +17,7 @@
                     filled
                     rounded
                 ></v-text-field>
-                <v-btn class="mr-4" color="indigo white--text">
+                <v-btn class="mr-4" color="primary white--text">
                    <v-icon left>mdi-pencil</v-icon> UPDATE</v-btn>
             </form>
         </v-container>
