@@ -1,14 +1,5 @@
 <template>
     <div class="profile-setting">
-        <header class="d-flex justify-space-between">
-            <v-toolbar-title>
-               <span class="font-weight-medium">Admin Authentication</span>
-            </v-toolbar-title>
-            <v-btn color="primary" small depressed @click.stop="dialog = true">
-               <v-icon center>mdi-plus</v-icon>
-            </v-btn>   
-        </header>
-
         <!-- ADMIN-DIALOG ADD AND EDIT -->
         <admin-dialog 
             :visible="dialog" @close="dialog = false"
@@ -17,14 +8,22 @@
         />
 
         <v-card>
-            <!-- ** SEARCH TEXT FIELD ** -->
-            <v-text-field
-                label="Search"
-                class="pa-5"
-                prepend-icon="search"
-                v-model="search"
-                style="position: relative; top: 12px; border-radius: 50px;"
-            ></v-text-field>
+            <div class="d-flex justify-content-center align-items-center mx-5">
+                <!-- ** SEARCH TEXT FIELD ** -->
+                <v-text-field
+                    placeholder="Search"
+                    filled
+                    rounded
+                    flat
+                    v-model="search"
+                    prepend-inner-icon="search"
+                    style="position: relative; margin-right: 5px; top: 6px;"
+                ></v-text-field>
+
+                <v-btn class="mt-4" color="primary" medium depressed @click.stop="dialog = true">
+                    <v-icon center>mdi-plus</v-icon>
+                </v-btn>   
+            </div>
 
              <!-- ** TEACHERS VUETIFY TABLE ** -->
             <admins-table 
@@ -39,26 +38,29 @@
 
 
 <script>
+
+import { fb, db } from '@/firebase'
+
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 export default {
     name: 'Admin',
 
     data () {
         return {
             search: '',
-            admins: [ 
+            admins: [
                 {
-                    'id': '1pLFxjNITScCFXRF9j3s7llf92j2',
-                    'email': 'joshuaimalay@gmail.com',
+                    'email': 'joshuaimalay@gamil.com',
                     'provider': true,
-                    'created_at': 'Jun 30, 2020',
+                    'created_at': 'June 10, 2020',
                     'uid': '1pLFxjNITScCFXRF9j3s7llf92j2'
                 },
-                {
-                    'id':'RwuqsMGuHUTMlYBv0eHyx7mZ2h32',
-                    'email': 'jeromevillaruel@gmail.com',
+                 {
+                    'email': 'jeromevillaruel@gamil.com',
                     'provider': true,
-                    'created_at': 'Jun 28, 2020',
-                    'uid': '1pLFxjNITScCFXRF9j3s7llf92j2'
+                    'created_at': 'June 20, 2020',
+                    'uid': 'RwuqsMGuHUTMlYBv0eHyx7mZ2h32'
                 }
             ],
             dialog: false,
@@ -90,11 +92,8 @@ export default {
 
 <style scoped lang="scss">
 .profile-setting {
-    header {
-        padding: 15px;
-    }
     .v-card {
-        border-radius: 10px;
+        box-shadow: none;
     }
     .v-btn-toggle {
         .v-btn {
