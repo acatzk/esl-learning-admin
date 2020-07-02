@@ -1,27 +1,37 @@
 <template>
-    <div class="elevation-0">
-        <v-row>
-            <v-col cols="12" sm="9">
+  <div class="settings">
+    <header>
+      <v-toolbar-title>
+        <v-icon right>settings</v-icon> General Settings
+      </v-toolbar-title>
+    </header>
+    <v-card 
+      class="mx-auto" 
+      flat 
+    >
 
-                <router-view></router-view> <!-- Dynamic setting view -->
-
-            </v-col>
-            <v-col cols="12" sm="3">
-
-                <side-bar /> <!-- SideBar vue component -->
-
-            </v-col>
-        </v-row>
-    </div>
+     <tab-settings />
+      
+    </v-card>
+  </div>
 </template>
 
-
 <script>
+
+
+
 export default {
-    name: 'Settings',
+    name: 'SEttings',
 
     components: {
-        SideBar: () => import('@/components/pages/settings/SideBar')
+        TabSettings: () => import('@/components/pages/settings/TabSettings')
     }
 }
 </script>
+
+<style scoped>
+header {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+</style>
