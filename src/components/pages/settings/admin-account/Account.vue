@@ -9,7 +9,16 @@
 
         <v-container>
             <form>
-                <div v-for="(account, index) in accounts" :key="index"> 
+                <v-skeleton-loader
+                    type="card"
+                    class="mx-auto"
+                    tile
+                    v-if="$apollo.loading"
+                ></v-skeleton-loader> 
+                <div 
+                    v-else 
+                    v-for="(account, index) in accounts" :key="index"
+                > 
                     <v-toolbar-title class="text-center ma-3 font-weight-medium grey--text">
                         Firebase Account Authentication
                     </v-toolbar-title>
