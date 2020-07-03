@@ -4,6 +4,7 @@
       :border="border"
       :color="color"
       :text="textStyle"
+      dismissible
     >
       {{ text }}
     </v-alert>
