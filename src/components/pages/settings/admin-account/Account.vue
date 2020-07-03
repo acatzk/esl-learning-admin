@@ -108,7 +108,7 @@ export default {
                 this.loading = false
                 this.updatePassword(account)
                 this.updateAccountInHasura(account)
-                toastAlertStatus('success', `Successfully update email`)
+                toastAlertStatus('success', `Successfully update account`)
              })
              .catch(error => {
                 toastAlertStatus('error', error)
@@ -121,11 +121,6 @@ export default {
             let admin = fb.auth().currentUser
             admin
             .updatePassword(account.password)
-            .then(acc => {
-                this.loading = false
-                this.updateAccountInHasura(account)
-                toastAlertStatus('success', `Successfully update password`)
-             })
              .catch(error => {
                 toastAlertStatus('error', error)
                 this.error = error
@@ -143,9 +138,6 @@ export default {
                     email: account.email,
                     password: account.password
                  }
-             })
-             .then(() => {
-                 toastAlertStatus('success', `Successfully update hasura`)
              })
              .catch(error => toastAlertStatus('error', error))
         }
