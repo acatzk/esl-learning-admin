@@ -58,7 +58,21 @@ export default {
                     id: fb.auth().currentUser.uid
                 }
             },
-
+            subscribeToMore: {
+                document: ACCOUNT_SUBSCRIPTION,
+                variables () {
+                    return {
+                        id: fb.auth().currentUser.uid
+                    }
+                },
+                updateQuery(previousResult, { subscriptionData }) {
+                    return {
+                        accounts: [
+                            ...subscriptionData.data.accounts
+                        ]
+                    }
+                }
+            },
             result ({ data }) {
                 this.accounts = data.accounts
             }
