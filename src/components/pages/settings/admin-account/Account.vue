@@ -1,5 +1,12 @@
 <template>
     <div class="account-setting">
+
+        <alert 
+            v-show="error" 
+            :text="error" 
+            :textStyle="true"  
+        />
+
         <v-container>
             <form>
                 <div v-for="(account, index) in accounts" :key="index"> 
@@ -13,6 +20,7 @@
                         rounded
                         :rules="[required('Email'), emailRules('Email')]"
                         prepend-inner-icon="mdi-email-outline"
+                        @keyup.enter="updateAccount(account)"
                     ></v-text-field>
                     <v-text-field
                         label="Password"
@@ -24,8 +32,15 @@
                         :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                         @click:append="show = !show"
                         :rules="[required('Password')]"
+                        @keyup.enter="updateAccount(account)"
                     ></v-text-field>
-                    <v-btn class="mr-4" color="primary white--text text-capitalize">
+                    <v-btn 
+                        :disabled="account.email === '' || account.password === ''"
+                        class="mr-4" 
+                        color="primary white--text text-capitalize" 
+                        :loading="loading"
+                        @click="updateAccount(account)"
+                    >
                         <v-icon left>mdi-pencil</v-icon> Save
                     </v-btn>
                 </div>
@@ -39,16 +54,26 @@
 
 import { fb } from '@/firebase'
 
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 import { ACCOUNT_QUERY } from '@/graphql/queries/accounts'
 
 import { ACCOUNT_SUBSCRIPTION } from '@/graphql/subscriptions/accounts'
 
+import { ACCOUNT_UPDATE_MUTATION } from '@/graphql/mutations/accounts'
+
 export default {
     name: 'Account',
+
+    components: {
+        Alert: () => import('@/components/pages/Alert')
+    },
 
     data () {
         return {
             accounts: [],
+            loading: false,
+            valid: true,
             required(propertyType) { 
                 return v => v && v.length > 0 || `${propertyType} is required.`
             },
@@ -56,6 +81,64 @@ export default {
                 return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
             },
             show: false,
+            error: ''
+        }
+    },
+
+    methods: {
+        updateAccount (account) {
+           this.loading = true
+           this.updateEmail(account)
+        },
+
+        updateEmail(account) {
+            let admin = fb.auth().currentUser
+            admin
+            .updateEmail(account.email)
+            .then(acc => {
+                this.loading = false
+                this.updatePassword(account)
+                this.updateAccountInHasura(account)
+                toastAlertStatus('success', `Successfully update email`)
+             })
+             .catch(error => {
+                toastAlertStatus('error', error)
+                this.error = error
+                this.loading = false
+             })
+        },
+
+        updatePassword(account) {
+            let admin = fb.auth().currentUser
+            admin
+            .updatePassword(account.password)
+            .then(acc => {
+                this.loading = false
+                this.updateAccountInHasura(account)
+                toastAlertStatus('success', `Successfully update password`)
+             })
+             .catch(error => {
+                toastAlertStatus('error', error)
+                this.error = error
+                this.loading = false
+             })
+        },
+
+        updateAccountInHasura(account) {
+            this
+             .$apollo
+             .mutate({
+                 mutation: ACCOUNT_UPDATE_MUTATION,
+                 variables: {
+                    id: account.id,
+                    email: account.email,
+                    password: account.password
+                 }
+             })
+             .then(() => {
+                 toastAlertStatus('success', `Successfully update hasura`)
+             })
+             .catch(error => toastAlertStatus('error', error))
         }
     },
 
