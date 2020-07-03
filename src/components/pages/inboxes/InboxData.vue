@@ -3,14 +3,13 @@
         
         <!-- ** SEARCH TEXT FIELD ** -->
         <v-text-field
-            label="Search"
+            placeholder="Search"
             v-model="search"
             filled
             class="mx-3"
-            append-icon="search"
-            dense
+            prepend-inner-icon="search"
             rounded
-            style="position: relative; top: 10px; border-radius: 50px;"
+            style="position: relative; top: 17px; border-radius: 50px;"
         ></v-text-field>
 
         <!-- ** SKELETON LOADING FOR DATA ** -->
