@@ -53,7 +53,7 @@ export default {
     },
 
     components: {
-        Account: () => import('./Account'),
+        Account: () => import('./admin-account/Account'),
         Administrator: () => import('./admin-profiles/Admin')
     }
 }
