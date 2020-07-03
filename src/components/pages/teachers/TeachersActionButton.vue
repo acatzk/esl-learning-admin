@@ -28,7 +28,7 @@
                         <v-icon>delete_outline</v-icon>
                     </v-btn>
                 </template>
-                <span>Delete</span>
+                <span>Inactive</span>
             </v-tooltip>
         </v-btn-toggle>
 
