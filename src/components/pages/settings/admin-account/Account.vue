@@ -39,8 +39,7 @@ export default {
 
     data () {
         return {
-            accounts: [],
-            currentUserId: fb.auth().currentUser.uid
+            accounts: []
         }
     },
 
