@@ -1,19 +1,19 @@
 <template>
     <div class="account-setting">
         <v-container>
-            <form>
+            <form v-for="(account, index) in accounts" :key="index">
                 <v-toolbar-title class="text-center ma-3 font-weight-medium grey--text">
                     Firebase Account Authentication
                 </v-toolbar-title>
                 <v-text-field
                     label="E-mail"
                     filled
-                    v-model="email"
+                    v-model="account.email"
                     rounded
                 ></v-text-field>
                 <v-text-field
                     label="Password"
-                    v-model="password"
+                    v-model="account.password"
                     filled
                     rounded
                 ></v-text-field>
@@ -27,6 +27,8 @@
 
 <script>
 
+import { fb } from '@/firebase'
+
 import { ACCOUNT_QUERY } from '@/graphql/queries/accounts'
 
 import { ACCOUNT_SUBSCRIPTION } from '@/graphql/subscriptions/accounts'
@@ -36,8 +38,30 @@ export default {
 
     data () {
         return {
+            accounts: [],
+            currentUserId: fb.auth().currentUser.uid
+        }
+    },
+
+    data () {
+        return {
             email: 'joshuaimalay@gmail.com',
             password: '1pLFxjNITScCFXRF9j3s7llf92j2'
+        }
+    },
+
+    apollo: {
+        accounts: {
+            query: ACCOUNT_QUERY,
+            variables () {
+                return {
+                    id: fb.auth().currentUser.uid
+                }
+            },
+
+            result ({ data }) {
+                this.accounts = data.accounts
+            }
         }
     }
 
