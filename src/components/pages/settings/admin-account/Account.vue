@@ -26,6 +26,11 @@
 
 
 <script>
+
+import { ACCOUNT_QUERY } from '@/graphql/queries/accounts'
+
+import { ACCOUNT_SUBSCRIPTION } from '@/graphql/subscriptions/accounts'
+
 export default {
     name: 'Account',
 
