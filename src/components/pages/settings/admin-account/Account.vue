@@ -10,15 +10,22 @@
                     filled
                     v-model="account.email"
                     rounded
+                    :rules="[required('Email'), emailRules('Email')]"
+                    prepend-inner-icon="mdi-email-outline"
                 ></v-text-field>
                 <v-text-field
                     label="Password"
                     v-model="account.password"
                     filled
                     rounded
+                    prepend-inner-icon="mdi-lock-outline"
+                    :type="show ? 'text' : 'password'"
+                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                    @click:append="show = !show"
+                    :rules="[required('Password')]"
                 ></v-text-field>
                 <v-btn class="mr-4" color="primary white--text text-capitalize">
-                    <v-icon left>mdi-pencil</v-icon> Update
+                    <v-icon left>mdi-pencil</v-icon> Save
                 </v-btn>
             </form>
         </v-container>
@@ -39,7 +46,14 @@ export default {
 
     data () {
         return {
-            accounts: []
+            accounts: [],
+            required(propertyType) { 
+                return v => v && v.length > 0 || `${propertyType} is required.`
+            },
+            emailRules(propertyType) {
+                return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
+            },
+            show: false,
         }
     },
 
