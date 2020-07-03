@@ -1,32 +1,34 @@
 <template>
     <div class="account-setting">
         <v-container>
-            <form v-for="(account, index) in accounts" :key="index">
-                <v-toolbar-title class="text-center ma-3 font-weight-medium grey--text">
-                    Firebase Account Authentication
-                </v-toolbar-title>
-                <v-text-field
-                    label="E-mail"
-                    filled
-                    v-model="account.email"
-                    rounded
-                    :rules="[required('Email'), emailRules('Email')]"
-                    prepend-inner-icon="mdi-email-outline"
-                ></v-text-field>
-                <v-text-field
-                    label="Password"
-                    v-model="account.password"
-                    filled
-                    rounded
-                    prepend-inner-icon="mdi-lock-outline"
-                    :type="show ? 'text' : 'password'"
-                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                    @click:append="show = !show"
-                    :rules="[required('Password')]"
-                ></v-text-field>
-                <v-btn class="mr-4" color="primary white--text text-capitalize">
-                    <v-icon left>mdi-pencil</v-icon> Save
-                </v-btn>
+            <form>
+                <div v-for="(account, index) in accounts" :key="index"> 
+                    <v-toolbar-title class="text-center ma-3 font-weight-medium grey--text">
+                        Firebase Account Authentication
+                    </v-toolbar-title>
+                    <v-text-field
+                        label="E-mail"
+                        filled
+                        v-model="account.email"
+                        rounded
+                        :rules="[required('Email'), emailRules('Email')]"
+                        prepend-inner-icon="mdi-email-outline"
+                    ></v-text-field>
+                    <v-text-field
+                        label="Password"
+                        v-model="account.password"
+                        filled
+                        rounded
+                        prepend-inner-icon="mdi-lock-outline"
+                        :type="show ? 'text' : 'password'"
+                        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                        @click:append="show = !show"
+                        :rules="[required('Password')]"
+                    ></v-text-field>
+                    <v-btn class="mr-4" color="primary white--text text-capitalize">
+                        <v-icon left>mdi-pencil</v-icon> Save
+                    </v-btn>
+                </div>
             </form>
         </v-container>
     </div>
