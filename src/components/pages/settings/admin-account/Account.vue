@@ -17,8 +17,9 @@
                     filled
                     rounded
                 ></v-text-field>
-                <v-btn class="mr-4" color="primary white--text">
-                   <v-icon left>mdi-pencil</v-icon> UPDATE</v-btn>
+                <v-btn class="mr-4" color="primary white--text text-capitalize">
+                    <v-icon left>mdi-pencil</v-icon> Update
+                </v-btn>
             </form>
         </v-container>
     </div>
@@ -40,13 +41,6 @@ export default {
         return {
             accounts: [],
             currentUserId: fb.auth().currentUser.uid
-        }
-    },
-
-    data () {
-        return {
-            email: 'joshuaimalay@gmail.com',
-            password: '1pLFxjNITScCFXRF9j3s7llf92j2'
         }
     },
 
