@@ -185,7 +185,7 @@ export default {
     },
 
     apollo: {
-        administrators: {
+        profile: {
             query: PROFILE_QUERY,
             variables () {
                 return {
@@ -202,15 +202,15 @@ export default {
                 updateQuery(previousResult, { subscriptionData }) {
                     if (previousResult) {
                         return {
-                            administrators: [
-                                ...subscriptionData.data.administrators
+                            profile: [
+                                ...subscriptionData.data.profile
                             ]
                         }
                     }
                 }
             },
             result ({ data }) {
-                this.hasura_admin = data.administrators
+                this.hasura_admin = data.profile
             }
         }
     },
