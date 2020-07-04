@@ -20,78 +20,57 @@
                     v-for="(account, index) in accounts" :key="index"
                 > 
                     <v-container>
-
-                    <v-toolbar-title class="text-center font-weight-medium grey--text">
-                        <v-btn 
-                            href="https://firebase.google.com/docs/auth"
-                            target="_blank"
-                            icon
-                        >
-                             <v-icon>mdi-information</v-icon>
-                        </v-btn>
-                        Firebase Account Authentication
-                    </v-toolbar-title>
-
-                    <div class="grey--text my-3">
-                        Most apps need to know the identity of a user. Knowing a user's identity allows an app to securely save user data in the cloud and provide the same personalized experience across all of the user's devices.
-                        <br />
-                        <br />
-                        Firebase Authentication provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more.
-                        <br />
-                        <br />
-                        Firebase Authentication integrates tightly with other Firebase services, and it leverages industry standards like OAuth 2.0 and OpenID Connect, so it can be easily integrated with your custom backend.
-                    </div>
-                    <v-row>
-                         <!-- <v-text-field
-                            label="E-mail"
-                            filled
-                            v-model="account.email"
-                            rounded
-                            dense
-                            :rules="[required('Email'), emailRules('Email')]"
-                            prepend-inner-icon="mdi-email-outline"
-                            @keyup.enter="updateAccount(account)"
-                        ></v-text-field> -->
-                        <v-col cols="6">
+                        <v-toolbar-title class="text-center font-weight-medium grey--text">
                             <v-btn 
-                                block 
-                                depressed
-                                color="danger"
+                                href="https://firebase.google.com/docs/auth"
+                                target="_blank"
+                                icon
                             >
-                               <v-icon left>mdi-email-outline</v-icon> Update Your Email
+                                <v-icon>mdi-information</v-icon>
                             </v-btn>
-                        </v-col>
-                        <v-col cols="6">
-                            <v-btn 
-                                block
-                                depressed
-                                color="danger"
-                            >
-                               <v-icon left>mdi-lock-outline</v-icon> Update Your Password
-                            </v-btn>
-                        </v-col>
-                    </v-row>
-                    <!-- <v-text-field
-                        label="Password"
-                        v-model="account.password"
-                        filled
-                        rounded
-                        prepend-inner-icon="mdi-lock-outline"
-                        :type="show ? 'text' : 'password'"
-                        :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                        @click:append="show = !show"
-                        :rules="[required('Password')]"
-                        @keyup.enter="updateAccount(account)"
-                    ></v-text-field>
-                    <v-btn 
-                        :disabled="account.email === '' || account.password === ''"
-                        class="mr-4" 
-                        color="primary white--text text-capitalize" 
-                        :loading="loading"
-                        @click="updateAccount(account)"
-                    >
-                        <v-icon left>mdi-pencil</v-icon> Save
-                    </v-btn> -->
+                            Firebase Account Authentication
+                        </v-toolbar-title>
+
+                        <div class="grey--text my-3">
+                            Most apps need to know the identity of a user. Knowing a user's identity allows an app to securely save user data in the cloud and provide the same personalized experience across all of the user's devices.
+                            <br />
+                            <br />
+                            Firebase Authentication provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more.
+                            <br />
+                            <br />
+                            Firebase Authentication integrates tightly with other Firebase services, and it leverages industry standards like OAuth 2.0 and OpenID Connect, so it can be easily integrated with your custom backend.
+                        </div>
+                        <v-row>
+                            <v-col cols="6">
+                                <v-btn 
+                                    block 
+                                    depressed
+                                    color="primary lighten-1"
+                                    @click="dialog = !dialog, modalType = 'email'"
+                                >
+                                <v-icon left>mdi-email-outline</v-icon> Update Your Email
+                                </v-btn>
+                            </v-col>
+                            <v-col cols="6">
+                                <v-btn 
+                                    block
+                                    outlined
+                                    depressed
+                                    color="primary lighten-1"
+                                    @click="dialog = !dialog, modalType = 'password'"
+                                >
+                                <v-icon left>mdi-lock</v-icon> Update Your Password
+                                </v-btn>
+                            </v-col>
+
+                            <!-- Account Dialog either Update Email or Password -->
+                            <account-dialog 
+                                :visible="dialog" @close="dialog = false"
+                                :modalType="modalType" 
+                                :accounts="accounts"
+                            />
+
+                        </v-row>
                     </v-container>
                 </div>
             </form>
@@ -116,7 +95,8 @@ export default {
     name: 'Account',
 
     components: {
-        Alert: () => import('@/components/pages/Alert')
+        Alert: () => import('@/components/pages/Alert'),
+        AccountDialog: () => import('./AccountDialog')
     },
 
     data () {
@@ -131,7 +111,9 @@ export default {
                 return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
             },
             show: false,
-            error: ''
+            error: '',
+            dialog: false,
+            modalType: ''
         }
     },
 
