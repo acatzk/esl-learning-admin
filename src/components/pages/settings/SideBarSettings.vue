@@ -28,7 +28,7 @@
 
                     <v-list-item-content 
                         v-else
-                        v-for="(admin, index) in administraotors" :key="index"
+                        v-for="(admin, index) in profile" :key="index"
                     >
                         <v-list-item-title 
                             class="font-weight-medium"
@@ -86,7 +86,7 @@ export default {
                 { title: 'Developers Info', icon: 'mdi-code-tags', to: '/admin/settings/developers-info' },
             ],
             firebase_admin: fb.auth().currentUser,
-            administraotors: []
+            profile: []
         }
     },
 
@@ -98,7 +98,7 @@ export default {
     },
 
     apollo: {
-        administrators: {
+        profile: {
             query: PROFILE_QUERY,
             variables () {
                 return {
@@ -115,15 +115,15 @@ export default {
                 updateQuery(previousResult, { subscriptionData }) {
                     if (previousResult) {
                         return {
-                            administrators: [
-                                ...subscriptionData.data.administrators
+                            profile: [
+                                ...subscriptionData.data.profile
                             ]
                         }
                     }
                 }
             },
             result ({ data }) {
-                this.administraotors = data.administrators
+                this.profile = data.profile
             }
         }
     }
