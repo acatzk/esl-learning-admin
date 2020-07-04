@@ -47,7 +47,9 @@ Vic solution ESL Learning System Operated in teachers to manipulate students inf
 * **Jerome Joseph Villaruel** - *Initial work* - [Josom Software, Inc.](https://github.com/veoscript)
 
 ---
-[![github](https://cloud.githubusercontent.com/assets/17016297/18839843/0e06a67a-83d2-11e6-993a-b35a182500e0.png)][1][![facebook](https://cloud.githubusercontent.com/assets/17016297/18839836/0a06deb4-83d2-11e6-8078-1d0974af0f63.png)][2][![linkedin](https://cloud.githubusercontent.com/assets/17016297/18839848/0fc7e74e-83d2-11e6-8c6a-277fc9d6e067.png)][3]
+[![github](https://github.com/acatzk)]
+[![facebook](https://www.facebook.com/profile.php?id=100016207784852)]
+[![twitter](https://twitter.com/angryboy_19)]
 ---
 
 See also the list of [contributors](https://github.com/acatzk/esl-learning-admin/graphs/contributors) who participated in this project.
