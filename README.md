@@ -8,7 +8,7 @@ We victors the dream and make globally competitive learners and professionals. U
 
 - [Vuejs Installation](https://vuejs.org/v2/guide/installation.html)
 
-## Project setup
+### Project setup
 ```
 npm install
 ```
@@ -30,24 +30,25 @@ npm run lint
 
 Demo: https://vic-solution-admin.netlify.app/
 
-## Running the tests
+### Running the tests
 
 Vic solution ESL Learning System Operated in teachers to manipulate students information and storing information
 
 
-## Built With
+### Built With
 
 * [Vuejs](https://vuejs.org/) - The frontend framework
 * [Hasura](http://hasura.io/) - Hasura Graphql backend production ready
+* [firebase](https://firebase.google.com/docs/auth) - Firebase authentication
 
 
-## Authors
+### Authors
 
 * **Joshua Galit** - *Initial work* - [Josom Software, Inc.](https://github.com/acatzk)
 * **Jerome Joseph Villaruel** - *Initial work* - [Josom Software, Inc.](https://github.com/veoscript)
 
 See also the list of [contributors](https://github.com/acatzk/esl-learning-admin/graphs/contributors) who participated in this project.
 
-## License
+### License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
