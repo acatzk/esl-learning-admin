@@ -32,6 +32,7 @@
                                         prepend-inner-icon="mdi-email-outline"
                                         v-model="account.email"
                                         :rules="[required('Email'), emailRules('Email')]"
+                                        @keyup.enter="saveUpdatedAccount(account)"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -41,6 +42,7 @@
                                         prepend-inner-icon="mdi-lock-outline"
                                         v-model="account.password"
                                         :rules="[required('Password'), minLength('Password', 5), maxLength('Password', 20)]"
+                                        @keyup.enter="saveUpdatedAccount(account)"
                                     >
                                     </v-text-field>
                                 </v-col>
