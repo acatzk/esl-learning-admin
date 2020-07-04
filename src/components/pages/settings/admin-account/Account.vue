@@ -19,19 +19,59 @@
                     v-else 
                     v-for="(account, index) in accounts" :key="index"
                 > 
-                    <v-toolbar-title class="text-center ma-3 font-weight-medium grey--text">
+                    <v-container>
+
+                    <v-toolbar-title class="text-center font-weight-medium grey--text">
+                        <v-btn 
+                            href="https://firebase.google.com/docs/auth"
+                            target="_blank"
+                            icon
+                        >
+                             <v-icon>mdi-information</v-icon>
+                        </v-btn>
                         Firebase Account Authentication
                     </v-toolbar-title>
-                    <v-text-field
-                        label="E-mail"
-                        filled
-                        v-model="account.email"
-                        rounded
-                        :rules="[required('Email'), emailRules('Email')]"
-                        prepend-inner-icon="mdi-email-outline"
-                        @keyup.enter="updateAccount(account)"
-                    ></v-text-field>
-                    <v-text-field
+
+                    <div class="grey--text my-3">
+                        Most apps need to know the identity of a user. Knowing a user's identity allows an app to securely save user data in the cloud and provide the same personalized experience across all of the user's devices.
+                        <br />
+                        <br />
+                        Firebase Authentication provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more.
+                        <br />
+                        <br />
+                        Firebase Authentication integrates tightly with other Firebase services, and it leverages industry standards like OAuth 2.0 and OpenID Connect, so it can be easily integrated with your custom backend.
+                    </div>
+                    <v-row>
+                         <!-- <v-text-field
+                            label="E-mail"
+                            filled
+                            v-model="account.email"
+                            rounded
+                            dense
+                            :rules="[required('Email'), emailRules('Email')]"
+                            prepend-inner-icon="mdi-email-outline"
+                            @keyup.enter="updateAccount(account)"
+                        ></v-text-field> -->
+                        <v-col cols="6">
+                            <v-btn 
+                                block 
+                                depressed
+                                color="danger"
+                            >
+                               <v-icon left>mdi-email-outline</v-icon> Update Your Email
+                            </v-btn>
+                        </v-col>
+                        <v-col cols="6">
+                            <v-btn 
+                                block
+                                depressed
+                                color="danger"
+                            >
+                               <v-icon left>mdi-lock-outline</v-icon> Update Your Password
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+                    <!-- <v-text-field
                         label="Password"
                         v-model="account.password"
                         filled
@@ -51,7 +91,8 @@
                         @click="updateAccount(account)"
                     >
                         <v-icon left>mdi-pencil</v-icon> Save
-                    </v-btn>
+                    </v-btn> -->
+                    </v-container>
                 </div>
             </form>
         </v-container>
