@@ -1,4 +1,13 @@
-# vic-solution-admin
+# Vic Solution Incorporation
+
+One Paragraph of project description goes here
+
+### Prerequisites
+
+- nodejs Installed 
+- npm install -g @vue/cli OR yarn global add @vue/cli    
+
+### Installing
 
 ## Project setup
 ```
@@ -20,5 +29,27 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Demo: https://vic-solution-admin.netlify.app/
+
+## Running the tests
+
+Vic solution ESL Learning System Operated in teachers to manipulate students information and storing information
+
+
+## Built With
+
+* [Vuejs](https://vuejs.org/) - The frontend framework
+* [Hasura](http://hasura.io/) - Hasura Graphql backend production ready
+
+
+## Authors
+
+* **Joshua Galit** - *Initial work* - [Josom Software, Inc.](https://github.com/PurpleBooth)
+* **Jerome Joseph Villaruel** - *Initial work* - [Josom Software, Inc.](https://github.com/PurpleBooth)
+
+
+See also the list of [contributors](https://github.com/acatzk/esl-learning-admin/graphs/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
