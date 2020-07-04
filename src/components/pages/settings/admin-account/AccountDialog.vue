@@ -30,7 +30,7 @@
                                     <v-text-field 
                                         label="Email" 
                                         prepend-inner-icon="mdi-email-outline"
-                                        :value="account.email"
+                                        v-model="account.email"
                                         :rules="[required('Email'), emailRules('Email')]"
                                     >
                                     </v-text-field>
