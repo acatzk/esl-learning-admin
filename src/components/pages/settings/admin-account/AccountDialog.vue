@@ -7,12 +7,19 @@
                         <v-icon left size="35">mdi-email-outline</v-icon> Update Email
                     </span>
                      <span class="headline" v-else>
-                        <v-icon left size="35">mdi-lock-outline</v-icon> Update Password
+                        <v-icon left size="35">mdi-lock-outline</v-icon> Change Password
                     </span>
                 </v-card-title>
+
+                <alert 
+                    v-show="error"
+                    :text="`${error}`"
+                    :textStyle="true"
+                /> <!-- SHOW ALERT ERROR MESSAGE -->
+
                 <v-card-text>
                     <v-container>
-                         <v-form 
+                        <v-form 
                             :disabled="loading" 
                             ref="form"
                             v-model="valid"
@@ -23,7 +30,7 @@
                                     <v-text-field 
                                         label="Email" 
                                         prepend-inner-icon="mdi-email-outline"
-                                        v-model="account.email"
+                                        :value="account.email"
                                         :rules="[required('Email'), emailRules('Email')]"
                                     >
                                     </v-text-field>
@@ -33,7 +40,6 @@
                                         label="Password" 
                                         prepend-inner-icon="mdi-lock-outline"
                                         v-model="account.password"
-                                        @keyup.enter="saveAdmin(item)"
                                         :rules="[required('Password'), minLength('Password', 5), maxLength('Password', 20)]"
                                     >
                                     </v-text-field>
@@ -51,6 +57,8 @@
                         color="indigo darken-1 white--text" 
                         depressed
                         :loading="loading"  
+                        v-for="(account, index) in accounts" :key="index"
+                        @click="saveUpdatedAccount(account)"
                     >
                       <v-icon left>mdi-content-save</v-icon>  Save
                     </v-btn>
@@ -62,15 +70,21 @@
 
 <script>
 
+import { fb } from '@/firebase'
+
 // Toast Alert Status file
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
-import { fb } from '@/firebase'
+import { ACCOUNT_UPDATE_MUTATION } from '@/graphql/mutations/accounts'
 
 export default {
     name: 'AccountDialog',
 
     props: ['visible', 'modalType', 'accounts'],
+
+    components: {
+        Alert: () => import('@/components/pages/Alert')
+    },
 
     data () {
         return {
@@ -87,7 +101,8 @@ export default {
             },
             emailRules(propertyType) {
                 return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
-            }
+            },
+            error: ''
         }
     },
 
@@ -104,6 +119,78 @@ export default {
         }
     },
 
+    methods: {
+
+        // Hide email info name
+        showEmail (account) {
+            return '****'+ "@" + account.email.split('@')[1]
+        },
+
+        saveUpdatedAccount (account) {
+           if (this.$refs.form.validate()) {
+                this.loading = true
+                if (this.modalType === 'email') {
+                    this.updateEmail(account) // UPDATE EMAIL IN FIREBASE
+                }    
+                if (this.modalType === 'password') {
+                    this.updatePassword(account) // UPDATE PASSWORD IN FIREBASE
+                }
+           }
+        },
+
+        // UPDAT EMAIL IN FIREBASE AUTHENTICATION
+        updateEmail(account) {
+            let admin = fb.auth().currentUser
+            admin
+            .updateEmail(account.email)
+            .then(() => {
+                this.show = !this.show // OPEN CLOSE MODAL
+                this.loading = false // SET LOADING INTO FALSE
+                toastAlertStatus('success', `Successfully Updated Email in Firebase`)
+                this.updateAccountInHasura(account) // UPDATE EMAIL IN HASURA
+             })
+             .catch(error => {
+                this.loading = false // SET LOADING INTO FALSE
+                toastAlertStatus('error', error)
+             })
+        },
+
+        // UPDATE PASSWORD IN FIREBASE AUTHENTICATION
+        updatePassword(account) {
+            let admin = fb.auth().currentUser
+            admin
+            .updatePassword(account.password)
+            .then(() => {
+                this.show = !this.show // OPEN CLOSE MODAL
+                this.loading = false // SET LOADING INTO FALSE
+                toastAlertStatus('success', `Successfully Updated Password in Firebase`)
+                this.updateAccountInHasura(account) // UPDATE PASSWORD IN HASURA
+            })
+            .catch(error => {
+              this.loading = false // SET LOADING INTO FALSE
+              this.error = error
+              toastAlertStatus('error', error)
+            })
+        },
+
+        // UPDATE EMAIL AND PASSWORD IN HASURA GRAPHQL ACCOUNTS
+        updateAccountInHasura(account) {
+            this
+             .$apollo
+             .mutate({
+                 mutation: ACCOUNT_UPDATE_MUTATION,
+                 variables: {
+                    id: account.id,
+                    email: account.email,
+                    password: account.password
+                 }
+             })
+             .then(() => {
+                 toastAlertStatus('success', 'Successfully Updated in Hasura')
+             })
+             .catch(error => toastAlertStatus('error', error))
+        }
+    }
 
 }
 </script>
