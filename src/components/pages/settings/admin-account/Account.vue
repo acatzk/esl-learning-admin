@@ -1,12 +1,6 @@
 <template>
     <div class="account-setting">
 
-        <alert 
-            v-show="error" 
-            :text="error" 
-            :textStyle="true"  
-        />
-
         <v-container>
             <form>
                 <v-skeleton-loader
@@ -41,7 +35,7 @@
                             Firebase Authentication integrates tightly with other Firebase services, and it leverages industry standards like OAuth 2.0 and OpenID Connect, so it can be easily integrated with your custom backend.
                         </div>
                         <v-row>
-                            <v-col cols="6">
+                            <v-col cols="12" sm="6">
                                 <v-btn 
                                     block 
                                     depressed
@@ -51,7 +45,7 @@
                                 <v-icon left>mdi-email-outline</v-icon> Update Your Email
                                 </v-btn>
                             </v-col>
-                            <v-col cols="6">
+                            <v-col cols="12" sm="6">
                                 <v-btn 
                                     block
                                     outlined
@@ -83,86 +77,24 @@
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
-
 import { ACCOUNT_QUERY } from '@/graphql/queries/accounts'
 
 import { ACCOUNT_SUBSCRIPTION } from '@/graphql/subscriptions/accounts'
 
-import { ACCOUNT_UPDATE_MUTATION } from '@/graphql/mutations/accounts'
 
 export default {
     name: 'Account',
 
     components: {
-        Alert: () => import('@/components/pages/Alert'),
         AccountDialog: () => import('./AccountDialog')
     },
 
     data () {
         return {
             accounts: [],
-            loading: false,
-            valid: true,
-            required(propertyType) { 
-                return v => v && v.length > 0 || `${propertyType} is required.`
-            },
-            emailRules(propertyType) {
-                return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
-            },
             show: false,
-            error: '',
             dialog: false,
             modalType: ''
-        }
-    },
-
-    methods: {
-        updateAccount (account) {
-           this.loading = true
-           this.updateEmail(account)
-        },
-
-        updateEmail(account) {
-            let admin = fb.auth().currentUser
-            admin
-            .updateEmail(account.email)
-            .then(acc => {
-                this.loading = false
-                this.updatePassword(account)
-                this.updateAccountInHasura(account)
-                toastAlertStatus('success', `Successfully update account`)
-             })
-             .catch(error => {
-                toastAlertStatus('error', error)
-                this.error = error
-                this.loading = false
-             })
-        },
-
-        updatePassword(account) {
-            let admin = fb.auth().currentUser
-            admin
-            .updatePassword(account.password)
-             .catch(error => {
-                toastAlertStatus('error', error)
-                this.error = error
-                this.loading = false
-             })
-        },
-
-        updateAccountInHasura(account) {
-            this
-             .$apollo
-             .mutate({
-                 mutation: ACCOUNT_UPDATE_MUTATION,
-                 variables: {
-                    id: account.id,
-                    email: account.email,
-                    password: account.password
-                 }
-             })
-             .catch(error => toastAlertStatus('error', error))
         }
     },
 
