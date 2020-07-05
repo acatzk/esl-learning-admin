@@ -29,8 +29,17 @@
                 </v-btn>
             </div>
 
+            <!-- ** SKELETON LOADING FOR DATA ** -->
+            <v-skeleton-loader
+                type="table-tbody"
+                class="mx-auto"
+                tile
+                v-if="$apollo.loading"
+            ></v-skeleton-loader> 
+
              <!-- ** TEACHERS VUETIFY TABLE ** -->
             <admins-table 
+                v-else
                 :items="accounts"
                 :headers="headers"
                 :search="search"
