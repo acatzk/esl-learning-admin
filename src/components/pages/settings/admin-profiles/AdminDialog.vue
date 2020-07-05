@@ -10,6 +10,13 @@
                         <v-icon left size="35">mdi-pencil</v-icon> Edit Admin
                     </span>
                 </v-card-title>
+
+                 <alert 
+                    v-show="error"
+                    :text="`${error}`"
+                    :textStyle="true"
+                /> <!-- SHOW ALERT ERROR MESSAGE -->
+
                 <v-card-text>
                     <v-container>
                          <v-form 
@@ -76,6 +83,10 @@ export default {
     
     props: ['visible', 'modalType', 'item'],
 
+    components: {
+        Alert: () => import('@/components/pages/Alert')
+    },
+
     data () {
         return {
             loading: false,
@@ -92,7 +103,8 @@ export default {
             emailRules(propertyType) {
                 return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
             },
-            showPassword: true
+            showPassword: true,
+            error: ''
         }
     },
 
@@ -125,6 +137,7 @@ export default {
                       })
                       .catch(error => {
                           this.loading = false
+                          this.error= error
                           toastAlertStatus('error', error)
                       })
                 } 
