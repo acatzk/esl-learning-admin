@@ -36,7 +36,7 @@
                                     >
                                     </v-text-field>
                                 </v-col>
-                                <v-col cols="12">
+                                <v-col cols="12" v-show="modalType === 'add'">
                                     <v-text-field 
                                         label="Password" 
                                         prepend-inner-icon="mdi-lock-outline"
