@@ -18,9 +18,16 @@
             </span>
         </template>
 
-             <!-- ** DATE CREATED ** -->
+        <!-- ** DATE CREATED ** -->
         <template #item.created_at="{ item }" class="text-center">
              <date-display :created_at="item.created_at" />
+        </template>
+
+            <!-- ** ADMIN UID ** -->
+        <template #item.uid="{ item }" class="text-center">
+            <span v-if="!item.uid">
+                {{ item.id }}
+            </span>
         </template>
 
     
