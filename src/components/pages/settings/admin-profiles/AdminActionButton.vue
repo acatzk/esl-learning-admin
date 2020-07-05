@@ -8,6 +8,7 @@
                         v-bind="attrs"
                         v-on="on"
                         small
+                        @click="copyUID"
                         icon
                     >
                         <v-icon>mdi-content-copy</v-icon>
@@ -23,7 +24,7 @@
                         v-on="on"
                         small 
                         icon
-                        @click.stop="dialog = true"
+                        @click.stop="copyUID"
                     >
                         <v-icon>mdi-pencil-box-outline</v-icon>
                     </v-btn>
@@ -38,6 +39,7 @@
                         v-on="on"
                         small
                         icon
+                        @click="snackbar = true"
                     >
                         <v-icon>delete_outline</v-icon>
                     </v-btn>
@@ -55,6 +57,26 @@
         />
 
 
+         <v-snackbar
+            v-model="snackbar"
+            :timeout="timeout"
+            right
+            top
+        >
+            <v-icon right>mdi-content-copy</v-icon> {{ text }}
+            <template v-slot:action="{ attrs }">
+                <v-btn
+                    color="blue"
+                    text
+                    v-bind="attrs"
+                    @click="snackbar = false"
+                >
+                Close
+                </v-btn>
+            </template>
+        </v-snackbar>
+
+
     </div>
 </template>
 
@@ -66,7 +88,10 @@ export default {
 
     data () {
         return {
-            dialog: false
+            dialog: false,
+            snackbar: false,
+            text: '',
+            timeout: 2000,
         }
     },
 
@@ -78,7 +103,10 @@ export default {
 
 
     methods: {
-        
+        copyUID () {
+            this.snackbar = true
+            this.text = `Copied ${this.item.id}`
+        }
     }
 
 }
