@@ -43,6 +43,9 @@
                                         v-model="account.password"
                                         :rules="[required('Password'), minLength('Password', 5), maxLength('Password', 20)]"
                                         @keyup.enter="saveUpdatedAccount(account)"
+                                        :type="showPassword ? 'text' : 'password'"
+                                        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                                        @click:append="showPassword = !showPassword"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -104,7 +107,8 @@ export default {
             emailRules(propertyType) {
                 return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
             },
-            error: ''
+            error: '',
+            showPassword: true
         }
     },
 
