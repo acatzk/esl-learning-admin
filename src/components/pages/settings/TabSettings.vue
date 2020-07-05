@@ -32,11 +32,7 @@
                 </v-card>
             </v-tab-item>
             <v-tab-item>
-                <v-card flat>
-                    <v-card-text>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error tempore, a molestiae repellat illum, amet odit nisi nam totam, ut voluptatem vel sunt dicta soluta! Similique earum deleniti voluptatem quaerat ea, facere repellat consequatur id sunt nostrum. Aliquid eum voluptatibus, nam non ducimus distinctio consequatur suscipit at porro inventore est tempore cumque sequi dolorem enim eius libero quae atque. Assumenda veniam excepturi consequatur earum quas, molestias perspiciatis velit eum rem facilis. Excepturi dolor assumenda illum voluptatem libero veritatis aliquam ipsam quae. Recusandae incidunt eius quisquam hic, fuga deleniti nam quae magnam enim molestiae nulla velit, nostrum et eaque doloribus a! Quisquam, dolor. Praesentium ipsa numquam provident nisi tempore porro recusandae doloribus cum voluptatem eos vitae ducimus perferendis, voluptatibus natus esse molestiae exercitationem sunt sed expedita soluta odit inventore delectus corporis ea! Repellat quos reiciendis molestias nihil dolor vero at deserunt maxime nostrum doloremque! Aperiam cupiditate voluptate temporibus minus beatae, adipisci laborum eligendi rerum! Fugiat pariatur explicabo magni ducimus sequi reprehenderit debitis harum. Molestiae debitis pariatur velit aut culpa quos, impedit facilis expedita doloremque exercitationem consequuntur ad optio quas laboriosam possimus delectus repudiandae doloribus temporibus nihil placeat asperiores aliquid hic quis! Quam vel voluptatem, quasi sequi dicta accusamus commodi obcaecati id optio similique aliquid recusandae voluptas placeat consequuntur minima dolorum corporis voluptatum. Illo tenetur illum magni expedita ullam doloribus iusto praesentium, error eveniet veniam, voluptates assumenda nemo ut nisi unde, similique sed quas modi. Culpa voluptas voluptate magni excepturi dolore, hic exercitationem repudiandae ratione laudantium dolores minima repellendus ad perspiciatis vero ut! Quibusdam dignissimos ipsam quas est a dicta nam necessitatibus et voluptates magnam fugit doloribus, mollitia velit nisi ratione eligendi molestias architecto cumque. A cupiditate soluta sapiente culpa eaque veniam delectus, enim rem magni nam molestiae dicta, in doloremque nostrum consequuntur architecto ipsam asperiores provident. Expedita obcaecati quidem impedit architecto!
-                    </v-card-text>
-                </v-card>
+                <dev-info /> <!-- DEVELOPERS INFORMATION -->
             </v-tab-item>
         </v-tabs>
     </div>
@@ -54,7 +50,8 @@ export default {
 
     components: {
         Account: () => import('./admin-account/Account'),
-        Administrator: () => import('./admin-profiles/Admin')
+        Administrator: () => import('./admin-profiles/Admin'),
+        DevInfo: () => import('./developers-info/DevInfo')
     }
 }
 </script>
