@@ -47,9 +47,9 @@ import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
-import { ALL_ACCOUNT_QUERY } from '@/graphql/queries/accounts'
+import { ALL_ACCOUNT_QUERY_EXCEPT_CURRENT_ADMIN } from '@/graphql/queries/accounts'
 
-import { ALL_ACCOUNT_SUBSCRIPTION } from '@/graphql/subscriptions/accounts'
+import { ALL_ACCOUNT_SUBSCRIPTION_EXCEPT_CURRENT_ADMIN } from '@/graphql/subscriptions/accounts'
 
 export default {
     name: 'Admin',
@@ -85,9 +85,19 @@ export default {
 
     apollo: {
         accounts: {
-            query: ALL_ACCOUNT_QUERY,
+            query: ALL_ACCOUNT_QUERY_EXCEPT_CURRENT_ADMIN,
+            variables () {
+                return {
+                    id: fb.auth().currentUser.uid
+                }
+            },
             subscribeToMore: {
-                document: ALL_ACCOUNT_SUBSCRIPTION,
+                document: ALL_ACCOUNT_SUBSCRIPTION_EXCEPT_CURRENT_ADMIN,
+                variables () {
+                    return {
+                        id: fb.auth().currentUser.uid
+                    }
+                },
                 updateQuery(previousResult, { subscriptionData }) {
                     return {
                         accounts: [
