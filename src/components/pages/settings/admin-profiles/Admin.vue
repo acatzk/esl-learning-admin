@@ -77,7 +77,7 @@ export default {
                 { text: 'Identifier', value: 'email' },
                 { text: 'Provider', value: 'provider', sortable: false },
                 { text: 'Created', value: 'created_at' },
-                { text: 'User UID', value: 'uid' },
+                { text: 'Admin UID', value: 'uid' },
                 { text: 'Options', value: 'id', sortable: false }
             ]
         }
