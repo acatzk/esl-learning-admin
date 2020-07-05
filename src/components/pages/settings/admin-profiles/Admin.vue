@@ -31,7 +31,7 @@
 
              <!-- ** TEACHERS VUETIFY TABLE ** -->
             <admins-table 
-                :items="admins"
+                :items="accounts"
                 :headers="headers"
                 :search="search"
             />
@@ -43,9 +43,13 @@
 
 <script>
 
-import { fb, db } from '@/firebase'
+import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
+
+import { ALL_ACCOUNT_QUERY } from '@/graphql/queries/accounts'
+
+import { ALL_ACCOUNT_SUBSCRIPTION } from '@/graphql/subscriptions/accounts'
 
 export default {
     name: 'Admin',
@@ -53,20 +57,7 @@ export default {
     data () {
         return {
             search: '',
-            admins: [
-                {
-                    'email': 'joshuaimalay@gamil.com',
-                    'provider': true,
-                    'created_at': 'June 10, 2020',
-                    'uid': '1pLFxjNITScCFXRF9j3s7llf92j2'
-                },
-                 {
-                    'email': 'jeromevillaruel@gamil.com',
-                    'provider': true,
-                    'created_at': 'June 20, 2020',
-                    'uid': 'RwuqsMGuHUTMlYBv0eHyx7mZ2h32'
-                }
-            ],
+            accounts: [],
             dialog: false,
             item: [
                 { email: null },
@@ -89,6 +80,25 @@ export default {
                 { text: 'User UID', value: 'uid' },
                 { text: 'Options', value: 'id', sortable: false }
             ]
+        }
+    },
+
+    apollo: {
+        accounts: {
+            query: ALL_ACCOUNT_QUERY,
+            subscribeToMore: {
+                document: ALL_ACCOUNT_SUBSCRIPTION,
+                updateQuery(previousResult, { subscriptionData }) {
+                    return {
+                        accounts: [
+                            ...subscriptionData.data.accounts
+                        ]
+                    }
+                }
+            },
+            result ({ data }) {
+                this.accounts = data.accounts
+            }
         }
     }
 }
