@@ -17,7 +17,7 @@
                 <span>Copy UID</span>
             </v-tooltip>
 
-            <v-tooltip top color="warning">
+            <v-tooltip top color="primary">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn 
                         v-bind="attrs"
@@ -26,32 +26,18 @@
                         icon
                         @click="dialog = true"
                     >
-                        <v-icon>mdi-pencil-box-outline</v-icon>
+                        <v-icon>mdi-eye-outline</v-icon>
                     </v-btn>
                 </template>
-                <span>Edit</span>
-            </v-tooltip>
-
-            <v-tooltip top color="error">
-                <template v-slot:activator="{ on, attrs }">
-                    <v-btn 
-                        v-bind="attrs"
-                        v-on="on"
-                        small
-                        icon
-                    >
-                        <v-icon>delete_outline</v-icon>
-                    </v-btn>
-                </template>
-                <span>Delete</span>
+                <span>View</span>
             </v-tooltip>
 
         </v-btn-toggle>
 
-         <!-- ADMIN-DIALOG ADD AND EDIT -->
+         <!-- ADMIN-DIALOG VIEW -->
         <admin-dialog 
             :visible="dialog" @close="dialog = false"
-            :modalType="`edit`" 
+            :modalType="`about`" 
             :item="item"
         />
 

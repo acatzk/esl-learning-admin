@@ -3,7 +3,7 @@
         <v-dialog v-model="show" max-width="400px">
             <v-card>
                 <v-card-title>
-                    <span class="headline" v-if="modalType === 'about'">
+                    <span class="headline" v-if="modalType !== 'about'">
                         <v-icon left size="35">mdi-information</v-icon> About Authentication
                     </span>
                      <span class="headline" v-else>
@@ -18,7 +18,7 @@
                 /> <!-- SHOW ALERT ERROR MESSAGE -->
 
                 <v-card-text>
-                    <v-container v-if="modalType === 'about'">
+                    <v-container v-if="modalType !== 'about'">
                         <v-card-text class="text-justify">
                             You don't have authorized to add new administrator due to the complex of authentication. Our team uses <b>Firebase Authentication</b> to authenticate user but during the process when we add new administrator while you are logged in the jsonwebtoken changes your stored information due to it's requested add new admin. To add new administrator please contact backend developer in you software. Please go to <b>Developers Info</b> tab.
                         </v-card-text>
