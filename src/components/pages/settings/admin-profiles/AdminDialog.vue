@@ -36,6 +36,9 @@
                                         v-model="item.password"
                                         @keyup.enter="saveAdmin(item)"
                                         :rules="[required('Password'), minLength('Password', 5), maxLength('Password', 20)]"
+                                        :type="showPassword ? 'text' : 'password'"
+                                        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                                        @click:append="showPassword = !showPassword"
                                     >
                                     </v-text-field>
                                 </v-col>
@@ -88,7 +91,8 @@ export default {
             },
             emailRules(propertyType) {
                 return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
-            }
+            },
+            showPassword: true
         }
     },
 
