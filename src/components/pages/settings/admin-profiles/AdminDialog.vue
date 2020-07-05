@@ -3,11 +3,11 @@
         <v-dialog v-model="show" max-width="400px">
             <v-card>
                 <v-card-title>
-                    <span class="headline" v-if="modalType === 'add'">
+                    <span class="headline" v-if="modalType === 'about'">
                         <v-icon left size="35">mdi-information</v-icon> About Authentication
                     </span>
                      <span class="headline" v-else>
-                        <v-icon left size="35">mdi-pencil</v-icon> Edit Admin
+                        <v-icon left size="35">mdi-eye</v-icon> View Admin
                     </span>
                 </v-card-title>
 
@@ -18,7 +18,7 @@
                 /> <!-- SHOW ALERT ERROR MESSAGE -->
 
                 <v-card-text>
-                    <v-container v-if="modalType === 'add'">
+                    <v-container v-if="modalType === 'about'">
                         <v-card-text class="text-justify">
                             You don't have authorized to add new administrator due to the complex of authentication. Our team uses <b>Firebase Authentication</b> to authenticate user but during the process when we add new administrator while you are logged in the jsonwebtoken changes your stored information due to it's requested add new admin. To add new administrator please contact backend developer in you software. Please go to <b>Developers Info</b> tab.
                         </v-card-text>
@@ -34,6 +34,12 @@
                             <v-row>
                                 <v-col cols="12">
                                     <v-text-field 
+                                        label="Admin UID" 
+                                        prepend-inner-icon="mdi-lock-outline"
+                                        v-model="item.id"
+                                    >
+                                    </v-text-field>
+                                    <v-text-field 
                                         label="Email" 
                                         prepend-inner-icon="mdi-email-outline"
                                         v-model="item.email"
@@ -46,19 +52,6 @@
                         </v-form>
                     </v-container>
                 </v-card-text>
-                <v-card-actions v-show="modalType !== 'add'">
-                    <v-spacer></v-spacer>
-                    <v-btn color="indigo darken-1" text  @click="show = !show">
-                        <v-icon left>mdi-close</v-icon> Close
-                    </v-btn>
-                    <v-btn 
-                        color="indigo darken-1 white--text" 
-                        depressed
-                        :loading="loading"  
-                    >
-                      <v-icon left>mdi-content-save</v-icon>  Save
-                    </v-btn>
-                </v-card-actions>
             </v-card>
         </v-dialog> 
     </v-row>
@@ -66,12 +59,6 @@
 
 <script>
 
-
-import { fb } from '@/firebase'
-
-import { toastAlertStatus } from '@/assets/js/toastAlert'
-
-import { ADD_ACCOUNT_MUTATION } from '@/graphql/mutations/accounts'
 
 export default {
     
@@ -113,10 +100,6 @@ export default {
                 }
             }
         }
-    },
-
-    methods: {
-        
     }
 
 }
