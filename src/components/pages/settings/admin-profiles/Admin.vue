@@ -20,11 +20,11 @@
                     style="position: relative; margin-right: 5px; top: 6px;"
                 ></v-text-field>
 
-                <v-btn class="mt-4" color="primary" depressed @click.stop="dialog = true">
-                    <v-icon center>mdi-plus</v-icon>
+                <v-btn class="mt-3" icon large depressed>
+                    <v-icon center>mdi-information-outline</v-icon>
                 </v-btn> 
 
-                <v-btn icon class="ml-1 mt-3" large depressed>
+                <v-btn icon class="mt-3" large depressed>
                     <v-icon>mdi-reload</v-icon>
                 </v-btn>
             </div>
