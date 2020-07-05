@@ -12,7 +12,7 @@
                 </v-card-title>
 
                 <alert 
-                    v-show="error"
+                    v-if="error && modalType !== 'email'"
                     :text="`${error}`"
                     :textStyle="true"
                 /> <!-- SHOW ALERT ERROR MESSAGE -->
