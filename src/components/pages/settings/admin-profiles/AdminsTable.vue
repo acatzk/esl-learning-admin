@@ -18,6 +18,11 @@
             </span>
         </template>
 
+             <!-- ** DATE CREATED ** -->
+        <template #item.created_at="{ item }" class="text-center">
+             <date-display :created_at="item.created_at" />
+        </template>
+
     
         <!-- ** ACTION BUTTONS ** -->
         <template #item.id="{ item }">  
@@ -35,7 +40,7 @@ export default {
 
     components: {
         AdminsActionButton: () => import('./AdminActionButton'),
-        DateDisplay: () => import('../../DateDisplay')
+        DateDisplay: () => import('@/components/pages/DateDisplay')
     },
 
     props: {
