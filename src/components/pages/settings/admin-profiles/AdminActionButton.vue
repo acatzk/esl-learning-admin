@@ -24,7 +24,7 @@
                         v-on="on"
                         small 
                         icon
-                        @click.stop="copyUID"
+                        @click="dialog = true"
                     >
                         <v-icon>mdi-pencil-box-outline</v-icon>
                     </v-btn>
@@ -39,7 +39,6 @@
                         v-on="on"
                         small
                         icon
-                        @click="snackbar = true"
                     >
                         <v-icon>delete_outline</v-icon>
                     </v-btn>
