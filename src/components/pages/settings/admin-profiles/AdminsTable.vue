@@ -13,7 +13,7 @@
 
          <!-- ** PROVIDER ** -->
         <template #item.provider="{ item }" class="text-center">
-            <span v-if="item.provider">
+            <span v-if="!item.provider">
                 <v-icon>mdi-email</v-icon>
             </span>
         </template>
