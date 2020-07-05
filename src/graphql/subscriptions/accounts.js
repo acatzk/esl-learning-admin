@@ -10,3 +10,14 @@ export const ACCOUNT_SUBSCRIPTION = gql`
         }
     }  
 `
+
+export const ALL_ACCOUNT_SUBSCRIPTION = gql`
+    subscription AccountSubscription {
+        accounts(order_by: {created_at: desc}) {
+            id
+            email
+            password
+            created_at
+        }
+    }  
+`
