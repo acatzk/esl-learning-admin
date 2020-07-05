@@ -11,3 +11,14 @@ export const ACCOUNT_UPDATE_MUTATION = gql`
         }
     }  
 `
+
+export const ADD_ACCOUNT_MUTATION = gql`
+    mutation AddAccountMutation($email: String!, $password: String!) {
+        insert_accounts(objects: {email: $email, password: $password}) {
+            affected_rows
+            returning {
+                id
+            }
+        }
+    }
+`
