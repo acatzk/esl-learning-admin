@@ -13,8 +13,8 @@ export const ACCOUNT_UPDATE_MUTATION = gql`
 `
 
 export const ADD_ACCOUNT_MUTATION = gql`
-    mutation AddAccountMutation($id, String!, $email: String!, $password: String!) {
-        insert_accounts(objects: {id: String!, email: $email, password: $password}) {
+    mutation AddAccountMutation($id: String!, $email: String!, $password: String!) {
+        insert_accounts(objects: {id: $id, email: $email, password: $password}) {
             affected_rows
             returning {
                 id
