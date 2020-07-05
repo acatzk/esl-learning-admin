@@ -20,24 +20,38 @@
                     style="position: relative; margin-right: 5px; top: 6px;"
                 ></v-text-field>
 
-                <v-btn 
-                    class="mt-3" 
-                    icon 
-                    large 
-                    depressed
-                    @click.stop="dialog = true"
-                >
-                    <v-icon center>mdi-information-outline</v-icon>
-                </v-btn> 
+                <v-tooltip bottom color="primary">
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn 
+                            class="mt-3" 
+                            icon 
+                            large 
+                            v-on="on"
+                            depressed
+                            v-bind="attrs"
+                            @click.stop="dialog = true"
+                        >
+                            <v-icon center>mdi-information-outline</v-icon>
+                        </v-btn> 
+                    </template>
+                    <span>About</span>
+                </v-tooltip>
 
-                <v-btn 
-                    icon 
-                    class="mt-3" 
-                    large 
-                    depressed
-                >
-                    <v-icon>mdi-reload</v-icon>
-                </v-btn>
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn 
+                            icon 
+                            class="mt-3" 
+                            large 
+                            v-on="on"
+                            depressed
+                            v-bind="attrs"
+                        >
+                            <v-icon>mdi-reload</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Reload</span>
+                </v-tooltip>
             </div>
 
             <!-- ** SKELETON LOADING FOR DATA ** -->
