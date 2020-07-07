@@ -123,5 +123,7 @@ export default {
 </script>
 
 <style scoped>
-
+.teachers-account {
+    border-top: 1px solid #eee;
+}
 </style>
