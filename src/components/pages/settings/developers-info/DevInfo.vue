@@ -45,7 +45,7 @@
                                     target="_blank"
                                     style="text-decoration: none;"
                                 >
-                                    developers website
+                                    {{ dev.website }}
                                 </a>
                             </div>
                         </v-card-text>
