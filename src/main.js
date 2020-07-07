@@ -8,6 +8,7 @@ import apolloProvider from './apollo'
 import VueSweetalert2 from 'vue-sweetalert2';
 import VueTimeago from 'vue-timeago'
 import { fb } from '@/firebase'
+import { VLazyImagePlugin } from 'v-lazy-image';
 
 Vue.config.productionTip = false;
 
@@ -28,6 +29,8 @@ Vue.use(VueTimeago, {
     'zh-CN': require('date-fns/locale/zh_cn')
   }
 })
+/** VUE-LAZY-IMAGE LOADING **/
+Vue.use(VLazyImagePlugin);
 
 let app = ''
 
