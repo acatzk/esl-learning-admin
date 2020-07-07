@@ -15,13 +15,21 @@
                 > 
                     <v-container>
                         <v-toolbar-title class="text-center font-weight-medium grey--text">
-                            <v-btn 
-                                href="https://firebase.google.com/docs/auth"
-                                target="_blank"
-                                icon
-                            >
-                                <v-icon>mdi-information</v-icon>
-                            </v-btn>
+                            <v-tooltip top>
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-btn 
+                                        v-on="on"
+                                        v-bind="attrs"
+                                        href="https://firebase.google.com/docs/auth"
+                                        target="_blank"
+                                        icon
+                                        color="primary"
+                                    >
+                                        <v-icon>mdi-information</v-icon>
+                                    </v-btn>
+                                    </template>
+                                <span dense>About Firebase</span>
+                            </v-tooltip>
                             Firebase Account Authentication
                         </v-toolbar-title>
 
