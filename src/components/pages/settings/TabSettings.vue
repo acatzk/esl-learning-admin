@@ -10,7 +10,7 @@
                 Administrators
             </v-tab>
             <v-tab>
-                <v-icon left>mdi-account-box-outline</v-icon>
+                <v-icon left>mdi-account-multiple-outline</v-icon>
                 Teachers
             </v-tab>
             <v-tab>
