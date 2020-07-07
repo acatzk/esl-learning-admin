@@ -51,6 +51,8 @@ import { toastAlertStatus } from '@/assets/js/toastAlert'
 
 import { DELETE_STUDENT_MUTATION } from '@/graphql/mutations/students'
 
+import Swal from 'sweetalert2'
+
 export default {
     name: 'StudentActionButton',
 
@@ -69,8 +71,17 @@ export default {
 
     methods: {
         deleteStudent () {
-            if(confirm('Are you sure you want to delete student?')) {
-                this.$apollo
+             Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    this.$apollo
                     .mutate({
                         mutation: DELETE_STUDENT_MUTATION,
                         variables: {
@@ -83,7 +94,8 @@ export default {
                     .catch(error => {
                         toastAlertStatus('error', error)
                     })
-            }
+                }
+            })
         }
     }
 
