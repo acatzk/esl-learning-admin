@@ -33,9 +33,6 @@ export default {
 
     methods: {
       deleteTeacherAccount () {
-          
-        const { id } = this.item
-
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -44,16 +41,22 @@ export default {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-        if (result.value) {
-            Swal.fire(
-                'Deleted!',
-                'Teacher account has been deleted.',
-                'success'
-            )
-        }
         })
-
+        .then((result) => {
+            if (result.value) {
+                const { id } = this.item
+                this
+                 .$apollo
+                 .mutate({
+                     mutation: DELETE_TEACHER_MUTATION,
+                     variables: { id }
+                 })
+                 .then(() => {
+                    toastAlertStatus('success', 'Teacher account has been deleted')
+                 })
+                 .catch(error => toastAlertStatus('error', error))
+            }
+        })
       }
     }
 }
