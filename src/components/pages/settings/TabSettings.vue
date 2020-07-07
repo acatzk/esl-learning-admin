@@ -6,7 +6,7 @@
                 Account
             </v-tab>
             <v-tab>
-                <v-icon left>settings</v-icon>
+                <v-icon left>settings_applications</v-icon>
                 Administrators
             </v-tab>
             <v-tab>
