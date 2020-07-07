@@ -2,15 +2,15 @@
     <div class="tab-settings">
         <v-tabs horizontal fixed-tabs color="indigo">
             <v-tab>
-                <v-icon left>mdi-account-circle</v-icon>
+                <v-icon left>mdi-account-outline</v-icon>
                 Account
             </v-tab>
             <v-tab>
-                <v-icon left>settings_applications</v-icon>
+                <v-icon left>mdi-shield-outline</v-icon>
                 Administrators
             </v-tab>
             <v-tab>
-                <v-icon left>mdi-folder-account</v-icon>
+                <v-icon left>mdi-account-box-outline</v-icon>
                 Teachers
             </v-tab>
             <v-tab>
