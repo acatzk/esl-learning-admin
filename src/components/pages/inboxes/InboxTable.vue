@@ -8,11 +8,11 @@
     >   
         <!-- DISPLAY NAME -->
         <template #item.name="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-bold icon unread">
-                <v-icon left class="unread">mdi-account-box</v-icon>
+            <span v-if="item.status === 'unread'" class="font-weight-bold">
+                <v-icon left>mdi-account-box</v-icon>
                 {{ item.name }}
             </span>
-            <span v-else >
+            <span v-else>
                 <v-icon left>mdi-account-box</v-icon>
                 {{ item.name }}
             </span>
@@ -20,8 +20,8 @@
 
         <!-- DISPLAY EMAIL -->
         <template #item.email="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-bold unread">
-                <v-icon left class="unread">mdi-email</v-icon>
+            <span v-if="item.status === 'unread'" class="font-weight-bold">
+                <v-icon left>mdi-email</v-icon>
                 {{ item.email }}
             </span>
             <span v-else>
@@ -32,8 +32,8 @@
 
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
-            <span v-if="item.status === 'unread'" class="font-weight-bold unread">
-                <v-icon left class="unread">mdi-calendar</v-icon>
+            <span v-if="item.status === 'unread'" class="font-weight-bold">
+                <v-icon left>mdi-calendar</v-icon>
                 <date-display
                     :created_at="item.created_at.split('T')[0]"
                 />
@@ -51,10 +51,10 @@
         <template #item.contact="{ item }">
             <td 
                 v-if="item.status === 'unread'" 
-                class="font-weight-bold non-clickable unread"
+                class="font-weight-bold non-clickable"
                 @click.stop
             >
-                <v-icon left class="unread">mdi-phone</v-icon>
+                <v-icon left>mdi-phone</v-icon>
                 {{ item.contact }}
             </td>
             <td 
@@ -71,7 +71,6 @@
         <template #item.status="{ item }">
             <td @click.stop class="non-clickable">
                 <v-chip
-                    :color="item.status === 'unread' ? 'pink--text font-weight-bold' : ''"
                     small
                     label
                     style="background: none;"
