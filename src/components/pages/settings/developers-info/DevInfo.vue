@@ -2,14 +2,22 @@
     <div class="dev-info">
         <v-container>
             <v-toolbar-title class="text-center font-weight-medium grey--text">
-                <v-btn 
-                    href="https://github.com/acatzk/esl-learning-admin"
-                    target="_blank"
-                    icon
-                >
-                    <v-icon>mdi-information</v-icon>
-                </v-btn>
-                Developers Information
+                <v-tooltip left>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn 
+                            v-on="on"
+                            v-bind="attrs"
+                            href="https://github.com/acatzk/esl-learning-admin"
+                            target="_blank"
+                            icon
+                            color="primary"
+                        >
+                            <v-icon>mdi-information</v-icon>
+                        </v-btn>
+                    </template>
+                    <span dense>View this project source code.</span>
+                </v-tooltip>
+                    Developers Information
             </v-toolbar-title>
 
             <v-row>
