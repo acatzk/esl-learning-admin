@@ -35,7 +35,7 @@ export const UPDATE_DEACTIVE_TEACHER_MUTATION = gql`
 
 
 export const DELETE_TEACHER_MUTATION = gql`
-    mutation deleteTeacherMutation($id: String!) {
+    mutation deleteTeacherMutation($id: uuid!) {
         delete_teachers(where: {id: {_eq: $id}}) {
             affected_rows
             returning {
