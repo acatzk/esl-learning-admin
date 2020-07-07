@@ -20,7 +20,7 @@
                     style="position: relative; margin-right: 5px; top: 6px;"
                 ></v-text-field>
 
-                <v-tooltip bottom color="primary">
+                <v-tooltip bottom >
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn 
                             class="mt-3" 
@@ -28,13 +28,14 @@
                             large 
                             v-on="on"
                             depressed
+                            color="primary"
                             v-bind="attrs"
                             @click.stop="dialog = true"
                         >
-                            <v-icon center>mdi-information-outline</v-icon>
+                            <v-icon center>mdi-information</v-icon>
                         </v-btn> 
                     </template>
-                    <span>About</span>
+                    <span>Read Auth</span>
                 </v-tooltip>
 
                 <v-tooltip bottom>
