@@ -30,8 +30,8 @@
                             class="white--text align-end"
                             :src="dev.profileUrl"
                         >
-                            <v-card-title>{{ dev.position }}</v-card-title>
                         </blur-image>
+                        <v-card-title class="mb-1">{{ dev.position }}</v-card-title>
 
                         <v-card-subtitle class="pb-0">
                             <v-icon left>mdi-email</v-icon> {{ dev.email }}
@@ -123,7 +123,8 @@ export default {
     name: 'DevInfo',
 
     components: {
-        BlurImage: () => import('./BlurImage')
+        BlurImage: () => import('./BlurImage'),
+        FadeInImage: () => import('./FadeInImage')
     },
 
     data () {
