@@ -26,13 +26,12 @@
                         class="mx-auto"
                         style="box-shadow: none;"
                     >
-                        <v-img
+                        <blur-image
                             class="white--text align-end"
-                            height="300px"
                             :src="dev.profileUrl"
                         >
-                        <v-card-title>{{ dev.position }}</v-card-title>
-                        </v-img>
+                            <v-card-title>{{ dev.position }}</v-card-title>
+                        </blur-image>
 
                         <v-card-subtitle class="pb-0">
                             <v-icon left>mdi-email</v-icon> {{ dev.email }}
@@ -122,6 +121,10 @@
 <script>
 export default {
     name: 'DevInfo',
+
+    components: {
+        BlurImage: () => import('./BlurImage')
+    },
 
     data () {
         return {
