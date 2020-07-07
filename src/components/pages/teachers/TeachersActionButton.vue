@@ -49,6 +49,8 @@ import { toastAlertStatus } from '@/assets/js/toastAlert'
 
 import { UPDATE_DEACTIVE_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
 
+import Swal from 'sweetalert2'
+
 export default {
     name: 'TeachersActionButton',
 
@@ -66,20 +68,30 @@ export default {
 
     methods: {
         inactiveTeacherStatus () {
-            if(confirm('Are you sure you want to deactive teacher account?')) {
-                const { id } = this.item
-                this.$apollo
-                    .mutate({
-                        mutation: UPDATE_DEACTIVE_TEACHER_MUTATION,
-                        variables: { id }
-                    })
-                    .then(() => {
-                        toastAlertStatus('success', 'Successfully Inactive Teacher')
-                    })
-                    .catch(error => {
-                        toastAlertStatus('error', error)
-                    })
-            }
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This account will gonna be deactivate!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, deactivate it!'
+            }).then((result) => {
+                if (result.value) {
+                    const { id } = this.item
+                    this.$apollo
+                        .mutate({
+                            mutation: UPDATE_DEACTIVE_TEACHER_MUTATION,
+                            variables: { id }
+                        })
+                        .then(() => {
+                            toastAlertStatus('success', 'Successfully Inactive Teacher')
+                        })
+                        .catch(error => {
+                            toastAlertStatus('error', error)
+                        })
+                }
+            })
         }
     }
 
