@@ -129,6 +129,8 @@
 // Toast Alert Status file
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
+import Swal from 'sweetalert2'
+
 // GRAPHQL MUTATIONS
 import { INBOX_DELETE_MUTATION, INBOX_UPDATE_MUTATION } from '@/graphql/mutations/inboxes'
 
@@ -159,8 +161,17 @@ export default {
 
     methods: {
         removedMessage(item) {
-            if(confirm('Are you sure you want to delete message?')) {
-                this.$apollo
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    this.$apollo
                     .mutate({
                         mutation: INBOX_DELETE_MUTATION,
                         variables: {
@@ -173,7 +184,8 @@ export default {
                     .catch(error => {
                         toastAlertStatus('error', error)
                     })
-            } 
+                }
+            })
         },
         markAsReadMessage(item) {
             this.markLoading = true
