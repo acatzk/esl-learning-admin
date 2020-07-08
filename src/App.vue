@@ -4,7 +4,13 @@
   </v-app>
 </template>
 
-<style>
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Nunito:100,300,400,500,700,900");
+body, html {
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 #nprogress .bar {
   background: rgb(198, 186, 255) !important;
 }
