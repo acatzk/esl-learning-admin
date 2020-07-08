@@ -50,6 +50,11 @@ const routes = [
         ]
       },
       {
+        path: 'lessons',
+        name: 'lessons',
+        component: () => import('@/views/admin/Lessons')
+      },
+      {
         path: 'teachers',
         name: 'teachers',
         component: () => import('@/views/admin/Teachers')
