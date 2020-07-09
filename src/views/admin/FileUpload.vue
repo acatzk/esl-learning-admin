@@ -27,18 +27,28 @@ export default {
         uploadImage (file) {
             if (!file) return;
 
-            this.loading = true
             let storageRef = fb.storage().ref('admin-profiles/' + file.name)
             let uploadTask = storageRef.put(file)
 
-            uploadTask.on('state_changed', (snapshot) => {
-                uploadTask.snapshot.ref.getDownloadURL()
-                    .then(downloadUrl => {
-                        console.log('File available at: ', downloadUrl)
-                        toastAlertStatus('success', `Uploaded`)
-                        this.loading = false
-                    })
-            })
+            uploadTask.on('state_changed', function(snapshot){
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log('Upload is ' + progress + '% done');
+                    
+                }, function(error) {
+                    // Handle unsuccessful uploads
+                    toastAlertStatus('error', error)
+                }, function() {
+                    // Handle successful uploads on complete
+                    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                    this.loading = true
+                    uploadTask.snapshot.ref.getDownloadURL()
+                        .then(downloadUrl => {
+                            console.log('File available at: ', downloadUrl)
+                            toastAlertStatus('success', `Uploaded`)
+                            this.loading = false
+                        })
+                        .catch(error => toastAlertStatus('error', error))
+            });
         }
     }
 }
