@@ -46,10 +46,8 @@
                             <v-btn 
                                 small 
                                 depressed 
-                                color="primary" 
-                                @click="onPickFile"
                             >
-                                <v-icon left>mdi-camera</v-icon> Upload Avatar
+                                <v-icon left>mdi-camera</v-icon> Change Avatar
                             </v-btn>
                             <input type="file" style="display: none;" ref="fileInput">
                         </span>
