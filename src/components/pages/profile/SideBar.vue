@@ -134,7 +134,7 @@ export default {
     }
 
     .v-avatar {
-        border: 4px solid  transparent;
+        border: 3px solid  transparent;
         background: #f09433; 
         background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
         background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
