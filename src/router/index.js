@@ -68,6 +68,11 @@ const routes = [
         path: 'settings',
         name: 'settings',
         component: () => import('@/views/admin/Settings')
+      },
+      {
+        path: 'file-upload',
+        name: 'file-upload',
+        component: () => import('@/views/admin/FileUpload')
       }
     ]
   },
