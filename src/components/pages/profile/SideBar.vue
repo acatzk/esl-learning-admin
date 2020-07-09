@@ -43,10 +43,15 @@
                 <v-layout>
                     <v-flex class="mt-2">
                         <span>
-                            <input type="file" style="display: none;">
-                            <v-btn small depressed color="primary">
+                            <v-btn 
+                                small 
+                                depressed 
+                                color="primary" 
+                                @click="onPickFile"
+                            >
                                 <v-icon left>mdi-camera</v-icon> Upload Avatar
                             </v-btn>
+                            <input type="file" style="display: none;" ref="fileInput">
                         </span>
                     </v-flex>
                 </v-layout>
@@ -80,6 +85,12 @@ export default {
         return {
             firebase_admin: fb.auth().currentUser,
             hasura_admin: []
+        }
+    },
+
+    methods: {
+        onPickFile () {
+            alert('GOOD')
         }
     },
     
