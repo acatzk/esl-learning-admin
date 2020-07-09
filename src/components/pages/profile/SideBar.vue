@@ -46,10 +46,17 @@
                             <v-btn 
                                 small 
                                 depressed 
+                                @click="dialog = true"
                             >
                                 <v-icon left>mdi-camera</v-icon> Change Avatar
                             </v-btn>
                             <input type="file" style="display: none;" ref="fileInput">
+
+                            <avatar-dialog 
+                                :visible="dialog" @close="dialog = false"
+                                :admins="firebase_admin"
+                            />
+
                         </span>
                     </v-flex>
                 </v-layout>
@@ -79,10 +86,15 @@ import { PROFILE_SUBSCRIPTION } from '@/graphql/subscriptions/profile'
 export default {
     name: 'SideBarProfile',
 
+    components: {
+        AvatarDialog: () => import('./AvatarDialog')
+    },
+
     data () {
         return {
             firebase_admin: fb.auth().currentUser,
-            hasura_admin: []
+            hasura_admin: [],
+            dialog: false
         }
     },
 
