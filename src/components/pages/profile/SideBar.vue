@@ -21,7 +21,7 @@
             >
                 <v-avatar size="140px" class="elevation-2">
                     <img
-                        src="https://cdn.vuetifyjs.com/images/john.jpg"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU"
                         alt="John"
                     >
                 </v-avatar>
