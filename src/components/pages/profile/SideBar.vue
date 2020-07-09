@@ -40,11 +40,25 @@
                 class="content-profile mt-2"
                 v-for="(admin, index) in hasura_admin" :key="index"
             >
-                <span class="company-name mb-2 text-uppercase">CEO / CO-FOUNDER - {{ admin.company ? ` ${admin.company} ` : 'Update your company'}}</span>
-                <div class="title mt-3 mb-3 text-uppercase">{{ admin.firstname ? `${admin.firstname} ${admin.middlename} ${admin.lastname}` : 'Update your fullname'}}</div>
-                <div class="message overflow-y-auto text-justify text-capitalize" style="height: 40vh;">
-                    {{ admin.bio ? admin.bio : 'update your bio...' }}
-                </div>
+                <v-layout>
+                    <v-flex class="mt-2">
+                        <span>
+                            <input type="file" style="display: none;">
+                            <v-btn small depressed color="primary">
+                                <v-icon left>mdi-camera</v-icon> Upload Avatar
+                            </v-btn>
+                        </span>
+                    </v-flex>
+                </v-layout>
+                <v-layout>
+                    <v-flex class="mt-2">
+                        <span class="company-name mb-2 text-uppercase">CEO / CO-FOUNDER - {{ admin.company ? ` ${admin.company} ` : 'Update your company'}}</span>
+                        <div class="title mt-3 mb-3 text-uppercase">{{ admin.firstname ? `${admin.firstname} ${admin.middlename} ${admin.lastname}` : 'Update your fullname'}}</div>
+                        <div class="message overflow-y-auto text-justify text-capitalize" style="height: 40vh;">
+                            {{ admin.bio ? admin.bio : 'update your bio...' }}
+                        </div>
+                    </v-flex>
+                </v-layout>
             </div>
         </v-container>
     </v-card>
