@@ -55,12 +55,13 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="indigo darken-1" text  @click="show = !show">
-                        <v-icon left>mdi-close</v-icon> Close
+                    <v-btn color="indigo darken-1" text  @click="show = !show" small>
+                        <v-icon left>mdi-close-circle-outline</v-icon> Close
                     </v-btn>
                     <v-btn 
                         color="indigo darken-1 white--text" 
                         depressed
+                        small
                         :loading="loading"  
                         v-for="(account, index) in accounts" :key="index"
                         @click="saveUpdatedAccount(account)"
