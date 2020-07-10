@@ -124,7 +124,7 @@ export default {
                     uploadTask.snapshot.ref.getDownloadURL()
                         .then(downloadUrl => {
                             this.image = downloadUrl
-                            toastAlertStatus('success', `Uploaded ${downloadUrl}`)
+                            toastAlertStatus('success', `Avatar uploaded.`)
                         })
                         .catch(error => toastAlertStatus('error', error))
             })
