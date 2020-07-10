@@ -17,7 +17,7 @@ export const PROFILE_SUBSCRIPTION = gql`
     }
 `
 
-export const ADMIN_PROFILE_IMAGE_QUERY = gql`
+export const ADMIN_PROFILE_IMAGE_SUBSCRIPTION = gql`
 subscription AdminProfileImageSubscription($id: String!) {
         profile(where: {id: {_eq: $id}}) {
             id
