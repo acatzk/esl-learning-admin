@@ -16,3 +16,12 @@ export const PROFILE_QUERY = gql`
         }
     }
 `
+
+export const ADMIN_PROFILE_IMAGE_QUERY = gql`
+    query AdminProfileImageQuery($id: String!) {
+        profile(where: {id: {_eq: $id}}) {
+            id
+            profileUrl
+        }
+    }
+`
