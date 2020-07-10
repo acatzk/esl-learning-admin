@@ -12,6 +12,7 @@ export const PROFILE_SUBSCRIPTION = gql`
             firstname
             bio
             company
+            profileUrl
         }
     }
 `
