@@ -19,22 +19,41 @@
                     Vic<span class="font-weight-light"> Admin</span>
                 </span>
             </router-link>
+
+            <v-spacer></v-spacer>
+
             <v-text-field
                 solo-inverted
                 flat
                 tile
                 hide-details
                 label="Search"
-                prepend-inner-icon="search"
+                append-icon="search"
                 color="#01579B"
-                clearable
             ></v-text-field>
 
             <v-spacer></v-spacer>
 
             <v-btn icon>
-                <v-icon>expand_more</v-icon>
+                <v-icon>mdi-apps</v-icon>
             </v-btn>
+            <v-btn icon>
+                <v-icon>mdi-bell</v-icon>
+            </v-btn>
+            <v-btn
+                icon
+                large
+            >
+                <v-avatar
+                size="32px"
+                item
+                >
+                <v-img
+                    src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
+                    alt="Vuetify"
+                ></v-img></v-avatar>
+            </v-btn>
+            
         </v-app-bar>
 
         <side-bar 
