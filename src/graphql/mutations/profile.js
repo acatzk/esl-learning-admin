@@ -21,3 +21,15 @@ export const UPDATE_PROFILE_MUTATION = gql`
         }
     }  
 `
+
+export const UPDATE_PROFILE_IMAGE_MUTATION= gql`
+    mutation UpdateProfileMutation($id: String!, $profileUrl: String) {
+        update_profile(where: {id: {_eq: $id}}, _set: {profileUrl: $profileUrl}) {
+            affected_rows
+            returning {
+                id
+                profileUrl
+            }
+        }
+    }
+`
