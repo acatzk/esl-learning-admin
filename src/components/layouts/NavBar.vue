@@ -43,13 +43,15 @@
             <v-btn
                 icon
                 large
+                v-for="(pro, index) in profile" :key="index"
             >
                 <v-avatar
-                size="32px"
-                item
+                    size="32px"
+                    item
+                    color="grey"
                 >
                 <v-img
-                    src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
+                    :src="profileImage(pro)"
                     alt="Vuetify"
                 ></v-img></v-avatar>
             </v-btn>
@@ -65,6 +67,10 @@
 
 <script>
 
+import { fb } from '@/firebase'
+
+import { ADMIN_PROFILE_IMAGE_QUERY } from '@/graphql/queries/profile'
+
 export default {
     name: 'NavBar',
 
@@ -76,6 +82,36 @@ export default {
 
     components: {
         SideBar: () => import('./SideBar')
+    },
+
+    methods: {
+        profileImage (profile) {
+            if (profile.profileUrl === null) {
+                return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU'
+            } else {
+                return profile.profileUrl
+            }
+        }
+    },
+
+    apollo: {
+        profile: {
+            query: ADMIN_PROFILE_IMAGE_QUERY,
+            variables () {
+                return {
+                    id: fb.auth().currentUser ? this.$route.params.id : fb.auth().currentUser.uid
+                }
+            },
+            updateQuery(previousResult, { subscriptionData }) {
+                if (previousResult) {
+                    return {
+                        profile: [
+                            ...subscriptionData.data.profile
+                        ]
+                    }
+                }
+            }
+        }
     }
 
 }
