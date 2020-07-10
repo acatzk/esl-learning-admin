@@ -19,10 +19,14 @@
                 offset-x="25"
                 offset-y="25"
             >
-                <v-avatar size="140px" class="elevation-2">
+                <v-avatar 
+                    size="140px" 
+                    class="elevation-2"
+                    v-for="(pro, ind) in hasura_admin" :key="ind"
+                >
                     <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU"
-                        alt="John"
+                        :src="profileDisplay(pro)"
+                        :alt="pro.profileUrl"
                     >
                 </v-avatar>
             </v-badge>
@@ -99,8 +103,12 @@ export default {
     },
 
     methods: {
-        onPickFile () {
-            alert('GOOD')
+        profileDisplay (profile) {
+            if (profile.profileUrl === null) {
+                return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU'
+            } else {
+                return profile
+            }
         }
     },
     
