@@ -7,7 +7,7 @@
                 </v-card-title>
                 <v-card-text>
                     <v-container>
-                         <v-form 
+                        <v-form 
                             :disabled="loading" 
                             ref="form"
                             v-model="valid"
@@ -16,17 +16,37 @@
                             <v-layout>
                                 <v-flex>
                                     <v-img
+                                        v-if="image !== null"
                                         :src="previewImage(image)"
                                         :lazy-src="previewImage(image)"
                                         aspect-ratio="1"
                                         class="grey lighten-2"
-                                        height="50vh"
+                                        max-height="50vh"
                                     >
                                         <template v-slot:placeholder>
                                             <v-row
-                                            class="fill-height ma-0"
-                                            align="center"
-                                            justify="center"
+                                                class="fill-height ma-0"
+                                                align="center"
+                                                justify="center"
+                                            >
+                                            <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                                            </v-row>
+                                        </template>
+                                    </v-img>
+                                    <v-img
+                                        v-else
+                                        v-for="(admin, index) in admins" :key="index"
+                                        :src="previewImage(admin.profileUrl)"
+                                        :lazy-src="previewImage(admin.profileUrl)"
+                                        aspect-ratio="1"
+                                        class="grey lighten-2"
+                                        max-height="50vh"
+                                    >
+                                        <template v-slot:placeholder>
+                                            <v-row
+                                                class="fill-height ma-0"
+                                                align="center"
+                                                justify="center"
                                             >
                                             <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
                                             </v-row>
@@ -35,19 +55,17 @@
                                 </v-flex>
                             </v-layout>
                             <v-layout>
-                                <v-row>
-                                    <v-col cols="12" >
-                                        <v-file-input
-                                            :rules="rules"
-                                            accept="image/png, image/jpeg, image/bmp"
-                                            placeholder="Pick an avatar"
-                                            prepend-icon="mdi-camera-iris"
-                                            @change="uploadImage"
-                                            label="Avatar"
-                                            :loading="loading"
-                                        ></v-file-input>
-                                    </v-col>
-                                </v-row>
+                                <v-flex>
+                                    <v-file-input
+                                        :rules="rules"
+                                        accept="image/png, image/jpeg, image/bmp"
+                                        prepend-icon="mdi-camera-iris"
+                                        @change="uploadImage"
+                                        label="Avatar"
+                                        placeholder="Pick an avatar"
+                                        :loading="loading"
+                                    ></v-file-input>
+                                </v-flex>
                             </v-layout>
                         </v-form>
                     </v-container>
@@ -59,8 +77,9 @@
                         depressed
                         :loading="loading"  
                         small
+                        @click="onUpdateImage"
                     >
-                      <v-icon left>mdi-content-save</v-icon>  Save
+                      <v-icon left>mdi-content-save</v-icon> Save
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -74,10 +93,7 @@ import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
-import { ADMIN_PROFILE_IMAGE_QUERY } from '@/graphql/queries/profile'
-
-import { ADMIN_PROFILE_IMAGE_SUBSCRIPTION } from '@/graphql/subscriptions/profile'
-
+import { UPDATE_PROFILE_IMAGE_MUTATION } from '@/graphql/mutations/profile'
 
 export default {
     
@@ -129,7 +145,7 @@ export default {
                     uploadTask.snapshot.ref.getDownloadURL()
                         .then(downloadUrl => {
                             this.image = downloadUrl
-                            toastAlertStatus('success', `Avatar uploaded.`)
+                            // toastAlertStatus('success', `Avatar uploaded.`)
                         })
                         .catch(error => toastAlertStatus('error', error))
             })
@@ -138,10 +154,32 @@ export default {
         previewImage(image) {
             if (image === null) {
                 return image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU'
-             } else {
+            } else {
                  return image
-             }            
+            }            
+        },
+
+        onUpdateImage () {
+            this.loading = true
+            this
+             .$apollo
+             .mutate({
+                 mutation: UPDATE_PROFILE_IMAGE_MUTATION,
+                 variables: { 
+                    id: fb.auth().currentUser ? this.$route.params.id : fb.auth().currentUser.uid, 
+                    profileUrl: this.image
+                }
+             })
+             .then(() => {
+                 this.loading = false
+                 this.show = !this.show
+                 toastAlertStatus('success', `Profile image updated.`)
+             })
+             .catch(error => toastAlertStatus('error', error))
         }
+
+
     }
+
 }
 </script>
