@@ -58,7 +58,7 @@
 
                             <avatar-dialog 
                                 :visible="dialog" @close="dialog = false"
-                                :admins="firebase_admin"
+                                :admins="hasura_admin"
                             />
 
                         </span>
@@ -107,7 +107,7 @@ export default {
             if (profile.profileUrl === null) {
                 return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU'
             } else {
-                return profile
+                return profile.profileUrl
             }
         }
     },
@@ -141,7 +141,7 @@ export default {
                 this.hasura_admin = data.profile
             }
         }
-    },
+    }
 }
 </script>
 
