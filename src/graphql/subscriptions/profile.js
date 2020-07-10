@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const PROFILE_SUBSCRIPTION = gql`
-    query AdminProfileQuery($id: String!) {
+    subscription AdminProfileSubscription($id: String!) {
         profile(where: {id: {_eq: $id}}) {
             id
             lastname
@@ -12,6 +12,15 @@ export const PROFILE_SUBSCRIPTION = gql`
             firstname
             bio
             company
+            profileUrl
+        }
+    }
+`
+
+export const ADMIN_PROFILE_IMAGE_QUERY = gql`
+subscription AdminProfileImageSubscription($id: String!) {
+        profile(where: {id: {_eq: $id}}) {
+            id
             profileUrl
         }
     }
