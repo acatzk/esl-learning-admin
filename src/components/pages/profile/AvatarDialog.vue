@@ -74,6 +74,11 @@ import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
+import { ADMIN_PROFILE_IMAGE_QUERY } from '@/graphql/queries/profile'
+
+import { ADMIN_PROFILE_IMAGE_SUBSCRIPTION } from '@/graphql/subscriptions/profile'
+
+
 export default {
     
     props: ['visible', 'admins'],
