@@ -73,10 +73,7 @@
                         <template
                             v-else
                         >
-                            <v-subheader
-                                v-if="notificationHeader"
-                                v-text="notificationHeader"
-                            ></v-subheader>
+                            <v-subheader>Today {{ timeOfToday }}</v-subheader>
 
                             <div v-for="(item, index) in notifications" :key="item.id">
                                 <v-list-item dense v-if="!item.header" :key="item.id" :to="`/admin/inbox/${item.id}`">
@@ -185,7 +182,6 @@ export default {
         return {
             drawer: true,
             error: null,
-            notificationHeader: 'TodayJune 11, 2020',
             profileOptions: [
                 { icon: 'mdi-account-outline', text: 'Profile', to: `/admin/profile/${fb.auth().currentUser.uid}` },
                 { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings' }
@@ -215,6 +211,18 @@ export default {
                     location.reload()
                 })
               .catch(error => console.log(error))
+        }
+    },
+
+    computed: {
+        timeOfToday () {
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            let yyyy = today.getFullYear();
+
+            today = mm + '/' + dd + '/' + yyyy;
+            return today
         }
     },
 
