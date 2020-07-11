@@ -86,7 +86,11 @@
 
                                     <v-list-item-content>
                                         <v-list-item-title>
-                                            {{ item.name }} - <span class="grey--text text--lighten-1">{{ item.created_at }}</span>
+                                            {{ item.name }} - 
+                                            <date-display 
+                                                class="grey--text text--lighten-1"
+                                                :created_at="item.created_at" 
+                                            />
                                         </v-list-item-title>
                                         <v-list-item-subtitle>
                                             {{ item.message }}
@@ -192,7 +196,8 @@ export default {
 
     components: {
         SideBar: () => import('./SideBar'),
-        BlurImage: () => import('@/components/pages/settings/developers-info/BlurImage')
+        BlurImage: () => import('@/components/pages/settings/developers-info/BlurImage'),
+        DateDisplay: () => import('@/components/pages/DateDisplay')
     },
 
     methods: {
