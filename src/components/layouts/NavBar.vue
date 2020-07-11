@@ -42,6 +42,7 @@
 
             <!-- Inbox Notifications -->
             <v-menu offset-y transition="slide-x-transition">
+                
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn 
                         icon
@@ -52,38 +53,34 @@
                     </v-btn>
                 </template>
                 
-                <v-list>
-                    <v-list three-line dense style="max-width: 250px;">
+                <v-list class="mt-3">
+                    <v-list three-line dense style="max-width: 250px; max-height: 500px;">
                         <template v-for="(item, index) in notifications">
                             <v-subheader
                                 v-if="item.header"
-                                :key="item.header"
+                                :key="`h-${index}`"
                                 v-text="item.header"
                             ></v-subheader>
 
-                            <v-divider
-                                v-else-if="item.divider"
-                                :key="index"
-                                :inset="item.inset"
-                            ></v-divider>
-
-                            <v-list-item
-                                v-else
-                                :key="item.title"
-                                dense
-                            >
+                            <v-list-item dense v-if="!item.header" :key="item.id">
                                 <v-list-item-avatar>
-                                    <v-img :src="item.avatar"></v-img>
+                                    <v-icon>mdi-email-outline</v-icon>
                                 </v-list-item-avatar>
 
                                 <v-list-item-content>
-                                    <v-list-item-title v-html="item.title"></v-list-item-title>
-                                    <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+                                    <v-list-item-title>
+                                        {{ item.name }} - <span class="grey--text text--lighten-1">{{ item.created_at }}</span>
+                                    </v-list-item-title>
+                                    <v-list-item-subtitle>
+                                        {{ item.message }}
+                                    </v-list-item-subtitle>
+                                    <v-divider :key="`d-${index}`"></v-divider>
                                 </v-list-item-content>
                             </v-list-item>
                         </template>
                     </v-list>
                 </v-list>
+
           </v-menu>
 
             <!-- Admin Avatar Profile -->
@@ -116,7 +113,7 @@
                     </v-btn>
                 </template>
 
-                <v-list dense>
+                <v-list dense class="mt-3">
                     <v-list-item
                         v-for="(opt, io) in profileOptions" 
                         :key="io"
@@ -134,7 +131,7 @@
                         </v-list-item-title>
                     </v-list-item>
                 </v-list>
-          </v-menu>
+            </v-menu>
             
         </v-app-bar>
 
@@ -163,49 +160,26 @@ export default {
             ],
             notifications: [
                 { 
-                    header: 'Today' 
+                    header: 'Today July 10, 2020' 
                 },
                 {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-                    title: 'Brunch this weekend?',
-                    subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
-                },
-                { 
-                    divider: true, 
-                    inset: true 
+                    id: '1',
+                    name: 'Joshua Galit',
+                    message: "Ali Connors I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
+                    created_at: 'June 01, 2020'
                 },
                 {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-                    title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-                    subtitle: "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.",
-                },
-                { 
-                    divider: true, 
-                    inset: true 
+                    id: '2',
+                    name: 'James niel',
+                    message: "to Alex, Scott, Jennifer Wish I could come, but I'm out of town this weekend.",
+                    created_at: 'July 07, 2020'
                 },
                 {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-                    title: 'Oui oui',
-                    subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?",
-                },
-                { 
-                    divider: true, 
-                    inset: true 
-                },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-                    title: 'Birthday gift',
-                    subtitle: "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?",
-                },
-                { 
-                    divider: true, 
-                    inset: true 
-                },
-                {
-                    avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-                    title: 'Recipe to try',
-                    subtitle: "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.",
-                },
+                    id: '3',
+                    name: 'Reynaldo Ramos',
+                    message: "Sandra Adams Do you have Paris recommendations? Have you ever been?",
+                    created_at: 'August 21, 2020'
+                }
             ]
         }
     },
