@@ -37,24 +37,45 @@
             <v-btn icon>
                 <v-icon>mdi-apps</v-icon>
             </v-btn>
+
             <v-btn icon>
                 <v-icon>mdi-bell</v-icon>
             </v-btn>
-            <v-btn
-                icon
-                large
-                v-for="(pro, index) in profile" :key="index"
-            >
-                <v-avatar
-                    size="32px"
-                    item
-                    color="grey"
-                >
-                <v-img
-                    :src="profileImage(pro)"
-                    alt="Vuetify"
-                ></v-img></v-avatar>
-            </v-btn>
+
+            <v-menu offset-y transition="slide-x-transition">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                        icon
+                        large
+                        v-bind="attrs"
+                        v-on="on"
+                        v-for="(pro, index) in profile" :key="index"
+                    >
+                        <v-avatar
+                            size="32px"
+                            item
+                            color="grey"
+                        >
+                        <v-img
+                            :src="profileImage(pro)"
+                            alt="Vuetify"
+                        ></v-img></v-avatar>
+                    </v-btn>
+                </template>
+
+                <v-list>
+                    <v-list-item
+                        v-for="(opt, io) in profileOptions" 
+                        :key="io"
+                        :to="opt.to"
+                        color="indigo darken-1"
+                    >
+                        <v-list-item-title>
+                           <v-icon left>{{ opt.icon }}</v-icon> {{ opt.text }}
+                        </v-list-item-title>
+                    </v-list-item>
+                </v-list>
+          </v-menu>
             
         </v-app-bar>
 
@@ -76,7 +97,11 @@ export default {
 
     data () {
         return {
-            drawer: true
+            drawer: true,
+            profileOptions: [
+                { icon: 'mdi-account-outline', text: 'Profile', to: `/admin/profile/${fb.auth().currentUser.uid}` },
+                { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings' }
+            ]
         }
     },
 
@@ -99,7 +124,7 @@ export default {
             query: ADMIN_PROFILE_IMAGE_QUERY,
             variables () {
                 return {
-                    id: fb.auth().currentUser ? this.$route.params.id : fb.auth().currentUser.uid
+                    id: fb.auth().currentUser.uid
                 }
             },
             updateQuery(previousResult, { subscriptionData }) {
