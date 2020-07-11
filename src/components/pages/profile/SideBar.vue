@@ -48,6 +48,7 @@
                     <v-flex class="mt-2">
                         <span>
                             <v-btn 
+                                v-show="firebase_admin.uid === $route.params.id"
                                 small 
                                 depressed 
                                 @click="dialog = true"
