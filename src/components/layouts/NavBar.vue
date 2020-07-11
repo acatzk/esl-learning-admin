@@ -62,7 +62,7 @@
                                 v-text="item.header"
                             ></v-subheader>
 
-                            <v-list-item dense v-if="!item.header" :key="item.id">
+                            <v-list-item dense v-if="!item.header" :key="item.id" :to="`/admin/inbox/${item.id}`">
                                 <v-list-item-avatar>
                                     <v-icon>mdi-email-outline</v-icon>
                                 </v-list-item-avatar>
