@@ -107,7 +107,8 @@ export default {
             drawer: true,
             profileOptions: [
                 { icon: 'mdi-account-outline', text: 'Profile', to: `/admin/profile/${fb.auth().currentUser.uid}` },
-                { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings' }
+                { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings' },
+                { icon: 'mdi-logout', text: 'Logout' }
             ]
         }
     },
