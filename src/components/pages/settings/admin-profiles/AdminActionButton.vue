@@ -24,7 +24,7 @@
                         v-on="on"
                         small 
                         icon
-                        @click="dialog = true"
+                        :to="`/admin/profile/${item.id}`"
                     >
                         <v-icon>mdi-eye-outline</v-icon>
                     </v-btn>
@@ -76,7 +76,7 @@ export default {
             dialog: false,
             snackbar: false,
             text: '',
-            timeout: 2000,
+            timeout: 2000
         }
     },
 
