@@ -44,21 +44,28 @@
 
             <v-menu offset-y transition="slide-x-transition">
                 <template v-slot:activator="{ on, attrs }">
+                    <v-btn 
+                        v-if="$apollo.loading" 
+                        icon 
+                        :loading=true
+                    >
+                    </v-btn>
                     <v-btn
+                        v-else
                         icon
                         large
                         v-bind="attrs"
                         v-on="on"
-                        v-for="(pro, index) in profile" :key="index"
                     >
                         <v-avatar
                             size="32px"
                             item
-                            color="grey"
+                            color="indigo lighten-1"
                         >
                         <v-img
+                            v-for="(pro, index) in profile" :key="index"
                             :src="profileImage(pro)"
-                            alt="Vuetify"
+                            alt="profile"
                         ></v-img></v-avatar>
                     </v-btn>
                 </template>
