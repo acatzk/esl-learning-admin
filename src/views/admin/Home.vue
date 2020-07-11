@@ -53,4 +53,7 @@ export default {
 .home {
   margin-top: 5px;
 }
+.home-style {
+  background-color: #F6F7FB;
+}
 </style>
