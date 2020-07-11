@@ -16,6 +16,7 @@
                                 <small class="business hidden-sm-and-down" style="position: relative; top: 4px;">{{ firebase_admin.email }}</small>
                            </div>
                             <v-btn  
+                                v-show="fbId === $route.params.id"
                                 small
                                 depressed
                                 outlined
@@ -59,7 +60,8 @@ export default {
         return {
             editable: false,
             firebase_admin: fb.auth().currentUser,
-            hasura_admin: []
+            hasura_admin: [],
+            fbId: fb.auth().currentUser.uid
         }
     },
 
