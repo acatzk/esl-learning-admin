@@ -54,34 +54,52 @@
                 </template>
                 
                 <v-list class="mt-3">
-                    <v-list three-line dense style="max-width: 250px; max-height: 500px;">
-                        <template v-for="(item, index) in notifications">
+                    <v-list 
+                        three-line 
+                        dense 
+                        style="width: 250px; max-height: 500px;"
+                    >
+                        <div 
+                            v-if="$apollo.loading"
+                            class="d-flex justify-center"
+                        >
+                            <v-btn 
+                                icon 
+                                :loading="true"
+                                color="indigo darken-1"
+                            >
+                            </v-btn>
+                        </div>
+                        <template
+                            v-else
+                        >
                             <v-subheader
-                                v-if="item.header"
-                                :key="`h-${index}`"
-                                v-text="item.header"
+                                v-if="notificationHeader"
+                                v-text="notificationHeader"
                             ></v-subheader>
 
-                            <v-list-item dense v-if="!item.header" :key="item.id" :to="`/admin/inbox/${item.id}`">
-                                <v-list-item-avatar>
-                                    <v-icon>mdi-email-outline</v-icon>
-                                </v-list-item-avatar>
+                            <div v-for="(item, index) in notifications" :key="item.id">
+                                <v-list-item dense v-if="!item.header" :key="item.id" :to="`/admin/inbox/${item.id}`">
+                                    <v-list-item-avatar>
+                                        <v-icon>mdi-email-outline</v-icon>
+                                    </v-list-item-avatar>
 
-                                <v-list-item-content>
-                                    <v-list-item-title>
-                                        {{ item.name }} - <span class="grey--text text--lighten-1">{{ item.created_at }}</span>
-                                    </v-list-item-title>
-                                    <v-list-item-subtitle>
-                                        {{ item.message }}
-                                    </v-list-item-subtitle>
-                                    <v-divider :key="`d-${index}`"></v-divider>
-                                </v-list-item-content>
-                            </v-list-item>
+                                    <v-list-item-content>
+                                        <v-list-item-title>
+                                            {{ item.name }} - <span class="grey--text text--lighten-1">{{ item.created_at }}</span>
+                                        </v-list-item-title>
+                                        <v-list-item-subtitle>
+                                            {{ item.message }}
+                                        </v-list-item-subtitle>
+                                        <v-divider :key="`d-${index}`"></v-divider>
+                                    </v-list-item-content>
+                                </v-list-item>
+                            </div>
                         </template>
                     </v-list>
                 </v-list>
 
-          </v-menu>
+            </v-menu>
 
             <!-- Admin Avatar Profile -->
             <v-menu offset-y transition="slide-x-transition">
@@ -121,13 +139,13 @@
                         color="indigo darken-1"
                     >
                         <v-list-item-title>
-                           <v-icon left>{{ opt.icon }}</v-icon> {{ opt.text }}
+                            <v-icon left>{{ opt.icon }}</v-icon> {{ opt.text }}
                         </v-list-item-title>
                     </v-list-item>
 
                     <v-list-item color="indigo darken-1" @click="adminLogout">
                         <v-list-item-title>
-                           <v-icon left>mdi-logout</v-icon> Logout
+                            <v-icon left>mdi-logout</v-icon> Logout
                         </v-list-item-title>
                     </v-list-item>
                 </v-list>
@@ -146,6 +164,14 @@
 
 import { fb } from '@/firebase'
 
+import gql from 'graphql-tag'
+
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
+import { INBOX_QUERY } from '@/graphql/queries/inboxes'
+
+import { INBOXES_SUBSCRIPTION } from '@/graphql/subscriptions/inboxes'
+
 import { ADMIN_PROFILE_IMAGE_QUERY } from '@/graphql/queries/profile'
 
 export default {
@@ -154,33 +180,13 @@ export default {
     data () {
         return {
             drawer: true,
+            error: null,
+            notificationHeader: 'TodayJune 11, 2020',
             profileOptions: [
                 { icon: 'mdi-account-outline', text: 'Profile', to: `/admin/profile/${fb.auth().currentUser.uid}` },
                 { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings' }
             ],
-            notifications: [
-                { 
-                    header: 'Today July 10, 2020' 
-                },
-                {
-                    id: '1',
-                    name: 'Joshua Galit',
-                    message: "Ali Connors I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
-                    created_at: 'June 01, 2020'
-                },
-                {
-                    id: '2',
-                    name: 'James niel',
-                    message: "to Alex, Scott, Jennifer Wish I could come, but I'm out of town this weekend.",
-                    created_at: 'July 07, 2020'
-                },
-                {
-                    id: '3',
-                    name: 'Reynaldo Ramos',
-                    message: "Sandra Adams Do you have Paris recommendations? Have you ever been?",
-                    created_at: 'August 21, 2020'
-                }
-            ]
+            notifications: []
         }
     },
 
@@ -223,6 +229,45 @@ export default {
                         ]
                     }
                 }
+            }
+        },
+        inboxes: {
+            query: gql`
+                query InboxesQuery {
+                    inboxes(order_by: {created_at: desc}, where: {status: {_eq: "unread"}}) {
+                        id
+                        name
+                        created_at
+                        message
+                    }
+                }
+            `,
+            error (error) {
+                this.error = toastAlertStatus('error', error)
+            },
+            subscribeToMore: {
+                document: gql`
+                    subscription InboxesSubscriptions {
+                        inboxes(order_by: {created_at: desc}, where: {status: {_eq: "unread"}}) {
+                            id
+                            name
+                            created_at
+                            message
+                        }
+                    }
+                `,
+                updateQuery(previousResult, { subscriptionData }) {
+                    if (previousResult) {
+                        return {
+                            inboxes: [
+                                ...subscriptionData.data.inboxes
+                            ]
+                        }
+                    }
+                }
+            },
+            result ({ data }) {
+                this.notifications = data.inboxes
             }
         }
     }
