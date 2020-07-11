@@ -81,6 +81,13 @@
                            <v-icon left>{{ opt.icon }}</v-icon> {{ opt.text }}
                         </v-list-item-title>
                     </v-list-item>
+
+                    <v-list-item color="indigo darken-1" @click="adminLogout">
+                        <v-list-item-title>
+                           <v-icon left>mdi-logout</v-icon> Logout
+                        </v-list-item-title>
+                    </v-list-item>
+
                 </v-list>
           </v-menu>
             
@@ -107,8 +114,7 @@ export default {
             drawer: true,
             profileOptions: [
                 { icon: 'mdi-account-outline', text: 'Profile', to: `/admin/profile/${fb.auth().currentUser.uid}` },
-                { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings' },
-                { icon: 'mdi-logout', text: 'Logout' }
+                { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings' }
             ]
         }
     },
@@ -124,6 +130,14 @@ export default {
             } else {
                 return profile.profileUrl
             }
+        },
+        adminLogout () {
+            fb.auth()
+              .signOut()
+              .then(() => {
+                    location.reload()
+                })
+              .catch(error => console.log(error))
         }
     },
 
