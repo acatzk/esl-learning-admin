@@ -169,10 +169,6 @@ import gql from 'graphql-tag'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
-import { INBOX_QUERY } from '@/graphql/queries/inboxes'
-
-import { INBOXES_SUBSCRIPTION } from '@/graphql/subscriptions/inboxes'
-
 import { ADMIN_PROFILE_IMAGE_QUERY } from '@/graphql/queries/profile'
 
 export default {
