@@ -24,10 +24,11 @@
                     class="elevation-2"
                     v-for="(pro, ind) in hasura_admin" :key="ind"
                 >
-                    <img
+                    <blur-image
                         :src="profileDisplay(pro)"
                         :alt="pro.profileUrl"
                     >
+                    </blur-image>
                 </v-avatar>
             </v-badge>
 
@@ -92,7 +93,8 @@ export default {
     name: 'SideBarProfile',
 
     components: {
-        AvatarDialog: () => import('./AvatarDialog')
+        AvatarDialog: () => import('./AvatarDialog'),
+        BlurImage: () => import('@/components/pages/settings/developers-info/BlurImage')
     },
 
     data () {
