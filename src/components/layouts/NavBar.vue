@@ -30,6 +30,7 @@
                 label="Search"
                 append-icon="search"
                 color="#01579B"
+                dense
             ></v-text-field>
 
             <v-spacer></v-spacer>
