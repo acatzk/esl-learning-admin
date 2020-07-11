@@ -203,7 +203,7 @@ export default {
             query: INBOX_SINGLE_QUERY,
             variables() {
                 return {
-                    id: this.id
+                    id: this.id ? this.$route.params.id : this.id
                 }
             },
             subscribeToMore: {
@@ -219,7 +219,7 @@ export default {
                 },
                 variables() {
                     return {
-                        id: this.id
+                        id: this.id ? this.$route.params.id : this.id
                     }
                 }
             },
