@@ -62,11 +62,12 @@
                             item
                             color="indigo lighten-1"
                         >
-                        <v-img
-                            v-for="(pro, index) in profile" :key="index"
-                            :src="profileImage(pro)"
-                            alt="profile"
-                        ></v-img></v-avatar>
+                            <blur-image 
+                                v-for="(pro, index) in profile" :key="index"
+                                :src="profileImage(pro)"
+                                alt="profile"
+                            />
+                        </v-avatar>
                     </v-btn>
                 </template>
 
@@ -120,7 +121,8 @@ export default {
     },
 
     components: {
-        SideBar: () => import('./SideBar')
+        SideBar: () => import('./SideBar'),
+        BlurImage: () => import('@/components/pages/settings/developers-info/BlurImage')
     },
 
     methods: {
