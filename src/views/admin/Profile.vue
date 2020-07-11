@@ -15,6 +15,17 @@
                                 </span>&nbsp;
                                 <small class="business hidden-sm-and-down" style="position: relative; top: 4px;">{{ firebase_admin.email }}</small>
                            </div>
+                            <v-btn
+                                small
+                                depressed
+                                outlined
+                                text
+                                icon
+                                v-show="fbId !== $route.params.id"
+                                to="/admin/settings"
+                            >
+                                <v-icon>mdi-chevron-left</v-icon>
+                            </v-btn>
                             <v-btn  
                                 v-show="fbId === $route.params.id"
                                 small
