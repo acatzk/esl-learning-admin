@@ -2,13 +2,21 @@
     <v-menu offset-y transition="slide-x-transition">
          
         <template v-slot:activator="{ on, attrs }">
-            <v-btn 
-                icon
-                v-bind="attrs"
-                v-on="on"
+            <v-badge
+                color="error"
+                overlap
+                :content="2"
+                offset-x="20"
+                offset-y="20"
             >
-                <v-icon>mdi-bell</v-icon>
-            </v-btn>
+                <v-btn 
+                    icon
+                    v-bind="attrs"
+                    v-on="on"
+                >
+                    <v-icon>mdi-bell</v-icon>
+                </v-btn>
+            </v-badge>
         </template>
         
         <v-list class="mt-3">
