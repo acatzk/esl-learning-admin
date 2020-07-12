@@ -58,7 +58,7 @@
                         </v-tooltip>
                     </v-flex>
                 </v-layout>
-                <v-layout cols="6">
+                <v-layout cols="6" class="mt-2">
                     <v-flex>
                         <v-tooltip bottom>
                             <template v-slot:activator="{ on, attrs }">
