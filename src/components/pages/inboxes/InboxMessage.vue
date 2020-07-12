@@ -201,6 +201,9 @@ export default {
     apollo: {
         inboxes: {
             query: INBOX_SINGLE_QUERY,
+            error (error) {
+                toastAlertStatus('error', error)
+            },
             variables() {
                 return {
                     id: this.id ? this.$route.params.id : this.id
