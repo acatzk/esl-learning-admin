@@ -85,6 +85,8 @@
 
 import { fb } from '@/firebase'
 
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 import { PROFILE_QUERY } from '@/graphql/queries/profile'
 
 import { PROFILE_SUBSCRIPTION } from '@/graphql/subscriptions/profile'
@@ -118,6 +120,9 @@ export default {
     apollo: {
         profile: {
             query: PROFILE_QUERY,
+            error (error) {
+                toastAlertStatus('error', error)
+            },
             variables () {
                 return {
                     id: this.firebase_admin ? this.$route.params.id : this.firebase_admin.uid
