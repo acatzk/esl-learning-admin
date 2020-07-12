@@ -86,7 +86,7 @@ export default {
         teachers: {
             query: TEACHERS_QUERY,
             error (error) {
-                this.error = toastAlertStatus('error', error)
+                toastAlertStatus('error', error)
             },
             subscribeToMore: {
                 document: TEACHERS_SUBSCRIPTION,
