@@ -55,6 +55,7 @@
 
         <side-bar 
             :visible="drawer" @close="drawer = false"
+            :mode="mode"
         />
         
     </div>

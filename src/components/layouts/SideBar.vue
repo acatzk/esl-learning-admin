@@ -3,6 +3,7 @@
         v-model="show"
         app
         clipped
+        :dark="mode ? false : true"
     >
         <v-list>
             <template>
@@ -26,7 +27,7 @@
                     link 
                     :key="i"
                     :to="item.to"  
-                    color="deep-purple darken-2"
+                    :color="mode ? 'deep-purple darken-2' : ''"
                 >
                     <!-- ** SIDEBAR HEADING ** -->
                     <v-list-item-action v-if="item.heading">
@@ -89,7 +90,7 @@ import { fb } from '@/firebase'
 export default {
     name: 'SideBar',
 
-    props: ['visible'],
+    props: ['visible', 'mode'],
 
     computed: {
       show: {
