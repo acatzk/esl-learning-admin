@@ -4,7 +4,7 @@
             app
             clipped-left
             flat
-            color="deep-purple darken-4"
+            :color="mode ? 'deep-purple darken-4' : ''"
             dark
         >
             <v-app-bar-nav-icon @click="drawer = !drawer" class="mr-2">
@@ -29,7 +29,7 @@
                 hide-details
                 label="Search"
                 append-icon="search"
-                color="#01579B"
+                :color="mode ? 'deep-purple darken-4' : ''"
                 dense
             ></v-text-field>
 
@@ -43,6 +43,13 @@
 
             <!-- Admin Avatar Profile -->
             <profile-options />
+
+            <!-- Light and Dark mode -->
+            <v-switch 
+                v-model="mode" 
+                class="mt-5"
+                color="white"
+            ></v-switch>
             
         </v-app-bar>
 
@@ -60,7 +67,8 @@ export default {
 
     data () {
         return {
-            drawer: true
+            drawer: true,
+            mode: true
         }
     },
 
