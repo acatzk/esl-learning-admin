@@ -35,10 +35,8 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn icon>
-                <v-icon>mdi-apps</v-icon>
-            </v-btn>
-
+            <!-- Apps Link Options -->
+            <app-options />
 
             <!-- Inbox Notifications -->
             <notifications />
@@ -69,7 +67,8 @@ export default {
     components: {
         SideBar: () => import('./SideBar'),
         ProfileOptions: () => import('./headers-content/ProfileOptions'),
-        Notifications: () => import('./headers-content/Notifications')
+        Notifications: () => import('./headers-content/Notifications'),
+        AppOptions: () => import('./headers-content/AppOptions')
     },
     
 
