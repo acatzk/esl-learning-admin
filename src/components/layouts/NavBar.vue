@@ -22,18 +22,19 @@
 
             <v-spacer></v-spacer>
 
-            <v-text-field
-                solo-inverted
-                flat
-                tile
-                hide-details
-                label="Search"
-                append-icon="search"
-                :color="mode ? 'deep-purple darken-4' : ''"
-                dense
-            ></v-text-field>
+            <text-search 
+                :mode="mode"
+                class="hidden-sm-and-down"
+            />
 
             <v-spacer></v-spacer>
+
+            <v-btn 
+                icon
+                class="hidden-md-and-up"
+            >
+                <v-icon>search</v-icon>
+            </v-btn>
 
             <!-- Apps Link Options -->
             <app-options />
@@ -77,7 +78,8 @@ export default {
         SideBar: () => import('./SideBar'),
         ProfileOptions: () => import('./headers-content/ProfileOptions'),
         Notifications: () => import('./headers-content/Notifications'),
-        AppOptions: () => import('./headers-content/AppOptions')
+        AppOptions: () => import('./headers-content/AppOptions'),
+        TextSearch: () => import('./headers-content/TextSearch')
     },
     
 
