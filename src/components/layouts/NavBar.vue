@@ -22,6 +22,7 @@
 
             <v-spacer></v-spacer>
 
+            <!-- Teacher search show only in large scale -->
             <text-search 
                 :mode="mode"
                 class="hidden-sm-and-down"
