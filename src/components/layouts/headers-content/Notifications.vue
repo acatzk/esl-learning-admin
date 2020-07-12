@@ -2,21 +2,22 @@
     <v-menu offset-y transition="slide-x-transition">
          
         <template v-slot:activator="{ on, attrs }">
-            <v-badge
-                color="error"
-                overlap
-                :content="2"
-                offset-x="20"
-                offset-y="20"
+            
+            <v-btn 
+                icon
+                v-bind="attrs"
+                v-on="on"
             >
-                <v-btn 
-                    icon
-                    v-bind="attrs"
-                    v-on="on"
+                <v-badge
+                    color="error"
+                    overlap
+                    :content="inboxCounter ? inboxCounter.aggregate.count : 0"
+                    v-if="inboxCounter ? inboxCounter.aggregate.count !== 0 : 0"
                 >
                     <v-icon>mdi-bell</v-icon>
-                </v-btn>
-            </v-badge>
+                </v-badge>
+                <v-icon v-else>mdi-bell</v-icon>
+            </v-btn>
         </template>
         
         <v-list class="mt-3">
@@ -39,7 +40,9 @@
                 <template
                     v-else
                 >
-                    <v-subheader>Today {{ timeOfToday }}</v-subheader>
+                    <v-subheader>
+                        Today {{ timeOfToday }}
+                    </v-subheader>
 
                     <div v-for="(item, index) in notifications" :key="item.id">
                         <v-list-item dense v-if="!item.header" :to="`/admin/inbox/${item.id}`">
@@ -75,6 +78,8 @@ import { fb } from '@/firebase'
 
 import gql from 'graphql-tag'
 
+import moment from 'moment'
+
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
 export default {
@@ -83,24 +88,19 @@ export default {
     data () {
         return {
             error: null,
-            notifications: []
+            notifications: [],
+            inboxCounter: 0
+        }
+    },
+
+    computed: {
+        timeOfToday () {
+           return moment().format("MMM Do YYYY")
         }
     },
 
     components: {
         DateDisplay: () => import('@/components/pages/DateDisplay')
-    },
-
-    computed: {
-        timeOfToday () {
-            let today = new Date();
-            let dd = String(today.getDate()).padStart(2, '0');
-            let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            let yyyy = today.getFullYear();
-
-            today = mm + '/' + dd + '/' + yyyy;
-            return today
-        }
     },
 
     apollo: {
@@ -133,7 +133,7 @@ export default {
                     if (previousResult) {
                         return {
                             inboxes: [
-                                ...subscriptionData.data.inboxes
+                                ...subscriptionData.data.inboxes,
                             ]
                         }
                     }
@@ -141,6 +141,23 @@ export default {
             },
             result ({ data }) {
                 this.notifications = data.inboxes
+            }
+        },
+
+        $subscribe: {
+            inboxCount: {
+                query: gql`
+                    subscription InboxCountQuery {
+                        inboxCount: inboxes_aggregate(where: {status: {_eq: "unread"}}) {
+                            aggregate {
+                                count
+                            }
+                        }
+                    }
+                `,
+                result ({ data }) {
+                    this.inboxCounter = data.inboxCount
+                }
             }
         }
     }
