@@ -34,9 +34,9 @@
                     <v-subheader>Today {{ timeOfToday }}</v-subheader>
 
                     <div v-for="(item, index) in notifications" :key="item.id">
-                        <v-list-item dense v-if="!item.header" :key="item.id" :to="`/admin/inbox/${item.id}`">
+                        <v-list-item dense v-if="!item.header" :to="`/admin/inbox/${item.id}`">
                             <v-list-item-avatar>
-                                <v-icon>mdi-email-outline</v-icon>
+                                <v-icon color="indigo darken-1">mdi-email-outline</v-icon>
                             </v-list-item-avatar>
 
                             <v-list-item-content>
