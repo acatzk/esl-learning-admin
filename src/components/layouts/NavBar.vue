@@ -122,8 +122,6 @@ import gql from 'graphql-tag'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
-import { ADMIN_PROFILE_IMAGE_QUERY } from '@/graphql/queries/profile'
-
 export default {
     name: 'NavBar',
 
@@ -131,10 +129,6 @@ export default {
         return {
             drawer: true,
             error: null,
-            profileOptions: [
-                { icon: 'mdi-account-outline', text: 'Profile', to: `/admin/profile/${fb.auth().currentUser.uid}` },
-                { icon: 'mdi-earth', text: 'Settings', to: '/admin/settings' }
-            ],
             notifications: []
         }
     },
@@ -145,16 +139,6 @@ export default {
         ProfileOptions: () => import('./headers-content/ProfileOptions')
     },
 
-    methods: {
-        adminLogout () {
-            fb.auth()
-              .signOut()
-              .then(() => {
-                    location.reload()
-                })
-              .catch(error => console.log(error))
-        }
-    },
 
     computed: {
         timeOfToday () {
@@ -169,23 +153,6 @@ export default {
     },
 
     apollo: {
-        profile: {
-            query: ADMIN_PROFILE_IMAGE_QUERY,
-            variables () {
-                return {
-                    id: fb.auth().currentUser.uid
-                }
-            },
-            updateQuery(previousResult, { subscriptionData }) {
-                if (previousResult) {
-                    return {
-                        profile: [
-                            ...subscriptionData.data.profile
-                        ]
-                    }
-                }
-            }
-        },
         inboxes: {
             query: gql`
                 query InboxesQuery {
