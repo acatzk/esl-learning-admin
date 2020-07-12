@@ -30,12 +30,10 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn 
-                icon
+            <!-- Button Search show only in small scale like cellphone -->
+            <button-search 
                 class="hidden-md-and-up"
-            >
-                <v-icon>search</v-icon>
-            </v-btn>
+            />
 
             <!-- Apps Link Options -->
             <app-options />
@@ -80,7 +78,8 @@ export default {
         ProfileOptions: () => import('./headers-content/ProfileOptions'),
         Notifications: () => import('./headers-content/Notifications'),
         AppOptions: () => import('./headers-content/AppOptions'),
-        TextSearch: () => import('./headers-content/TextSearch')
+        TextSearch: () => import('./headers-content/TextSearch'),
+        ButtonSearch: () => import('./headers-content/ButtonSearch')
     },
     
 
