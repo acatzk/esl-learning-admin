@@ -50,10 +50,10 @@ export default {
 
 
 <style scoped>
-.home {
-  margin-top: 5px;
-}
 .home-style {
   background-color: #F6F7FB;
+}
+.content {
+  margin-top: 5px;
 }
 </style>
