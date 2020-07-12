@@ -68,7 +68,6 @@ export default {
 
     components: {
         SideBar: () => import('./SideBar'),
-        DateDisplay: () => import('@/components/pages/DateDisplay'),
         ProfileOptions: () => import('./headers-content/ProfileOptions'),
         Notifications: () => import('./headers-content/Notifications')
     },
