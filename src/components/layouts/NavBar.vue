@@ -44,7 +44,9 @@
             />
 
             <!-- Admin Avatar Profile -->
-            <profile-options />
+            <profile-options 
+                :mode="mode"
+            />
 
             <!-- Light and Dark mode -->
             <v-switch 

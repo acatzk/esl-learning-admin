@@ -33,7 +33,7 @@
                 v-for="(opt, io) in profileOptions" 
                 :key="io"
                 :to="opt.to"
-                color="indigo darken-1"
+                :color="mode ? 'indigo darken-1' : ''"
             >
                 <v-list-item-title>
                     <v-icon left>{{ opt.icon }}</v-icon> {{ opt.text }}
@@ -57,6 +57,8 @@ import { ADMIN_PROFILE_IMAGE_QUERY } from '@/graphql/queries/profile'
 
 export default {
     name: 'ProfileOptions',
+
+    props: ['mode'],
 
     components: {
         BlurImage: () => import('@/components/pages/settings/developers-info/BlurImage')
