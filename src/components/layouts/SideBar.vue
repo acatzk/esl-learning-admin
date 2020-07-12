@@ -70,11 +70,9 @@
                             Logout
                         </v-list-item-title>
                     </v-list-item-content>
-
-
-
+                    
                 </v-list-item>
-                <v-divider :key="`i-${i}`" class="mx-2"></v-divider>
+                <v-divider :key="`i-${i}`"></v-divider>
             </template>
         </v-list>
     </v-navigation-drawer>
