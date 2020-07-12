@@ -39,7 +39,9 @@
             <app-options />
 
             <!-- Inbox Notifications -->
-            <notifications />
+            <notifications 
+                :mode="mode"
+            />
 
             <!-- Admin Avatar Profile -->
             <profile-options />

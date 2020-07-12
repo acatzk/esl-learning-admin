@@ -47,7 +47,7 @@
                     <div v-for="(item, index) in notifications" :key="item.id">
                         <v-list-item dense v-if="!item.header" :to="`/admin/inbox/${item.id}`">
                             <v-list-item-avatar>
-                                <v-icon color="indigo darken-1">mdi-email-outline</v-icon>
+                                <v-icon :color="mode ? 'indigo darken-1' : ''">mdi-email-outline</v-icon>
                             </v-list-item-avatar>
 
                             <v-list-item-content>
@@ -84,6 +84,8 @@ import { toastAlertStatus } from '@/assets/js/toastAlert'
 
 export default {
     name: 'Notifications',
+
+    props: ['mode'],
 
     data () {
         return {
