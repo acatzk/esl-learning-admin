@@ -17,7 +17,7 @@
                 <v-avatar
                     size="32px"
                     item
-                    color="indigo lighten-1"
+                    :color="mode ? 'indigo lighten-1' : ''"
                 >
                     <blur-image 
                         v-for="(pro, index) in profile" :key="index"
