@@ -26,11 +26,25 @@
                         class="mx-auto"
                         style="box-shadow: none;"
                     >
-                        <blur-image
-                            class="white--text align-end"
+
+                        <v-img
                             :src="dev.profileUrl"
+                            :lazy-src="dev.profileUrl"
+                            aspect-ratio="1"
+                            class="grey lighten-2"
                         >
-                        </blur-image>
+                            <template v-slot:placeholder>
+                                <v-row
+                                    class="fill-height ma-0"
+                                    align="center"
+                                    justify="center"
+                                >
+                                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
+
+
                         <v-card-title class="mb-1">{{ dev.position }}</v-card-title>
 
                         <v-card-subtitle class="pb-0">
@@ -121,11 +135,6 @@
 <script>
 export default {
     name: 'DevInfo',
-
-    components: {
-        BlurImage: () => import('./BlurImage'),
-        FadeInImage: () => import('./FadeInImage')
-    },
 
     data () {
         return {
