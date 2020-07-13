@@ -9,7 +9,6 @@
             <v-avatar 
                 color="#eee" 
                 class="mr-2 ma-1 avatar-pic" 
-                @click="dialog = !dialog"
             >
                 <v-img
                     :src="teacherProfileImage(item)"
