@@ -105,8 +105,7 @@ export default {
     name: 'SideBarProfile',
 
     components: {
-        AvatarDialog: () => import('./AvatarDialog'),
-        BlurImage: () => import('@/components/pages/settings/developers-info/BlurImage')
+        AvatarDialog: () => import('./AvatarDialog')
     },
 
     data () {
