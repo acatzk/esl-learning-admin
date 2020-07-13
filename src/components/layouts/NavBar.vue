@@ -67,14 +67,13 @@
 
 <script>
 
-import { mapState } from 'vuex'
-
 export default {
     name: 'NavBar',
 
     data () {
         return {
             drawer: true,
+            mode: true
         }
     },
 
@@ -85,10 +84,6 @@ export default {
         AppOptions: () => import('./headers-content/AppOptions'),
         TextSearch: () => import('./headers-content/TextSearch'),
         ButtonSearch: () => import('./headers-content/ButtonSearch')
-    },
-    
-    computed: {
-        ...mapState(['mode'])
     }
 
 }
