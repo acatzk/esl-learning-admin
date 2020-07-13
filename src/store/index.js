@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    mode: false
+    mode: true
   },
   mutations: {
     DARK_MODE({ state }, mode) {
