@@ -57,7 +57,6 @@
                             <v-layout>
                                 <v-flex>
                                     <v-file-input
-                                        :rules="rules"
                                         accept="image/png, image/jpeg, image/bmp"
                                         prepend-icon="mdi-camera-iris"
                                         @change="uploadImage"
@@ -104,9 +103,6 @@ export default {
             menu: false,
             loading: false,
             valid: true,
-            rules: [
-                value => !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!',
-            ],
             image: null
         }
     },
