@@ -1,160 +1,113 @@
 <template>
-    <v-dialog
-        v-model="show"
-        fullscreen
-        hide-overlay
-        transition="dialog-bottom-transition"
-        scrollable
-      >
-        <v-card tile>
-          <v-toolbar
-            flat
-            dark
-            color="indigo lighten-1"
-          >
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  v-on="on"
-                  dark
-                  @click="show = !show"
-                >
-                  <v-icon>mdi-chevron-left</v-icon>
+    <v-dialog v-model="show" max-width="600px">
+        <v-card>
+            <v-card-title>
+                <span class="headline">
+                    <v-icon left size="35">mdi-plus</v-icon> New Teacher
+                </span>
+            </v-card-title>
+            <v-card-text>
+                <v-container>
+                      <v-form 
+                        :disabled="loading" 
+                        ref="form"
+                        v-model="valid"
+                        lazy-validation
+                    >
+                        <v-row>
+                            <v-col cols="12" sm="6" md="6">
+                                <v-text-field 
+                                    label="Firstname"
+                                    v-model="firstname"
+                                    prepend-inner-icon="mdi-account-circle"
+                                    :rules="[required('Firstname'), minLength('Firstname', 3), maxLength('Firstname', 20)]"
+                                >
+                                </v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6" md="6">
+                                <v-text-field 
+                                    label="Lastname" 
+                                    v-model="lastname"
+                                    prepend-inner-icon="mdi-account-circle"
+                                    :rules="[required('Lastname'), minLength('Lastname', 3), maxLength('Lastname', 20)]"
+                                >
+                                </v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                                <v-text-field 
+                                    label="Email" 
+                                    v-model="email"
+                                    prepend-inner-icon="mdi-email-outline"
+                                    :rules="[required('Email'), emailRules('Email')]"
+                                >
+                                </v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                                <v-text-field 
+                                    label="Contact" 
+                                    v-model="contact"
+                                    prepend-inner-icon="mdi-phone"
+                                    :rules="[required('Contact'), minLength('Contact number', 11), maxLength('Contact number', 11)]"
+                                >
+                                </v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                                <v-select
+                                    :items="genderList"
+                                    label="Gender"
+                                    v-model="gender"
+                                    prepend-inner-icon="mdi-gender-male-female"
+                                    :rules="[required('Gender')]"
+                                ></v-select>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                                <v-menu
+                                    ref="menu"
+                                    v-model="menu"
+                                    :close-on-content-click="false"
+                                    transition="scale-transition"
+                                    offset-y
+                                    min-width="290px"
+                                >
+                                <template v-slot:activator="{ on, attrs }">
+                                    <v-text-field
+                                        v-model="date"
+                                        label="Birthday date"
+                                        prepend-inner-icon="event"
+                                        readonly
+                                        v-bind="attrs"
+                                        v-on="on"
+                                        :rules="[required('Birthday date')]"
+                                    ></v-text-field>
+                                    </template>
+                                    <v-date-picker
+                                        ref="picker"
+                                        v-model="date"
+                                        :max="new Date().toISOString().substr(0, 10)"
+                                        min="1950-01-01"
+                                        @change="save"
+                                    ></v-date-picker>
+                                </v-menu>
+                            </v-col>
+                        </v-row>
+                    </v-form>
+                </v-container>
+            </v-card-text>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="indigo darken-1" text  @click="show = !show" small>
+                    <v-icon left>mdi-close-circle-outline</v-icon> Close
                 </v-btn>
-              </template>
-              <span>Back</span>
-            </v-tooltip>
-            <v-toolbar-title>
-              Add New Teacher <v-icon>mdi-account-circle</v-icon>
-            </v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-              <v-btn
-                dark
-                text
-                large
-                :loading="loading"
-                @click="saveTeacherInfo"
-              >
-               <v-icon left>mdi-account-plus</v-icon> Save
-              </v-btn>
-            </v-toolbar-items>
-          </v-toolbar>
-          
-          <v-container fluid style="height: 100vh; background: #F6F7FB;">
-            <v-row>
-              <v-col cols=12 lg="4" md="4" sm="12">
-                <v-card class="text-center pa-3" outlined>
-
-                    <add-avatar-editor 
-                      ref="editor"
-                    />
-
-                </v-card>
-              </v-col>
-              <v-col cols="12" lg="8" md="8" sm="12">
-                <v-card outlined>
-                  <div class="text-muted text-center mt-3 font-weight-medium">
-                    Teachers Information
-                  </div>
-                  <v-form 
-                    :disabled="loading" 
-                    ref="form"
-                    v-model="valid"
-                    lazy-validation
-                  >
-                    <v-row class="ma-3">
-                      <v-col cols="12" sm="6">
-                        <v-text-field
-                          prepend-inner-icon="mdi-account-outline"
-                          outlined
-                          label="Firstname"
-                          v-model="firstname"
-                          :rules="[required('Firstname'), minLength('Firstname', 3), maxLength('Firstname', 20)]"
-                        >
-                        </v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6">
-                        <v-text-field
-                          prepend-inner-icon="mdi-account-outline"
-                          outlined
-                          label="Lastname"
-                          v-model="lastname"
-                          :rules="[required('Lastname'), minLength('Lastname', 3), maxLength('Lastname', 20)]"
-                        >
-                        </v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6">
-                        <v-text-field
-                          prepend-inner-icon="mdi-email-outline"
-                          outlined
-                          label="Email"
-                          autocomplete="off"
-                          v-model="email"
-                          :rules="[required('Email'), emailRules('Email')]"
-                        >
-                        </v-text-field>
-                        </v-col>
-                        <v-col cols="12" sm="6">
-                          <v-text-field
-                            prepend-inner-icon="mdi-cellphone"  
-                            outlined
-                            label="Contact"
-                            autocomplete="off"
-                            v-model="contact"
-                            :rules="[required('Contact'), minLength('Contact number', 11), maxLength('Contact number', 11)]"
-                          >
-                          </v-text-field>
-                        </v-col>
-                        <v-col class="d-flex" cols="12" sm="6">
-                          <v-select
-                            :items="genderList"
-                            label="Gender"
-                            outlined
-                            v-model="gender"
-                            prepend-inner-icon="mdi-gender-male-female"
-                            :rules="[required('Gender')]"
-                          ></v-select>
-                        </v-col>
-                        <v-col cols="12" sm="6">
-                          <v-menu
-                            ref="menu"
-                            v-model="menu"
-                            :close-on-content-click="false"
-                            transition="scale-transition"
-                            offset-y
-                            min-width="290px"
-                          >
-                            <template v-slot:activator="{ on, attrs }">
-                              <v-text-field
-                                v-model="date"
-                                label="Birthday date"
-                                prepend-inner-icon="event"
-                                readonly
-                                v-bind="attrs"
-                                v-on="on"
-                                outlined
-                                :rules="[required('Birthday date')]"
-                              ></v-text-field>
-                            </template>
-                            <v-date-picker
-                              ref="picker"
-                              v-model="date"
-                              :max="new Date().toISOString().substr(0, 10)"
-                              min="1950-01-01"
-                              @change="save"
-                            ></v-date-picker>
-                          </v-menu>
-                        </v-col>
-                    </v-row>
-                  </v-form>
-
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
-
+                <v-btn 
+                    color="indigo darken-1 white--text" 
+                    small
+                    depressed
+                    @click="saveTeacherInfo"
+                    :loading="loading"
+                >
+                  <v-icon left>mdi-content-save</v-icon>  Save
+                </v-btn>
+            </v-card-actions>
         </v-card>
     </v-dialog>
 </template>
