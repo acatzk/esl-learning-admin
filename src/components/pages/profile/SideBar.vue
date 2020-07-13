@@ -24,11 +24,21 @@
                     class="elevation-2"
                     v-for="(pro, ind) in hasura_admin" :key="ind"
                 >
-                    <blur-image
+                    <v-img
                         :src="profileDisplay(pro)"
-                        :alt="pro.profileUrl"
+                        :lazy-src="profileDisplay(pro)"
+                        aspect-ratio="1"
                     >
-                    </blur-image>
+                        <template v-slot:placeholder>
+                            <v-row
+                                class="fill-height ma-0"
+                                align="center"
+                                justify="center"
+                            >
+                            <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                            </v-row>
+                        </template>
+                    </v-img> 
                 </v-avatar>
             </v-badge>
 
