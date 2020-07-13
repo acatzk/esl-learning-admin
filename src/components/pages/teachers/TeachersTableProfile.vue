@@ -16,6 +16,7 @@
         <teachers-avatar-dialog-edit 
             :visible="dialog" 
             @close="dialog=false"
+            :item="item"
         />
 
     </div>
