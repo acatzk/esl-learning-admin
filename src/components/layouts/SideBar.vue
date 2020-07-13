@@ -37,7 +37,7 @@
                     <!-- ** INBOX ICON WITH BADGES NUMBER OF UNREAD MESSAGE ** -->
                     <v-list-item-action v-if="item.text === 'Inbox'">
                         <v-badge
-                            bordered
+                            :bordered="mode ? true : false"
                             color="error"
                             overlap
                             :content="inboxCounter ? inboxCounter.aggregate.count : 0"
