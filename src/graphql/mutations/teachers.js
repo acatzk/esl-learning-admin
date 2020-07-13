@@ -44,3 +44,14 @@ export const DELETE_TEACHER_MUTATION = gql`
         }
     }
 `
+
+export const UPDATE_TEACHERS_PROFILE_IMAGE_MUTATION = gql`
+    mutation UpdateTeacherProfileMutation($id: uuid!, $profileUrl: String) {
+        update_teachers(where: {id: {_eq: $id}}, _set: {profile_url: $profileUrl}) {
+            affected_rows
+            returning {
+                id
+            }
+        }
+    }
+`
