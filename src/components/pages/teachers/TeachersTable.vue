@@ -8,7 +8,7 @@
         <template #item.firstname="{ item }">
             <v-avatar color="#eee" class="mr-2 ma-1">
                 <img
-                    :src="item.profile_url === null ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU' : item.profile_url"
+                    :src="teacherProfileImage(item)"
                     alt="profile-url"
                 />
             </v-avatar>
@@ -93,6 +93,13 @@ export default {
         capitalize(s) {
             if (typeof s !== 'string') return ''
             return s.charAt(0).toUpperCase() + s.slice(1)
+        },
+        teacherProfileImage (profile) {
+            if (profile.profile_url === null) {
+                return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU'
+            } else {
+                return profile.profile_url
+            }
         }
     }
 }
