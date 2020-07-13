@@ -6,13 +6,9 @@
     >
         <!-- ** TEACHER AVATAR  ** -->
         <template #item.firstname="{ item }">
-            <v-avatar color="#eee" class="mr-2 ma-1 avatar-pic">
-                <img
-                    :src="teacherProfileImage(item)"
-                    alt="profile-url"
-                />
-            </v-avatar>
-            <span>{{ capitalize(item.firstname) + " " + capitalize(item.lastname) }}</span>
+            <teachers-table-profile 
+                :item="item"
+            />
         </template>
 
         <!-- ** EMAIL ** -->
@@ -62,6 +58,8 @@
                 :item="item"
             />
         </template>
+        
+
     </v-data-table>
 </template>
 
@@ -70,8 +68,15 @@
 export default {
     name: 'TeachersTable',
 
+    data () {
+        return {
+            dialog: false
+        }
+    },
+
     components: {
-        TeachersActionButton: () => import('./TeachersActionButton')
+        TeachersActionButton: () => import('./TeachersActionButton'),
+        TeachersTableProfile: () => import('./TeachersTableProfile')
     },
 
     props: {
@@ -87,20 +92,6 @@ export default {
             type: String,
             required: true
         }
-    },
-
-    methods: {
-        capitalize(s) {
-            if (typeof s !== 'string') return ''
-            return s.charAt(0).toUpperCase() + s.slice(1)
-        },
-        teacherProfileImage (profile) {
-            if (profile.profile_url === null) {
-                return 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU'
-            } else {
-                return profile.profile_url
-            }
-        }
     }
 }
 </script>
@@ -114,8 +105,5 @@ export default {
 }
 ::v-deep .v-data-table-header{
   text-transform: uppercase;
-}
-.avatar-pic {
-    cursor: pointer;
 }
 </style>
