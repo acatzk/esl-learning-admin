@@ -6,7 +6,7 @@
     >
         <!-- ** TEACHER AVATAR  ** -->
         <template #item.firstname="{ item }">
-            <v-avatar color="#eee" class="mr-2 ma-1">
+            <v-avatar color="#eee" class="mr-2 ma-1 avatar-pic">
                 <img
                     :src="teacherProfileImage(item)"
                     alt="profile-url"
@@ -114,5 +114,8 @@ export default {
 }
 ::v-deep .v-data-table-header{
   text-transform: uppercase;
+}
+.avatar-pic {
+    cursor: pointer;
 }
 </style>
