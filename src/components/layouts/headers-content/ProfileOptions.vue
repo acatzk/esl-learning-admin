@@ -19,11 +19,22 @@
                     item
                     :color="mode ? 'indigo lighten-1' : ''"
                 >
-                    <blur-image 
+                    <v-img
                         v-for="(pro, index) in profile" :key="index"
                         :src="profileImage(pro)"
-                        alt="profile"
-                    />
+                        :lazy-src="profileImage(pro)"
+                        aspect-ratio="1"
+                    >
+                        <template v-slot:placeholder>
+                            <v-row
+                                class="fill-height ma-0"
+                                align="center"
+                                justify="center"
+                            >
+                            <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                            </v-row>
+                        </template>
+                    </v-img> 
                 </v-avatar>
             </v-btn>
         </template>
@@ -59,10 +70,6 @@ export default {
     name: 'ProfileOptions',
 
     props: ['mode'],
-
-    components: {
-        BlurImage: () => import('@/components/pages/settings/developers-info/BlurImage')
-    },
 
     data () {
         return {
