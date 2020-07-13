@@ -11,11 +11,21 @@
                 class="mr-2 ma-1 avatar-pic" 
                 @click="dialog = !dialog"
             >
-                <img
+                <v-img
                     :src="teacherProfileImage(item)"
-                    alt="profile-url"
-
-                />     
+                    :lazy-src="teacherProfileImage(item)"
+                    aspect-ratio="1"
+                >
+                    <template v-slot:placeholder>
+                        <v-row
+                            class="fill-height ma-0"
+                            align="center"
+                            justify="center"
+                        >
+                        <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                        </v-row>
+                    </template>
+                </v-img> 
             </v-avatar>
             <span>{{ capitalize(item.firstname) + " " + capitalize(item.lastname) }}</span>
         </template>
