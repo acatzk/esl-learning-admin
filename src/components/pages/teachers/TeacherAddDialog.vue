@@ -94,6 +94,14 @@
                 </v-container>
             </v-card-text>
             <v-card-actions>
+                <v-btn 
+                    text 
+                    small
+                    @click="$refs.form.reset()" 
+                    color="grey"
+                >
+                    <v-icon left>mdi-reload</v-icon> Reset
+                </v-btn>
                 <v-spacer></v-spacer>
                 <v-btn color="indigo darken-1" text  @click="show = !show" small>
                     <v-icon left>mdi-close-circle-outline</v-icon> Close
