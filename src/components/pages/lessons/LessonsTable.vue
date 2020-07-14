@@ -23,6 +23,14 @@
             </span>
         </template>
 
+        <!-- PRICE DISPLAY -->
+        <template #item.price="{ item }">
+            <span class="d-flex align-center">
+                <v-icon left small>mdi-currency-php</v-icon>
+                <b>{{ item.price }}</b>
+            </span>
+        </template>
+
         <!-- ** EXPANDED MESSAGE AND ACTION BUTTONS ** -->
         <template #expanded-item="{ headers, item }">
             <td :colspan="headers.length">
