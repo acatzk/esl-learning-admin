@@ -1,6 +1,6 @@
 <template>
     <div class="teachers">
-        <header class="d-flex justify-space-between">
+        <header class="d-flex justify-space-between align-center">
             <v-toolbar-title>
                 <v-icon right>supervisor_account</v-icon> Teacher List
             </v-toolbar-title>

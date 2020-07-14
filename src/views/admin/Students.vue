@@ -1,6 +1,6 @@
 <template>
     <div class="students">
-       <header class="d-flex justify-space-between">
+       <header class="d-flex justify-space-between align-center">
             <v-toolbar-title>
                 <v-icon right>mdi-account-box</v-icon> Student List
             </v-toolbar-title>
