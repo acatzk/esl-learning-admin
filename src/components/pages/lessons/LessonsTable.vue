@@ -31,6 +31,14 @@
             </span>
         </template>
 
+
+        <!-- ACTION BUTTONS -->
+        <template #item.id="{ item }">  
+            <lesson-action-button 
+                :item="item"
+            />
+        </template>
+
         <!-- ** EXPANDED MESSAGE AND ACTION BUTTONS ** -->
         <template #expanded-item="{ headers, item }">
             <td :colspan="headers.length">
@@ -66,6 +74,10 @@ export default {
             required: true
         }
     },
+
+    components: {
+        LessonActionButton: () => import('./LessonActionButton')
+    }
 
 }
 </script>
