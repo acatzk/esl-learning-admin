@@ -4,7 +4,7 @@
             <v-toolbar-title>
                 <v-icon right>supervisor_account</v-icon> Teacher List
             </v-toolbar-title>
-            <v-btn small depressed color="primary" @click.stop="dialog = true">
+            <v-btn small depressed @click.stop="dialog = true">
                <v-icon>mdi-plus</v-icon>
             </v-btn>
 
