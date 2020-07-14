@@ -124,10 +124,5 @@ export default {
         padding: 15px;
         border-bottom: 1px solid #eee;
     }
-    .v-btn-toggle {
-        .v-btn {
-            text-transform: capitalize;
-        }
-    }
 }
 </style>
