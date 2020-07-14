@@ -72,3 +72,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.v-btn {
+  text-transform: capitalize;
+}
+</style>
