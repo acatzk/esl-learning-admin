@@ -15,7 +15,58 @@
                             v-model="valid"
                             lazy-validation
                         >
-                            
+                            <v-row>
+                                <v-col>
+                                    <v-file-input
+                                        v-model="files"
+                                        counter
+                                        label="PDF File"
+                                        multiple
+                                        placeholder="Select your files"
+                                        prepend-icon="mdi-file-pdf-box"
+                                        :show-size="1000"
+                                        :loading="false"
+                                    >
+                                        <template v-slot:selection="{ index, text }">
+                                        <v-chip
+                                            v-if="index < 2"
+                                            color="deep-purple accent-4"
+                                            dark
+                                            label
+                                            small
+                                        >
+                                            {{ text }}
+                                        </v-chip>
+
+                                        <span
+                                            v-else-if="index === 2"
+                                            class="overline grey--text text--darken-3 mx-2"
+                                        >
+                                            +{{ files.length - 2 }} File(s)
+                                        </span>
+                                        </template>
+                                    </v-file-input>
+                                </v-col>
+                                <v-col cols="12">
+                                    <v-text-field
+                                        label="Title"
+                                        prepend-icon="mdi-file-document"
+                                    />
+                                </v-col>
+                                <v-col cols="12">
+                                    <v-textarea
+                                        label="Description"
+                                        rows="2"
+                                        prepend-icon="mdi-image-filter-frames"
+                                    ></v-textarea>
+                                </v-col>
+                                <v-col cols="12">
+                                    <v-text-field
+                                        label="Price in peso"
+                                        prepend-icon="mdi-currency-php"
+                                    />
+                                </v-col>
+                            </v-row>
                         </v-form>
                     </v-container>
                 </v-card-text>
@@ -55,6 +106,7 @@ export default {
             loading: false,
             date: null,
             valid: true,
+            files: []
         }
     },
 
