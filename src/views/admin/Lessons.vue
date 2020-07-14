@@ -26,6 +26,12 @@
                 style="position: relative; top: 17px; border-radius: 50px;"
             ></v-text-field>
 
+            <lessons-table 
+                :items="lessons"
+                :headers="headers"
+                :search="search"
+            />
+
         </v-card>
 
     </div>
@@ -36,15 +42,47 @@ export default {
     name: 'Lessons',
 
     components: {
-        LessonDialog: () => import('@/components/pages/lessons/LessonDialog')
+        LessonDialog: () => import('@/components/pages/lessons/LessonDialog'),
+        LessonsTable: () => import('@/components/pages/lessons/LessonsTable')
     },
 
     data () {
         return {
             dialog: false,
-            search: ''
+            search: '',
+            lessons: [
+                {
+                    id: '1',
+                    title: 'PDF file name 1',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, qui at ipsa totam consequatur rem illum, odio adipisci eum laudantium omnis fugit quod, repellat quasi ullam ut molestiae exercitationem sed!',
+                    price: 2322,
+                    filename: 'asfjasd/123/123/:12312/filename',
+                    created_at: '01/30/2020'
+                },
+                {
+                    id: '2',
+                    title: 'PDF file name 2',
+                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, qui at ipsa totam consequatur rem illum, odio adipisci eum laudantium omnis fugit quod, repellat quasi ullam ut molestiae exercitationem sed!',
+                    price: 1223,
+                    filename: 'asfsd/123/123/:12112/filename',
+                    created_at: '02/10/2010'
+                }
+            ]
+        }
+    },
+
+    computed: {
+        headers() {
+            return [
+                { text: 'Title', value: 'title' },
+                { text: 'Filename', value: 'filename' },
+                { text: 'Price', value: 'price' },
+                { text: 'Options', value: 'id', sortable: false },
+            ]
         }
     }
+
+
 }
 </script>
 
