@@ -75,7 +75,7 @@ export default {
         headers() {
             return [
                 { text: 'Title', value: 'title' },
-                { text: 'Filename', value: 'filename' },
+                { text: 'PDF Filename', value: 'filename' },
                 { text: 'Price', value: 'price' },
                 { text: 'Options', value: 'id', sortable: false },
             ]
