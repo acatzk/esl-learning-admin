@@ -50,6 +50,8 @@
                                                     v-bind="attrs"
                                                     color="white" 
                                                     class="float-right"
+                                                    :loading="closeLoading"
+                                                    @click="onDeleteProfileImage(admin, index)"
                                                 >
                                                     <v-icon>close</v-icon>
                                                 </v-btn>
@@ -117,7 +119,8 @@ export default {
             menu: false,
             loading: false,
             valid: true,
-            image: null
+            image: null,
+            closeLoading: false
         }
     },
 
@@ -186,9 +189,21 @@ export default {
                  toastAlertStatus('success', `Profile image updated.`)
              })
              .catch(error => toastAlertStatus('error', error))
+        },
+
+
+        onDeleteProfileImage(admin, index) {
+            this.closeLoading = true
+            let image = fb.storage().refFromURL(admin.profileUrl)
+
+            image
+             .delete()
+             .then(() => {
+                 this.closeLoading = false
+                 toastAlertStatus('success', `Profile Image Deleted.`)
+             })
+             .catch(error => toastAlertStatus('error', error))
         }
-
-
     }
 
 }
