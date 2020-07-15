@@ -41,7 +41,10 @@
                                         aspect-ratio="1"
                                         class="grey lighten-2"
                                         max-height="50vh"
-                                    >
+                                    >  
+                                        <v-btn icon color="white" class="float-right">
+                                            <v-icon>close</v-icon>
+                                        </v-btn>
                                         <template v-slot:placeholder>
                                             <v-row
                                                 class="fill-height ma-0"
