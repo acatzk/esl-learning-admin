@@ -27,7 +27,7 @@
         <template #item.price="{ item }">
             <span class="d-flex align-center">
                 <v-icon left small>mdi-currency-php</v-icon>
-                <b>{{ item.price }}</b>
+                {{ item.price }}
             </span>
         </template>
 
