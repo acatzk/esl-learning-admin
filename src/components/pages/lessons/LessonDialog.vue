@@ -44,11 +44,12 @@
                                         prepend-icon="mdi-file-pdf-box"
                                         :show-size="1000"
                                         :loading="false"
+                                        accept="application/pdf"
                                     >
                                         <template v-slot:selection="{ index, text }">
                                         <v-chip
                                             v-if="index < 2"
-                                            color="deep-purple accent-4"
+                                            color="indigo darken-1"
                                             dark
                                             label
                                             small
