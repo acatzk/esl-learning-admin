@@ -4,7 +4,13 @@
             <v-toolbar-title>
                 <v-icon right>mdi-folder-multiple-outline</v-icon> Lessons
             </v-toolbar-title>
-            <v-btn small depressed @click.stop="dialog = true">
+            <v-btn 
+                small 
+                depressed 
+                text
+                outlined
+                @click.stop="dialog = true"
+            >
                 <v-icon>mdi-plus</v-icon>
             </v-btn>
         </header>
