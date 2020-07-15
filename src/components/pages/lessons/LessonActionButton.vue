@@ -1,6 +1,20 @@
 <template>
     <div class="action-button">
         <v-btn-toggle>
+            <v-tooltip top color="primary">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn 
+                        v-bind="attrs"
+                        v-on="on"
+                        small 
+                        icon
+                    >
+                        <v-icon>mdi-download</v-icon>
+                    </v-btn>
+                </template> 
+                <span>Download</span>
+            </v-tooltip>
+
             <v-tooltip top color="warning">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn 
