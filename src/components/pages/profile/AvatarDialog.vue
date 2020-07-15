@@ -42,9 +42,20 @@
                                         class="grey lighten-2"
                                         max-height="50vh"
                                     >  
-                                        <v-btn icon color="white" class="float-right">
-                                            <v-icon>close</v-icon>
-                                        </v-btn>
+                                        <v-tooltip top>
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn 
+                                                    icon 
+                                                    v-on="on"
+                                                    v-bind="attrs"
+                                                    color="white" 
+                                                    class="float-right"
+                                                >
+                                                    <v-icon>close</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>Remove</span>
+                                        </v-tooltip>
                                         <template v-slot:placeholder>
                                             <v-row
                                                 class="fill-height ma-0"
