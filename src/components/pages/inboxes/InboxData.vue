@@ -62,7 +62,7 @@ export default {
                 { text: 'Email', value: 'email' },
                 { text: 'Date', value: 'created_at' },
                 { text: 'Contact', value: 'contact', sortable: false },
-                { text: 'Status', value: 'status', sortable: false }
+                // { text: 'Status', value: 'status', sortable: false }
             ]
         }
     },

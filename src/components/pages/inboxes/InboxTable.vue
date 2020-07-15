@@ -68,7 +68,7 @@
         <!-- END DISPLAY ITEM CONTACT OF NON CLICKABLE -->
 
         <!-- STATUS OF UNREAD MESSAGES -->
-        <template #item.status="{ item }">
+        <!-- <template #item.status="{ item }">
             <td @click.stop class="non-clickable">
                 <v-chip
                     small
@@ -77,10 +77,9 @@
                 >
                     <v-icon left v-show="item.status === 'unread'" style="font-size: 15px;">email</v-icon>
                     <v-icon left v-show="item.status === 'read'" style="font-size: 15px;">drafts</v-icon>
-                    <!-- {{ item.status === 'unread' ? 'unmarked' : 'marked' }} -->
                 </v-chip>
             </td>
-        </template>
+        </template> -->
         <!-- END STATUS OF UNREAD MESSAGES -->
 
         <!-- ** EXPANDED MESSAGE AND ACTION BUTTONS ** -->
