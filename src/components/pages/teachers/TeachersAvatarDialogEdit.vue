@@ -24,6 +24,23 @@
                                         class="grey lighten-2"
                                         max-height="50vh"
                                     >
+                                        <v-tooltip top>
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn 
+                                                    v-show="item.profile_url !== null"
+                                                    icon 
+                                                    v-on="on"
+                                                    v-bind="attrs"
+                                                    color="white" 
+                                                    class="float-right"
+                                                    :loading="closeLoading"
+                                                    @click="onDeleteProfileImage(item)"
+                                                >
+                                                    <v-icon>close</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>Remove</span>
+                                        </v-tooltip>
                                         <template v-slot:placeholder>
                                             <v-row
                                                 class="fill-height ma-0"
@@ -89,7 +106,8 @@ export default {
         return {
             loading: false,
             valid: true,
-            image: null
+            image: null,
+            closeLoading: false
         }
     },
 
@@ -108,6 +126,7 @@ export default {
 
     methods: {
 
+       // UPLOAD TEACHERS IMAGE PROFILE
        uploadImage (file) {
            if (!file) return;
 
@@ -133,6 +152,7 @@ export default {
             })
        },
 
+       // PREVIEW PROFILE IMAGE UPLOADED
        previewImage(image) {
             if (image === null) {
                 return image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU'
@@ -141,11 +161,13 @@ export default {
             }            
         },
 
+        // CAPITALIZED TEXT
         capitalize(s) {
             if (typeof s !== 'string') return ''
             return s.charAt(0).toUpperCase() + s.slice(1)
         },
 
+        // UPDATE PROFILE URL IN HASURA GRAPHQL DATABASE
         onUpdateImage () {
             this.loading = true
             this
@@ -161,6 +183,35 @@ export default {
                  this.loading = false
                  this.show = !this.show
                  toastAlertStatus('success', `Profile Image Updated.`)
+             })
+             .catch(error => toastAlertStatus('error', error))
+        },
+
+        // REMOVED ACTUAL PICTURE IN FIREBASE STORAGE
+        onDeleteProfileImage (teacher) {
+            this.closeLoading = true
+            let image = fb.storage().refFromURL(teacher.profile_url)
+
+            image
+             .delete()
+             .then(() => {
+                this.onRemoveProfileURLInHasura (teacher) // PASSED THE HASURA REMOVE METHOD
+                this.closeLoading = false
+                this.image = null
+             })
+             .catch(error => toastAlertStatus('error', error))
+        },
+
+        // REMOVED PROFILEURL COLUMN IN HASURA
+        onRemoveProfileURLInHasura (teacher) {
+            this
+             .$apollo
+             .mutate({
+                mutation: UPDATE_TEACHERS_PROFILE_IMAGE_MUTATION,
+                variables: {
+                    id: teacher.id,
+                    profileUrl: null
+                }
              })
              .catch(error => toastAlertStatus('error', error))
         }
