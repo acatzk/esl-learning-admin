@@ -45,6 +45,7 @@
                                         <v-tooltip top>
                                             <template v-slot:activator="{ on, attrs }">
                                                 <v-btn 
+                                                    v-show="admin.profileUrl !== null"
                                                     icon 
                                                     v-on="on"
                                                     v-bind="attrs"
@@ -104,11 +105,11 @@
 
 <script>
 
-import { fb } from '@/firebase'
+import { fb } from '@/firebase' // FIREBASE CONFIGURATION
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/assets/js/toastAlert' // TOAST ALERT IN SWEETALERT2
 
-import { UPDATE_PROFILE_IMAGE_MUTATION } from '@/graphql/mutations/profile'
+import { UPDATE_PROFILE_IMAGE_MUTATION } from '@/graphql/mutations/profile' // HASURA GRAPHQL MUTATION API
 
 export default {
     
@@ -124,6 +125,7 @@ export default {
         }
     },
 
+    // TOGGLE SHOW AND HIDE
     computed: {
         show: {
             get () {
@@ -138,9 +140,11 @@ export default {
     },
 
     methods: {
+
+        // UPLOAD IMAGE
         uploadImage (file) {
 
-            if (!file) return;
+            if (!file) return; // RETURN IF NULL
 
             this.loading = true
             let storageRef = fb.storage().ref('admin-profiles/' + file.name)
@@ -164,7 +168,8 @@ export default {
             })
         },
 
-        previewImage(image) {
+        // ASSIGN DEFAULT PREVIEW IMAGE 
+        previewImage (image) {
             if (image === null) {
                 return image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxs9QORl3noSnnXUQaU_Vlt3pbxfSy718YOuSIY3d3O69t3FeF&usqp=CAU'
             } else {
@@ -172,6 +177,7 @@ export default {
             }            
         },
 
+        // UPDATE THE PROFILE IMAGE IN ADMIN
         onUpdateImage () {
             this.loading = true
             this
@@ -191,16 +197,36 @@ export default {
              .catch(error => toastAlertStatus('error', error))
         },
 
-
-        onDeleteProfileImage(admin, index) {
+        // REMOVED ACTUAL PICTURE IN FIREBASE STORAGE
+        onDeleteProfileImage (admin, index) {
             this.closeLoading = true
             let image = fb.storage().refFromURL(admin.profileUrl)
+            this.admins.splice(index, -1)
 
             image
              .delete()
              .then(() => {
-                 this.closeLoading = false
-                 toastAlertStatus('success', `Profile Image Deleted.`)
+                this.onRemoveProfileURLInHasura (admin) // PASSED THE HASURA REMOVE METHOD
+                toastAlertStatus('success', `Successfully Deleted in Firebase.`)
+                this.closeLoading = false
+                this.image = null
+             })
+             .catch(error => toastAlertStatus('error', error))
+        },
+
+        // REMOVED PROFILEURL COLUMN IN HASURA
+        onRemoveProfileURLInHasura (admin) {
+            this
+             .$apollo
+             .mutate({
+                mutation: UPDATE_PROFILE_IMAGE_MUTATION,
+                variables: {
+                    id: admin.id,
+                    profileUrl: null
+                }
+             })
+             .then(() => {
+                 toastAlertStatus('success', `Successfully Deleted in Hasura.`)
              })
              .catch(error => toastAlertStatus('error', error))
         }
