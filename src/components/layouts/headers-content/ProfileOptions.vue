@@ -39,7 +39,7 @@
             </v-btn>
         </template>
 
-        <v-list dense class="mt-2">
+        <v-list dense class="mt-3">
             <v-list-item
                 v-for="(opt, io) in profileOptions" 
                 :key="io"
