@@ -20,7 +20,7 @@
             </v-btn>
         </template>
         
-        <v-list class="mt-3">
+        <v-list class="mt-2">
             <v-list 
                 three-line 
                 dense 
