@@ -51,7 +51,7 @@
                                         multiple
                                         prepend-icon="mdi-file-pdf-box"
                                         :show-size="1000"
-                                        :loading="false"
+                                        :loading="fileLoading"
                                         accept="application/pdf"
                                         :rules="[required('PDF File')]"
                                     >
@@ -123,6 +123,7 @@ export default {
     data () {
         return {
             loading: false,
+            fileLoading: false,
             date: null,
             valid: true,
             title: '',
@@ -186,7 +187,7 @@ export default {
         },
 
         onChangeUploadFiles () {
-            
+
         }
     }
 }
