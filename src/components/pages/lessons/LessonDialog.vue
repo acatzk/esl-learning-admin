@@ -95,6 +95,7 @@
                         color="indigo darken-1 white--text" 
                         small
                         depressed
+                        @click="onSubmitLesson"
                     >
                       <v-icon left>mdi-content-save</v-icon>  Save
                     </v-btn>
@@ -135,6 +136,14 @@ export default {
                 if (!value) {
                     this.$emit('close')
                 }
+            }
+        }
+    },
+
+    methods: {
+        onSubmitLesson () {
+            if (this.$refs.form.validate()) {
+                alert('GOOD')
             }
         }
     }
