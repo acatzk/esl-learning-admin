@@ -19,6 +19,7 @@
                                 <v-col cols="12">
                                     <v-text-field
                                         label="Title"
+                                        v-model="title"
                                         prepend-icon="mdi-file-document"
                                     />
                                 </v-col>
@@ -26,12 +27,15 @@
                                     <v-textarea
                                         label="Description"
                                         rows="2"
+                                        v-model="description"
                                         prepend-icon="mdi-image-filter-frames"
                                     ></v-textarea>
                                 </v-col>
                                 <v-col cols="12">
                                     <v-text-field
                                         label="Price in peso"
+                                        v-model="price"
+                                        type="number"
                                         prepend-icon="mdi-currency-php"
                                     />
                                 </v-col>
@@ -106,6 +110,9 @@ export default {
             loading: false,
             date: null,
             valid: true,
+            title: '',
+            description: '',
+            price: 0,
             files: []
         }
     },
