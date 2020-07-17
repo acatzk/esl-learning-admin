@@ -83,6 +83,7 @@
                         text 
                         small
                         color="grey" 
+                        @click="$refs.form.reset()" 
                     >
                         <v-icon left>mdi-reload</v-icon> Reset
                     </v-btn>
