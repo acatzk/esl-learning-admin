@@ -108,6 +108,8 @@
 
 <script>
 
+import { fb } from '@/firebase'
+
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
 import { ADD_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
