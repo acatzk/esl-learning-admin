@@ -21,6 +21,7 @@
                                         label="Title"
                                         v-model="title"
                                         prepend-icon="mdi-file-document"
+                                        :rules="[required('Title')]"
                                     />
                                 </v-col>
                                 <v-col cols="12">
@@ -37,6 +38,7 @@
                                         v-model="price"
                                         type="number"
                                         prepend-icon="mdi-currency-php"
+                                        :rules="[required('Price')]"
                                     />
                                 </v-col>
                                 <v-col>
@@ -49,6 +51,7 @@
                                         :show-size="1000"
                                         :loading="false"
                                         accept="application/pdf"
+                                        :rules="[required('PDF File')]"
                                     >
                                         <template v-slot:selection="{ index, text }">
                                         <v-chip
@@ -100,6 +103,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'LessonDialog',
 
@@ -112,8 +116,11 @@ export default {
             valid: true,
             title: '',
             description: '',
-            price: 0,
-            files: []
+            price: '',
+            files: [],
+            required(propertyType) { 
+                return v => v && v.length > 0 || `${propertyType} is required.`
+            }
         }
     },
 
