@@ -107,6 +107,8 @@
 
 <script>
 
+import { ADD_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
+
 export default {
     name: 'LessonDialog',
 
