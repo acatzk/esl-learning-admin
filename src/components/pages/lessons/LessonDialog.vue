@@ -46,6 +46,7 @@
                                     <v-file-input
                                         v-model="files"
                                         counter
+                                        @change="onChangeUploadFiles"
                                         label="Upload PDF File"
                                         multiple
                                         prepend-icon="mdi-file-pdf-box"
@@ -182,6 +183,10 @@ export default {
                      toastAlertStatus('error', error)
                  })
             }
+        },
+
+        onChangeUploadFiles () {
+            
         }
     }
 }
