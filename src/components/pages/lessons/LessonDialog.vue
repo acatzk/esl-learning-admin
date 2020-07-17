@@ -95,6 +95,7 @@
                         color="indigo darken-1 white--text" 
                         small
                         depressed
+                        :loading="loading"
                         @click="onSubmitLesson"
                     >
                       <v-icon left>mdi-content-save</v-icon>  Save
@@ -106,6 +107,8 @@
 </template>
 
 <script>
+
+import { toastAlertStatus } from '@/assets/js/toastAlert'
 
 import { ADD_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
 
@@ -122,6 +125,7 @@ export default {
             title: '',
             description: '',
             price: '',
+            url_files: '',
             files: [],
             required(propertyType) { 
                 return v => v && v.length > 0 || `${propertyType} is required.`
@@ -145,7 +149,36 @@ export default {
     methods: {
         onSubmitLesson () {
             if (this.$refs.form.validate()) {
-                alert('GOOD')
+                this.loading = true
+
+                const {
+                    title,
+                    description,
+                    price,
+                    url_files
+                } = this.$data
+
+                this
+                 .$apollo
+                 .mutate({
+                     mutation: ADD_LESSONS_MUTATION,
+                     variables: {
+                         title,
+                         description,
+                         price,
+                         url_files
+                     }
+                 })
+                 .then(() => {
+                     this.loading = false
+                     this.show = !this.show
+                     this.$refs.form.reset()
+                     toastAlertStatus('success', 'Lesson Added successfully')
+                 })
+                 .catch(error => {
+                     this.loading = false
+                     toastAlertStatus('error', error)
+                 })
             }
         }
     }
