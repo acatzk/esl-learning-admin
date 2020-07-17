@@ -44,6 +44,11 @@
 </template>
 
 <script>
+
+import { LESSONS_QUERY } from '@/graphql/queries/lessons'
+
+import { LESSONS_SUBSCRIPTION } from '@/graphql/subscriptions/lessons'
+
 export default {
     name: 'Lessons',
 
@@ -56,24 +61,7 @@ export default {
         return {
             dialog: false,
             search: '',
-            lessons: [
-                {
-                    id: '1',
-                    title: 'PDF file name 1',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, qui at ipsa totam consequatur rem illum, odio adipisci eum laudantium omnis fugit quod, repellat quasi ullam ut molestiae exercitationem sed!',
-                    price: 2322,
-                    filename: 'asfjasd/123/123/:12312/filename',
-                    created_at: '01/30/2020'
-                },
-                {
-                    id: '2',
-                    title: 'PDF file name 2',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, qui at ipsa totam consequatur rem illum, odio adipisci eum laudantium omnis fugit quod, repellat quasi ullam ut molestiae exercitationem sed!',
-                    price: 1223,
-                    filename: 'asfsd/123/123/:12112/filename',
-                    created_at: '02/10/2010'
-                }
-            ]
+            lessons: []
         }
     },
 
@@ -85,6 +73,28 @@ export default {
                 { text: 'Price', value: 'price' },
                 { text: 'Options', value: 'id', sortable: false },
             ]
+        }
+    },
+
+
+    apollo: {
+        lessons: {
+            query: LESSONS_QUERY,
+            subscribeToMore: {
+                document: LESSONS_SUBSCRIPTION,
+                updateQuery(previousResult, { subscriptionData }) {
+                    if (previousResult) {
+                        return {
+                            lessons: [
+                                ...subscriptionData.data.lessons
+                            ]
+                        }
+                    }
+                }
+            },
+            result ({ data }) {
+                this.lessons = data.lessons
+            }
         }
     }
 
