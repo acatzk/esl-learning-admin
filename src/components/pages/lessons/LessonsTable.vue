@@ -47,7 +47,7 @@
                         <b>{{ item.title }}</b>
                     </v-col>
                     <v-col cols="12" md="10">
-                        <p>{{ item.description }}</p>
+                        <p>{{ item.description.length === 0 ? 'No description...' : item.description }}</p>
                     </v-col>
                 </v-row>
             </td>
