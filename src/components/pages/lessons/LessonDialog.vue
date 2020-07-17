@@ -30,6 +30,7 @@
                                         rows="2"
                                         v-model="description"
                                         prepend-icon="mdi-image-filter-frames"
+                                        hint="Optional"
                                     ></v-textarea>
                                 </v-col>
                                 <v-col cols="12">
