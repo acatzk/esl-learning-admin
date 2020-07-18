@@ -37,7 +37,7 @@
                             >
                                <v-icon left v-show="editable === false">mdi-pencil</v-icon> 
                                <v-icon left v-show="editable === true">mdi-close</v-icon> 
-                               {{ !editable ? 'Update Info' : 'Cancel' }}
+                               {{ !editable ? 'Update' : 'Cancel' }}
                             </v-btn>
                        </header>
 
