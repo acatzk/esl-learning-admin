@@ -44,37 +44,29 @@
                                 </v-col>
                                 <v-col>
                                     <v-file-input
-                                        v-model="files"
-                                        counter
                                         @change="onChangeUploadFiles"
                                         label="Upload PDF File"
-                                        multiple
                                         prepend-icon="mdi-file-pdf-box"
                                         :show-size="1000"
-                                        :loading="fileLoading"
+                                        :loading="loading"
                                         accept="application/pdf"
-                                        :rules="[required('PDF File')]"
-                                    >
-                                        <template v-slot:selection="{ index, text }">
-                                        <v-chip
-                                            v-if="index < 2"
-                                            color="indigo darken-1"
-                                            dark
-                                            label
-                                            small
+                                    ></v-file-input>
+                                    <div v-show="loading">
+                                        <v-progress-linear
+                                            color="light-blue"
+                                            height="10"
+                                            :value="progress"
+                                            striped
                                         >
-                                            {{ text }}
-                                        </v-chip>
-
-                                        <span
-                                            v-else-if="index === 2"
-                                            class="overline grey--text text--darken-3 mx-2"
-                                        >
-                                            +{{ files.length - 2 }} File(s)
-                                        </span>
-                                        </template>
-                                    </v-file-input>
+                                        </v-progress-linear>
+                                        Upload is {{ progress }}% done
+                                    </div>
                                 </v-col>
+                                <!-- <v-col cols="12">
+                                    <pdf 
+                                        src="C:\Users\Jheferzon\Documents\PDF\cashflow.pdf"
+                                    />
+                                </v-col> -->
                             </v-row>
                         </v-form>
                     </v-container>
@@ -84,6 +76,7 @@
                         text 
                         small
                         color="grey" 
+                        v-show="!loading"
                         @click="$refs.form.reset()" 
                     >
                         <v-icon left>mdi-reload</v-icon> Reset
@@ -109,6 +102,8 @@
 
 <script>
 
+import pdf from 'vue-pdf'
+
 import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
@@ -120,17 +115,19 @@ export default {
 
     props: ['visible'],
 
+    components: {
+        pdf
+    },
+
     data () {
         return {
             loading: false,
-            fileLoading: false,
-            date: null,
             valid: true,
             title: '',
             description: '',
             price: '',
             url_files: '',
-            files: [],
+            progress: 0,
             required(propertyType) { 
                 return v => v && v.length > 0 || `${propertyType} is required.`
             }
@@ -186,8 +183,31 @@ export default {
             }
         },
 
-        onChangeUploadFiles () {
+        onChangeUploadFiles (file) {
 
+            if (!file) return; // RETURN IF NULL
+            
+            this.loading = true
+
+            let storageRef = fb.storage().ref('lessons-files/' + file.name)
+            let uploadTask = storageRef.put(file)
+            uploadTask.on('state_changed', (snapshot) => {
+                    let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                    this.progress = progress
+                    console.log('Upload is ' + progress + '% done')
+                }, (error) => {
+                    // Handle unsuccessful uploads
+                    toastAlertStatus('error', error)
+                }, () => {
+                    // Handle successful uploads on complete
+                    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                    this.loading = false
+                    uploadTask.snapshot.ref.getDownloadURL()
+                        .then(downloadUrl => {
+                            this.url_files = downloadUrl
+                        })
+                        .catch(error => toastAlertStatus('error', error))
+            })
         }
     }
 }
