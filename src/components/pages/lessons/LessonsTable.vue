@@ -17,8 +17,8 @@
         <template #item.filename="{ item }">
             <span class="d-flex align-center">
                 <v-icon left>mdi-file-pdf-box</v-icon>
-                <a :href="item.url_files" target="_blank" style="text-decoration: none;">
-                    {{ item.url_files.split('/lessons-files%').pop().split('#')[0].split('?')[0] }}
+                <a :href="item.url_files" target="_blank" style="text-decoration: none; text-transform: lowercase;">
+                    {{ item.url_files.split('/lessons-files%2F').pop().split('#')[0].split('?')[0] }}
                 </a>
             </span>
         </template>
