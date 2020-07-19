@@ -261,9 +261,6 @@ export default {
     max-width: 500px; 
     margin-left: 10px; 
     border-radius: 20px !important;
-    .pdf-column {
-        background: rgb(247, 247, 247); 
-        text-align: center;
-    }
+    background: rgb(247, 247, 247);
 }
 </style>
