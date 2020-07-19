@@ -22,7 +22,7 @@
                                 <v-col cols="12">
                                     <v-text-field
                                         label="Title"
-                                        v-model="title"
+                                        v-model="item.title"
                                         prepend-icon="mdi-file-document"
                                         :rules="[required('Title')]"
                                     />
@@ -31,7 +31,7 @@
                                     <v-textarea
                                         label="Description"
                                         rows="2"
-                                        v-model="description"
+                                        v-model="item.description"
                                         prepend-icon="mdi-image-filter-frames"
                                         hint="Optional"
                                     ></v-textarea>
@@ -39,7 +39,7 @@
                                 <v-col cols="12">
                                     <v-text-field
                                         label="Price in peso"
-                                        v-model="price"
+                                        v-model="item.price"
                                         type="number"
                                         prepend-icon="mdi-currency-php"
                                         :rules="[required('Price')]"
@@ -48,7 +48,7 @@
                                 <v-col>
                                     <v-file-input
                                         @change="onChangeUploadFiles"
-                                        label="Upload PDF File"
+                                        :label="modalType === 'edit' ? 'Click here if you want to upload new file' : 'Upload PDF File'"
                                         prepend-icon="mdi-file-pdf-box"
                                         :show-size="1000"
                                         :loading="loading"
@@ -65,11 +65,6 @@
                                         Upload is {{ progress }}% done
                                     </div>
                                 </v-col>
-                                <!-- <v-col cols="12">
-                                    <pdf 
-                                        src="C:\Users\Jheferzon\Documents\PDF\cashflow.pdf"
-                                    />
-                                </v-col> -->
                             </v-row>
                         </v-form>
                     </v-container>
@@ -79,7 +74,7 @@
                         text 
                         small
                         color="grey" 
-                        v-show="!loading"
+                        v-show="!loading && modalType === 'add'"
                         @click="$refs.form.reset()" 
                     >
                         <v-icon left>mdi-reload</v-icon> Reset
@@ -105,8 +100,6 @@
 
 <script>
 
-import pdf from 'vue-pdf'
-
 import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
@@ -116,20 +109,12 @@ import { ADD_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
 export default {
     name: 'LessonDialog',
 
-    props: ['visible', 'modalType'],
-
-    components: {
-        pdf
-    },
+    props: ['visible', 'modalType', 'item'],
 
     data () {
         return {
             loading: false,
             valid: true,
-            title: '',
-            description: '',
-            price: '',
-            url_files: '',
             progress: 0,
             required(propertyType) { 
                 return v => v && v.length > 0 || `${propertyType} is required.`
@@ -160,29 +145,29 @@ export default {
                     description,
                     price,
                     url_files
-                } = this.$data
+                } = this.item
 
-                this
-                 .$apollo
-                 .mutate({
-                     mutation: ADD_LESSONS_MUTATION,
-                     variables: {
-                         title,
-                         description,
-                         price,
-                         url_files
-                     }
-                 })
-                 .then(() => {
-                     this.loading = false
-                     this.show = !this.show
-                     this.$refs.form.reset()
-                     toastAlertStatus('success', 'Lesson Added successfully')
-                 })
-                 .catch(error => {
-                     this.loading = false
-                     toastAlertStatus('error', error)
-                 })
+                // this
+                //  .$apollo
+                //  .mutate({
+                //      mutation: ADD_LESSONS_MUTATION,
+                //      variables: {
+                //          title,
+                //          description,
+                //          price,
+                //          url_files
+                //      }
+                //  })
+                //  .then(() => {
+                //      this.loading = false
+                //      this.show = !this.show
+                //      this.$refs.form.reset()
+                //      toastAlertStatus('success', 'Lesson Added successfully')
+                //  })
+                //  .catch(error => {
+                //      this.loading = false
+                //      toastAlertStatus('error', error)
+                //  })
             }
         },
 
