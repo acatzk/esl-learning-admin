@@ -43,11 +43,15 @@
         <template #expanded-item="{ headers, item }">
             <td :colspan="headers.length">
                 <v-row>
-                    <v-col cols="12" md="4">
+                    <v-col cols="12" md="2">
                         <b>{{ item.title }}</b>
                     </v-col>
-                    <v-col cols="12" md="8">
-                        <p>{{ item.description.length === 0 ? 'No description...' : item.description }}</p>
+                    <v-col cols="12" md="10">
+                        <embed
+                            :src="item.url_files"
+                            type="application/pdf"
+                            class="pdf-embeded"
+                        />
                     </v-col>
                 </v-row>
             </td>
@@ -92,5 +96,9 @@ export default {
 <style lang="scss" scoped>
 ::v-deep .v-data-table-header{
   text-transform: uppercase;
+}
+.pdf-embeded {
+    height: 50vh;
+    width: 100%;
 }
 </style>
