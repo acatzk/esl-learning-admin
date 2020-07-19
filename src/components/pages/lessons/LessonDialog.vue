@@ -72,9 +72,20 @@
                                         <h2>
                                            <v-icon>mdi-file-pdf-box</v-icon> {{ item.title }}
                                         </h2>
-                                        <v-btn icon fab small>
-                                            <v-icon>mdi-close</v-icon>
-                                        </v-btn>
+                                        <v-tooltip top>
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-btn 
+                                                    icon 
+                                                    fab 
+                                                    small
+                                                    v-on="on"
+                                                    v-bind="attrs"
+                                                >
+                                                    <v-icon>mdi-close</v-icon>
+                                                </v-btn>
+                                        </template>
+                                            <span>Remove</span>
+                                        </v-tooltip>
                                     </v-col>
                                     <v-col cols="12">
                                         <embed
