@@ -59,6 +59,7 @@
         <template #item.id="{ item }">  
             <teachers-account-action-button 
                 :item="item"
+                :items="items"
             />
         </template>
 
