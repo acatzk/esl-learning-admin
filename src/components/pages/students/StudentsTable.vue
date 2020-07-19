@@ -54,6 +54,7 @@
         <template #item.id="{ item }">  
             <student-action-button 
                 :item="item"
+                :items="items"
             />
         </template>
 

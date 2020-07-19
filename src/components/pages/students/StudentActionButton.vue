@@ -66,7 +66,7 @@ export default {
         }
     },
 
-    props: ['item'],
+    props: ['item', 'items'],
 
 
     methods: {
@@ -81,6 +81,9 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.value) {
+
+                    this.items.splice(this.item, 1)
+
                     this.$apollo
                     .mutate({
                         mutation: DELETE_STUDENT_MUTATION,
