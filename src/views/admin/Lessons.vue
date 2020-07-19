@@ -17,6 +17,8 @@
         
         <lesson-dialog 
             :visible="dialog" @close="dialog = false"
+            :modalType="`add`" 
+            :item="item"
         />
 
          <v-card flat>
@@ -70,7 +72,15 @@ export default {
         return {
             dialog: false,
             search: '',
-            lessons: []
+            lessons: [],
+            item: [
+                {
+                    title: null,
+                    description: null,
+                    price: null,
+                    url_files: null
+                }
+            ]
         }
     },
 
