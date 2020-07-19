@@ -50,7 +50,7 @@
                                         @change="onChangeUploadFiles"
                                         :label="modalType === 'edit' ? 'Click here if you want to upload new file' : 'Upload PDF File'"
                                         prepend-icon="mdi-file-pdf-box"
-                                        :show-size="1000"
+                                        show-size
                                         :loading="loading"
                                         accept="application/pdf"
                                     ></v-file-input>
@@ -104,7 +104,7 @@ import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
-import { ADD_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
+import { ADD_LESSONS_MUTATION, UPDATE_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
 
 export default {
     name: 'LessonDialog',
@@ -116,6 +116,7 @@ export default {
             loading: false,
             valid: true,
             progress: 0,
+            files: [],
             required(propertyType) { 
                 return v => v && v.length > 0 || `${propertyType} is required.`
             }
@@ -141,40 +142,69 @@ export default {
                 this.loading = true
 
                 const {
+                    id,
                     title,
                     description,
                     price,
                     url_files
                 } = this.item
 
-                // this
-                //  .$apollo
-                //  .mutate({
-                //      mutation: ADD_LESSONS_MUTATION,
-                //      variables: {
-                //          title,
-                //          description,
-                //          price,
-                //          url_files
-                //      }
-                //  })
-                //  .then(() => {
-                //      this.loading = false
-                //      this.show = !this.show
-                //      this.$refs.form.reset()
-                //      toastAlertStatus('success', 'Lesson Added successfully')
-                //  })
-                //  .catch(error => {
-                //      this.loading = false
-                //      toastAlertStatus('error', error)
-                //  })
+                if (this.modalType === 'add') {
+                    this
+                    .$apollo
+                    .mutate({
+                        mutation: ADD_LESSONS_MUTATION,
+                        variables: {
+                            title,
+                            description,
+                            price,
+                            url_files
+                        }
+                    })
+                    .then(() => {
+                        this.loading = false
+                        this.show = !this.show
+                        this.$refs.form.reset()
+                        toastAlertStatus('success', 'Lesson Added Successfully')
+                    })
+                    .catch(error => {
+                        this.loading = false
+                        toastAlertStatus('error', error)
+                    })
+                }   
+
+                if (this.modalType === 'edit') {
+                    this
+                    .$apollo
+                    .mutate({
+                        mutation: UPDATE_LESSONS_MUTATION,
+                        variables: {
+                            id,
+                            title,
+                            description,
+                            price,
+                            url_files
+                        }
+                    })
+                    .then(() => {
+                        this.loading = false
+                        this.show = !this.show
+                        this.$refs.form.reset()
+                        toastAlertStatus('success', 'Lesson Updated Successfully')
+                    })
+                    .catch(error => {
+                        this.loading = false
+                        toastAlertStatus('error', error)
+                    })
+                }
+
             }
         },
 
         onChangeUploadFiles (file) {
 
-            if (!file) return; // RETURN IF NULL
-            
+            if (!file)  return;
+
             this.loading = true
 
             let storageRef = fb.storage().ref('lessons-files/' + file.name)
@@ -192,10 +222,11 @@ export default {
                     this.loading = false
                     uploadTask.snapshot.ref.getDownloadURL()
                         .then(downloadUrl => {
-                            this.url_files = downloadUrl
+                            this.item.url_files = downloadUrl
                         })
                         .catch(error => toastAlertStatus('error', error))
             })
+
         }
     }
 }
