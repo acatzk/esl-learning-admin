@@ -77,11 +77,11 @@
                                         </v-btn>
                                     </v-col>
                                     <v-col cols="12">
-                                        <!-- <pdf
-                                            src="http://africau.edu/images/default/sample.pdf"
-                                            @num-pages="pageCount = $event"
-                                            @page-loaded="currentPage = $event"
-                                        ></pdf> -->
+                                        <embed
+                                            :src="item.url_files"
+                                            type="application/pdf"
+                                            class="pdf-embeded"
+                                        />
                                     </v-col>
                                 </v-row>
                             </div>
@@ -138,9 +138,7 @@ export default {
             files: [],
             required(propertyType) { 
                 return v => v && v.length > 0 || `${propertyType} is required.`
-            },
-            currentPage: 0,
-			pageCount: 0,
+            }
         }
     },
 
@@ -262,5 +260,10 @@ export default {
     margin-left: 10px; 
     border-radius: 20px !important;
     background: rgb(247, 247, 247);
+    border: 1px solid rgb(207, 207, 207);
+}
+.pdf-embeded {
+    height: 50vh;
+    width: 100%;
 }
 </style>
