@@ -27,6 +27,7 @@
     "vue": "^2.6.11",
     "vue-apollo": "^3.0.3",
     "vue-avatar-editor-improved": "^1.0.5",
+    "vue-custom-scrollbar": "^1.2.0",
     "vue-flux": "^6.2.0",
     "vue-page-transition": "^0.2.2",
     "vue-router": "^3.2.0",
