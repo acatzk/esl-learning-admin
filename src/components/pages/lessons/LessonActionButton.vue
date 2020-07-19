@@ -22,6 +22,7 @@
                         v-on="on"
                         small 
                         icon
+                        @click="dialog = true"
                     >
                         <v-icon>mdi-pencil-box-outline</v-icon>
                     </v-btn>
@@ -43,5 +44,30 @@
                 <span>Delete</span>
             </v-tooltip>
         </v-btn-toggle>
+
+        <lesson-dialog 
+            :visible="dialog" @close="dialog = false"
+            :modalType="`edit`" 
+            :item="item"
+        />
+
     </div>
 </template>
+
+<script>
+export default {
+    name: 'LessonActionButton',
+
+    components: {
+        LessonDialog: () => import('./LessonDialog')
+    },
+
+    props: ['item'],
+
+    data () {
+        return {
+            dialog: false
+        }
+    }
+}
+</script>
