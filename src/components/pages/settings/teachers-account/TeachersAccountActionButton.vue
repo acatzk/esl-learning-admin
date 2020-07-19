@@ -29,7 +29,7 @@ export default {
         }
     },
 
-    props: ['item'],
+    props: ['item', 'items'],
 
     methods: {
       deleteTeacherAccount () {
@@ -44,6 +44,8 @@ export default {
         })
         .then((result) => {
             if (result.value) {
+                this.items.splice(this.item, 1)
+                
                 const { id } = this.item
                 this
                  .$apollo
