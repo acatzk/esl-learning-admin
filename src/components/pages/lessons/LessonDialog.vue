@@ -3,7 +3,10 @@
         <v-dialog v-model="show" max-width="550px">
             <v-card>
                 <v-card-title>
-                    <span class="headline">
+                    <span class="headline" v-if="modalType === 'edit'">
+                        <v-icon left size="35">mdi-pencil</v-icon> Edit Lesson
+                    </span>
+                    <span class="headline" v-else>
                         <v-icon left size="35">mdi-plus</v-icon> New Lesson
                     </span>
                 </v-card-title>
@@ -113,7 +116,7 @@ import { ADD_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
 export default {
     name: 'LessonDialog',
 
-    props: ['visible'],
+    props: ['visible', 'modalType'],
 
     components: {
         pdf
