@@ -48,9 +48,6 @@
                     </v-col>
                     <v-col cols="12" md="8">
                         <p>{{ item.description.length === 0 ? 'No description...' : item.description }}</p>
-                        <!-- <pdf 
-                            :src="item.url_files"
-                        /> -->
                     </v-col>
                 </v-row>
             </td>
@@ -79,8 +76,7 @@ export default {
     },
 
     components: {
-        LessonActionButton: () => import('./LessonActionButton'),
-        pdf: () => import('vue-pdf')
+        LessonActionButton: () => import('./LessonActionButton')
     },
 
     methods: {

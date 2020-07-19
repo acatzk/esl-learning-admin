@@ -1,6 +1,6 @@
 <template>
     <v-row justify="center">
-        <v-dialog v-model="show" max-width="550px">
+        <v-dialog v-model="show" :max-width="modalType === 'edit' ? '1000px' : '500px'">
             <v-card>
                 <v-card-title>
                     <span class="headline" v-if="modalType === 'edit'">
@@ -18,54 +18,73 @@
                             v-model="valid"
                             lazy-validation
                         >
-                            <v-row>
-                                <v-col cols="12">
-                                    <v-text-field
-                                        label="Title"
-                                        v-model="item.title"
-                                        prepend-icon="mdi-file-document"
-                                        :rules="[required('Title')]"
-                                    />
-                                </v-col>
-                                <v-col cols="12">
-                                    <v-textarea
-                                        label="Description"
-                                        rows="2"
-                                        v-model="item.description"
-                                        prepend-icon="mdi-image-filter-frames"
-                                        hint="Optional"
-                                    ></v-textarea>
-                                </v-col>
-                                <v-col cols="12">
-                                    <v-text-field
-                                        label="Price in peso"
-                                        v-model="item.price"
-                                        type="number"
-                                        prepend-icon="mdi-currency-php"
-                                        :rules="[required('Price')]"
-                                    />
-                                </v-col>
-                                <v-col>
-                                    <v-file-input
-                                        @change="onChangeUploadFiles"
-                                        :label="modalType === 'edit' ? 'Click here if you want to upload new file' : 'Upload PDF File'"
-                                        prepend-icon="mdi-file-pdf-box"
-                                        show-size
-                                        :loading="loading"
-                                        accept="application/pdf"
-                                    ></v-file-input>
-                                    <div v-show="loading">
-                                        <v-progress-linear
-                                            color="light-blue"
-                                            height="10"
-                                            :value="progress"
-                                            striped
-                                        >
-                                        </v-progress-linear>
-                                        Upload is {{ progress }}% done
-                                    </div>
-                                </v-col>
-                            </v-row>
+                            <div class="d-flex">
+                                <v-row style="max-width: 500px;">
+                                    <v-col cols="12">
+                                        <v-text-field
+                                            label="Title"
+                                            v-model="item.title"
+                                            prepend-icon="mdi-file-document"
+                                            :rules="[required('Title')]"
+                                        />
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-textarea
+                                            label="Description"
+                                            rows="2"
+                                            v-model="item.description"
+                                            prepend-icon="mdi-image-filter-frames"
+                                            hint="Optional"
+                                        ></v-textarea>
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-text-field
+                                            label="Price in peso"
+                                            v-model="item.price"
+                                            type="number"
+                                            prepend-icon="mdi-currency-php"
+                                            :rules="[required('Price')]"
+                                        />
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <v-file-input
+                                            @change="onChangeUploadFiles"
+                                            :label="modalType === 'edit' ? 'Click here if you want to upload new file' : 'Upload PDF File'"
+                                            prepend-icon="mdi-file-pdf-box"
+                                            show-size
+                                            :loading="loading"
+                                            accept="application/pdf"
+                                        ></v-file-input>
+                                        <div v-show="loading">
+                                            <v-progress-linear
+                                                color="light-blue"
+                                                height="10"
+                                                :value="progress"
+                                                striped
+                                            >
+                                            </v-progress-linear>
+                                            Upload is {{ progress }}% done
+                                        </div>
+                                    </v-col>
+                                </v-row>
+                                <v-row class="pdf-file" v-show="modalType === 'edit'">
+                                    <v-col cols="12" class="pdf-column d-flex justify-space-between">
+                                        <h2>
+                                           <v-icon>mdi-file-pdf-box</v-icon> {{ item.title }}
+                                        </h2>
+                                        <v-btn icon fab small>
+                                            <v-icon>mdi-close</v-icon>
+                                        </v-btn>
+                                    </v-col>
+                                    <v-col cols="12">
+                                        <!-- <pdf
+                                            src="http://africau.edu/images/default/sample.pdf"
+                                            @num-pages="pageCount = $event"
+                                            @page-loaded="currentPage = $event"
+                                        ></pdf> -->
+                                    </v-col>
+                                </v-row>
+                            </div>
                         </v-form>
                     </v-container>
                 </v-card-text>
@@ -119,7 +138,9 @@ export default {
             files: [],
             required(propertyType) { 
                 return v => v && v.length > 0 || `${propertyType} is required.`
-            }
+            },
+            currentPage: 0,
+			pageCount: 0,
         }
     },
 
@@ -232,8 +253,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .v-btn {
   text-transform: capitalize;
+}
+.pdf-file {
+    max-width: 500px; 
+    margin-left: 10px; 
+    border-radius: 20px !important;
+    .pdf-column {
+        background: rgb(247, 247, 247); 
+        text-align: center;
+    }
 }
 </style>
