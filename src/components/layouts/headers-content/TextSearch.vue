@@ -3,9 +3,10 @@
         solo-inverted
         flat
         tile
+        rounded
         hide-details
         label="Search"
-        append-icon="search"
+        prepend-inner-icon="search"
         :color="mode ? 'deep-purple darken-4' : ''"
         dense
     ></v-text-field>
