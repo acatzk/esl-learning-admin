@@ -43,10 +43,10 @@
         <template #expanded-item="{ headers, item }">
             <td :colspan="headers.length">
                 <v-row>
-                    <v-col cols="12" md="2">
+                    <v-col cols="12" md="4">
                         <b>{{ item.title }}</b>
                     </v-col>
-                    <v-col cols="12" md="10">
+                    <v-col cols="12" md="8">
                         <p>{{ item.description.length === 0 ? 'No description...' : item.description }}</p>
                     </v-col>
                 </v-row>
