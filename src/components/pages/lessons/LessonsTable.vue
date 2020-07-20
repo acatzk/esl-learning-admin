@@ -35,7 +35,7 @@
         <template #item.size="{ item }">
             <span class="d-flex align-center">
                 <v-icon left small>mdi-memory</v-icon>
-                {{ item.size }}
+                {{ convertSizeToMB(item) }}
             </span>
         </template>
 
@@ -95,6 +95,13 @@ export default {
         getUrlFilename (item) {
             let newItem = item.url_files.split('/lessons-files%2F').pop().split('#')[0].split('?')[0]
             return newItem.length >= 30 ? newItem.slice(0, 30) + "..." : newItem
+        },
+        convertSizeToMB (item) {
+            let bytes = item.size
+            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+            if (bytes == 0) return '0 Byte'
+            var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
+            return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
         }
     }
 
