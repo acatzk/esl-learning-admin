@@ -31,6 +31,14 @@
             </span>
         </template>
 
+        <!-- SIZE DISPLAY -->
+        <template #item.size="{ item }">
+            <span class="d-flex align-center">
+                <v-icon left small>mdi-memory</v-icon>
+                {{ item.size }}
+            </span>
+        </template>
+
 
         <!-- ACTION BUTTONS -->
         <template #item.id="{ item }">  
