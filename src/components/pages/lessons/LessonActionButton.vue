@@ -8,6 +8,8 @@
                         v-on="on"
                         small 
                         icon
+                        :loading="loading"
+                        @click="onDownloadPDF"
                     >
                         <v-icon>mdi-download</v-icon>
                     </v-btn>
@@ -55,6 +57,11 @@
 </template>
 
 <script>
+
+import { fb } from '@/firebase'
+
+import { toastAlertStatus } from '@/assets/js/toastAlert'
+
 export default {
     name: 'LessonActionButton',
 
@@ -66,7 +73,44 @@ export default {
 
     data () {
         return {
-            dialog: false
+            dialog: false,
+            loading: false
+        }
+    },
+
+    methods: {
+        onDownloadPDF () {
+            this.loading = true
+
+            let storageRef = fb.storage().refFromURL(this.item.url_files)
+
+            // Get the download URL
+            storageRef.getDownloadURL().then((url) => {
+                // Insert url into an <img> tag to "download"
+                this.loading = false
+                toastAlertStatus('success', `Downloaded ${this.item.title}`)
+            }).catch((error) => {
+                this.loading = false
+                // A full list of error codes is available at
+                // https://firebase.google.com/docs/storage/web/handle-errors
+                switch (error.code) {
+                    case 'storage/object-not-found':
+                        toastAlertStatus('error', "Not Found: " + error.code)
+                    break;
+
+                    case 'storage/unauthorized':
+                        toastAlertStatus('error', "Unauthorized: " + error.code)
+                    break;
+
+                    case 'storage/canceled':
+                        toastAlertStatus('error', "Canceled: " + error.code)
+                    break;
+
+                    case 'storage/unknown':
+                        toastAlertStatus('error', "Unknown: " + error.code)
+                    break;
+                }
+            })
         }
     }
 }
