@@ -10,6 +10,7 @@ export const LESSONS_QUERY = gql`
             url_files
             created_at
             size
+            type
         }
     }  
 `
