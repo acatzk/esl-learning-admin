@@ -9,6 +9,7 @@ export const LESSONS_SUBSCRIPTION = gql`
             price
             url_files
             created_at
+            size
         }
     } 
 `
