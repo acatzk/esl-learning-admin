@@ -176,7 +176,8 @@ export default {
                     title,
                     description,
                     price,
-                    url_files
+                    url_files,
+                    size
                 } = this.item
 
                 if (this.modalType === 'add') {
@@ -188,7 +189,8 @@ export default {
                             title,
                             description,
                             price,
-                            url_files
+                            url_files,
+                            size
                         }
                     })
                     .then(() => {
@@ -213,7 +215,8 @@ export default {
                             title,
                             description,
                             price,
-                            url_files
+                            url_files,
+                            size
                         }
                     })
                     .then(() => {
@@ -236,6 +239,8 @@ export default {
             if (!file)  return;
 
             this.loading = true
+
+            this.item.size = file.size // AUTOMATIC CAPTURE THE SIZE IN PDF FILE
 
             let storageRef = fb.storage().ref('lessons-files/' + file.name)
             let uploadTask = storageRef.put(file)
