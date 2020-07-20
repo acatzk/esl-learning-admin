@@ -21,3 +21,14 @@ export const UPDATE_LESSONS_MUTATION = gql`
         }
     }
 `
+
+export const DELETE_LESSONS_MUTATION = gql`
+    mutation DeleteLessonMutation($id: uuid!) {
+        delete_lessons(where: {id: {_eq: $id}}) {
+            affected_rows
+            returning {
+                id
+            }
+        }
+    }
+`
