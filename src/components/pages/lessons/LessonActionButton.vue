@@ -73,7 +73,7 @@ export default {
         LessonDialog: () => import('./LessonDialog')
     },
 
-    props: ['item'],
+    props: ['item', 'items'],
 
     data () {
         return {
@@ -128,7 +128,7 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.value) {
-
+                    this.items.splice(this.item, 1)
                 }
             })
         }

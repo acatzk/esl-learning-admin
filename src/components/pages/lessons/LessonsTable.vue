@@ -44,6 +44,7 @@
         <template #item.id="{ item }">  
             <lesson-action-button 
                 :item="item"
+                :items="items"
             />
         </template>
 
