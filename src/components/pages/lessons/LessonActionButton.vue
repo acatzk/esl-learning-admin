@@ -39,6 +39,7 @@
                         v-on="on"
                         small
                         icon
+                        @click="onClickDeleteFile"
                     >
                         <v-icon>delete_outline</v-icon>
                     </v-btn>
@@ -57,6 +58,9 @@
 </template>
 
 <script>
+
+import Swal from 'sweetalert2'
+
 
 import { fb } from '@/firebase'
 
@@ -109,6 +113,22 @@ export default {
                     case 'storage/unknown':
                         toastAlertStatus('error', "Unknown: " + error.code)
                     break;
+                }
+            })
+        },
+
+        onClickDeleteFile () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+
                 }
             })
         }
