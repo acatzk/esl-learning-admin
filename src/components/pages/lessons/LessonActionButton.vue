@@ -66,6 +66,8 @@ import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/assets/js/toastAlert'
 
+import { DELETE_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
+
 export default {
     name: 'LessonActionButton',
 
@@ -117,6 +119,7 @@ export default {
             })
         },
 
+        // TRIGGER THE EVENT TO DELETE
         onClickDeleteFile () {
             Swal.fire({
                 title: 'Are you sure?',
@@ -128,9 +131,37 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.value) {
-                    this.items.splice(this.item, 1)
+                    this.removeFileInFirebase()
                 }
             })
+        },
+
+        // DELETE THE FILE IN THE FIREBASE
+        removeFileInFirebase () {
+            let file = fb.storage().refFromURL(this.item.url_files)
+            this.items.splice(this.item, 1)
+
+            file
+             .delete()
+             .then(() => {
+                this.removeFileDataInHasura () // PASSED THE HASURA REMOVE METHOD
+                toastAlertStatus('success', `Successfully Deleted in Firebase.`)
+             })
+             .catch(error => toastAlertStatus('error', error))
+        },
+
+        // DELETE THE FILE DATA IN HASURA
+        removeFileDataInHasura () {
+            this
+             .$apollo
+             .mutate({
+                 mutation: DELETE_LESSONS_MUTATION,
+                 variables: { id: this.item.id }
+             })
+             .then(() => {
+                toastAlertStatus('success', `Successfully Deleted in Hasura.`)
+             })
+             .catch(error => toastAlertStatus('error', error))
         }
     }
 }
