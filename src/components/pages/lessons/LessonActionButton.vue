@@ -131,7 +131,8 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.value) {
-                    this.removeFileInFirebase()
+                    this.removeFileInFirebase() // REMOVED THE FILE IN FIREBASE STORAGE
+                    this.removeFileDataInHasura () // REMOVED THE INFORMATION DATA IN HASURA
                 }
             })
         },
@@ -144,7 +145,6 @@ export default {
             file
              .delete()
              .then(() => {
-                this.removeFileDataInHasura () // PASSED THE HASURA REMOVE METHOD
                 toastAlertStatus('success', `Successfully Deleted in Firebase.`)
              })
              .catch(error => toastAlertStatus('error', error))
