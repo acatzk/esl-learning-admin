@@ -49,7 +49,7 @@
                                     <v-col cols="12">
                                         <v-file-input
                                             @change="onChangeUploadFiles"
-                                            :label="modalType === 'edit' ? 'Click here if you want to upload new file' : 'Upload PDF File'"
+                                            :label="modalType === 'edit' ? 'Click here if you want to update an existing file' : 'Upload PDF File'"
                                             prepend-icon="mdi-file-pdf-box"
                                             show-size
                                             :loading="loading"
