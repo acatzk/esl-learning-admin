@@ -78,7 +78,9 @@ export default {
                     title: null,
                     description: null,
                     price: null,
-                    url_files: null
+                    url_files: null,
+                    size: null,
+                    type: null
                 }
             ]
         }
