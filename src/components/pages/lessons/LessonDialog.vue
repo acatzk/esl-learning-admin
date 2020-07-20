@@ -72,7 +72,7 @@
                                         <h2>
                                            <v-icon>mdi-file-pdf-box</v-icon> {{ item.title }}
                                         </h2>
-                                        <v-tooltip top>
+                                        <v-tooltip top color="error">
                                             <template v-slot:activator="{ on, attrs }">
                                                 <v-btn 
                                                     icon 
@@ -84,7 +84,9 @@
                                                     <v-icon>mdi-close</v-icon>
                                                 </v-btn>
                                         </template>
-                                            <span>Remove</span>
+                                            <span>
+                                               <v-icon color="white">delete</v-icon> Remove
+                                            </span>
                                         </v-tooltip>
                                     </v-col>
                                     <v-col cols="12">
