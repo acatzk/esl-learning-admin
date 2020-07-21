@@ -16,7 +16,7 @@
         <!-- FILENAME DISPLAY -->
         <template #item.filename="{ item }">
             <span class="d-flex align-center">
-                <v-icon left>mdi-file-pdf-box</v-icon>
+                <v-icon left>{{ getDynamicFileIcon(item) }}</v-icon>
                 <a :href="item.url_files" target="_blank" style="text-decoration: none; text-transform: lowercase;">
                     {{ getUrlFilename(item) }}
                 </a>
@@ -103,6 +103,16 @@ export default {
             if (bytes == 0) return '0 Byte'
             var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
             return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
+        },
+        getDynamicFileIcon (item) {
+            switch (item.type) {
+                case 'text/plain':
+                    return 'mdi-file'
+                    break;
+                default:
+                    return 'mdi-file-pdf-box'
+                    break
+            }
         }
     }
 
