@@ -112,6 +112,9 @@ export default {
                 case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
                     return 'mdi-file-word-box'
                     break;
+                case 'application/vnd.openxmlformats-officedocument.presentationml.presentation':
+                    return 'mdi-file-powerpoint-box'
+                    break;
                 default:
                     return 'mdi-file-pdf-box'
                     break
