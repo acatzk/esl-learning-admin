@@ -34,13 +34,13 @@
         <template #item.created_at="{ item }">
             <span v-if="item.status === 'unread'" class="font-weight-bold">
                 <v-icon left>mdi-calendar</v-icon>
-                <date-display
+                <date-format
                     :created_at="item.created_at.split('T')[0]"
                 />
             </span>
             <span v-else>
                 <v-icon left>mdi-calendar</v-icon>
-                <date-display
+                <date-format
                     :created_at="item.created_at.split('T')[0]"
                 />
             </span>
@@ -67,20 +67,6 @@
         </template>
         <!-- END DISPLAY ITEM CONTACT OF NON CLICKABLE -->
 
-        <!-- STATUS OF UNREAD MESSAGES -->
-        <!-- <template #item.status="{ item }">
-            <td @click.stop class="non-clickable">
-                <v-chip
-                    small
-                    label
-                    style="background: none;"
-                >
-                    <v-icon left v-show="item.status === 'unread'" style="font-size: 15px;">email</v-icon>
-                    <v-icon left v-show="item.status === 'read'" style="font-size: 15px;">drafts</v-icon>
-                </v-chip>
-            </td>
-        </template> -->
-        <!-- END STATUS OF UNREAD MESSAGES -->
 
         <!-- ** EXPANDED MESSAGE AND ACTION BUTTONS ** -->
         <template #expanded-item="{ headers, item }">
@@ -141,7 +127,7 @@ export default {
     }),
 
     components: {
-        DateDisplay: () => import('../DateDisplay')
+        DateFormat: () => import('@/components/mixins/DateFormat')
     },
 
     props: {

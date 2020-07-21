@@ -73,7 +73,7 @@
                         <div>
                             <div class="text-lowercase"><v-icon>mdi-email-outline</v-icon>: {{ inbx.email }}</div>
                             <div><v-icon>mdi-cellphone</v-icon>: {{ inbx.contact }}</div>
-                            <div><v-icon>mdi-calendar-blank</v-icon>: <date-display :created_at="inbx.created_at.split('T')[0]"></date-display></div>
+                            <div><v-icon>mdi-calendar-blank</v-icon>: <date-format :created_at="inbx.created_at.split('T')[0]"></date-format></div>
                             <div>
                                 <v-btn 
                                     :loading="emailLoading" 
@@ -101,7 +101,7 @@
                         </div>
                         <div class="caption mb-2">
                             Date on 
-                            <date-display :created_at="inbox.created_at.split('T')[0]"></date-display> 
+                            <date-format :created_at="inbox.created_at.split('T')[0]"></date-format> 
                             <timeago :datetime="inbox.created_at" :auto-update="60" class="font-weight-medium" style="color: indigo;"></timeago>
                         </div>
                     </div>
@@ -133,7 +133,7 @@ export default {
     name: 'InboxMessage',
 
     components: {
-        DateDisplay: () => import('@/components/pages/DateDisplay')
+        DateFormat: () => import('@/components/mixins/DateFormat')
     },
 
     data () {

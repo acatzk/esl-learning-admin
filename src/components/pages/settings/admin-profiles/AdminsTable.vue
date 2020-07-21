@@ -20,7 +20,7 @@
 
         <!-- ** DATE CREATED ** -->
         <template #item.created_at="{ item }" class="text-center">
-             <date-display :created_at="item.created_at" />
+             <date-format :created_at="item.created_at" />
         </template>
 
             <!-- ** ADMIN UID ** -->
@@ -47,7 +47,7 @@ export default {
 
     components: {
         AdminsActionButton: () => import('./AdminActionButton'),
-        DateDisplay: () => import('@/components/pages/DateDisplay')
+        DateFormat: () => import('@/components/mixins/DateFormat')
     },
 
     props: {

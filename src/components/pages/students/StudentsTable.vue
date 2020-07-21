@@ -38,7 +38,7 @@
         <template #item.birth_date="{ item }">
             <span>
                 <v-icon left>mdi-calendar-check</v-icon>
-                <date-display :created_at="item.birth_date" />
+                <date-format :created_at="item.birth_date" />
             </span>
         </template>
 
@@ -67,7 +67,7 @@ export default {
 
     components: {
         StudentActionButton: () => import('./StudentActionButton'),
-        DateDisplay: () => import('../DateDisplay')
+        DateFormat: () => import('@/components/mixins/DateFormat')
     },
 
     props: {

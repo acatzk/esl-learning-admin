@@ -53,7 +53,7 @@
                             <v-list-item-content>
                                 <v-list-item-title>
                                     {{ item.name }} - 
-                                    <date-display 
+                                    <date-format 
                                         class="grey--text text--lighten-1"
                                         :created_at="item.created_at" 
                                     />
@@ -102,7 +102,7 @@ export default {
     },
 
     components: {
-        DateDisplay: () => import('@/components/pages/DateDisplay')
+        DateFormat: () => import('@/components/mixins/DateFormat')
     },
 
     apollo: {
