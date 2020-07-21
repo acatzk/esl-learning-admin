@@ -90,7 +90,7 @@ export default {
         headers() {
             return [
                 { text: 'Title', value: 'title' },
-                { text: 'PDF Filename', value: 'filename' },
+                { text: 'Filename', value: 'filename' },
                 { text: 'Size', value: 'size' },
                 { text: 'Price', value: 'price' },
                 { text: 'Options', value: 'id', sortable: false },
