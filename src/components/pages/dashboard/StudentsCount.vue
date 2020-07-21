@@ -23,8 +23,7 @@
 
 <script>
 
-// Toast Alert Status
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { TOTAL_STUDENTS_COUNT_QUERY } from '@/graphql/queries/students'
 

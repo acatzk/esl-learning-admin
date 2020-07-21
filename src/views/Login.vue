@@ -101,7 +101,7 @@
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 export default {
   name: 'Login',

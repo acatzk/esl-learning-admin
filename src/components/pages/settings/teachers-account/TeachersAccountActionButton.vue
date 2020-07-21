@@ -16,7 +16,7 @@
 
 import Swal from 'sweetalert2'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { DELETE_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
 

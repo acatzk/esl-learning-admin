@@ -120,7 +120,7 @@
 
 import Swal from 'sweetalert2'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 // GRAPHQL MUTATIONS
 import { INBOX_DELETE_MUTATION, INBOX_UPDATE_MUTATION } from '@/graphql/mutations/inboxes'

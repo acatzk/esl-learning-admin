@@ -107,7 +107,7 @@
 
 import { fb } from '@/firebase' // FIREBASE CONFIGURATION
 
-import { toastAlertStatus } from '@/assets/js/toastAlert' // TOAST ALERT IN SWEETALERT2
+import { toastAlertStatus } from '@/utils' // TOAST ALERT IN SWEETALERT2
 
 import { UPDATE_PROFILE_IMAGE_MUTATION } from '@/graphql/mutations/profile' // HASURA GRAPHQL MUTATION API
 

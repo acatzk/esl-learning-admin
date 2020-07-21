@@ -95,7 +95,7 @@
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { PROFILE_QUERY } from '@/graphql/queries/profile'
 

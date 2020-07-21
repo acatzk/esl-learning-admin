@@ -133,7 +133,7 @@
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { ADD_LESSONS_MUTATION, UPDATE_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
 

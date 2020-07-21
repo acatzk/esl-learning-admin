@@ -80,7 +80,7 @@ import gql from 'graphql-tag'
 
 import moment from 'moment'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 export default {
     name: 'Notifications',

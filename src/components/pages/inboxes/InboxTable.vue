@@ -112,7 +112,7 @@
 <script>
 
 // Toast Alert Status file
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import Swal from 'sweetalert2'
 

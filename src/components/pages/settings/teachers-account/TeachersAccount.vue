@@ -64,8 +64,7 @@
 
 <script>
 
-// Toast Alert Status
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 import { TEACHERS_QUERY } from '@/graphql/queries/teachers'
 import { TEACHERS_SUBSCRIPTION } from '@/graphql/subscriptions/teachers'
 

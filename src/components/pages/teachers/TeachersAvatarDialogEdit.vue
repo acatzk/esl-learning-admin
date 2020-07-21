@@ -92,7 +92,7 @@
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { UPDATE_TEACHERS_PROFILE_IMAGE_MUTATION } from '@/graphql/mutations/teachers'
 

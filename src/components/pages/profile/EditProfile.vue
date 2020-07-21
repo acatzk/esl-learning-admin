@@ -112,7 +112,7 @@
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { UPDATE_PROFILE_MUTATION } from '@/graphql/mutations/profile'
 

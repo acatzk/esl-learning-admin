@@ -80,7 +80,7 @@
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { ALL_ACCOUNT_QUERY_EXCEPT_CURRENT_ADMIN } from '@/graphql/queries/accounts'
 

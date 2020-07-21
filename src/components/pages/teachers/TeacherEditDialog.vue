@@ -116,8 +116,7 @@
 
 <script>
 
-// Toast Alert Status file
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { UPDATE_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
 

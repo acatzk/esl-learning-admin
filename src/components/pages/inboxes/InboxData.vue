@@ -34,8 +34,7 @@
 <script>
 
 // Toast Alert Status
-import { toastAlertStatus } from '@/assets/js/toastAlert'
-
+import { toastAlertStatus } from '@/utils'
 // INBOXES QUERY 
 import { INBOX_QUERY } from '@/graphql/queries/inboxes'
 // INBOXES SUBSCRIPTION

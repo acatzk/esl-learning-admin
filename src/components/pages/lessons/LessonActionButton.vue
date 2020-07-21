@@ -64,7 +64,7 @@ import Swal from 'sweetalert2'
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { DELETE_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
 

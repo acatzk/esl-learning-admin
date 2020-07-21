@@ -46,8 +46,7 @@
 
 <script>
 
-// Toast Alert Status file
-import { toastAlertStatus } from '@/assets/js/toastAlert'
+import { toastAlertStatus } from '@/utils'
 
 import { DELETE_STUDENT_MUTATION } from '@/graphql/mutations/students'
 
