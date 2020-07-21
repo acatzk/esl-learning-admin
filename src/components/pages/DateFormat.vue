@@ -9,7 +9,7 @@
 import moment from 'moment'
 
 export default {
-    name: 'DateDisplay',
+    name: 'DateFormat',
 
     props: ['created_at'],
 
