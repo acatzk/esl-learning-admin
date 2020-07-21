@@ -56,6 +56,8 @@
 
 <script>
 
+import { toastAlertStatus } from '@/utils'
+
 import { LESSONS_QUERY } from '@/graphql/queries/lessons'
 
 import { LESSONS_SUBSCRIPTION } from '@/graphql/subscriptions/lessons'
@@ -102,6 +104,9 @@ export default {
     apollo: {
         lessons: {
             query: LESSONS_QUERY,
+            error (error) {
+                toastAlertStatus('error', error)
+            },
             subscribeToMore: {
                 document: LESSONS_SUBSCRIPTION,
                 updateQuery(previousResult, { subscriptionData }) {
