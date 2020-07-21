@@ -1,5 +1,5 @@
 import { toastAlertStatus } from './toastAlert'
 
-export const {
+export {
     toastAlertStatus
 }
