@@ -89,7 +89,7 @@ export default {
     props: ['visible', 'modalType', 'accounts'],
 
     components: {
-        Alert: () => import('@/components/pages/Alert')
+        Alert: () => import('@/components/mixins/Alert')
     },
 
     data () {

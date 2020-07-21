@@ -45,8 +45,7 @@ export default {
     name: 'InboxData',
 
     components: {
-        InboxTable: () => import('./InboxTable'),
-        Alert: () => import('@/components/pages/Alert')
+        InboxTable: () => import('./InboxTable')
     },
 
     data: () => ({

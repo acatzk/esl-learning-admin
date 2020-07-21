@@ -107,7 +107,7 @@ export default {
   name: 'Login',
 
   components: {
-    Alert: () => import('@/components/pages/Alert')
+    Alert: () => import('@/components/mixins/Alert')
   },
 
   data () {

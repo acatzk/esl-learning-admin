@@ -65,7 +65,7 @@ export default {
     props: ['visible', 'modalType', 'item'],
 
     components: {
-        Alert: () => import('@/components/pages/Alert')
+        Alert: () => import('@/components/mixins/Alert')
     },
 
     data () {
