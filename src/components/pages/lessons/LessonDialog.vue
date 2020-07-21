@@ -70,7 +70,7 @@
                                 <v-row class="pdf-file" v-show="modalType === 'edit'">
                                     <v-col cols="12" class="pdf-column d-flex justify-space-between">
                                         <h2>
-                                           <v-icon>mdi-file-pdf-box</v-icon> {{ item.title }}
+                                           <v-icon color="white">mdi-file-pdf-box</v-icon> {{ item.title }}
                                         </h2>
                                         <v-tooltip top color="error">
                                             <template v-slot:activator="{ on, attrs }">
@@ -78,6 +78,7 @@
                                                     icon 
                                                     fab 
                                                     small
+                                                    color="white"
                                                     v-on="on"
                                                     v-bind="attrs"
                                                 >
@@ -89,13 +90,11 @@
                                             </span>
                                         </v-tooltip>
                                     </v-col>
-                                    <v-col cols="12">
-                                        <embed
-                                            :src="item.url_files"
-                                            type="application/pdf"
-                                            class="pdf-embeded"
-                                        />
-                                    </v-col>
+                                    <embed
+                                        :src="item.url_files"
+                                        type="application/pdf"
+                                        class="pdf-embeded"
+                                    />
                                 </v-row>
                             </div>
                         </v-form>
@@ -280,13 +279,14 @@ export default {
 }
 .pdf-file {
     max-width: 500px; 
-    margin-left: 10px; 
-    border-radius: 20px !important;
-    background: rgb(247, 247, 247);
+    margin-left: 15px; 
+    border-radius: 5px !important;
+    background: rgb(0, 0, 0);
+    color: white;
     border: 1px solid rgb(207, 207, 207);
 }
 .pdf-embeded {
-    height: 50vh;
+    height: 51vh;
     width: 100%;
 }
 </style>
