@@ -8,7 +8,7 @@ const routes = [
   {
     path: '*',
     name: 'not-found',
-    component: () => import('@/components/404')
+    component: () => import('@/components/errors/404')
   },
   {
     path: '/',
