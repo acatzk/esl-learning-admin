@@ -109,6 +109,9 @@ export default {
                 case 'text/plain':
                     return 'mdi-file'
                     break;
+                case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+                    return 'mdi-file-word-box'
+                    break;
                 default:
                     return 'mdi-file-pdf-box'
                     break
