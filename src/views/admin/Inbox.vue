@@ -1,7 +1,7 @@
 <template>
   <div class="inbox">
 
-    <v-toolbar :dark="mode ? true : false" flat>
+    <v-toolbar :dark="mode ? false : true" flat>
 
       <v-toolbar-title class="d-flex">
           <v-icon left>markunread</v-icon> Inbox
@@ -14,7 +14,7 @@
     <v-card 
       class="mx-auto" 
       flat 
-      :dark="mode ? true : false"
+      :dark="mode ? false : true"
     >
 
       <router-view></router-view> <!-- Dynamic route data -->
@@ -25,13 +25,15 @@
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
+
 export default {
   name: 'Inbox',
 
-  data () {
-    return {
-      mode: false
-    }
+  computed: {
+    ...mapState(['mode'])
   }
+
 }
 </script>
