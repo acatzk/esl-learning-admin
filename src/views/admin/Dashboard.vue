@@ -5,6 +5,7 @@
       <v-col cols="12" sm="3">
         <v-card
           class="elevation-1 card-inbox"
+          :dark="mode ? false : true"
         >
            <inbox-count /> <!-- INBOX COUNT QUERY AND SUBSCRIPTION -->
         </v-card>
@@ -13,6 +14,7 @@
       <v-col cols="12" sm="3">
         <v-card
           class="elevation-1 card-lessons"
+          :dark="mode ? false : true"
         >
           <lessons-count /> <!-- LESSONS COUNT QUERY AND SUBSCRIPTION -->
         </v-card>
@@ -21,6 +23,7 @@
        <v-col cols="12" sm="3">
          <v-card
           class="elevation-1 card-teachers"
+          :dark="mode ? false : true"
         >
           <teachers-count /> <!-- TEACHERS COUNT QUERY AND SUBSCRIPTION -->
         </v-card>
@@ -29,6 +32,7 @@
       <v-col cols="12" sm="3">
         <v-card
           class="elevation-1 card-students"
+          :dark="mode ? false : true"
         >
           <students-count /> <!-- STUDENTS COUNT QUERY AND SUBSCRIPTION -->
         </v-card>
@@ -71,6 +75,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 export default {
   name: 'Dashboad',
 
@@ -103,7 +109,11 @@ export default {
       240,
     ],
     inboxCount: 0
-  })
+  }),
+
+  computed: {
+    ...mapState(['mode'])
+  }
 
 }
 </script>
