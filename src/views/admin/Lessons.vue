@@ -4,7 +4,7 @@
         <v-toolbar :dark="mode ? false : true" flat>
 
             <v-toolbar-title class="d-flex">
-                <v-icon left>mdi-folder-multiple-outline</v-icon> Lessons
+                <v-icon left>mdi-folder-multiple</v-icon> Lessons
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
