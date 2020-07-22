@@ -1,16 +1,24 @@
 <template>
   <div class="settings">
-    <header>
-      <v-toolbar-title>
-        <v-icon right>settings</v-icon> General Settings
+
+    <v-toolbar 
+      :dark="mode ? false : true" 
+      flat
+    >
+      <v-toolbar-title class="d-flex">
+          <v-icon left>settings</v-icon> General Settings
       </v-toolbar-title>
-    </header>
+    </v-toolbar>
+
+    <v-divider></v-divider>
+
     <v-card 
       class="mx-auto" 
       flat 
+      :dark="mode ? false : true"
     >
 
-     <tab-settings />
+     <tab-settings :mode="mode" />
       
     </v-card>
   </div>
@@ -18,20 +26,17 @@
 
 <script>
 
-
+import { mapState } from 'vuex'
 
 export default {
     name: 'SEttings',
 
     components: {
         TabSettings: () => import('@/components/pages/settings/TabSettings')
+    },
+    
+    computed: {
+      ...mapState(['mode'])
     }
 }
 </script>
-
-<style scoped>
-header {
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-}
-</style>
