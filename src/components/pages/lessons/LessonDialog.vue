@@ -49,8 +49,8 @@
                                     <v-col cols="12">
                                         <v-file-input
                                             @change="onChangeUploadFiles"
-                                            :label="modalType === 'edit' ? 'Click here if you want to update an existing file' : 'Upload PDF File'"
-                                            prepend-icon="mdi-file-pdf-box"
+                                            :label="modalType === 'edit' ? 'Click here to update an existing file' : 'Upload File'"
+                                            prepend-icon="mdi-file-cloud"
                                             show-size
                                             :loading="loading"
                                             accept="application/pdf"
