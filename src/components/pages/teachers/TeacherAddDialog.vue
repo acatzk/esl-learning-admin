@@ -1,6 +1,6 @@
 <template>
     <v-dialog v-model="show" max-width="600px">
-        <v-card>
+        <v-card :dark="mode ? false : true">
             <v-card-title>
                 <span class="headline">
                     <v-icon left size="35">mdi-plus</v-icon> New Teacher
@@ -122,6 +122,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 import { toastAlertStatus } from '@/utils'
 
 import { ADD_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
@@ -172,7 +174,8 @@ export default {
              this.$emit('close')
            }
         }
-      }
+      },
+      ...mapState(['mode'])
     },
 
     methods: {
