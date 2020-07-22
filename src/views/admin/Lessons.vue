@@ -1,9 +1,14 @@
 <template>
     <div class="lessons">
-        <header class="d-flex justify-space-between align-center">
-            <v-toolbar-title>
-                <v-icon right>mdi-folder-multiple-outline</v-icon> Lessons
+
+        <v-toolbar :dark="mode ? false : true" flat>
+
+            <v-toolbar-title class="d-flex">
+                <v-icon left>mdi-folder-multiple-outline</v-icon> Lessons
             </v-toolbar-title>
+
+            <v-spacer></v-spacer>
+
             <v-btn 
                 small 
                 depressed 
@@ -13,7 +18,10 @@
             >
                 <v-icon>mdi-plus</v-icon>
             </v-btn>
-        </header>
+
+        </v-toolbar>
+
+        <v-divider></v-divider>
         
         <lesson-dialog 
             :visible="dialog" @close="dialog = false"
@@ -21,7 +29,7 @@
             :item="item"
         />
 
-         <v-card flat>
+         <v-card flat :dark="mode ? false : true">
            
             <!-- ** SEARCH TEXT FIELD ** -->
             <v-text-field
@@ -55,6 +63,8 @@
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
 
 import { toastAlertStatus } from '@/utils'
 
@@ -97,7 +107,8 @@ export default {
                 { text: 'Price', value: 'price' },
                 { text: 'Options', value: 'id', sortable: false },
             ]
-        }
+        },
+        ...mapState(['mode'])
     },
 
 
@@ -128,13 +139,3 @@ export default {
 
 }
 </script>
-
-
-<style scoped lang="scss">
-.lessons {
-    header {
-        padding: 15px;
-        border-bottom: 1px solid #eee;
-    }
-}
-</style>
