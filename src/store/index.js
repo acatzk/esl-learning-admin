@@ -8,13 +8,13 @@ export default new Vuex.Store({
     mode: true
   },
   mutations: {
-    DARK_MODE(state, mode) {
-      mode = !mode
+    DARK_MODE(state) {
+      state.mode = !state.mode
     }
   },
   actions: {
-    darkMode({ commit }, mode) {
-      commit('DARK_MODE', mode)
+    darkMode({ commit }) {
+      commit('DARK_MODE')
     }
   },
   modules: {}
