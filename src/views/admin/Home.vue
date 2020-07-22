@@ -8,7 +8,7 @@
 
       <v-container 
         fluid
-        class="home-style"
+        :class="mode ? 'light-style' : 'dark-style'"
       >
         <vue-page-transition name="fade-in-right" class="content">
 
@@ -30,6 +30,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 export default {
   
   name: "Home",
@@ -42,6 +44,10 @@ export default {
 
     FootBar: () => import('@/components/layouts/FootBar')
 
+  },
+
+  computed: {
+    ...mapState(['mode'])
   }
 
 };
@@ -50,8 +56,11 @@ export default {
 
 
 <style scoped>
-.home-style {
+.light-style {
   background-color: #F6F7FB;
+}
+.dark-style {
+  background-color: rgb(53, 53, 53);
 }
 .content {
   margin-top: 5px;
