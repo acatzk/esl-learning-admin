@@ -161,9 +161,6 @@ export default {
       },
     },
 
-    components: {
-      AddAvatarEditor: () => import('./AddAvatarEditor')
-    },
 
     computed: {
       show: {
