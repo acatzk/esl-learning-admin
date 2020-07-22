@@ -1,6 +1,7 @@
 <template>
   <v-footer
     padless
+    :dark="mode ? false : true"
   >
     <v-card
       class="flex"
@@ -23,14 +24,21 @@
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      icons: [
-        'mdi-facebook',
-        'mdi-twitter',
-        'mdi-linkedin',
-        'mdi-instagram',
-      ],
-    }),
+
+import { mapState } from 'vuex'
+
+export default {
+  data: () => ({
+    icons: [
+      'mdi-facebook',
+      'mdi-twitter',
+      'mdi-linkedin',
+      'mdi-instagram',
+    ],
+  }),
+
+  computed: {
+    ...mapState(['mode'])
   }
+}
 </script>
