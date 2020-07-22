@@ -1,8 +1,9 @@
-let getUrlFilename = (item) => {
+let splitUrlFilename = (item) => {
     let newItem = item.url_files.split('/lessons-files%2F').pop().split('#')[0].split('?')[0]
     return newItem.length >= 30 ? newItem.slice(0, 30) + "..." : newItem
 }
-let getConvertedByteSize = (item) => {
+
+let convertByteSize = (item) => {
     let bytes = item.size
     var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
     if (bytes == 0) return '0 Byte'
@@ -10,7 +11,7 @@ let getConvertedByteSize = (item) => {
     return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
 }
 
-let getDynamicFileIcon = (item) => {
+let fileExtentionIcon = (item) => {
     switch (item.type) {
         case 'text/plain':
             return 'mdi-file'
@@ -31,7 +32,7 @@ let getDynamicFileIcon = (item) => {
 }
 
 export {
-    getUrlFilename,
-    getConvertedByteSize,
-    getDynamicFileIcon
+    splitUrlFilename,
+    convertByteSize,
+    fileExtentionIcon
 }
