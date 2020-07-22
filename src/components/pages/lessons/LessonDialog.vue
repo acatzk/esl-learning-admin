@@ -1,7 +1,7 @@
 <template>
     <v-row justify="center">
         <v-dialog v-model="show" :max-width="modalType === 'edit' ? '1000px' : '500px'">
-            <v-card>
+            <v-card :dark="mode ? false : true">
                 <v-card-title>
                     <span class="headline" v-if="modalType === 'edit'">
                         <v-icon left size="35">mdi-pencil</v-icon> Edit Lesson
@@ -135,6 +135,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 import { fb } from '@/firebase'
 
 import { toastAlertStatus, fileExtentionIcon } from '@/utils'
@@ -168,7 +170,8 @@ export default {
                     this.$emit('close')
                 }
             }
-        }
+        },
+        ...mapState(['mode'])
     },
 
     methods: {
