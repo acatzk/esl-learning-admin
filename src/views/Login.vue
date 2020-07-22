@@ -101,7 +101,7 @@
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/utils'
+import { toastAlertStatus, required, emailRules } from '@/utils'
 
 export default {
   name: 'Login',
@@ -119,10 +119,10 @@ export default {
       loading: false,
       valid: true,
       required(propertyType) { 
-          return v => v && v.length > 0 || `${propertyType} is required.`
+          return required(propertyType)
       },
       emailRules(propertyType) {
-          return v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || `${propertyType} address must be valid.`
+          return emailRules(propertyType)
       },
       error: ''
     }
