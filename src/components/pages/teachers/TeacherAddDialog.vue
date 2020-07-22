@@ -177,11 +177,6 @@ export default {
 
     methods: {
 
-        saveClickedFromEditor (img) {
-            this.$refs.imageFromEditor.src = img.toDataURL();
-            console.log(img)
-        },
-
         save (date) {
           this.$refs.menu.save(date)
         },
