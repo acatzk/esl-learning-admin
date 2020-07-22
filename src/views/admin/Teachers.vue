@@ -1,25 +1,34 @@
 <template>
     <div class="teachers">
-        <header class="d-flex justify-space-between align-center">
-            <v-toolbar-title>
-                <v-icon right>supervisor_account</v-icon> Teacher List
+
+        <v-toolbar :dark="mode ? false : true" flat>
+
+            <v-toolbar-title class="d-flex">
+                <v-icon left>supervisor_account</v-icon> Teacher List
             </v-toolbar-title>
+
+            <v-spacer></v-spacer>
+
             <v-btn 
-                small
+                small 
                 depressed 
                 text
                 outlined
                 @click.stop="dialog = true"
             >
-               <v-icon>mdi-plus</v-icon>
+                <v-icon>mdi-plus</v-icon>
             </v-btn>
 
-            <teacher-add-dialog 
-                :visible="dialog" @close="dialog = false"
-            />
-        </header>
+        </v-toolbar>
 
-        <v-card flat>
+        <v-divider></v-divider>
+
+        <teacher-add-dialog 
+            :visible="dialog" @close="dialog = false"
+        />
+        
+
+        <v-card flat :dark="mode ? false : true">
 
             <!-- ** SEARCH TEXT FIELD ** -->
             <v-text-field
@@ -54,6 +63,7 @@
 
 <script>
 
+import { mapState } from 'vuex'
 import { toastAlertStatus } from '@/utils'
 import { TEACHERS_QUERY } from '@/graphql/queries/teachers'
 import { TEACHERS_SUBSCRIPTION } from '@/graphql/subscriptions/teachers'
@@ -79,7 +89,8 @@ export default {
                 { text: 'Status', value: 'is_active', sortable: false },
                 { text: 'Options', value: 'id', sortable: false },
             ]
-        }
+        },
+        ...mapState(['mode'])
     },
 
     components: {
@@ -112,12 +123,3 @@ export default {
     }
 }
 </script>
-
-<style scoped lang="scss">
-.teachers {
-    header {
-        padding: 15px;
-        border-bottom: 1px solid #eee;
-    }
-}
-</style>
