@@ -12,9 +12,6 @@ export const toastAlertStatus = (icon, title) => {
             toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
     })
-    
-    Toast.fire({
-        icon: icon,
-        title: title
-    })
+
+    Toast.fire({ icon, title })
 }
