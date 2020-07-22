@@ -73,7 +73,7 @@
                                             flat
                                     >
                                         <v-toolbar-title class="d-flex">
-                                            <v-icon left>mdi-file-pdf-box</v-icon> {{ item.title }}
+                                            <v-icon left>{{ getDynamicFileIcon (item) }}</v-icon> {{ item.title }}
                                         </v-toolbar-title>
                                         <v-spacer></v-spacer>
                                         <v-tooltip top color="error">
@@ -137,7 +137,7 @@
 
 import { fb } from '@/firebase'
 
-import { toastAlertStatus } from '@/utils'
+import { toastAlertStatus, fileExtentionIcon } from '@/utils'
 
 import { ADD_LESSONS_MUTATION, UPDATE_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
 
@@ -272,6 +272,10 @@ export default {
                         .catch(error => toastAlertStatus('error', error))
             })
 
+        },
+
+        getDynamicFileIcon (item) {
+            return fileExtentionIcon(item)
         }
     }
 }
