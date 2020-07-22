@@ -8,8 +8,8 @@ export default new Vuex.Store({
     mode: true
   },
   mutations: {
-    DARK_MODE({ state }, mode) {
-      state.mode = !mode
+    DARK_MODE(state, mode) {
+      mode = !mode
     }
   },
   actions: {
