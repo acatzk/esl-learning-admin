@@ -1,33 +1,37 @@
 <template>
   <div class="inbox">
-    <header>
-      <v-toolbar-title>
-        <v-icon right>markunread</v-icon> Inbox
+
+    <v-toolbar :dark="mode ? true : false" flat>
+
+      <v-toolbar-title class="d-flex">
+          <v-icon left>markunread</v-icon> Inbox
       </v-toolbar-title>
-    </header>
+
+    </v-toolbar>
+
+    <v-divider></v-divider>
+
     <v-card 
       class="mx-auto" 
       flat 
+      :dark="mode ? true : false"
     >
 
-     <router-view></router-view> <!-- Dynamic route data -->
+      <router-view></router-view> <!-- Dynamic route data -->
       
     </v-card>
+
   </div>
 </template>
 
 <script>
-
-
-
 export default {
-  name: 'Inbox'
+  name: 'Inbox',
+
+  data () {
+    return {
+      mode: false
+    }
+  }
 }
 </script>
-
-<style scoped>
-header {
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-}
-</style>
