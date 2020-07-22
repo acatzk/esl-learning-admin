@@ -1,11 +1,11 @@
 import { toastAlertStatus } from './toastAlert'
 import { capitalize } from './capitalize'
-import { getUrlFilename, getConvertedByteSize, getDynamicFileIcon } from './lessons'
+import { splitUrlFilename, convertByteSize, fileExtentionIcon } from './lessons'
 
 export {
     toastAlertStatus,
     capitalize,
-    getUrlFilename,
-    getConvertedByteSize,
-    getDynamicFileIcon 
+    splitUrlFilename,
+    convertByteSize,
+    fileExtentionIcon
 }
