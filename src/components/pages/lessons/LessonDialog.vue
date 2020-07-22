@@ -68,10 +68,14 @@
                                     </v-col>
                                 </v-row>
                                 <v-row class="pdf-file" v-show="modalType === 'edit'">
-                                    <v-col cols="12" class="pdf-column d-flex justify-space-between">
-                                        <h2>
-                                           <v-icon color="white">mdi-file-pdf-box</v-icon> {{ item.title }}
-                                        </h2>
+                                     <v-toolbar
+                                            dark
+                                            flat
+                                    >
+                                        <v-toolbar-title class="d-flex">
+                                            <v-icon left>mdi-file-pdf-box</v-icon> {{ item.title }}
+                                        </v-toolbar-title>
+                                        <v-spacer></v-spacer>
                                         <v-tooltip top color="error">
                                             <template v-slot:activator="{ on, attrs }">
                                                 <v-btn 
@@ -86,10 +90,10 @@
                                                 </v-btn>
                                         </template>
                                             <span>
-                                               <v-icon color="white">delete</v-icon> Remove
+                                            <v-icon color="white">delete</v-icon> Remove
                                             </span>
                                         </v-tooltip>
-                                    </v-col>
+                                    </v-toolbar>
                                     <embed
                                         :src="item.url_files"
                                         type="application/pdf"
