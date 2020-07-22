@@ -115,6 +115,9 @@ export default {
                 case 'application/vnd.openxmlformats-officedocument.presentationml.presentation':
                     return 'mdi-file-powerpoint-box'
                     break;
+                case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+                    return 'mdi-file-excel-box'
+                    break;
                 default:
                     return 'mdi-file-pdf-box'
                     break
