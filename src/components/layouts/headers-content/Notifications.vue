@@ -20,7 +20,7 @@
             </v-btn>
         </template>
         
-        <v-list class="mt-2">
+        <v-list class="mt-2" :dark="mode ? false : true">
             <v-list 
                 three-line 
                 dense 
