@@ -1,7 +1,7 @@
 <template>
    <v-row justify="center">
         <v-dialog v-model="show" max-width="450px">
-            <v-card>
+            <v-card :dark="mode ? false : true">
                 <v-card-title>
                     <span class="headline">
                         <v-icon left size="35">mdi-camera-outline</v-icon> {{ capitalize(`${item.firstname}`) }} Avatar
@@ -70,7 +70,7 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="indigo darken-1" text  @click="show = !show" small>
+                    <v-btn :color="mode ? 'indigo darken-1 white' : ''" text  @click="show = !show" small>
                         <v-icon left>mdi-close-circle-outline</v-icon> Close
                     </v-btn>
                     <v-btn 
@@ -91,6 +91,8 @@
 <script>
 
 import { fb } from '@/firebase'
+
+import { mapState } from 'vuex'
 
 import { toastAlertStatus } from '@/utils'
 
@@ -121,7 +123,8 @@ export default {
                     this.$emit('close')
                 }
             }
-        }
+        },
+        ...mapState(['mode'])
     },
 
     methods: {
