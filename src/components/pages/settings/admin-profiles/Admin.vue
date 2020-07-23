@@ -12,12 +12,8 @@
                 <!-- ** SEARCH TEXT FIELD ** -->
                 <v-text-field
                     placeholder="Search"
-                    filled
-                    rounded
-                    flat
                     v-model="search"
                     prepend-inner-icon="search"
-                    style="position: relative; margin-right: 5px; top: 6px;"
                 ></v-text-field>
 
                 <v-tooltip bottom >

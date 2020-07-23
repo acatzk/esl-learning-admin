@@ -34,11 +34,8 @@
             <v-text-field
                 placeholder="Search"
                 v-model="search"
-                filled
-                class="mx-3"
                 prepend-inner-icon="search"
-                rounded
-                style="position: relative; top: 17px; border-radius: 50px;"
+                filled
             ></v-text-field>
 
             <!-- ** SKELETON LOADING FOR DATA ** -->
