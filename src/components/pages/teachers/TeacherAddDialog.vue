@@ -103,7 +103,7 @@
                     <v-icon left>mdi-reload</v-icon> Reset
                 </v-btn>
                 <v-spacer></v-spacer>
-                <v-btn color="indigo darken-1" text  @click="show = !show" small>
+                <v-btn :color="mode ? 'indigo darken-1 white' : ''" text  @click="show = !show" small>
                     <v-icon left>mdi-close-circle-outline</v-icon> Close
                 </v-btn>
                 <v-btn 
