@@ -9,7 +9,7 @@
                 <v-icon>mdi-apps</v-icon>
             </v-btn>
         </template>
-        <v-list class="mt-2">
+        <v-list class="mt-2" :dark="mode ? false : true">
             <v-container class="mx-2">
                 <v-layout cols="6">
                     <v-flex>
@@ -112,6 +112,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 import { fb } from '@/firebase'
 
 export default {
@@ -121,6 +123,10 @@ export default {
         return {
             profile: fb.auth().currentUser.uid
         }
+    },
+
+    computed: {
+        ...mapState(['mode'])
     }
 }
 </script>
