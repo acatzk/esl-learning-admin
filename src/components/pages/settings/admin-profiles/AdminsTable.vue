@@ -99,7 +99,6 @@ export default {
 
 ::v-deep tbody tr td {
     font-size: 13px;
-    color: rgb(90, 90, 90);
 }
 
 </style>
