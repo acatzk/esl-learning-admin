@@ -23,7 +23,7 @@
                                         href="https://firebase.google.com/docs/auth"
                                         target="_blank"
                                         icon
-                                        color="primary"
+                                        :color="mode ? 'primary' : 'error'"
                                     >
                                         <v-icon>mdi-information</v-icon>
                                     </v-btn>
@@ -47,7 +47,7 @@
                                 <v-btn 
                                     block 
                                     depressed
-                                    color="primary lighten-1"
+                                    :color="mode ? 'primary lighten-1' : 'error'"
                                     @click="dialog = !dialog, modalType = 'email'"
                                 >
                                 <v-icon left>mdi-email-outline</v-icon> Update Your Email
@@ -58,7 +58,7 @@
                                     block
                                     outlined
                                     depressed
-                                    color="primary lighten-1"
+                                    :color="mode ? 'primary lighten-1' : 'error'"
                                     @click="dialog = !dialog, modalType = 'password'"
                                 >
                                 <v-icon left>mdi-lock</v-icon> Update Your Password
@@ -85,6 +85,8 @@
 
 import { fb } from '@/firebase'
 
+import { mapState } from 'vuex'
+
 import { ACCOUNT_QUERY } from '@/graphql/queries/accounts'
 
 import { ACCOUNT_SUBSCRIPTION } from '@/graphql/subscriptions/accounts'
@@ -104,6 +106,10 @@ export default {
             dialog: false,
             modalType: ''
         }
+    },
+
+    computed: {
+        ...mapState(['mode'])
     },
 
     apollo: {
