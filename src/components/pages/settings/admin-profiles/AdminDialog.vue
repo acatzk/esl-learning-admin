@@ -1,7 +1,7 @@
 <template>
     <v-row justify="center">
         <v-dialog v-model="show" max-width="400px">
-            <v-card>
+            <v-card :dark="mode ? false : true">
                 <v-card-title>
                     <span class="headline" v-if="modalType !== 'about'">
                         <v-icon left size="35">mdi-information</v-icon> About Authentication
@@ -59,6 +59,7 @@
 
 <script>
 
+import { mapState } from 'vuex'
 
 export default {
     
@@ -99,7 +100,8 @@ export default {
                     this.$emit('close')
                 }
             }
-        }
+        },
+        ...mapState(['mode'])
     }
 
 }
