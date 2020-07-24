@@ -14,3 +14,13 @@ export const LESSONS_SUBSCRIPTION = gql`
         }
     } 
 `
+
+export const TOTAL_LESSONS_COUNT_SUBSCRPTION = gql`
+    subscription InboxCountSubscription {
+        lessonCount: lessons_aggregate {
+            aggregate {
+                count
+            }
+        }
+    }  
+`

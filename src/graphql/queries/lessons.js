@@ -14,3 +14,14 @@ export const LESSONS_QUERY = gql`
         }
     }  
 `
+
+
+export const TOTAL_LESSONS_COUNT_QUERY = gql`
+    query InboxCountQuery {
+        lessonCount: lessons_aggregate {
+            aggregate {
+                count
+            }
+        }
+    }  
+`
