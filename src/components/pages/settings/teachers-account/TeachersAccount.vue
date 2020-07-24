@@ -17,7 +17,7 @@
                         v-on="on"
                         depressed
                         v-bind="attrs"
-                        color="primary"
+                        :color="mode ? 'primary' : 'error'"
                     >
                         <v-icon>mdi-information</v-icon>
                     </v-btn>
@@ -60,6 +60,7 @@
 
 <script>
 
+import { mapState } from 'vuex'
 import { toastAlertStatus } from '@/utils'
 import { TEACHERS_QUERY } from '@/graphql/queries/teachers'
 import { TEACHERS_SUBSCRIPTION } from '@/graphql/subscriptions/teachers'
@@ -87,7 +88,8 @@ export default {
                 { text: 'Gender', value: 'gender', sortable: false },
                 { text: 'Delete', value: 'id', sortable: false },
             ]
-        }
+        },
+        ...mapState(['mode'])
     },
 
     apollo: {
