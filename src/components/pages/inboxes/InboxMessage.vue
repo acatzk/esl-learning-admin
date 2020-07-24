@@ -63,7 +63,7 @@
                 >
                     <div>
                         <div class="d-flex justify-center">
-                                <v-avatar color="indigo">
+                                <v-avatar :color="mode ? 'indigo' : 'error'">
                                     <v-icon dark>mdi-account-circle</v-icon>
                                 </v-avatar>
                             </div>
@@ -77,7 +77,7 @@
                             <div>
                                 <v-btn 
                                     :loading="emailLoading" 
-                                    color="deep-purple darken-4" 
+                                    :color="mode ? 'deep-purple darken-4' : 'error'" 
                                     width="100%" 
                                     outlined 
                                     text
@@ -102,7 +102,7 @@
                         <div class="caption mb-2">
                             Date on 
                             <date-format :created_at="inbox.created_at.split('T')[0]"></date-format> 
-                            <timeago :datetime="inbox.created_at" :auto-update="60" class="font-weight-medium" style="color: indigo;"></timeago>
+                            <timeago :datetime="inbox.created_at" :auto-update="60" class="font-weight-medium" :style="mode ? 'color: indigo;' : 'color: #bbb;'"></timeago>
                         </div>
                     </div>
                     <v-card v-show="!$apollo.loading" flat style="overflow-y: scroll; height: 53vh; text-align: justify;">
@@ -117,6 +117,8 @@
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
 
 import Swal from 'sweetalert2'
 
@@ -141,6 +143,10 @@ export default {
             id: this.$route.params.id,
             emailLoading: false
         }
+    },
+
+    computed: {
+        ...mapState(['mode'])
     },
 
     methods: {
