@@ -1,7 +1,7 @@
 <template>
     <v-row justify="center">
         <v-dialog v-model="show" max-width="400px">
-            <v-card>
+            <v-card :dark="mode ? false : true">
                 <v-card-title>
                     <span class="headline" v-if="modalType === 'email'">
                         <v-icon left size="35">mdi-email-outline</v-icon> Update Email
@@ -55,11 +55,15 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="indigo darken-1" text  @click="show = !show" small>
+                    <v-btn 
+                        :color="mode ? 'indigo darken-1' : 'grey'" 
+                        text  
+                        @click="show = !show" small
+                    >
                         <v-icon left>mdi-close-circle-outline</v-icon> Close
                     </v-btn>
                     <v-btn 
-                        color="indigo darken-1 white--text" 
+                        :color="mode ? 'indigo darken-1 white--text' : 'error'" 
                         depressed
                         small
                         :loading="loading"  
@@ -78,7 +82,8 @@
 
 import { fb } from '@/firebase'
 
-// Toast Alert Status file
+import { mapState } from 'vuex'
+
 import { toastAlertStatus } from '@/utils'
 
 import { ACCOUNT_UPDATE_MUTATION } from '@/graphql/mutations/accounts'
@@ -123,7 +128,8 @@ export default {
                     this.$emit('close')
                 }
             }
-        }
+        },
+        ...mapState(['mode'])
     },
 
     methods: {
