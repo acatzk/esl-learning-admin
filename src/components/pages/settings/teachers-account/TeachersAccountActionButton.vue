@@ -6,7 +6,8 @@
             color="error"
             @click="deleteTeacherAccount"
         >
-            <v-icon>delete_outline</v-icon>
+            <v-icon v-if="mode">delete_outline</v-icon>
+            <v-icon v-else>delete</v-icon>
         </v-btn>
     </div>
 </template>
@@ -15,6 +16,8 @@
 <script>
 
 import Swal from 'sweetalert2'
+
+import { mapState } from 'vuex'
 
 import { toastAlertStatus } from '@/utils'
 
@@ -31,34 +34,38 @@ export default {
 
     props: ['item', 'items'],
 
+    computed: {
+        ...mapState(['mode'])
+    },
+
     methods: {
-      deleteTeacherAccount () {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "By the way before you actually delete the account make sure to remove the teachers profile image to minimize the firebase storage - by Backend Developer.",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        })
-        .then((result) => {
-            if (result.value) {
-                this.items.splice(this.item, 1)
-                
-                const { id } = this.item
-                this
-                 .$apollo
-                 .mutate({
-                     mutation: DELETE_TEACHER_MUTATION,
-                     variables: { id }
-                 })
-                 .then(() => {
-                    toastAlertStatus('success', 'Teacher account has been deleted')
-                 })
-                 .catch(error => toastAlertStatus('error', error))
-            }
-        })
+        deleteTeacherAccount () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "By the way before you actually delete the account make sure to remove the teachers profile image to minimize the firebase storage - by Backend Developer.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            })
+            .then((result) => {
+                if (result.value) {
+                    this.items.splice(this.item, 1)
+                    
+                    const { id } = this.item
+                    this
+                    .$apollo
+                    .mutate({
+                        mutation: DELETE_TEACHER_MUTATION,
+                        variables: { id }
+                    })
+                    .then(() => {
+                        toastAlertStatus('success', 'Teacher account has been deleted')
+                    })
+                    .catch(error => toastAlertStatus('error', error))
+                }
+            })
       }
     }
 }
