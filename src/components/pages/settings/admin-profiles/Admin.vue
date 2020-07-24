@@ -24,7 +24,7 @@
                             large 
                             v-on="on"
                             depressed
-                            color="primary"
+                            :color="mode ? 'primary' : 'error'"
                             v-bind="attrs"
                             @click.stop="dialog = true"
                         >
@@ -76,6 +76,8 @@
 
 import { fb } from '@/firebase'
 
+import { mapState } from 'vuex'
+
 import { toastAlertStatus } from '@/utils'
 
 import { ALL_ACCOUNT_QUERY_EXCEPT_CURRENT_ADMIN } from '@/graphql/queries/accounts'
@@ -111,7 +113,8 @@ export default {
                 { text: 'Admin UID', value: 'uid' },
                 { text: 'Options', value: 'id', sortable: false }
             ]
-        }
+        },
+        ...mapState(['mode'])
     },
 
     apollo: {
