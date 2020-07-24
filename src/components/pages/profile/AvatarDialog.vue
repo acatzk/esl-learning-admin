@@ -1,7 +1,7 @@
 <template>
     <v-row justify="center">
         <v-dialog v-model="show" max-width="450px">
-            <v-card>
+            <v-card :dark="mode ? false : true">
                 <v-card-title>
                     <v-icon left size="35">mdi-camera-outline</v-icon> Upload Avatar
                 </v-card-title>
@@ -105,6 +105,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 import { fb } from '@/firebase' // FIREBASE CONFIGURATION
 
 import { toastAlertStatus } from '@/utils' // TOAST ALERT IN SWEETALERT2
@@ -136,7 +138,8 @@ export default {
                     this.$emit('close')
                 }
             }
-        }
+        },
+        ...mapState(['mode'])
     },
 
     methods: {
