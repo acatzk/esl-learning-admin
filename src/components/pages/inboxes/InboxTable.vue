@@ -9,8 +9,8 @@
         <!-- DISPLAY NAME -->
         <template #item.name="{ item }">
             <span v-if="item.status === 'unread'" class="font-weight-bold">
-                <v-icon left>mdi-account-box</v-icon>
-                {{ item.name }}
+                <v-icon left :class="!mode ? 'unread' : ''">mdi-account-box</v-icon>
+                <span :class="!mode ? 'unread' : ''">{{ item.name }}</span>
             </span>
             <span v-else>
                 <v-icon left>mdi-account-box</v-icon>
@@ -21,8 +21,8 @@
         <!-- DISPLAY EMAIL -->
         <template #item.email="{ item }">
             <span v-if="item.status === 'unread'" class="font-weight-bold">
-                <v-icon left>mdi-email</v-icon>
-                {{ item.email }}
+                <v-icon left :class="!mode ? 'unread' : ''">mdi-email</v-icon>
+                <span :class="!mode ? 'unread' : ''">{{ item.email }}</span>
             </span>
             <span v-else>
                 <v-icon left>mdi-email</v-icon>
@@ -33,9 +33,10 @@
         <!-- DISPLAY  FORMAT DATE -->
         <template #item.created_at="{ item }">
             <span v-if="item.status === 'unread'" class="font-weight-bold">
-                <v-icon left>mdi-calendar</v-icon>
+                <v-icon left :class="!mode ? 'unread' : ''">mdi-calendar</v-icon>
                 <date-format
                     :created_at="item.created_at.split('T')[0]"
+                    :class="!mode ? 'unread' : ''"
                 />
             </span>
             <span v-else>
@@ -54,8 +55,8 @@
                 class="font-weight-bold non-clickable"
                 @click.stop
             >
-                <v-icon left>mdi-phone</v-icon>
-                {{ item.contact }}
+                <v-icon left :class="!mode ? 'unread' : ''">mdi-phone</v-icon>
+                <span :class="!mode ? 'unread' : ''">{{ item.contact }}</span>
             </td>
             <td 
                 v-else 
@@ -111,6 +112,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 // Toast Alert Status file
 import { toastAlertStatus } from '@/utils'
 
@@ -128,6 +131,10 @@ export default {
 
     components: {
         DateFormat: () => import('@/components/mixins/DateFormat')
+    },
+
+    computed: {
+        ...mapState(['mode'])
     },
 
     props: {
