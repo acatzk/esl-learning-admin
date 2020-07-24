@@ -100,7 +100,7 @@
                         <v-icon left>mdi-close-circle-outline</v-icon> Close
                     </v-btn>
                     <v-btn 
-                        color="indigo darken-1 white--text" 
+                        :color="mode ? 'indigo darken-1 white--text' : 'error'" 
                         small
                         depressed
                         @click="saveUpdateInfo"
