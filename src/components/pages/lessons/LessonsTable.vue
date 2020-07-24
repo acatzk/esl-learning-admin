@@ -17,7 +17,12 @@
         <template #item.filename="{ item }">
             <span class="d-flex align-center">
                 <v-icon left>{{ getDynamicFileIcon(item) }}</v-icon>
-                <a :href="item.url_files" target="_blank" style="text-decoration: none; text-transform: lowercase;">
+                <a 
+                    :href="item.url_files" 
+                    target="_blank" 
+                    :class="!mode ? 'unread' : ''"
+                    style="text-decoration: none; text-transform: lowercase;"
+                >
                     {{ getUrlFilename(item) }}
                 </a>
             </span>
@@ -71,6 +76,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 import { splitUrlFilename, convertByteSize, fileExtentionIcon } from '@/utils'
 
 export default {
@@ -95,6 +102,10 @@ export default {
         LessonActionButton: () => import('./LessonActionButton')
     },
 
+    computed: {
+        ...mapState(['mode'])
+    },
+
     methods: {
         getUrlFilename (item) {
             return splitUrlFilename(item)
@@ -117,5 +128,17 @@ export default {
 .pdf-embeded {
     height: 50vh;
     width: 100%;
+}
+.unread {
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 </style>
