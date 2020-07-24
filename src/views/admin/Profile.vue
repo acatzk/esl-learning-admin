@@ -99,26 +99,4 @@ export default {
     text-transform: capitalize;
 }
 
-// header {
-//     width: 90%;
-//     margin: auto;
-//     padding: 20px;
-//     position: relative;
-//     bottom: 20px;
-//     border-radius: 15px;
-//     background: #f1f8ff;
-//     border: 1px solid #c8e1ff;
-
-//     .title {
-//         color: rgb(66, 66, 66);
-//     }
-//     .business {
-//         color: rgb(66, 66, 66);
-//         font-style: italic;
-//     }
-//     .v-btn {
-//         text-transform: capitalize;
-//     }
-// }
-
 </style>
