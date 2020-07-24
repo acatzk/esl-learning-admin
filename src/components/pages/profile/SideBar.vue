@@ -1,5 +1,6 @@
 <template>
     <v-card
+        :dark="mode ? false : true"
         class="elevation-1 text-center card-profile"
     >
         <v-container>
@@ -93,6 +94,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 import { fb } from '@/firebase'
 
 import { toastAlertStatus } from '@/utils'
@@ -114,6 +117,10 @@ export default {
             hasura_admin: [],
             dialog: false
         }
+    },
+
+    computed: {
+        ...mapState(['mode'])
     },
 
     methods: {
@@ -166,7 +173,6 @@ export default {
 
 .card-profile {
     height: 79vh; 
-    background: white;
 
     .company-name {
         font-size: 13px;
