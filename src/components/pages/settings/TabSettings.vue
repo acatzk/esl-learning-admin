@@ -1,11 +1,11 @@
 <template>
     <div class="tab-settings">
-        <v-tabs horizontal fixed-tabs color="indigo">
+        <v-tabs horizontal fixed-tabs :color="mode ? 'indigo' : 'error'">
             <v-tab>
                 <v-icon left>mdi-account-outline</v-icon>
                 Account
             </v-tab>
-            <v-tab>
+            <v-tab dark>
                 <v-icon left>mdi-shield-outline</v-icon>
                 Administrators
             </v-tab>
@@ -43,6 +43,9 @@
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
+
 export default {
     name: 'TabSettings',
 
@@ -57,6 +60,10 @@ export default {
         Administrator: () => import('./admin-profiles/Admin'),
         DevInfo: () => import('./developers-info/DevInfo'),
         TeachersAccount: () => import('./teachers-account/TeachersAccount')
+    },
+
+    computed: {
+        ...mapState(['mode'])
     }
 }
 </script>
