@@ -89,7 +89,7 @@
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn 
-                        color="primary white--text" 
+                        :color="mode ? 'indigo darken-1 white--text' : 'error'" 
                         depressed
                         :loading="loading"  
                         small
