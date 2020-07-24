@@ -1,6 +1,6 @@
 <template>
     <div class="tab-settings">
-        <v-tabs horizontal fixed-tabs :color="mode ? 'indigo' : 'error'">
+        <v-tabs horizontal fixed-tabs :color="mode ? 'indigo' : 'error'" :dark="mode ? 'error' : ''">
             <v-tab>
                 <v-icon left>mdi-account-outline</v-icon>
                 Account
@@ -20,22 +20,38 @@
 
             <v-tab-item>
 
-                <account /> <!-- ACCOUNT SETTINGS -->
+                <v-card :dark="mode ? 'error' : ''">
+
+                    <account /> <!-- ACCOUNT SETTINGS -->
+
+                </v-card>
 
             </v-tab-item>
             <v-tab-item>
 
-                <administrator /> <!-- ADMINISTRATOR SETTINGS -->
+                <v-card :dark="mode ? 'error' : ''">
+
+                    <administrator /> <!-- ADMINISTRATOR SETTINGS -->
+
+                </v-card>
 
             </v-tab-item>
             <v-tab-item>
                 
-                <teachers-account /> <!-- TEACHERS ACCOUNT SETTINGS -->
+                <v-card :dark="mode ? 'error' : ''">
+
+                    <teachers-account /> <!-- TEACHERS ACCOUNT SETTINGS -->
+
+                </v-card>
 
             </v-tab-item>
             <v-tab-item>
 
-                <dev-info /> <!-- DEVELOPERS INFORMATION -->
+                <v-card :dark="mode ? 'error' : ''">
+
+                    <dev-info /> <!-- DEVELOPERS INFORMATION -->
+
+                </v-card>
 
             </v-tab-item>
         </v-tabs>
