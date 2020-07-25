@@ -1,5 +1,5 @@
 <template>
-    <div class="welcome">
+    <div :class="mode ? 'welcome' : 'darkness'">
         <v-card>
             <v-app-bar
                 absolute
@@ -10,6 +10,25 @@
                 <v-toolbar-title>
                    Vic Solution Administrator
                 </v-toolbar-title>
+
+                <v-spacer></v-spacer>
+
+                <!-- Light and Dark mode -->
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                            <v-btn 
+                                fab 
+                                icon
+                                v-on="on"
+                                @click.stop="$store.dispatch('darkMode')"
+                                color="white"
+                            >
+                                <v-icon v-if="mode">mdi-lightbulb</v-icon>
+                                <v-icon v-else>mdi-lightbulb-outline</v-icon>
+                            </v-btn>
+                    </template>
+                    <span>{{ mode ? 'Dark' : 'Light' }}</span>
+                </v-tooltip>
 
                 <v-spacer></v-spacer>
 
@@ -30,31 +49,14 @@
                 </v-tooltip>
 
                 <v-btn 
-                    class="white--text mr-2" 
+                    class="white--text" 
                     depressed 
                     :color="mode ? 'indigo white--text' : ''"
                     to="/login"
                 >
                     <v-icon left>mdi-login</v-icon> Login
                 </v-btn>
-
-                 <!-- Light and Dark mode -->
-                 <v-tooltip bottom>
-                    <template v-slot:activator="{ on }">
-                            <v-btn 
-                                fab 
-                                icon
-                                v-on="on"
-                                @click.stop="$store.dispatch('darkMode')"
-                                color="white"
-                            >
-                                <v-icon v-if="mode">mdi-lightbulb</v-icon>
-                                <v-icon v-else>mdi-lightbulb-outline</v-icon>
-                            </v-btn>
-                    </template>
-                    <span>{{ mode ? 'Dark' : 'Light' }}</span>
-                </v-tooltip>
-                
+            
             </v-app-bar>
         </v-card>
          <v-container style="margin-top: 60px;">
@@ -146,6 +148,10 @@ export default {
 
 .welcome {
     background-color: #F6F7FB;
+}
+
+.darkness {
+    background-color: rgb(31, 30, 30);
 }
 
 .v-card {
