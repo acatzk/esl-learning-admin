@@ -49,10 +49,14 @@
             />
 
             <!-- Light and Dark mode -->
-            <v-switch 
-                @change="$store.dispatch('darkMode')"
-                class="mt-5"
-            ></v-switch>
+            <v-btn 
+                fab 
+                icon
+                @click.stop="$store.dispatch('darkMode')"
+            >
+                <v-icon v-if="mode">mdi-lightbulb</v-icon>
+                <v-icon v-else>mdi-lightbulb-outline</v-icon>
+            </v-btn>
             
         </v-app-bar>
 
