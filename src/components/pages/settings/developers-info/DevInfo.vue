@@ -10,7 +10,7 @@
                             href="https://github.com/acatzk/esl-learning-admin"
                             target="_blank"
                             icon
-                            color="primary"
+                            :color="mode ? 'primary' : 'error'"
                         >
                             <v-icon>mdi-information</v-icon>
                         </v-btn>
@@ -51,7 +51,7 @@
                             <v-icon left>mdi-email</v-icon> {{ dev.email }}
                         </v-card-subtitle>
 
-                        <v-card-text class="text--primary">
+                        <v-card-text :class="mode ? 'text--primary' : ''">
                             <div>
                                 <v-icon left>mdi-account</v-icon> {{ dev.name }}
                             </div>
@@ -65,6 +65,7 @@
                                     :href="dev.website" 
                                     target="_blank"
                                     style="text-decoration: none;"
+                                    :class="!mode ? 'unread': ''"
                                 >
                                     {{ dev.website }}
                                 </a>
@@ -76,7 +77,7 @@
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn
                                         icon
-                                        color="#4267B2"
+                                        :color="mode ? '#4267B2' : ''"
                                         v-on="on"
                                         v-bind="attrs"
                                         :href="dev.fbLink"
@@ -93,7 +94,7 @@
                                 <template v-slot:activator="{ on, attrs }">
                                     <v-btn
                                         icon
-                                        color="#1DA1F2"
+                                        :color="mode ? '#1DA1F2' : ''"
                                         :href="dev.twitterLink"
                                         v-on="on"
                                         v-bind="attrs"
@@ -111,7 +112,7 @@
                                     <v-btn
                                         :href="dev.githubLink"
                                         icon
-                                        color="#333"
+                                        :color="mode ? '#333' : ''"
                                         v-on="on"
                                         v-bind="attrs"
                                         target="_blank"
@@ -133,6 +134,9 @@
 
 
 <script>
+
+import { mapState } from 'vuex'
+
 export default {
     name: 'DevInfo',
 
@@ -165,6 +169,10 @@ export default {
                 }
             ]
         }
+    },
+
+    computed: {
+        ...mapState(['mode'])
     }
 }
 </script>
@@ -172,5 +180,17 @@ export default {
 <style scoped lang="scss">
 .dev-info {
     border-top: 1px solid #eee;
+}
+.unread {
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 </style>
