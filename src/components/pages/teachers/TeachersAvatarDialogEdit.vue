@@ -21,7 +21,7 @@
                                         :src="image === null ? previewImage(item.profile_url) : previewImage(image)"
                                         :lazy-src="image === null ? previewImage(item.profile_url) : previewImage(image)"
                                         aspect-ratio="1"
-                                        class="grey lighten-2"
+                                        :class="mode ? 'grey lighten-2' : 'black'"
                                         max-height="50vh"
                                     >
                                         <v-tooltip top>
