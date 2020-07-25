@@ -20,7 +20,7 @@
                                         :src="previewImage(image)"
                                         :lazy-src="previewImage(image)"
                                         aspect-ratio="1"
-                                        class="grey lighten-2"
+                                        :class="mode ? 'grey lighten-2' : 'black'"
                                         max-height="50vh"
                                     >
                                         <template v-slot:placeholder>
@@ -39,7 +39,7 @@
                                         :src="previewImage(admin.profileUrl)"
                                         :lazy-src="previewImage(admin.profileUrl)"
                                         aspect-ratio="1"
-                                        class="grey lighten-2"
+                                        :class="mode ? 'grey lighten-2' : 'black'"
                                         max-height="50vh"
                                     >  
                                         <v-tooltip top>
