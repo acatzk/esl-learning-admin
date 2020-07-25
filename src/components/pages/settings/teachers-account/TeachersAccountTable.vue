@@ -7,7 +7,7 @@
         <!-- ** TEACHER AVATAR  ** -->
         <template #item.firstname="{ item }">
             <v-avatar 
-                color="#eee" 
+                :color="mode ? '#eee' : 'black'" 
                 class="mr-2 ma-1 avatar-pic" 
             >
                 <v-img
@@ -68,6 +68,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 export default {
     name: 'TeachersAccountTable',
 
@@ -88,6 +90,10 @@ export default {
             type: String,
             required: true
         }
+    },
+
+    computed: {
+        ...mapState(['mode'])
     },
 
     methods: {

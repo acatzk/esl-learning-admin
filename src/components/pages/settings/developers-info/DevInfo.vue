@@ -31,7 +31,7 @@
                             :src="dev.profileUrl"
                             :lazy-src="dev.profileUrl"
                             aspect-ratio="1"
-                            class="grey lighten-2"
+                            :class="mode ? 'grey lighten-2' : 'black'"
                         >
                             <template v-slot:placeholder>
                                 <v-row
