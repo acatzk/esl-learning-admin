@@ -3,11 +3,12 @@
         <v-card>
             <v-app-bar
                 absolute
-                color="indigo white--text"
+                :color="mode ? 'indigo white--text' : ''"
                 elevate-on-scroll
+                :dark="mode ? false : true"
             >
                 <v-toolbar-title>
-                    <v-icon left class="white--text">mdi-security</v-icon> Vic Solution Administrator
+                   Vic Solution Administrator
                 </v-toolbar-title>
 
                 <v-spacer></v-spacer>
@@ -19,7 +20,7 @@
                       class="white--text mr-2" 
                       depressed 
                       target="_blank"
-                      color="indigo darken-2 white--text"
+                      :color="mode ? 'indigo white--text' : ''"
                       v-on="on"
                     >
                       <v-icon left class="white--text">mdi-web</v-icon> Main Page
@@ -29,13 +30,31 @@
                 </v-tooltip>
 
                 <v-btn 
-                    class="white--text" 
+                    class="white--text mr-2" 
                     depressed 
-                    color="indigo darken-2 white--text"
+                    :color="mode ? 'indigo white--text' : ''"
                     to="/login"
                 >
                     <v-icon left>mdi-login</v-icon> Login
                 </v-btn>
+
+                 <!-- Light and Dark mode -->
+                 <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                            <v-btn 
+                                fab 
+                                icon
+                                v-on="on"
+                                @click.stop="$store.dispatch('darkMode')"
+                                color="white"
+                            >
+                                <v-icon v-if="mode">mdi-lightbulb</v-icon>
+                                <v-icon v-else>mdi-lightbulb-outline</v-icon>
+                            </v-btn>
+                    </template>
+                    <span>{{ mode ? 'Dark' : 'Light' }}</span>
+                </v-tooltip>
+                
             </v-app-bar>
         </v-card>
          <v-container style="margin-top: 60px;">
@@ -75,6 +94,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 import {
    VueFlux,
    FluxCaption,
@@ -95,6 +116,10 @@ export default {
 
       FootBar: () => import('@/components/layouts/FootBar')
    },
+
+    computed: {
+        ...mapState(['mode'])
+    },
 
    data: () => ({
       vfOptions: {
