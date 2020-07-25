@@ -9,7 +9,7 @@
                 :src="teacherProfileImage(item)"
                 :lazy-src="teacherProfileImage(item)"
                 aspect-ratio="1"
-                class="grey lighten-2"
+                :class="mode ? 'grey lighten-2' : 'black'"
             >
                 <template v-slot:placeholder>
                     <v-row
@@ -34,6 +34,9 @@
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
+
 export default {
     name: 'TeachersTableProfile',
 
@@ -47,6 +50,10 @@ export default {
         return {
             dialog : false
         }
+    },
+
+    computed: {
+        ...mapState(['mode'])
     },
 
     methods: {
