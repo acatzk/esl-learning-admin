@@ -1,6 +1,11 @@
 import { apolloProvider } from './apollo'
-
+import { fb, db, auth, messaging, currentUser } from './adminFirebase'
 
 export {
-    apolloProvider
+    apolloProvider,
+    fb,
+    db,
+    auth,
+    messaging,
+    currentUser
 }
