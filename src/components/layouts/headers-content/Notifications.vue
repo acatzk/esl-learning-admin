@@ -74,7 +74,7 @@
 
 <script>
 
-import { fb } from '@/firebase'
+import { fb } from '@/services'
 
 import gql from 'graphql-tag'
 

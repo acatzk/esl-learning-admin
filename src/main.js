@@ -7,7 +7,7 @@ import VuePageTransition from 'vue-page-transition'
 import { apolloProvider } from '@/services'
 import VueSweetalert2 from 'vue-sweetalert2';
 import VueTimeago from 'vue-timeago'
-import { fb } from '@/firebase'
+import { fb } from '@/services'
 import { VLazyImagePlugin } from 'v-lazy-image';
 
 Vue.config.productionTip = false;

@@ -83,7 +83,7 @@
 
 import gql from 'graphql-tag'
 
-import { fb } from '@/firebase'
+import { fb } from '@/services'
 
 export default {
     name: 'SideBar',

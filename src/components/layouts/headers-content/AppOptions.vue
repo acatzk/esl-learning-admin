@@ -114,7 +114,7 @@
 
 import { mapState } from 'vuex'
 
-import { fb } from '@/firebase'
+import { fb } from '@/services'
 
 export default {
     name: 'AppOptions',

@@ -63,7 +63,7 @@
 
 <script>
 
-import { fb } from '@/firebase'
+import { fb } from '@/services'
 
 import { PROFILE_QUERY } from '@/graphql/queries/profile'
 

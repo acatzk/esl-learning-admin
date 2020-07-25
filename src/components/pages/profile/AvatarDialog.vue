@@ -107,7 +107,7 @@
 
 import { mapState } from 'vuex'
 
-import { fb } from '@/firebase' // FIREBASE CONFIGURATION
+import { fb } from '@/services' // FIREBASE CONFIGURATION
 
 import { toastAlertStatus } from '@/utils' // TOAST ALERT IN SWEETALERT2
 

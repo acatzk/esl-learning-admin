@@ -110,7 +110,7 @@
 
 <script>
 
-import { fb } from '@/firebase'
+import { fb } from '@/services'
 
 import { toastAlertStatus } from '@/utils'
 

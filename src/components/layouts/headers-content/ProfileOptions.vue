@@ -62,7 +62,7 @@
 
 <script>
 
-import { fb } from '@/firebase'
+import { fb } from '@/services'
 
 import { ADMIN_PROFILE_IMAGE_QUERY } from '@/graphql/queries/profile'
 

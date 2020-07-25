@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { fb } from '@/firebase'
+import { fb } from '@/services'
 
 Vue.use(VueRouter);
 

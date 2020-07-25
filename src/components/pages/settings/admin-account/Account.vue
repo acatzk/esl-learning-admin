@@ -83,7 +83,7 @@
 
 <script>
 
-import { fb } from '@/firebase'
+import { fb } from '@/services'
 
 import { mapState } from 'vuex'
 
