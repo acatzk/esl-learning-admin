@@ -39,7 +39,7 @@
             </v-btn>
         </template>
 
-        <v-list dense class="mt-3" :dark="mode ? false : true">
+        <v-list dense class="mt-2" :dark="mode ? false : true">
             <v-list-item
                 v-for="(opt, io) in profileOptions" 
                 :key="io"
