@@ -18,17 +18,12 @@ const fb = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore()
 const auth = firebase.auth()
 const currentUser = auth.currentUser
-
-// date issue fix according to firebase
-// const settings = {
-//     timestampsInSnapshots: true
-// }
-// db.settings(settings)
-
+const messaging = firebase.messaging()
 
 export {
   fb,
   db,
   auth,
+  messaging,
   currentUser
 }
