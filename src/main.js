@@ -4,7 +4,7 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import VuePageTransition from 'vue-page-transition'
-import apolloProvider from './apollo'
+import apolloProvider from '@/services/apollo'
 import VueSweetalert2 from 'vue-sweetalert2';
 import VueTimeago from 'vue-timeago'
 import { fb } from '@/firebase'
