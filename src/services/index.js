@@ -1,4 +1,4 @@
-import apolloProvider from './apollo'
+import { apolloProvider } from './apollo'
 
 
 export {

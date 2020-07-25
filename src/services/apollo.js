@@ -55,4 +55,6 @@ const apolloClient = new ApolloClient({
     }
   });
 
-  export default apolloProvider
+  export {
+    apolloProvider
+  }
