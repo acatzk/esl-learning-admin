@@ -21,7 +21,7 @@
                                 icon
                                 v-on="on"
                                 @click.stop="$store.dispatch('darkMode')"
-                                color="white"
+                                :color="mode ? 'yellow' : ''"
                             >
                                 <v-icon v-if="mode">mdi-lightbulb</v-icon>
                                 <v-icon v-else>mdi-lightbulb-outline</v-icon>
