@@ -39,7 +39,7 @@ Vic solution ESL Learning System Operated in teachers to manipulate students inf
 
 * [Vuejs](https://vuejs.org/) - The frontend framework
 * [Hasura](http://hasura.io/) - Hasura Graphql backend production ready
-* [firebase](https://firebase.google.com/docs/auth) - Firebase authentication
+* [Firebase](https://firebase.google.com/docs/auth) - Firebase authentication, storage and etc.
 
 
 ### Authors
