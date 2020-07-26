@@ -1,4 +1,5 @@
 let splitUrlFilename = (item) => {
+    if (!item.url_files) return;
     let newItem = item.url_files.split('/lessons-files%2F').pop().split('#')[0].split('?')[0]
     return newItem.length >= 30 ? newItem.slice(0, 30) + "..." : newItem
 }
