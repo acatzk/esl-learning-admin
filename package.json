@@ -29,6 +29,7 @@
     "vue-flux": "^6.2.0",
     "vue-page-transition": "^0.2.2",
     "vue-router": "^3.2.0",
+    "vue-simplebar": "^2.0.0",
     "vue-sweetalert2": "^3.0.5",
     "vue-timeago": "^5.1.2",
     "vuetify": "^2.2.11",
