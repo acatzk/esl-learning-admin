@@ -42,10 +42,11 @@
 
     <v-card 
       class="mx-auto visitor elevation-1" 
+      :dark="mode ? false : true"
     >
       <v-sheet
         class="v-sheet--offset mx-auto"
-        color="indigo lighten-1"
+        :color="mode ? 'indigo lighten-1' : 'dark'"
         elevation="0"
       >
         <v-sparkline
