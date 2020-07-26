@@ -53,6 +53,7 @@
                 fab 
                 icon
                 @click.stop="$store.dispatch('darkMode')"
+                :color="mode ? 'yellow' : ''"
             >
                 <v-icon v-if="mode">mdi-lightbulb</v-icon>
                 <v-icon v-else>mdi-lightbulb-outline</v-icon>
