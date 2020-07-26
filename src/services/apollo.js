@@ -12,22 +12,21 @@ import { getMainDefinition } from 'apollo-utilities'
 
 
 const httpLink = new HttpLink({
-  uri: "https://vic-solution-inc.herokuapp.com/v1/graphql",
+  uri: "https://brief-racer-60.hasura.app/v1/graphql",
   headers: {
-    'x-hasura-admin-secret': 'vic-solution-inc'
+    'x-hasura-admin-secret': 'cawguyvxjsbcemcvqknvdprkccadpmwg'
   }
 });
 
 const wsLink = new WebSocketLink({
-  uri: "wss://vic-solution-inc.herokuapp.com/v1/graphql",
+  uri: "wss://brief-racer-60.hasura.app/v1/graphql",
   options: {
-    timeout: 60000,
     reconnect: true,
     timeout: 30000,
     connectionParams() {
       return {
         headers: {
-          'x-hasura-admin-secret': 'vic-solution-inc'
+          'x-hasura-admin-secret': 'cawguyvxjsbcemcvqknvdprkccadpmwg'
         }
       }
     }
