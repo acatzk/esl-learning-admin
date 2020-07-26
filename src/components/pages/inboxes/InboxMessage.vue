@@ -82,8 +82,9 @@
                                     outlined 
                                     text
                                     @click="markAsReadMessage(id)"
+                                    :disabled="inbx.status === 'read'"
                                 >
-                                    <v-icon left>email</v-icon> Mark as Read
+                                    <v-icon left>{{ inbx.status === 'unread' ? 'mdi-email' : 'mdi-email-open' }}</v-icon> {{ inbx.status === 'unread' ? 'Mark as Read' : 'Marked' }}
                                 </v-btn>
                             </div>
                         </div>
