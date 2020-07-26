@@ -33,6 +33,7 @@
             <!-- Button Search show only in small scale like cellphone -->
             <button-search 
                 class="hidden-md-and-up"
+                v-show="false"
             />
 
             <!-- Apps Link Options -->
