@@ -32,3 +32,15 @@ export const DELETE_LESSONS_MUTATION = gql`
         }
     }
 `
+
+
+export const UPDATE_LESSONS_URL_FILES_MUTATION = gql`
+    mutation UpdateLessonFileMutation($id: uuid!, $url_files: String) {
+        update_lessons(where: {id: {_eq: $id}}, _set: {url_files: $url_files}) {
+            affected_rows
+            returning {
+                id
+            }
+        }
+    }
+`
