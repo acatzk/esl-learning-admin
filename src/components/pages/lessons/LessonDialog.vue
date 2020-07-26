@@ -85,6 +85,9 @@
                                                     color="white"
                                                     v-on="on"
                                                     v-bind="attrs"
+                                                    @click="onDeleteFile(item)"
+                                                    :loading="closeLoading"
+                                                    v-show="false"
                                                 >
                                                     <v-icon>mdi-close</v-icon>
                                                 </v-btn>
@@ -141,7 +144,7 @@ import { fb } from '@/services'
 
 import { toastAlertStatus, fileExtentionIcon } from '@/utils'
 
-import { ADD_LESSONS_MUTATION, UPDATE_LESSONS_MUTATION } from '@/graphql/mutations/lessons'
+import { ADD_LESSONS_MUTATION, UPDATE_LESSONS_MUTATION, UPDATE_LESSONS_URL_FILES_MUTATION } from '@/graphql/mutations/lessons'
 
 export default {
     name: 'LessonDialog',
@@ -151,6 +154,7 @@ export default {
     data () {
         return {
             loading: false,
+            closeLoading: false,
             valid: true,
             progress: 0,
             files: [],
@@ -175,6 +179,36 @@ export default {
     },
 
     methods: {
+        onDeleteFile (lesson) {
+            this.closeLoading = true
+            let file = fb.storage().refFromURL(lesson.url_files)
+
+            file
+             .delete()
+             .then(() => {
+                this.closeLoading = false
+                this.onRemoveLessonUrlInHasura(lesson)
+             })
+             .catch(error => {
+                 this.closeLoading = false
+                 toastAlertStatus('error', error)
+             })
+        },
+
+        // REMOVED LESSONS URL FILE COLUMN IN HASURA
+        onRemoveLessonUrlInHasura (lesson) {
+            this
+             .$apollo
+             .mutate({
+                mutation: UPDATE_LESSONS_URL_FILES_MUTATION,
+                variables: {
+                    id: lesson.id,
+                    url_files: null
+                }
+             })
+             .catch(error => toastAlertStatus('error', error))
+        },
+
         onSubmitLesson () {
             if (this.$refs.form.validate()) {
                 this.loading = true
