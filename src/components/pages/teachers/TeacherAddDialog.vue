@@ -6,6 +6,14 @@
                     <v-icon left size="35">mdi-plus</v-icon> New Teacher
                 </span>
             </v-card-title>
+
+            <!-- Error occured -->
+            <alert 
+                v-show="error"
+                :text="`${error}`"
+                :textStyle="false"
+            />
+
             <v-card-text>
                 <v-container>
                       <v-form 
@@ -124,6 +132,8 @@
 
 import { mapState } from 'vuex'
 
+import { fb, fb2 } from '@/services'
+
 import { toastAlertStatus } from '@/utils'
 
 import { ADD_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
@@ -132,6 +142,10 @@ export default {
     name: 'TeacherAddDialog',
 
     props: ['visible'],
+
+    components: {
+        Alert: () => import('@/components/mixins/Alert')
+    },
 
     data: () => ({
       firstname: '',
@@ -144,6 +158,7 @@ export default {
       genderList: ['Male', 'Female'],
       loading: false,
       valid: true,
+      error: '',
       required(propertyType) { 
           return v => v && v.length > 0 || `${propertyType} is required.`
       },
@@ -162,7 +177,6 @@ export default {
         val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
       },
     },
-
 
     computed: {
       show: {
@@ -197,28 +211,35 @@ export default {
               date 
             } = this.$data
 
+            this.saveTeacherInHasura({
+                firstname, lastname, email, contact, gender, date
+            })
+            
+          }
+        },
+
+        saveTeacherInHasura ({ firstname, lastname, email, contact, gender, date }) {
             this.$apollo
-                .mutate({
-                  mutation: ADD_TEACHER_MUTATION,
-                  variables: {
+            .mutate({
+                mutation: ADD_TEACHER_MUTATION,
+                variables: {
                     firstname: firstname,
                     lastname: lastname,
                     email: email,
                     phone: contact,
                     gender: gender,
                     birth_date: date
-                  }
-                })
-                .then(() => {
-                  this.loading = false
-                  this.show = !this.show
-                  toastAlertStatus('success', 'Successfully Added') 
-                  this.$refs.form.reset()
-                })
-                .catch(error => {
-                  toastAlertStatus('error', error) 
-                })
-          }
+                }
+            })
+            .then(() => {
+                this.loading = false
+                this.show = !this.show
+                toastAlertStatus('success', 'Successfully Added') 
+                this.$refs.form.reset()
+            })
+            .catch(error => {
+                toastAlertStatus('error', error) 
+            })
         }
     }
 }
