@@ -15,11 +15,7 @@ const fbConfig = {
 
 // firebase utils
 
-const fb2 = ''
-
-if (!firebase.apps.length) {
-  fb2 = firebase.initializeApp(fbConfig);
-}
+const fb2 = firebase.initializeApp(fbConfig);
 
 export {
   fb2
