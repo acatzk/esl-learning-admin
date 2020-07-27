@@ -140,6 +140,9 @@ export default {
 
         // DELETE THE FILE IN THE FIREBASE
         removeFileInFirebase () {
+
+            if (!this.item.url_files) return;
+
             let file = fb.storage().refFromURL(this.item.url_files)
             this.items.splice(this.item, 1)
 
