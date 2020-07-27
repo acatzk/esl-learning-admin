@@ -6,6 +6,7 @@
                     <v-btn 
                         v-bind="attrs"
                         v-on="on"
+                        v-show="false"
                         small 
                         icon
                         :loading="loading"
