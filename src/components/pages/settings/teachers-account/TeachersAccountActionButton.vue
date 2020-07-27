@@ -15,6 +15,8 @@
 
 <script>
 
+import { fb } from '@/services'
+
 import Swal from 'sweetalert2'
 
 import { mapState } from 'vuex'
@@ -42,7 +44,7 @@ export default {
         deleteTeacherAccount () {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "By the way before you actually delete the account make sure to remove the teachers profile image to minimize the firebase storage - by Backend Developer.",
+                text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -62,11 +64,27 @@ export default {
                     })
                     .then(() => {
                         toastAlertStatus('success', 'Teacher account has been deleted')
+                        this.onDeleteProfileImage(this.item)
                     })
                     .catch(error => toastAlertStatus('error', error))
                 }
             })
-      }
+        },
+
+        // REMOVED ACTUAL PICTURE IN FIREBASE STORAGE
+        onDeleteProfileImage (teacher) {
+            
+            if (!teacher.profile_url) return;
+
+            let image = fb.storage().refFromURL(teacher.profile_url)
+
+            image
+             .delete()
+             .then(() => {
+                toastAlertStatus('success', 'Firebase storage profile deleted.')
+             })
+             .catch(error => toastAlertStatus('error', error))
+        }
     }
 }
 </script>
