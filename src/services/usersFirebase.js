@@ -2,7 +2,7 @@ import firebase from "firebase";
 import 'firebase/storage'
 import 'firebase/firestore'
 
-const firebaseConfig = {
+const fbConfig = {
     apiKey: "AIzaSyBw4reOmcB0ACKM-4rqI5229G9PEtH-rEc",
     authDomain: "vic-airclass-solution-users.firebaseapp.com",
     databaseURL: "https://vic-airclass-solution-users.firebaseio.com",
@@ -14,7 +14,12 @@ const firebaseConfig = {
 }
 
 // firebase utils
-const fb2 = firebase.initializeApp(firebaseConfig);
+
+const fb2 = ''
+
+if (!firebase.apps.length) {
+  fb2 = firebase.initializeApp(fbConfig);
+}
 
 export {
   fb2
