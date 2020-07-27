@@ -87,7 +87,6 @@
                                                     v-bind="attrs"
                                                     @click="onDeleteFile(item)"
                                                     :loading="closeLoading"
-                                                    v-show="false"
                                                 >
                                                     <v-icon>mdi-close</v-icon>
                                                 </v-btn>
@@ -181,22 +180,7 @@ export default {
     methods: {
         onDeleteFile (lesson) {
             this.closeLoading = true
-            let file = fb.storage().refFromURL(lesson.url_files)
 
-            file
-             .delete()
-             .then(() => {
-                this.closeLoading = false
-                this.onRemoveLessonUrlInHasura(lesson)
-             })
-             .catch(error => {
-                 this.closeLoading = false
-                 toastAlertStatus('error', error)
-             })
-        },
-
-        // REMOVED LESSONS URL FILE COLUMN IN HASURA
-        onRemoveLessonUrlInHasura (lesson) {
             this
              .$apollo
              .mutate({
@@ -205,6 +189,27 @@ export default {
                     id: lesson.id,
                     url_files: null
                 }
+             })
+             .then(() => {
+                this.closeLoading = false
+                toastAlertStatus('success', 'Successfully Deleted in Hasura.')
+                this.onRemoveLessoInFirebase(lesson)
+             })
+             .catch(error => {
+                 this.closeLoading = false
+                toastAlertStatus('error', error)
+             })
+        },
+
+        // REMOVED LESSONS URL FILE COLUMN IN HASURA
+        onRemoveLessoInFirebase (lesson) {
+            if (!lesson.url_files) return
+
+            let file = fb.storage().refFromURL(lesson.url_files)
+            file
+             .delete()
+             .then(() => {
+                toastAlertStatus('success', 'Successfully Deleted in Firebase.')
              })
              .catch(error => toastAlertStatus('error', error))
         },
