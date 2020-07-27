@@ -132,8 +132,6 @@
 
 import { mapState } from 'vuex'
 
-import { fb, fb2 } from '@/services'
-
 import { toastAlertStatus } from '@/utils'
 
 import { ADD_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
@@ -211,9 +209,19 @@ export default {
               date 
             } = this.$data
 
-            this.saveTeacherInHasura({
-                firstname, lastname, email, contact, gender, date
-            })
+            this.saveTeacherInHasura({  firstname, lastname, email, contact, gender, date })
+
+            // firebaseUser
+            // .auth()
+            // .createUserWithEmailAndPassword(email, '12345678')
+            // .then(() => {
+            //     toastAlertStatus('success', 'Successfully Added in Firebase Auth') 
+            //     
+            // })
+            // .catch(error => {
+            //     this.error = error
+            //     toastAlertStatus('error', error) 
+            // })
             
           }
         },
@@ -234,7 +242,7 @@ export default {
             .then(() => {
                 this.loading = false
                 this.show = !this.show
-                toastAlertStatus('success', 'Successfully Added') 
+                toastAlertStatus('success', 'Successfully Added in Hasura') 
                 this.$refs.form.reset()
             })
             .catch(error => {
