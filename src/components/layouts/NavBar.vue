@@ -105,5 +105,7 @@ export default {
   background: white !important;
   /* box-shadow: none !important; */
 }
-
+.v-app-bar {
+    border-bottom: 1px solid rgb(71, 71, 71);
+}
 </style>
