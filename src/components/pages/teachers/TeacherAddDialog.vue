@@ -132,6 +132,8 @@
 
 import { mapState } from 'vuex'
 
+import { fb } from '@/services'
+
 import { toastAlertStatus } from '@/utils'
 
 import { ADD_TEACHER_MUTATION } from '@/graphql/mutations/teachers'
@@ -209,24 +211,22 @@ export default {
               date 
             } = this.$data
 
-            this.saveTeacherInHasura({  firstname, lastname, email, contact, gender, date })
-
-            // firebaseUser
-            // .auth()
-            // .createUserWithEmailAndPassword(email, '12345678')
-            // .then(() => {
-            //     toastAlertStatus('success', 'Successfully Added in Firebase Auth') 
-            //     
-            // })
-            // .catch(error => {
-            //     this.error = error
-            //     toastAlertStatus('error', error) 
-            // })
+            fb
+            .auth()
+            .createUserWithEmailAndPassword(email, '12345678')
+            .then(fbData => {
+                toastAlertStatus('success', 'Successfully Added in Firebase Auth') 
+                this.saveTeacherInHasura(firstname, lastname, email, contact, gender, date, fbData)
+            })
+            .catch(error => {
+                this.error = error
+                toastAlertStatus('error', error) 
+            })
             
           }
         },
 
-        saveTeacherInHasura ({ firstname, lastname, email, contact, gender, date }) {
+        saveTeacherInHasura (firstname, lastname, email, contact, gender, date, fbData) {
             this.$apollo
             .mutate({
                 mutation: ADD_TEACHER_MUTATION,
@@ -236,7 +236,8 @@ export default {
                     email: email,
                     phone: contact,
                     gender: gender,
-                    birth_date: date
+                    birth_date: date,
+                    firebase_id: fbData.uid
                 }
             })
             .then(() => {
