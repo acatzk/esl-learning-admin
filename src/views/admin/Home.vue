@@ -10,13 +10,13 @@
         fluid
         :class="mode ? 'light-style' : 'dark-style'"
       >
-        <vue-page-transition name="fade-in-right" class="content">
+        <!-- <vue-page-transition name="fade-in-right" class="content"> -->
 
           <router-view 
             class="elevation-1"
           ></router-view> <!-- ** DYNAMIC CONTENT ROUTE ** -->
 
-        </vue-page-transition>
+        <!-- </vue-page-transition> -->
 
       </v-container>
 
