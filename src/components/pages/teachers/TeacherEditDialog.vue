@@ -40,6 +40,7 @@
                                         v-model="item.email"
                                         prepend-inner-icon="mdi-email-outline"
                                         :rules="[required('Email'), emailRules('Email')]"
+                                        disabled
                                     >
                                     </v-text-field>
                                 </v-col>
