@@ -219,6 +219,7 @@ export default {
                 this.saveTeacherInHasura(firstname, lastname, email, contact, gender, date, fbData)
             })
             .catch(error => {
+                this.loading = false  
                 this.error = error
                 toastAlertStatus('error', error) 
             })
@@ -246,8 +247,9 @@ export default {
                 toastAlertStatus('success', 'Successfully Added in Hasura') 
                 this.$refs.form.reset()
             })
-            .catch(error => {
-                toastAlertStatus('error', error) 
+            .catch((error) => {
+                this.loading = false    
+                toastAlertStatus('error', error)
             })
         }
     }
