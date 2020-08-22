@@ -150,7 +150,7 @@ export default {
                     email: 'joshuaimalay@gmail.com',
                     name: 'Joshua Galit',
                     location: 'Anahawan Bato, Leyte',
-                    website: 'https://www.josh-wang.ga/',
+                    website: 'https://josh-wang.ga/',
                     fbLink: 'https://www.facebook.com/profile.php?id=100016207784852',
                     twitterLink: 'https://twitter.com/angryboy_19',
                     githubLink: 'https://github.com/acatzk'
