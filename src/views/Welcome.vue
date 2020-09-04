@@ -138,7 +138,7 @@ export default {
          'Friendly',
       ],
 
-      source: 'https://victorsolutions.netlify.app/'
+      source: 'https://airclass.ml/'
    }),
 }
 
