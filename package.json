@@ -19,7 +19,7 @@
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
     "material-design-icons-iconfont": "^5.0.1",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "subscriptions-transport-ws": "^0.9.16",
     "v-lazy-image": "^1.4.0",
     "vue": "^2.6.11",
